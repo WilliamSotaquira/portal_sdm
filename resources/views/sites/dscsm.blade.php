@@ -572,8 +572,8 @@
             margin-top: .35rem;
         }
 
-        .conectate .offer-card > a > img,
-        .conectate .offer-card > img {
+        .conectate .offer-card>a>img,
+        .conectate .offer-card>img {
             height: 190px;
             object-fit: cover;
             object-position: center;
@@ -726,13 +726,13 @@
                 font-size: 0.98rem;
             }
 
-                .hero__bg {
-                    min-height: 520px;
-                    background-size: contain;
-                    background-image:
+            .hero__bg {
+                min-height: 520px;
+                background-size: contain;
+                background-image:
                     url("https://www.movilidadbogota.gov.co/sites/default/files/2026-01-30/banner_xs_2.jpeg");
-                    background-position: center top;
-                }
+                background-position: center top;
+            }
 
             .banner-vehiculo {
                 min-height: 340px;
@@ -839,8 +839,7 @@
                 <div class="hero-actions">
                     <a href="#oferta-transporte" class="hero-action-card">
                         <span class="hero-action-card__icon" aria-hidden="true">
-                            <img src="/sites/default/files/2026-01-27/bus.svg"
-                                alt="" width="36" height="36">
+                            <img src="/sites/default/files/2026-01-27/bus.svg" alt="" width="36" height="36">
                         </span>
                         <span class="hero-action-card__text">
                             <span class="hero-action-card__title">Transporte público</span>
@@ -850,8 +849,8 @@
 
                     <a href="#oferta-bici" class="hero-action-card">
                         <span class="hero-action-card__icon" aria-hidden="true">
-                            <img src="/sites/default/files/2026-01-27/bicycle.svg"
-                                alt="" width="36" height="36">
+                            <img src="/sites/default/files/2026-01-27/bicycle.svg" alt="" width="36"
+                                height="36">
                         </span>
                         <span class="hero-action-card__text">
                             <span class="hero-action-card__title">Bicicleta</span>
@@ -861,8 +860,8 @@
 
                     <a href="#oferta-apie" class="hero-action-card">
                         <span class="hero-action-card__icon" aria-hidden="true">
-                            <img src="/sites/default/files/2026-01-27/walking.svg"
-                                alt="" width="36" height="36">
+                            <img src="/sites/default/files/2026-01-27/walking.svg" alt="" width="36"
+                                height="36">
                         </span>
                         <span class="hero-action-card__text">
                             <span class="hero-action-card__title">A pie</span>
@@ -962,7 +961,8 @@
                             </a>
                         </p>
                         <h3 class="tile__title">
-                            <a class="tile__link" href="#oferta-apie" aria-label="A pie: infraestructura peatonal">A pie</a>
+                            <a class="tile__link" href="#oferta-apie" aria-label="A pie: infraestructura peatonal">A
+                                pie</a>
                         </h3>
                         <p>
                             <a class="tile__link" href="#oferta-apie" aria-label="A pie: infraestructura peatonal">
@@ -993,8 +993,7 @@
             <div class="restric-grid">
                 <div class="restric-card restric-card--ok" data-type="ok">
                     <div class="restric-head">
-                        <img src="/sites/default/files/Paginas/28-01-2025/icon-check.png"
-                            alt="">
+                        <img src="/sites/default/files/Paginas/28-01-2025/icon-check.png" alt="">
                         <h3 class="restric-title">Vehículos que podrán circular</h3>
                     </div>
                     <ul class="restric-list">
@@ -1024,8 +1023,7 @@
 
                 <div class="restric-card restric-card--no" data-type="no">
                     <div class="restric-head">
-                        <img src="/sites/default/files/Paginas/28-01-2025/icon-wrong.png"
-                            alt="">
+                        <img src="/sites/default/files/Paginas/28-01-2025/icon-wrong.png" alt="">
                         <h3 class="restric-title">Vehículos que no podrán circular</h3>
                     </div>
                     <p class="restric-sub">Transporte privado</p>
@@ -1079,10 +1077,8 @@
                 <!-- Bicicleta -->
                 <div class="col-12 col-lg-4" id="oferta-bici">
                     <div class="card-soft shadow-soft h-100 offer-card">
-                        <a href="/sites/default/files/2026-01-30/map_1.jpeg"
-                            target="_blank" rel="noopener">
-                            <img src="/sites/default/files/2026-01-30/map_1.jpeg"
-                                alt="Mapa ciclovía">
+                        <a href="/sites/default/files/2026-02-03/map_1a.jpeg" target="_blank" rel="noopener">
+                            <img src="/sites/default/files/2026-02-03/map_1a.jpeg" alt="Mapa ciclovía">
                         </a>
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -1092,14 +1088,20 @@
                             <ul class="mb-2">
                                 <li><strong>683.9 km</strong> de ciclorrutas, con 3 km de rutas temporales y provisionales.
                                 </li>
-                                <li><strong>88.58 km</strong> de vías habilitadas (Ciclovía IDRD).</li>
+                                <a class="btn btn-outline-secondary rounded-pill w-100" target="_blank" rel="noopener"
+                                    href="/sites/default/files/2026-02-03/red%20cicloinfraestructura%202025_001b.png">
+                                    Abrir mapa en otra pestaña
+                                </a>
+                                <hr>
+                                <li><strong>91.17 km</strong> de vías habilitadas (Ciclovía IDRD).</li>
+                                <a class="btn btn-outline-secondary rounded-pill w-100" target="_blank" rel="noopener"
+                                    href="https://geoportal-idu.hub.arcgis.com/datasets/501642e1958640fe97f3c8fa876ecba9_0/explore">
+                                    Abrir mapa en otra pestaña
+                                </a>
+                                <hr>
                                 <li><strong>3.300</strong> bicicletas compartidas (oriente)</li>
                                 <li><strong>+84.100</strong> cupos micromovilidad</li>
                             </ul>
-                            <a class="btn btn-outline-secondary rounded-pill w-100" target="_blank" rel="noopener"
-                                href="/sites/default/files/2026-01-30/map_1.jpeg">
-                                Abrir mapa en otra pestaña
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -1107,8 +1109,7 @@
                 <!-- A pie -->
                 <div class="col-12 col-lg-4" id="oferta-apie">
                     <div class="card-soft shadow-soft h-100 offer-card">
-                        <img src="/sites/default/files/Paginas/28-01-2025/bg-oferta-a-pie.jpg"
-                            alt="A pie">
+                        <img src="/sites/default/files/Paginas/28-01-2025/bg-oferta-a-pie.jpg" alt="A pie">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h3 class="h5 mb-0 fw-bold">A pie</h3>
@@ -1150,10 +1151,14 @@
                             </div>
                             <p class="text-secondary mb-2">Secretaría Distrital de la Mujer y equipo de pedagogía SDM.</p>
                             <ul class="mb-0">
-                                <li><strong>Campaña “Prudencia cuida tus pasos” (ORVI y SDMujer):</strong> C.C. Plaza de las Américas (9:00 a.m. – 12:00 m) y Universidad Javeriana (10:00 a.m. – 1:00 p.m.).</li>
-                                <li><strong>Sketch de cultura dirigida a peatón:</strong> Museo Nacional o Carrera 7 con Calle 19, 9:00 a.m.</li>
-                                <li><strong>Puntos ciegos dirigido a ciclistas (registro bici):</strong> Ministerio de Educación, Calle 43 # 57-14, 8:00 a.m. – 12:00 m. (gestión social)</li>
-                                <li><strong>Punto pedagógico para usuarios de movilidad eléctrica:</strong> Av. Ciudad de Cali con Calle 17, a la altura de Jumbo de Hayuelos, 4:00 p.m. – 8:00 p.m.</li>
+                                <li><strong>Campaña “Prudencia cuida tus pasos” (ORVI y SDMujer):</strong> C.C. Plaza de las
+                                    Américas (9:00 a.m. – 12:00 m) y Universidad Javeriana (10:00 a.m. – 1:00 p.m.).</li>
+                                <li><strong>Sketch de cultura dirigida a peatón:</strong> Museo Nacional o Carrera 7 con
+                                    Calle 19, 9:00 a.m.</li>
+                                <li><strong>Puntos ciegos dirigido a ciclistas (registro bici):</strong> Ministerio de
+                                    Educación, Calle 43 # 57-14, 8:00 a.m. – 12:00 m. (gestión social)</li>
+                                <li><strong>Punto pedagógico para usuarios de movilidad eléctrica:</strong> Av. Ciudad de
+                                    Cali con Calle 17, a la altura de Jumbo de Hayuelos, 4:00 p.m. – 8:00 p.m.</li>
                             </ul>
                         </div>
                     </div>
@@ -1164,32 +1169,30 @@
 
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.restric-toggle');
+            const cards = document.querySelectorAll('.restric-card');
+            if (!toggles.length || !cards.length) return;
 
+            function setFilter(filter) {
+                toggles.forEach(btn => {
+                    const active = btn.dataset.filter === filter;
+                    btn.classList.toggle('is-active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+
+                cards.forEach(card => {
+                    const type = card.dataset.type;
+                    const show = filter === 'all' || filter === type;
+                    card.classList.toggle('is-hidden', !show);
+                });
+            }
+
+            toggles.forEach(btn => {
+                btn.addEventListener('click', () => setFilter(btn.dataset.filter));
+            });
+        });
+    </script>
 
 @endsection
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggles = document.querySelectorAll('.restric-toggle');
-        const cards = document.querySelectorAll('.restric-card');
-        if (!toggles.length || !cards.length) return;
-
-        function setFilter(filter) {
-            toggles.forEach(btn => {
-                const active = btn.dataset.filter === filter;
-                btn.classList.toggle('is-active', active);
-                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-            });
-
-            cards.forEach(card => {
-                const type = card.dataset.type;
-                const show = filter === 'all' || filter === type;
-                card.classList.toggle('is-hidden', !show);
-            });
-        }
-
-        toggles.forEach(btn => {
-            btn.addEventListener('click', () => setFilter(btn.dataset.filter));
-        });
-    });
-</script>

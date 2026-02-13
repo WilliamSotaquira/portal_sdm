@@ -44,7 +44,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <a class="card h-100 text-decoration-none" href="{{ route('inicio.tramites-servicio.comparendos') }}">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.tramites-servicios.comparendos') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Tramites y servicios - Comparendos</h2>
                         <p class="mb-0 text-muted">Comparendos en tramites y servicios.</p>
@@ -53,10 +53,28 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <a class="card h-100 text-decoration-none" href="{{ route('inicio.tramites-servicio.frecuentes') }}">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.tramites-servicios.frecuentes') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Tramites y servicios - Frecuentes</h2>
                         <p class="mb-0 text-muted">Preguntas o accesos frecuentes.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.tramites-servicios.pqrsd') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Tramites y servicios - Informe PQRSD</h2>
+                        <p class="mb-0 text-muted">Consulta el informe de peticiones, quejas, reclamos, sugerencias y denuncias.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('culturas') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Culturas - Convocatorias</h2>
+                        <p class="mb-0 text-muted">Acceso al sistema de convocatorias del Ministerio de las Culturas.</p>
                     </div>
                 </a>
             </div>

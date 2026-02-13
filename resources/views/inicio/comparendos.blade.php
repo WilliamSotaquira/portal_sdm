@@ -186,6 +186,57 @@
                 .cmp-comparendos-block .object-fit-cover {
                   object-fit: cover;
                 }
+                .cmp-comparendos-block .container img {
+                  transition: transform 0.25s ease, box-shadow 0.25s ease;
+                  transform-origin: center;
+                }
+                .cmp-comparendos-block .container img:hover {
+                  transform: scale(1.03);
+                }
+                /* ====== Volante de corresponsales ====== */
+                .cmp-comparendos-block .cmp-payment-flyer {
+                  max-width: 860px;
+                  margin: 0 auto 22px;
+                  border: 0;
+                  border-radius: 0;
+                  background: transparent;
+                  overflow: visible;
+                }
+                .cmp-comparendos-block .cmp-payment-flyer-head {
+                  margin: 0;
+                  padding: 10px 14px;
+                  text-align: center;
+                  font-size: 28px;
+                  font-weight: 600;
+                  line-height: 1.15;
+                  letter-spacing: 0.01em;
+                  color: #2f3135;
+                  background: #f5f6f7;
+                }
+                .cmp-comparendos-block .cmp-payment-flyer-body {
+                  padding: 16px 14px 14px;
+                }
+                .cmp-comparendos-block .cmp-payment-flyer-text {
+                  margin: 0 0 14px;
+                  text-align: center;
+                  font-size: 18px;
+                  font-weight: 400;
+                  line-height: 1.4;
+                  color: #4a4d52;
+                }
+                .cmp-comparendos-block .cmp-payment-logos {
+                  display: grid;
+                  grid-template-columns: repeat(5, minmax(110px, 1fr));
+                  gap: 14px 16px;
+                  align-items: center;
+                  justify-items: center;
+                }
+                .cmp-comparendos-block .cmp-payment-logos img {
+                  width: min(140px, 100%);
+                  max-width: 100%;
+                  height: auto;
+                  display: block;
+                }
                 /* ===== Iframe antisoborno ===== */
                 .cmp-comparendos-block .antisoborno-frame {
                   border: 0;
@@ -230,6 +281,24 @@
                   .cmp-comparendos-block .cmp-title {
                     font-size: 28px;
                   }
+                  .cmp-comparendos-block .cmp-payment-flyer {
+                    border-radius: 10px;
+                  }
+                  .cmp-comparendos-block .cmp-payment-flyer-head {
+                    font-size: 24px;
+                    padding: 10px 8px;
+                  }
+                  .cmp-comparendos-block .cmp-payment-flyer-body {
+                    padding: 12px 10px 10px;
+                  }
+                  .cmp-comparendos-block .cmp-payment-flyer-text {
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                  }
+                  .cmp-comparendos-block .cmp-payment-logos {
+                    grid-template-columns: repeat(2, minmax(110px, 1fr));
+                    gap: 10px 12px;
+                  }
                   .cmp-comparendos-block .cmp-lead {
                     font-size: 14px;
                   }
@@ -251,7 +320,8 @@
                 /* Respeto a usuarios que prefieren menos movimiento */
                 @media (prefers-reduced-motion: reduce) {
                   .cmp-comparendos-block .cmp-media img,
-                  .cmp-comparendos-block .btn {
+                  .cmp-comparendos-block .btn,
+                  .cmp-comparendos-block .container img {
                     transition: none !important;
                     transform: none !important;
                   }
@@ -294,6 +364,27 @@
         <div class="text-center my-4">
             <a class="btn btn-success" href="https://webfenix.movilidadbogota.gov.co/#/consulta-pagos">Consultar <strong>comparendos y acuerdos de pago</strong>&nbsp;</a>
         </div>
+        <!-- Volante: pagos en corresponsales físicos -->
+        <section class="cmp-payment-flyer" aria-label="Póngase al día con Bogotá">
+            <h2 class="cmp-payment-flyer-head">PÓNGASE AL DÍA CON BOGOTÁ</h2>
+            <div class="cmp-payment-flyer-body">
+                <p class="cmp-payment-flyer-text">
+                    Ahora puede pagar sus comparendos en los corresponsales físicos que se encuentran ubicados en diferentes sectores de la ciudad.
+                </p>
+                <div class="cmp-payment-logos" role="group" aria-label="Logos de bancos y corresponsales autorizados">
+                    <img src="/sites/default/files/2026-02-12/logo_01_cs.png" alt="Corresponsales autorizados 1" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_02_cs.png" alt="Corresponsales autorizados 2" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_03_cs.png" alt="Corresponsales autorizados 3" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_04_cs.png" alt="Corresponsales autorizados 4" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_05_cs.png" alt="Corresponsales autorizados 5" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_06_cs.png" alt="Corresponsales autorizados 6" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_07_cs.png" alt="Corresponsales autorizados 7" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_08_cs.png" alt="Corresponsales autorizados 8" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_09_cs.png" alt="Corresponsales autorizados 9" loading="lazy">
+                    <img src="/sites/default/files/2026-02-12/logo_10_cs.png" alt="Corresponsales autorizados 10" loading="lazy">
+                </div>
+            </div>
+        </section>
         <!-- Sección: acuerdo de pago -->
         <div class="row align-items-center mb-4">
             <div class="col-md-6 mb-3 mb-md-0">

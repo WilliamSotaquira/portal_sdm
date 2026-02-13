@@ -2,12 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('transparencia')->group(function () {
+Route::prefix('transparencia')->name('transparencia.')->group(function () {
     // grupo 1
-    Route::prefix('1')->group(function () {
+    Route::prefix('1')->name('1.')->group(function () {
         // agremiaciones
-        Route::get('agremiaciones', function () {
-            return view('transparencia.1.agremiaciones');
-        })->name('transparencia.1.agremiaciones');
+        Route::view('agremiaciones', 'transparencia.1.agremiaciones')->name('agremiaciones');
     });
 });

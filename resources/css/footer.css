@@ -1,0 +1,129 @@
+/* Estilos globales del footer */
+/*** FUENTE ICONOS ***/
+/*@font-face {*/
+/*    font-family: "govco-fontv2";*/
+/*    src: url("/path/to/govco-font-icons.ttf") format("truetype");*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+p {
+    line-height: 1.5;
+}
+
+.row {
+    padding-left: 0;
+    margin-left: unset;
+}
+
+.row {
+    margin-left: 0;
+}
+
+.row.col-xs-12.col-lg-7.movilidad-texto-sedes,
+.row.col-xs-12.col-lg-7.movilidad-network {
+    padding-left: 0;
+    width: 100%;
+}
+
+body {
+    /*font-family: var(--bs-font-sans-serif);*/
+    color: #212529;
+    font-size: 16px;
+}
+
+.movilidad-link-modal {
+    color: #3366cc; /* Ajustado según tu requerimiento */
+    text-decoration: underline;
+}
+
+.icon::before {
+    margin: 0;
+    padding: 0;
+    transform: scale(1.5);
+    margin-right: 10px;
+    margin-left: 5px;
+    vertical-align: text-top;
+}
+
+.movilidad-iconContainer {
+    display: inline-block;
+    width: auto;
+}
+
+.movilidad-footer {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    box-shadow: 50px 30px 0px -30px #e6effd, -50px 30px 0px -30px #e6effd, 0px 20px 0px 0px #e6effd, 50px 50px 0px -30px #e6effd, -50px 50px 0px -30px #e6effd;
+    border: 2px solid #e5eefb;
+    border-radius: 10px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.movilidad-text-header-1 {
+    color: #3366cc;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.movilidad-text-header-2 {
+    color: #3366cc;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.movilidad-text-header-3 {
+    color: #3366cc;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.movilidad-footer-logo {
+    height: 96px;
+    background-color: #3366cc;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.movilidad-footer-text {
+    margin-top: 50px;
+    margin-left: 80px;
+}
+
+.movilidad-network,
+.movilidad-links-container {
+    margin-top: 30px;
+}
+
+.movilidad-iconContainer {
+    display: inline-block;
+    width: auto;
+}
+
+.movilidad-nombre-entidad {
+    margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+    .movilidad-texto-sedes,
+    .movilidad-network {
+        padding: unset;
+    }
+
+    .movilidad-iconContainer {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .movilidad-footer-text {
+        margin: 0;
+        margin-top: 50px;
+    }
+}
+

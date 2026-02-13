@@ -1,0 +1,132 @@
+/*** colores de fondo ***/
+
+.bg-primary-gray{
+	background-color: #f9f9f9;
+}
+
+.color-primary-text{
+	color: #212529;
+}
+
+a, .link{
+	color: var(--color-titulo);
+}
+
+
+/*** Portal infantil ***/
+
+.bg-infantil{
+    background: url("/sites/default/files/2025-08/bg-header.webp");
+    background-size: cover;
+    background-position: center center;
+}
+
+
+/*** Banner cero y bajas emisiones ***/
+
+.banner-cero-bajas{
+		background: url("/sites/default/files/2025-08-13/cybe_portada_2.png");
+    background-size: cover;
+    background-position: center center;
+}
+
+
+/*** Al Colegio en Bici ***/
+
+.bg-naranja {
+    background-color: #FF4700;
+}
+
+.bg-amarillo {
+    background-color: #FFD400;
+}
+
+.color-amarillo{
+	    color: #FFD400;
+}
+
+
+.header-carta-compromiso{
+	 background: url('/sites/default/files/2025-07/bg-header.jpg') no-repeat center center;
+	 background-size:cover;
+}
+
+.imagen1-carousel-emisiones,
+.imagen2-carousel-emisiones,
+.imagen3-carousel-emisiones {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 320px;
+}
+
+.imagen1-carousel-emisiones {
+    background-image: url('/sites/default/files/2025-07/incendio.png');
+}
+
+.imagen2-carousel-emisiones {
+    background-image: url('/sites/default/files/2025-07/contaminacion_2.jpg');
+}
+
+.imagen3-carousel-emisiones {
+    background-image: url('/sites/default/files/2025-07/contaminacion_3.jpg');
+}
+
+@media (max-width: 768px) {
+    .imagen1-carousel-emisiones,
+    .imagen2-carousel-emisiones,
+    .imagen3-carousel-emisiones {
+        min-height: 220px;
+    }
+}
+
+/*** CIEMPIES ***/
+
+.bg-morado{
+	background-color: #330072;
+}
+
+.bg-azul{
+	background-color: #00B0EA;
+}
+
+.bg-ciempies{
+	  padding-top: 150px;
+    padding-bottom: 20px;
+    background: url("https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/22-09-2020/bg-header.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-bogota {
+    background: url("https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/22-09-2020/bg-bogota.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.redes-footer-ciempies {
+    list-style: none;
+}
+
+.redes-footer-ciempies li{
+	  padding-bottom: 15px;
+}
+
+.redes-footer-ciempies li a{
+		color: #330072;
+		font-weight: 600;
+}
+
+.redes-footer-ciempies li a img{
+	    padding-right: 20px;
+}
+
+.btn.btn-primary {
+	width: 240px !important;
+}
+#main {
+  padding-bottom: 100px !important;
+  /* margin-bottom: 100px !important; */
+}

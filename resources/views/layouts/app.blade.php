@@ -13,17 +13,11 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
-    {{-- Bootstrap 5 --}}
-    <!-- css bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet"
-        crossorigin="anonymous">
-
     <!-- css BDC -->
-    {{-- <link href="https://cdn.www.gov.co/layout-govco-v5/all.css" rel="stylesheet"> --}}
+    <link href="https://cdn.www.gov.co/layout-govco-v5/all.css" rel="stylesheet">
 
     {{-- Bootstrap Icons --}}
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     {{-- Estilos “Barrio-lite” --}}
     <style>
@@ -308,6 +302,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->is('culturas') ? 'active' : '' }}"
+                                href="{{ route('culturas') }}">
+                                <i class="bi bi-megaphone me-1"></i>Culturas
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->is('entidad/organigrama') ? 'active' : '' }}"
                                 href="{{ route('entidad.organigrama') }}">
                                 <i class="bi bi-diagram-3 me-1"></i>Organigrama
@@ -533,17 +533,8 @@
         </footer>
     </div>
 
-    {{-- Bootstrap JS (ligero, sin gov.js) --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script> --}}
-
     <!-- utils.js BDC -->
-    {{-- <script src="https://cdn.www.gov.co/layout-govco-v5/script.js"></script> --}}
-
-    <!-- js bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.www.gov.co/layout-govco-v5/script.js" defer></script>
 
     {{-- Comportamiento tipo Drupal: tablas responsivas, skip link, etc. --}}
     <script>

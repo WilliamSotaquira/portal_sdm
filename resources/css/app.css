@@ -1,6 +1,7 @@
 @import 'bootstrap';
-
-.
+@import './root.css';
+@import './basicas.css';
+@import './footer.css';
 
 /* Estilos personalizados para el Portal SDM */
 body {

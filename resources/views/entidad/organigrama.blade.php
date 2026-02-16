@@ -1610,7 +1610,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h2 class="text-align-center">
-                                                        Oscar Gustavo Calderón Medina
+                                                        Giovanny Andrés García Rodríguez
                                                     </h2>
                                                     <h5 class="text-align-center">
                                                         Dirección de Investigaciones Administrativas al Tránsito y Transporte

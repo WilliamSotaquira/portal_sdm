@@ -431,10 +431,10 @@
             <div class="container">
                 <div class="hero-content">
                              <p>
-                        El centro ofrece a todas las personas involucradas en un siniestro de tránsito en Bogotá, un espacio de diálogo orientado a la construcción de acuerdos mutuos, con el acompañamiento de un conciliador neutral, mediante un mecanismo alternativo de solución de conflictos que permite resolver diferencias de forma ágil, evitar procesos judiciales y promover una convivencia vial más justa y respetuosa.
+                        El centro ofrece a todas las personas de los estratos 1, 2 y 3, involucradas en un siniestro de tránsito en Bogotá, un espacio de diálogo orientado a la construcción de acuerdos mutuos para solucionar conflictos relacionados con daños materiales o lesiones personales, siempre que el valor reclamado no supere los 150 (SMLMV).
                     </p>
                     <p>
-                        <a class="cta-button" href="https://docs.google.com/forms/d/1AGliBULkPugMrha6Y_bR24wZP1_xH2Z1Px9zckKVEiI/edit?ts=695fc1ce&amp;pli=1">Solicite su cita de conciliación </a><img class="hero-image" src="/sites/default/files/2026-02-03/imagen%20inicial.png" alt="Centro de Conciliación" width="1344" height="768">
+                        <a class="cta-button" href="https://forms.gle/CrX9Cpoty4AU6dqa8" target="_blank">Diligenciar formulario de consentimiento</a><img class="hero-image" src="/sites/default/files/2026-02-03/imagen%20inicial.png" alt="Centro de conciliación" width="1344" height="768">
                     </p>
                 </div>
             </div>
@@ -513,7 +513,7 @@
                                     Diligenciar el formato de solicitud de conciliación
                                 </h4>
                                 <p>
-                                    Descargue y diligencie el formato de solicitud de conciliación. <a href="https://drive.google.com/file/d/1CjTbh88pUphLlTPOQ7H0r18YpFuX1Hs2/view?usp=sharing" target="_blank">Descargar aquí</a>
+                                    Descargue y diligencie el formato de solicitud de conciliación. <a href="/sites/default/files/2026-02-16/formato%20de%20solicitud%20conciliacion%20final.pdf" target="_blank">Descargar aquí</a>
                                 </p>
                             </div>
                         </div>
@@ -526,7 +526,7 @@
                                     Diligenciar formulario de consentimiento
                                 </h4>
                                 <p>
-                                    Diligencie el formulario de Consentimiento de ingreso al Centro de Conciliación de la Secretaría Distrital de Movilidad y adjunte la documentación requerida en el mismo. <a href="https://docs.google.com/forms/d/1AGliBULkPugMrha6Y_bR24wZP1_xH2Z1Px9zckKVEiI/edit?ts=695fc1ce&amp;pli=1" target="_blank">Diligenciar aquí</a>
+                                    Diligencie el formulario de consentimiento de ingreso al Centro de conciliación de la Secretaría Distrital de Movilidad y adjunte la documentación requerida en el mismo. <a href="https://forms.gle/CrX9Cpoty4AU6dqa8" target="_blank">Diligenciar aquí</a>
                                 </p>
                             </div>
                         </div>
@@ -536,10 +536,10 @@
                             </div>
                             <div class="step-content">
                                 <h4>
-                                    Verificación de solicitudes y respuesta del Centro de Conciliación
+                                    Verificación de solicitudes y respuesta del Centro de conciliación
                                 </h4>
                                 <p>
-                                    Una vez verificada la información suministrada, el Centro de Conciliación de la Secretaría Distrital de Movilidad dará respuesta a su solicitud a través del correo electrónico. En caso de aprobarse la solicitud, se fijará fecha y hora de la audiencia de conciliación.
+                                    Una vez verificada la información suministrada, el Centro de conciliación de la Secretaría Distrital de Movilidad dará respuesta a su solicitud a través del correo electrónico. En caso de aprobarse la solicitud, se fijará fecha y hora de la audiencia de conciliación.
                                 </p>
                             </div>
                         </div>

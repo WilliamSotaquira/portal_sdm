@@ -13,11 +13,17 @@ Route::prefix('inicio')->name('inicio.')->group(function () {
     // ms
     Route::view('/ms', 'inicio.ms')->name('ms');
 
-    // rutas inicio/tramites-servicios
-    Route::prefix('tramites-servicios')->name('tramites-servicios.')->group(function () {
-        Route::view('/comparendos', 'inicio.tramites-servicios.comparendos')->name('comparendos');
-        Route::view('/frecuentes', 'inicio.tramites-servicios.frecuentes')->name('frecuentes');
-        Route::view('/pqrsd', 'inicio.tramites-servicios.pqrsd')->name('pqrsd');
+    // rutas inicio/atencion-servicios
+    Route::prefix('atencion-servicios')->name('atencion-servicios.')->group(function () {
+        Route::prefix('tramites-servicios')->name('tramites-servicios.')->group(function () {
+            Route::view('/', 'inicio.atencion-servicios.tramites-servicios.index')->name('index');
+            Route::view('/comparendos', 'inicio.atencion-servicios.comparendos')->name('comparendos');
+            Route::view('/frecuentes', 'inicio.atencion-servicios.frecuentes')->name('frecuentes');
+            Route::view('/pqrsd', 'inicio.atencion-servicios.pqrsd')->name('pqrsd');
+            Route::prefix('pqrsd')->name('pqrsd.')->group(function () {
+                Route::view('/anticorrupcion', 'inicio.atencion-servicios.pqrsd.anticorrupcion')->name('anticorrupcion');
+            });
+        });
     });
 
     // menu-principal

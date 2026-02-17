@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title', 'Inicio') | Portal SDM</title>
+    <title>@yield('title', 'Inicio') | SDM</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,11 @@
 
     <!-- css BDC -->
     <link href="https://cdn.www.gov.co/layout-govco-v5/all.css" rel="stylesheet">
+
+    <!-- css bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        rel="stylesheet" crossorigin="anonymous">
 
     {{-- Bootstrap Icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -45,6 +50,19 @@
         .region-header {
             background: #003366;
             color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        }
+
+        .region-header,
+        .region-header .layout-container,
+        .region-primary-menu,
+        .region-primary-menu .navbar-collapse {
+            overflow: visible !important;
         }
 
         .region-header a {
@@ -58,16 +76,83 @@
 
         /* Menú primario tipo Barrio */
         .region-primary-menu {
-            background-color: #002244;
+            background-color: transparent;
+            margin-bottom: 0;
+            border-radius: 0;
+            padding: 0;
         }
 
         .region-primary-menu .nav-link {
             font-weight: 500;
+            border-radius: 0.35rem;
+        }
+
+        .region-primary-menu .nav-item.dropdown>.nav-link {
+            position: relative;
+        }
+
+        .region-primary-menu .nav-item.dropdown>.nav-link::before {
+            content: "";
+            position: absolute;
+            left: 0.65rem;
+            right: 0.65rem;
+            bottom: 0.25rem;
+            height: 2px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.2s ease-in-out;
+            opacity: 0.9;
+        }
+
+        .region-primary-menu .nav-item.dropdown>.nav-link:hover::before,
+        .region-primary-menu .nav-item.dropdown>.nav-link:focus::before,
+        .region-primary-menu .nav-item.dropdown>.nav-link.show::before {
+            transform: scaleX(1);
         }
 
         .region-primary-menu .nav-link.active {
             background-color: rgba(255, 255, 255, 0.15);
-            border-radius: .25rem;
+            border-radius: 0.35rem;
+        }
+
+        .region-primary-menu .navbar-brand {
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-right: 1rem;
+        }
+
+        .region-primary-menu .dropdown-menu {
+            min-width: 18rem;
+            z-index: 2050;
+        }
+
+        .region-primary-menu .dropdown-menu .dropdown-item {
+            color: #212529 !important;
+        }
+
+        .region-primary-menu .dropdown-menu .dropdown-item:hover,
+        .region-primary-menu .dropdown-menu .dropdown-item:focus {
+            color: #212529 !important;
+        }
+
+        .region-primary-menu .dropdown-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .region-primary-menu li::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        .region-primary-menu .menu-govco .navbar-nav .nav-item .nav-link[aria-expanded="false"]:not(.btn-menu-govco)::after,
+        .region-primary-menu .dropdown-toggle:not(.btn-menu-govco)::after {
+            content: none !important;
+            display: none !important;
+            border: 0 !important;
         }
 
         /* Breadcrumb al estilo Drupal */
@@ -170,20 +255,8 @@
             font-weight: 600;
         }
 
-        /* Footer tipo Barrio */
-        .region-footer {
-            margin-top: auto;
-            background: #111827;
-            color: #e5e7eb;
-            font-size: 0.85rem;
-        }
-
-        .region-footer a {
-            color: #e5e7eb;
-        }
-
-        .region-footer a:hover {
-            color: #ffffff;
+        .dialog-off-canvas-main-canvas {
+            padding-top: 68px;
         }
 
         /* Skip link accesible */
@@ -207,9 +280,6 @@
         }
     </style>
 
-    {{-- Vite (Laravel 11) --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     {{-- Styles adicionales por vista --}}
     @stack('styles')
 </head>
@@ -229,143 +299,102 @@
 
         <!-- Header Region -->
         <header class="region region-header">
-            <div class="layout-container container py-3">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <a href="{{ url('/') }}"
-                            class="navbar-brand text-decoration-none d-inline-flex align-items-center">
-                            <i class="bi bi-building me-2"></i>
-                            <span>Portal SDM</span>
-                        </a>
-                    </div>
-                    <div class="col-md-6 text-md-end mt-2 mt-md-0">
-                        <div class="region region-secondary-menu">
-                            @if (auth()->check())
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bi bi-person-circle me-1"></i>{{ auth()->user()->name ?? 'Usuario' }}
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="{{ url('/user') }}">Mi cuenta</a></li>
-                                        <li><a class="dropdown-item" href="{{ url('/user/edit') }}">Editar perfil</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <form method="POST" action="{{ url('/logout') }}">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item text-danger">
-                                                    <i class="bi bi-box-arrow-right me-1"></i>Cerrar sesión
-                                                </button>
-                                            </form>
-                                        </li>
+            <div class="layout-container container py-2">
+                <nav class="region region-primary-menu navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid px-0">
+                        <a class="navbar-brand" href="{{ route('home') }}">SDM</a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrimary">
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="ms-2">Menú</span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarPrimary">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is('inicio/menu-principal') ? 'active' : '' }}"
+                                        href="{{ route('inicio.menu-principal') }}">
+                                        Menu principal
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ request()->is('/') || request()->is('dashboard') || request()->is('culturas') ? 'active' : '' }}"
+                                        href="#" role="button" data-bs-toggle="dropdown">
+                                        General
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><h6 class="dropdown-header">Navegacion general</h6></li>
+                                        <li><a class="dropdown-item {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Inicio</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('culturas') ? 'active' : '' }}" href="{{ route('culturas') }}">Culturas</a></li>
                                     </ul>
-                                </div>
-                            @else
-                                <a href="{{ url('/login') }}" class="btn btn-outline-light btn-sm">
-                                    <i class="bi bi-box-arrow-in-right me-1"></i>Iniciar sesión
-                                </a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Primary Menu Region -->
-        <nav class="region region-primary-menu navbar navbar-expand-lg navbar-dark">
-            <div class="layout-container container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrimary">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="ms-2">Menú</span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarPrimary">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">
-                                <i class="bi bi-house me-1"></i>Inicio
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}"
-                                href="{{ url('/dashboard') }}">
-                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('inicio/menu-principal') ? 'active' : '' }}"
-                                href="{{ route('inicio.menu-principal') }}">
-                                <i class="bi bi-grid-3x3-gap me-1"></i>Menu principal
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('culturas') ? 'active' : '' }}"
-                                href="{{ route('culturas') }}">
-                                <i class="bi bi-megaphone me-1"></i>Culturas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('entidad/organigrama') ? 'active' : '' }}"
-                                href="{{ route('entidad.organigrama') }}">
-                                <i class="bi bi-diagram-3 me-1"></i>Organigrama
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ request()->is('entidad/sistemas-gestion*') ? 'active' : '' }}"
-                                href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-gear me-1"></i>Sistemas de Gestión
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item {{ request()->is('entidad/sistemas-gestion/ambiental') ? 'active' : '' }}"
-                                        href="{{ url('/entidad/sistemas-gestion/ambiental') }}">
-                                        <i class="bi bi-tree me-1"></i>Sistema Ambiental
-                                    </a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item {{ request()->is('entidad/sistemas-gestion/calidad') ? 'active' : '' }}"
-                                        href="{{ url('/entidad/sistemas-gestion/calidad') }}">
-                                        <i class="bi bi-award me-1"></i>Sistema de Calidad
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ request()->is('inicio/*') ? 'active' : '' }}"
+                                        href="#" role="button" data-bs-toggle="dropdown">
+                                        Modulo inicio
                                     </a>
+                                    <ul class="dropdown-menu">
+                                        <li><h6 class="dropdown-header">Vistas de inicio</h6></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/home') ? 'active' : '' }}" href="{{ route('inicio.home') }}">Home</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/menu-principal') ? 'active' : '' }}" href="{{ route('inicio.menu-principal') }}">Menu principal</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/comparendos') ? 'active' : '' }}" href="{{ route('inicio.comparendos') }}">Comparendos</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/desembargos') ? 'active' : '' }}" href="{{ route('inicio.desembargos') }}">Desembargos</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/ms') ? 'active' : '' }}" href="{{ route('inicio.ms') }}">MS</a></li>
+                                    </ul>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item {{ request()->is('entidad/sistemas-gestion/seguridad') ? 'active' : '' }}"
-                                        href="{{ url('/entidad/sistemas-gestion/seguridad') }}">
-                                        <i class="bi bi-shield-check me-1"></i>Sistema de Seguridad
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ request()->is('inicio/atencion-servicios/*') || request()->is('atencion-servicios/*') ? 'active' : '' }}"
+                                        href="#" role="button" data-bs-toggle="dropdown">
+                                        Atencion servicios
                                     </a>
+                                    <ul class="dropdown-menu">
+                                        <li><h6 class="dropdown-header">Tramites y servicios</h6></li>
+                                        <li><a class="dropdown-item {{ request()->is('atencion-servicios/puntos-atencion') ? 'active' : '' }}" href="{{ route('atencion-servicios.puntos-atencion') }}">Puntos de atencion</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/atencion-servicios/tramites-servicios') ? 'active' : '' }}" href="{{ route('inicio.atencion-servicios.tramites-servicios.index') }}">Tramites y servicios</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/atencion-servicios/tramites-servicios/comparendos') ? 'active' : '' }}" href="{{ route('inicio.atencion-servicios.tramites-servicios.comparendos') }}">Comparendos</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/atencion-servicios/tramites-servicios/frecuentes') ? 'active' : '' }}" href="{{ route('inicio.atencion-servicios.tramites-servicios.frecuentes') }}">Frecuentes</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/atencion-servicios/tramites-servicios/pqrsd') ? 'active' : '' }}" href="{{ route('inicio.atencion-servicios.tramites-servicios.pqrsd') }}">PQRSD</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/atencion-servicios/tramites-servicios/pqrsd/anticorrupcion') ? 'active' : '' }}" href="{{ route('inicio.atencion-servicios.tramites-servicios.pqrsd.anticorrupcion') }}">Anticorrupcion</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ request()->is('entidad/*') ? 'active' : '' }}"
+                                        href="#" role="button" data-bs-toggle="dropdown">
+                                        Entidad
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><h6 class="dropdown-header">Gestion institucional</h6></li>
+                                        <li><a class="dropdown-item {{ request()->is('entidad/organigrama') ? 'active' : '' }}" href="{{ route('entidad.organigrama') }}">Organigrama</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('entidad/sg') ? 'active' : '' }}" href="{{ route('entidad.sg') }}">SG</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('entidad/sistemas-gestion/ambiental') ? 'active' : '' }}" href="{{ route('entidad.sistemas-gestion.ambiental') }}">Sistema Ambiental</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('entidad/sistemas-gestion/continuidad') ? 'active' : '' }}" href="{{ route('entidad.sistemas-gestion.continuidad') }}">Continuidad</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('entidad/sistemas-gestion/sgsst') ? 'active' : '' }}" href="{{ route('entidad.sistemas-gestion.sgsst') }}">SGSST</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ request()->is('sites/*') || request()->is('transparencia/*') ? 'active' : '' }}"
+                                        href="#" role="button" data-bs-toggle="dropdown">
+                                        Sites y transparencia
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><h6 class="dropdown-header">Portales y contenidos</h6></li>
+                                        <li><a class="dropdown-item {{ request()->is('sites/conciliacion') ? 'active' : '' }}" href="{{ route('sites.conciliacion') }}">Conciliacion</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>
+                                    </ul>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('reportes*') ? 'active' : '' }}"
-                                href="{{ url('/reportes') }}">
-                                <i class="bi bi-graph-up me-1"></i>Reportes
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('documentos*') ? 'active' : '' }}"
-                                href="{{ url('/documentos') }}">
-                                <i class="bi bi-files me-1"></i>Documentos
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- Buscador tipo Drupal -->
-                    <form class="d-flex" action="{{ url('/search') }}" method="get">
-                        <div class="input-group input-group-sm">
-                            <input type="search" name="keys" class="form-control" placeholder="Buscar..."
-                                aria-label="Buscar">
-                            <button class="btn btn-outline-light" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </nav>
             </div>
-        </nav>
+        </header>
 
         <!-- Highlighted Region (opcional) -->
         @hasSection('highlighted')
@@ -378,7 +407,7 @@
 
         <!-- Main Content -->
         <main class="main-content" id="main-content">
-            <div class="layout-container container mt-3">
+            <div class="layout-container container mt-1">
 
                 {{-- Breadcrumb por defecto estilo Drupal/Barrio --}}
                 @section('breadcrumb')
@@ -496,45 +525,15 @@
             </div>
         </main>
 
-        <!-- Footer Region -->
-        <footer class="region region-footer mt-4">
-            <div class="layout-container container py-4">
-                <div class="row gy-3">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold mb-1">Portal SDM</h5>
-                        <p class="mb-1">Sistema de Gestión Documental</p>
-                        <small class="text-muted">Interfaz tipo Drupal (Bootstrap Barrio) sobre Laravel</small>
-                    </div>
-                    <div class="col-md-3">
-                        <h6 class="fw-semibold">Enlaces rápidos</h6>
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="{{ url('/') }}" class="text-decoration-none">Inicio</a></li>
-                            <li><a href="{{ url('/contact') }}" class="text-decoration-none">Contacto</a></li>
-                            <li><a href="{{ url('/help') }}" class="text-decoration-none">Ayuda</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h6 class="fw-semibold">Legal</h6>
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="{{ url('/privacy') }}" class="text-decoration-none">Privacidad</a></li>
-                            <li><a href="{{ url('/terms') }}" class="text-decoration-none">Términos</a></li>
-                            <li><a href="{{ url('/accessibility') }}" class="text-decoration-none">Accesibilidad</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <hr class="my-3 border-secondary">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="mb-0">&copy; {{ date('Y') }} Portal SDM. Todos los derechos reservados.</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
 
+    <!-- js bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
     <!-- utils.js BDC -->
-    <script src="https://cdn.www.gov.co/layout-govco-v5/script.js" defer></script>
+    <script src="https://cdn.www.gov.co/layout-govco-v5/script.js"></script>
 
     {{-- Comportamiento tipo Drupal: tablas responsivas, skip link, etc. --}}
     <script>

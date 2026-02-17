@@ -983,7 +983,8 @@
                                                         <i>REGLAMENTO INTERNO PARA LA GESTIÓN DE PETICIONES, QUEJAS,
                                                             RECLAMOS, SUGERENCIAS Y DENUNCIAS</i>
                                                     </li>
-                                                    <li><a href="https://www.movilidadbogota.gov.co/web/protocolos">Protocolo
+                                                    <li><a
+                                                            href="{{ route('inicio.atencion-servicios.tramites-servicios.pqrsd.anticorrupcion') }}">Protocolo
                                                             de Denuncias por Actos de Corrupción</a></li>
                                                 </ul>
                                             </div>

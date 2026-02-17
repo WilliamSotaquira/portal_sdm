@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Inicio - Portal SDM')
+@section('title', 'Inicio - SDM')
 
 @section('content')
 <div class="row">
     <div class="col-12">
         <h1>Página de Inicio</h1>
-        <p>Bienvenido al sistema Portal SDM.</p>
+        <p>Bienvenido al sistema SDM.</p>
 
         <div class="card">
             <div class="card-body">

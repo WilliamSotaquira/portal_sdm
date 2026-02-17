@@ -3,59 +3,88 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <h1 class="mb-4">Dashboard Portal SDM</h1>
-    </div>
-</div>
+    <section class="container py-4 py-md-5">
+        <div class="mb-4">
+            <h1 class="h3 mb-2">SDM</h1>
+            <p class="text-muted mb-0">Inicio del proyecto con accesos directos y arbol de rutas.</p>
+        </div>
 
-<div class="row">
-    <div class="col-md-4 mb-4">
-        <div class="card text-white bg-primary">
-            <div class="card-body">
-                <h5 class="card-title">Empleados</h5>
-                <p class="card-text display-4">25</p>
-                <a href="#" class="text-white">Ver detalles</a>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.menu-principal') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Menu principal</h2>
+                        <p class="mb-0 text-muted">Acceso a las vistas del modulo inicio.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.atencion-servicios.tramites-servicios.index') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Atencion servicios</h2>
+                        <p class="mb-0 text-muted">Indice de tramites y servicios.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('entidad.sistemas-gestion.ambiental') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Sistema ambiental</h2>
+                        <p class="mb-0 text-muted">Modulo de sistemas de gestion.</p>
+                    </div>
+                </a>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4 mb-4">
-        <div class="card text-white bg-success">
-            <div class="card-body">
-                <h5 class="card-title">Departamentos</h5>
-                <p class="card-text display-4">8</p>
-                <a href="#" class="text-white">Ver detalles</a>
-            </div>
-        </div>
-    </div>
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h5 mb-3">Arbol de rutas (agrupado)</h2>
+                <div class="row g-3 small">
+                    <div class="col-md-6">
+                        <h3 class="h6 mb-2">General</h3>
+                        <div><code>/</code> -> <a href="{{ route('home') }}">home</a></div>
+                        <div><code>/dashboard</code> -> <a href="{{ route('dashboard') }}">dashboard</a></div>
+                        <div><code>/culturas</code> -> <a href="{{ route('culturas') }}">culturas</a></div>
+                    </div>
 
-    <div class="col-md-4 mb-4">
-        <div class="card text-white bg-warning">
-            <div class="card-body">
-                <h5 class="card-title">Solicitudes</h5>
-                <p class="card-text display-4">12</p>
-                <a href="#" class="text-white">Ver detalles</a>
-            </div>
-        </div>
-    </div>
-</div>
+                    <div class="col-md-6">
+                        <h3 class="h6 mb-2">Inicio</h3>
+                        <div><code>/inicio/home</code> -> <a href="{{ route('inicio.home') }}">inicio.home</a></div>
+                        <div><code>/inicio/menu-principal</code> -> <a href="{{ route('inicio.menu-principal') }}">inicio.menu-principal</a></div>
+                        <div><code>/inicio/comparendos</code> -> <a href="{{ route('inicio.comparendos') }}">inicio.comparendos</a></div>
+                        <div><code>/inicio/desembargos</code> -> <a href="{{ route('inicio.desembargos') }}">inicio.desembargos</a></div>
+                        <div><code>/inicio/ms</code> -> <a href="{{ route('inicio.ms') }}">inicio.ms</a></div>
+                    </div>
 
-<div class="row mt-4">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Bienvenido al Sistema de Gestión de Recursos Humanos</h5>
-            </div>
-            <div class="card-body">
-                <p class="card-text">Este es el Portal SDM desarrollado con Laravel y Bootstrap 5.</p>
-                <div class="alert alert-success">
-                    ✅ Bootstrap 5 está funcionando correctamente
+                    <div class="col-md-6">
+                        <h3 class="h6 mb-2">Atencion Servicios</h3>
+                        <div><code>/atencion-servicios/puntos-atencion</code> -> <a href="{{ route('atencion-servicios.puntos-atencion') }}">atencion-servicios.puntos-atencion</a></div>
+                        <div><code>/inicio/atencion-servicios/tramites-servicios</code> -> <a href="{{ route('inicio.atencion-servicios.tramites-servicios.index') }}">...tramites-servicios.index</a></div>
+                        <div><code>/inicio/atencion-servicios/tramites-servicios/comparendos</code> -> <a href="{{ route('inicio.atencion-servicios.tramites-servicios.comparendos') }}">...comparendos</a></div>
+                        <div><code>/inicio/atencion-servicios/tramites-servicios/frecuentes</code> -> <a href="{{ route('inicio.atencion-servicios.tramites-servicios.frecuentes') }}">...frecuentes</a></div>
+                        <div><code>/inicio/atencion-servicios/tramites-servicios/pqrsd</code> -> <a href="{{ route('inicio.atencion-servicios.tramites-servicios.pqrsd') }}">...pqrsd</a></div>
+                        <div><code>/inicio/atencion-servicios/tramites-servicios/pqrsd/anticorrupcion</code> -> <a href="{{ route('inicio.atencion-servicios.tramites-servicios.pqrsd.anticorrupcion') }}">...pqrsd.anticorrupcion</a></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="h6 mb-2">Entidad</h3>
+                        <div><code>/entidad/organigrama</code> -> <a href="{{ route('entidad.organigrama') }}">entidad.organigrama</a></div>
+                        <div><code>/entidad/sg</code> -> <a href="{{ route('entidad.sg') }}">entidad.sg</a></div>
+                        <div><code>/entidad/sistemas-gestion/ambiental</code> -> <a href="{{ route('entidad.sistemas-gestion.ambiental') }}">entidad.sistemas-gestion.ambiental</a></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="h6 mb-2">Sites</h3>
+                        <div><code>/sites/conciliacion</code> -> <a href="{{ route('sites.conciliacion') }}">sites.conciliacion</a></div>
+                        <div><code>/sites/dscsm</code> -> <a href="{{ route('sites.dscsm') }}">sites.dscsm</a></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="h6 mb-2">Transparencia</h3>
+                        <div><code>/transparencia/1/agremiaciones</code> -> <a href="{{ route('transparencia.1.agremiaciones') }}">transparencia.1.agremiaciones</a></div>
+                    </div>
                 </div>
-                <button class="btn btn-primary me-2">Gestión de Empleados</button>
-                <button class="btn btn-outline-secondary">Configuración</button>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 @endsection

@@ -34,6 +34,14 @@
                     </div>
                 </a>
             </div>
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('transparencia.index') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Transparencia</h2>
+                        <p class="mb-0 text-muted">Indice del modulo de transparencia.</p>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="card border-0 shadow-sm">
@@ -54,6 +62,7 @@
                         <div><code>/inicio/comparendos</code> -> <a href="{{ route('inicio.comparendos') }}">inicio.comparendos</a></div>
                         <div><code>/inicio/desembargos</code> -> <a href="{{ route('inicio.desembargos') }}">inicio.desembargos</a></div>
                         <div><code>/inicio/ms</code> -> <a href="{{ route('inicio.ms') }}">inicio.ms</a></div>
+                        <div><code>/inicio/banners</code> -> <a href="{{ route('inicio.banners') }}">inicio.banners</a></div>
                     </div>
 
                     <div class="col-md-6">
@@ -81,6 +90,7 @@
 
                     <div class="col-md-6">
                         <h3 class="h6 mb-2">Transparencia</h3>
+                        <div><code>/transparencia</code> -> <a href="{{ route('transparencia.index') }}">transparencia.index</a></div>
                         <div><code>/transparencia/1/agremiaciones</code> -> <a href="{{ route('transparencia.1.agremiaciones') }}">transparencia.1.agremiaciones</a></div>
                     </div>
                 </div>

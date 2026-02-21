@@ -343,6 +343,7 @@
                                         <li><a class="dropdown-item {{ request()->is('inicio/comparendos') ? 'active' : '' }}" href="{{ route('inicio.comparendos') }}">Comparendos</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/desembargos') ? 'active' : '' }}" href="{{ route('inicio.desembargos') }}">Desembargos</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/ms') ? 'active' : '' }}" href="{{ route('inicio.ms') }}">MS</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/banners') ? 'active' : '' }}" href="{{ route('inicio.banners') }}">Banners</a></li>
                                     </ul>
                                 </li>
 
@@ -384,6 +385,7 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><h6 class="dropdown-header">Portales y contenidos</h6></li>
+                                        <li><a class="dropdown-item {{ request()->is('transparencia') ? 'active' : '' }}" href="{{ route('transparencia.index') }}">Transparencia</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/conciliacion') ? 'active' : '' }}" href="{{ route('sites.conciliacion') }}">Conciliacion</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>
@@ -574,6 +576,56 @@
                     wrapper.appendChild(table);
                 }
             });
+
+            // Refuerzo de dropdowns del menu principal
+            const navDropdowns = document.querySelectorAll('.region-primary-menu .dropdown');
+            const navToggles = document.querySelectorAll('.region-primary-menu .dropdown-toggle');
+            const hasBootstrapDropdown = !!(window.bootstrap && window.bootstrap.Dropdown);
+
+            navToggles.forEach(function(toggle) {
+                if (hasBootstrapDropdown) {
+                    const instance = window.bootstrap.Dropdown.getOrCreateInstance(toggle, { autoClose: true });
+                    toggle.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        instance.toggle();
+                    });
+                } else {
+                    toggle.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        const parent = this.closest('.dropdown');
+                        const menu = parent ? parent.querySelector('.dropdown-menu') : null;
+                        const isOpen = parent && parent.classList.contains('show');
+
+                        navDropdowns.forEach(function(item) {
+                            item.classList.remove('show');
+                            const innerMenu = item.querySelector('.dropdown-menu');
+                            if (innerMenu) {
+                                innerMenu.classList.remove('show');
+                            }
+                        });
+
+                        if (!isOpen && parent && menu) {
+                            parent.classList.add('show');
+                            menu.classList.add('show');
+                        }
+                    });
+                }
+            });
+
+            if (!hasBootstrapDropdown) {
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.region-primary-menu')) {
+                        navDropdowns.forEach(function(item) {
+                            item.classList.remove('show');
+                            const menu = item.querySelector('.dropdown-menu');
+                            if (menu) {
+                                menu.classList.remove('show');
+                            }
+                        });
+                    }
+                });
+            }
         });
     </script>
 

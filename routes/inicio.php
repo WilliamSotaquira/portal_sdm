@@ -12,6 +12,8 @@ Route::prefix('inicio')->name('inicio.')->group(function () {
     Route::view('/comparendos', 'inicio.comparendos')->name('comparendos');
     // ms
     Route::view('/ms', 'inicio.ms')->name('ms');
+    // banners
+    Route::view('/banners', 'inicio.banners')->name('banners');
 
     // rutas inicio/atencion-servicios
     Route::prefix('atencion-servicios')->name('atencion-servicios.')->group(function () {

@@ -44,6 +44,15 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.banners') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Banners</h2>
+                        <p class="mb-0 text-muted">Vista de referencia para banners del modulo inicio.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('inicio.atencion-servicios.tramites-servicios.comparendos') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Tramites y servicios - Comparendos</h2>
@@ -84,6 +93,15 @@
                     <div class="card-body">
                         <h2 class="h5 mb-1">Culturas - Convocatorias</h2>
                         <p class="mb-0 text-muted">Acceso al sistema de convocatorias del Ministerio de las Culturas.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('transparencia.index') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Transparencia - Indice</h2>
+                        <p class="mb-0 text-muted">Acceso general al modulo de transparencia.</p>
                     </div>
                 </a>
             </div>

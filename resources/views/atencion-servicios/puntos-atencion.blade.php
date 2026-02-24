@@ -10,6 +10,26 @@
             rel="stylesheet">
         <div class="set-wrapper puntos">
             <style type="text/css">
+                .set-wrapper.puntos {
+                    --sdm-primary: #191C3A;
+                    --sdm-accent: #66E026;
+                    --sdm-ink: #2f334f;
+                    --sdm-surface: #f7f9ff;
+                    --sdm-border: #d9deea;
+                }
+
+                .sr-only {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border: 0;
+                }
+
                 .field-item.even .centertil {
                     visibility: hidden;
                     margin-top: -50px;
@@ -116,14 +136,24 @@
                     align-items: center;
                     padding: 16px;
                     margin: 32px;
-                    border-radius: 8px;
-                    border: solid 1px #efefef;
-                    background-color: #191C3A;
+                    border-radius: 12px;
+                    border: solid 1px #31365f;
+                    background: linear-gradient(160deg, #191c3a 0%, #222853 100%);
+                    box-shadow: 0 10px 22px rgba(25, 28, 58, 0.22);
+                    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
                 }
 
                 .puntos .box-boxes .box-bottom:hover {
-                    background-color: #66E026;
+                    background: #66E026;
                     cursor: pointer;
+                    transform: translateY(-2px);
+                    box-shadow: 0 14px 28px rgba(25, 28, 58, 0.2);
+                }
+
+                .puntos .box-boxes .box-bottom[aria-expanded="true"] {
+                    background: #66E026;
+                    transform: translateY(-2px);
+                    box-shadow: 0 14px 28px rgba(25, 28, 58, 0.2);
                 }
 
                 .puntos .box-boxes .box-bottom .tooltip-img {
@@ -135,10 +165,12 @@
                     border-radius: 11px;
                     border: solid 4px #66E026;
                     margin: 8px;
-                    bottom: 170px;
+                    bottom: calc(100% + 14px);
                     left: 50%;
                     transform: translateX(-50%);
                     transition: all 0.1s ease-in;
+                    z-index: 10;
+                    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
                 }
 
                 @media(min-width:768px) {
@@ -172,36 +204,52 @@
                 }
 
                 .box-bottom .icon1 {
-                    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/mapas_v.png');
+                    background-image: url('/sites/default/files/2026-02-23/mapas_v.png');
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: center;
                 }
 
                 .box-bottom .icon2 {
-                    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/cursor_v.png');
+                    background-image: url('/sites/default/files/2026-02-23/cursor_v.png');
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: center;
                 }
 
                 .box-bottom .icon3 {
-                    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/telefono_v_0.png');
+                    background-image: url('/sites/default/files/2026-02-23/telefono_v_0.png');
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: center;
                 }
 
                 .box-bottom:hover .icon1 {
-                    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/mapas_a.png');
+                    background-image: url('/sites/default/files/2026-02-23/mapas_a.png');
                 }
 
                 .box-bottom:hover .icon2 {
-                    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/cursor_a.png');
+                    background-image: url('/sites/default/files/2026-02-23/cursor_a.png');
                 }
 
                 .box-bottom:hover .icon3 {
-                    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/telefono_a_0.png');
+                    background-image: url('/sites/default/files/2026-02-23/telefono_a_0.png');
+                }
+
+                .box-bottom[aria-expanded="true"] .icon1 {
+                    background-image: url('/sites/default/files/2026-02-23/mapas_a.png');
+                }
+
+                .box-bottom[aria-expanded="true"] .icon2 {
+                    background-image: url('/sites/default/files/2026-02-23/cursor_a.png');
+                }
+
+                .box-bottom[aria-expanded="true"] .icon3 {
+                    background-image: url('/sites/default/files/2026-02-23/telefono_a_0.png');
+                }
+
+                .puntos .box-boxes .box-bottom .icon {
+                    margin-bottom: 16px !important;
                 }
 
                 .puntos .box-boxes .box-bottom p {
@@ -213,7 +261,8 @@
                     color: #fff;
                 }
 
-                .puntos .box-boxes .box-bottom:hover p {
+                .puntos .box-boxes .box-bottom:hover p,
+                .puntos .box-boxes .box-bottom[aria-expanded="true"] p {
                     color: #252525;
                 }
 
@@ -242,6 +291,11 @@
                     text-decoration: none !important;
                 }
 
+                .puntos .box-boxes .box-bottom[aria-expanded="true"] .box-trigger,
+                .puntos .box-boxes .box-bottom[aria-expanded="true"] .box-trigger strong {
+                    color: #191C3A !important;
+                }
+
                 .puntos .box-boxes .box-bottom .box-trigger strong {
                     color: inherit !important;
                     font-weight: inherit !important;
@@ -264,7 +318,7 @@
                     <p>
                         <a class="box-trigger" href="#" data-target="1"><span class="tooltip-img"><img
                                     alt="acceder a presencial"
-                                    src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/presencial.gif"
+                                    src="/sites/default/files/2026-02-23/presencial.gif"
                                     title="acceder a presencial">&nbsp;</span></a>
                     </p>
                     <div class="icon icon1">
@@ -289,10 +343,11 @@
                         display: block !important;
                         position: relative !important;
                         visibility: visible !important;
-                        padding: 4px;
-                        border-radius: 8px;
-                        border: solid 1px #00000020;
+                        padding: 12px;
+                        border-radius: 12px;
+                        border: solid 1px #d9deea;
                         background-color: #fff;
+                        box-shadow: 0 10px 28px rgba(25, 28, 58, 0.08);
                     }
 
                     @media(min-width:768px) {
@@ -301,7 +356,7 @@
                             visibility: visible !important;
                             grid-column: span 3;
                             background-color: #fff;
-                            padding: 16px;
+                            padding: 24px;
                         }
                     }
 
@@ -311,12 +366,43 @@
 
                     .cmpnt-title-1 .title-cmpnt {
                         font-family: 'Montserrat', sans-serif;
-                        font-size: 24px;
+                        font-size: 26px;
                         font-weight: 700;
                         text-align: left;
                         line-height: 1.3;
                         color: #191C3A;
-                        margin: 12px;
+                        margin: 8px 12px 16px;
+                    }
+
+                    .box-summary .cmpnt-title-1 .title-cmpnt {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+
+                    .box-summary .cmpnt-title-1 .title-cmpnt::before {
+                        content: "";
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 8px;
+                        background-color: #eef1fb;
+                        border: 1px solid #d9deea;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: 16px 16px;
+                        flex: 0 0 28px;
+                    }
+
+                    .box-summary-1 .cmpnt-title-1 .title-cmpnt::before {
+                        background-image: url('/sites/default/files/2026-02-23/mapas_v.png');
+                    }
+
+                    .box-summary-2 .cmpnt-title-1 .title-cmpnt::before {
+                        background-image: url('/sites/default/files/2026-02-23/cursor_v.png');
+                    }
+
+                    .box-summary-3 .cmpnt-title-1 .title-cmpnt::before {
+                        background-image: url('/sites/default/files/2026-02-23/telefono_v_0.png');
                     }
 
                     .selected {
@@ -372,10 +458,9 @@
                             }
                         </style>
                         <div class="select-collapse select-collapse-1">
+                            <p id="select-1-help">Seleccione de la siguiente lista desplegable una opción:</p>
                             <p>
-                                Seleccione de la siguiente lista despleglable una opción:
-                            </p>
-                            <p>
+                                <label class="sr-only" for="select-1">Seleccione un punto de atención presencial</label>
                                 <select class="form-control" id="select-1" name="select-1">
                                     <option value="1">Centros de servicios</option>
                                     <option value="2">Patios</option>
@@ -413,6 +498,7 @@
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
+                                transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
                             }
 
                             .cmpnt-tabpills-1 .tabs-collapse-1 .push-tabpills-1 {
@@ -429,14 +515,14 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/maps_a.png');
+                                background: url('/sites/default/files/2026-02-23/maps_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_1:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/maps_v.png');
+                                background: url('/sites/default/files/2026-02-23/maps_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -448,14 +534,14 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/car_a.png');
+                                background: url('/sites/default/files/2026-02-23/car_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_2:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/car_v.png');
+                                background: url('/sites/default/files/2026-02-23/car_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -467,14 +553,14 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/building_a.png');
+                                background: url('/sites/default/files/2026-02-23/building_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_3:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/building_v.png');
+                                background: url('/sites/default/files/2026-02-23/building_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -486,14 +572,14 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/checklist_a.png');
+                                background: url('/sites/default/files/2026-02-23/checklist_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_4:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/checklist_v.png');
+                                background: url('/sites/default/files/2026-02-23/checklist_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -537,14 +623,30 @@
                                 background-position: center;
                             }
 
+                            #push_one_6[aria-selected="true"]::before {
+                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/birrete_v.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
                             .cmpnt-tabpills-1 .tabs-collapse-1 .push:focus-visible {
                                 background-color: #efefef;
+                                outline: 2px solid #191C3A;
+                                outline-offset: 2px;
+                            }
+
+                            .cmpnt-tabpills-1 .tabs-collapse-1 .push[aria-selected="true"] {
+                                background-color: #191C3A;
+                                color: #66E026;
+                                font-weight: 700;
                             }
 
                             .cmpnt-tabpills-1 .tabs-collapse-1 .push:hover {
                                 background-color: #191C3A;
                                 color: #fff;
                                 font-weight: 700;
+                                transform: translateY(-1px);
                             }
 
                             .cmpnt-tabpills-1 .tabs-collapse-1 .push:active {
@@ -559,13 +661,18 @@
                                 font-weight: 600;
                             }
                         </style>
-                        <div class="tabs-collapse tabs-collapse-1">
-                            <a class="push push-tabpills-1" data-tab="1" id="push_one_1">Centros de servicios</a> <a
-                                class="push push-tabpills-1" data-tab="6" id="push_one_6">Cursos Pedagógicos</a> <a
-                                class="push push-tabpills-1" data-tab="2" id="push_one_2">Patios</a> <a
-                                class="push push-tabpills-1" data-tab="3" id="push_one_3">Sedes administrativas</a> <a
-                                class="push push-tabpills-1" data-tab="4" id="push_one_4">Centros locales de movilidad</a>
-                            <a class="push push-tabpills-1" data-tab="5" id="push_one_5">Ventanilla Única de Servicios</a>
+                        <div class="tabs-collapse tabs-collapse-1" role="tablist"
+                            aria-label="Categorías de puntos de atención presencial">
+                            <a class="push push-tabpills-1" data-tab="1" id="push_one_1" role="tab"
+                                aria-controls="panel-1-1">Centros de servicios</a> <a class="push push-tabpills-1"
+                                data-tab="6" id="push_one_6" role="tab" aria-controls="panel-1-6">Cursos
+                                Pedagógicos</a> <a class="push push-tabpills-1" data-tab="2" id="push_one_2"
+                                role="tab" aria-controls="panel-1-2">Patios</a> <a class="push push-tabpills-1"
+                                data-tab="3" id="push_one_3" role="tab" aria-controls="panel-1-3">Sedes
+                                administrativas</a> <a class="push push-tabpills-1" data-tab="4" id="push_one_4"
+                                role="tab" aria-controls="panel-1-4">Centros locales de movilidad</a>
+                            <a class="push push-tabpills-1" data-tab="5" id="push_one_5" role="tab"
+                                aria-controls="panel-1-5">Ventanilla Única de Servicios</a>
                         </div>
                         <style type="text/css">
                             .cmpnt-tabpills-1 .content-collapse-1 {
@@ -601,7 +708,7 @@
                             }
                         </style>
                         <div class="content-collapse content-collapse-1">
-                            <div class="summary-collapse summary-collapse-1">
+                            <div class="summary-collapse summary-collapse-1" id="panel-1-1" aria-labelledby="push_one_1">
                                 <h3 class="title title-type-3c title-id-3c1">
                                     Centros de Servicios
                                 </h3>
@@ -714,7 +821,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-2">
+                            <div class="summary-collapse summary-collapse-2" id="panel-1-2" aria-labelledby="push_one_2">
                                 <h3 class="title title-type-3c title-id-3c2">
                                     Patios
                                 </h3>
@@ -1006,7 +1113,7 @@
                                 </div>
                             </div>
                             <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-                            <div class="summary-collapse summary-collapse-3">
+                            <div class="summary-collapse summary-collapse-3" id="panel-1-3" aria-labelledby="push_one_3">
                                 <h3 class="title title-type-3c title-id-3c3">
                                     Sedes Administrativas
                                 </h3>
@@ -1102,12 +1209,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-4">
+                            <div class="summary-collapse summary-collapse-4" id="panel-1-4" aria-labelledby="push_one_4">
                                 <h3 class="title title-type-3c title-id-3c4">
                                     Centros Locales de Movilidad
                                 </h3>
                                 <style type="text/css">
+                                    .cmpnt-tabpills-1 .content-collapse-1 .summary-collapse-4 .summary-clm .logo-clm {
+                                        text-align: center;
+                                    }
+
                                     .cmpnt-tabpills-1 .content-collapse-1 .summary-collapse-4 .summary-clm .logo-clm img {
+                                        display: inline-block;
                                         max-width: 300px;
                                         margin: auto;
                                         padding-bottom: 24px;
@@ -1732,7 +1844,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-5">
+                            <div class="summary-collapse summary-collapse-5" id="panel-1-5" aria-labelledby="push_one_5">
                                 <h3 class="title title-type-3c title-id-3c5">
                                     Ventanilla Única de Servicios
                                 </h3>
@@ -2345,8 +2457,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-6">
-                                <h3 class="title title-type-3c title-id-3c5">
+                            <div class="summary-collapse summary-collapse-6" id="panel-1-6" aria-labelledby="push_one_6">
+                                <h3 class="title title-type-3s title-id-3s6">
                                     Cursos pedagógicos
                                 </h3>
                                 <div class="box-items">
@@ -2455,7 +2567,7 @@
                     <p>
                         <a class="box-trigger" href="#" data-target="2"><span class="tooltip-img"><img
                                     alt="acceder a virtual"
-                                    src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/virtual.gif"
+                                    src="/sites/default/files/2026-02-23/virtual.gif"
                                     title="acceder a virtual">&nbsp;</span></a>
                     </p>
                     <div class="icon icon2">
@@ -2519,16 +2631,15 @@
                             }
                         </style>
                         <div class="select-collapse select-collapse-2">
+                            <p id="select-2-help">Seleccione de la siguiente lista desplegable una opción:</p>
                             <p>
-                                Seleccione de la siguiente lista despleglable una opción:
-                            </p>
-                            <p>
+                                <label class="sr-only" for="select-2">Seleccione un canal de atención virtual</label>
                                 <select class="form-control" id="select-2" name="select-2">
                                     <option value="1">Chatea con nuestro asesor en línea</option>
                                     <option value="2">Llámanos</option>
                                     <option value="3">Te regresamos la llamada</option>
-                                    <option value="4">Video Llamada de Lengua de Señas o Videollamada</option>
-                                    <!-- <option value="5">Chatea con Lucia</option> -->
+                                    <option value="4">Videollamada</option>
+                                    <option value="5">Videollamada en Lengua de Señas</option>
                                 </select>
                             </p>
                         </div>
@@ -2559,6 +2670,7 @@
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
+                                transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
                             }
 
                             .cmpnt-tabpills-2 .tabs-collapse-2 .push-tabpills-2 {
@@ -2577,14 +2689,21 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/chat_a.png');
+                                background: url('/sites/default/files/2026-02-23/chat_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_two_1:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/chat_v.png');
+                                background: url('/sites/default/files/2026-02-23/chat_v.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
+                            #push_two_1[aria-selected="true"]::before {
+                                background: url('/sites/default/files/2026-02-23/chat_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -2596,14 +2715,21 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/llamada_a.png');
+                                background: url('/sites/default/files/2026-02-23/llamada_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_two_2:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/llamada_v.png');
+                                background: url('/sites/default/files/2026-02-23/llamada_v.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
+                            #push_two_2[aria-selected="true"]::before {
+                                background: url('/sites/default/files/2026-02-23/llamada_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -2615,14 +2741,21 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/telefono_a.png');
+                                background: url('/sites/default/files/2026-02-23/telefono_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_two_3:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/telefono_v.png');
+                                background: url('/sites/default/files/2026-02-23/telefono_v.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
+                            #push_two_3[aria-selected="true"]::before {
+                                background: url('/sites/default/files/2026-02-23/telefono_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -2634,14 +2767,21 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/videollamada_a.png');
+                                background: url('/sites/default/files/2026-02-23/videollamada_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_two_4:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/videollamada_v.png');
+                                background: url('/sites/default/files/2026-02-23/videollamada_v.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
+                            #push_two_4[aria-selected="true"]::before {
+                                background: url('/sites/default/files/2026-02-23/videollamada_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -2650,17 +2790,24 @@
                             #push_two_5::before {
                                 content: "";
                                 position: absolute;
-                                padding: 10px;
-                                margin-right: 7px;
+                                padding: 8px;
+                                margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/chatbot_a.png');
+                                background: url('/sites/default/files/2026-02-23/videollamada_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_two_5:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/chatbot_v.png');
+                                background: url('/sites/default/files/2026-02-23/videollamada_v.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
+                            #push_two_5[aria-selected="true"]::before {
+                                background: url('/sites/default/files/2026-02-23/videollamada_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -2672,14 +2819,14 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/cita_a.png');
+                                background: url('/sites/default/files/2026-02-23/cita_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_two_6:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/cita_v.png');
+                                background: url('/sites/default/files/2026-02-23/cita_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -2687,12 +2834,21 @@
 
                             .tabs-collapse-2 .push:focus-visible {
                                 background-color: #efefef !important;
+                                outline: 2px solid #191C3A !important;
+                                outline-offset: 2px;
+                            }
+
+                            .tabs-collapse-2 .push[aria-selected="true"] {
+                                background-color: #191C3A !important;
+                                color: #66E026 !important;
+                                font-weight: 700;
                             }
 
                             .tabs-collapse-2 .push:hover {
                                 background-color: #191C3A !important;
                                 color: #fff;
                                 font-weight: 700;
+                                transform: translateY(-1px);
                             }
 
                             .tabs-collapse-2 .push:active {
@@ -2707,13 +2863,17 @@
                                 font-weight: 600;
                             }
                         </style>
-                        <div class="tabs-collapse tabs-collapse-2">
-                            <a class="push push-tabpills-2" data-tab="1" id="push_two_1">Chatea con nuestro asesor en
-                                línea</a> <a class="push push-tabpills-2" data-tab="2" id="push_two_2">Llámanos</a> <a
-                                class="push push-tabpills-2" data-tab="3" id="push_two_3">Te regresamos la llamada</a>
-                            <a class="push push-tabpills-2" data-tab="4" id="push_two_4">Video Llamada de Lengua de
-                                Señas o
-                                Videollamada</a><!-- <a class="push push-tabpills-2" data-tab="5" id="push_two_5">Chatea con Lucia</a> -->
+                        <div class="tabs-collapse tabs-collapse-2" role="tablist"
+                            aria-label="Canales de atención virtual">
+                            <a class="push push-tabpills-2" data-tab="1" id="push_two_1" role="tab"
+                                aria-controls="panel-2-1">Chatea con nuestro asesor en línea</a> <a
+                                class="push push-tabpills-2" data-tab="2" id="push_two_2" role="tab"
+                                aria-controls="panel-2-2">Llámanos</a> <a class="push push-tabpills-2" data-tab="3"
+                                id="push_two_3" role="tab" aria-controls="panel-2-3">Te regresamos la llamada</a>
+                            <a class="push push-tabpills-2" data-tab="4" id="push_two_4" role="tab"
+                                aria-controls="panel-2-4">Videollamada</a>
+                            <a class="push push-tabpills-2" data-tab="5" id="push_two_5" role="tab"
+                                aria-controls="panel-2-5">Videollamada en Lengua de Señas</a>
                         </div>
                         <style type="text/css">
                             .cmpnt-tabpills-2 .content-collapse-2 {
@@ -2734,38 +2894,71 @@
                                 transition: all 3 ease;
                             }
 
+                            .box-summary-2 .box-items .video {
+                                margin: 0 auto 24px;
+                                max-width: 900px;
+                            }
+
+                            .box-summary-2 .box-items .video .embed-responsive {
+                                position: relative;
+                                width: 100%;
+                                aspect-ratio: 16 / 9;
+                                border-radius: 12px;
+                                overflow: hidden;
+                                background: #000;
+                                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                            }
+
                             .box-summary-2 .box-items .video iframe {
-                                padding: 2em 6em;
+                                position: absolute;
+                                inset: 0;
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                padding: 0;
+                                border: 0;
+                            }
+
+                            @supports not (aspect-ratio: 16 / 9) {
+                                .box-summary-2 .box-items .video .embed-responsive {
+                                    height: 0;
+                                    padding-top: 56.25%;
+                                }
                             }
 
                             .box-summary-2 .box-items .paragraph {
                                 font-family: 'Montserrat', sans-serif;
+                                font-size: 16px;
+                                line-height: 1.6;
+                                color: #2f334f;
                             }
 
                             .content-collapse .title-type-3s {
                                 font-family: 'Montserrat', sans-serif;
                                 font-size: 24px;
                                 font-weight: 700;
-                                text-align: Center;
+                                text-align: left;
                                 line-height: 1.3;
-                                color: #66E026;
+                                color: #ffffff;
                                 margin-top: 0px;
                                 margin-bottom: 32px;
                                 background: #191C3A;
-                                padding: 16px;
+                                border-left: 6px solid #66E026;
+                                padding: 16px 20px;
+                                letter-spacing: 0.2px;
                             }
 
                             .content-collapse dd {
                                 font-family: 'Montserrat', sans-serif;
                                 font-optical-sizing: auto;
-                                font-size: 14px;
+                                font-size: 15px;
                                 font-weight: normal;
                                 text-align: left;
                                 line-height: 1.4;
                             }
                         </style>
                         <div class="content-collapse content-collapse-2">
-                            <div class="summary-collapse summary-collapse-1">
+                            <div class="summary-collapse summary-collapse-1" id="panel-2-1" aria-labelledby="push_two_1">
                                 <h3 class="title title-type-3s title-id-3s1">
                                     Chatea con nuestro asesor en línea
                                 </h3>
@@ -2790,7 +2983,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-2">
+                            <div class="summary-collapse summary-collapse-2" id="panel-2-2" aria-labelledby="push_two_2">
                                 <h3 class="title title-type-3s title-id-3s2">
                                     Llámanos
                                 </h3>
@@ -2808,7 +3001,7 @@
                                         <p class="paragraph ph-type-1 ph-id-sc2">
                                             La Secretaría Distrital de Movilidad te brinda esta herramienta para facilitar
                                             nuestra comunicación, la puedes usar desde un computador, celular o tableta. <a
-                                                href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Clic
+                                                href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=c2c">Clic
                                                 aquí para iniciar la llamada</a>
                                         </p>
                                         <dl>
@@ -2819,19 +3012,15 @@
                                             </dt>
                                             <dd>
                                                 <p>
-                                                    Lunes a viernes 7:00 a.m a 6:00 p.m.
+                                                    Lunes a sábado de 7:00 a.m. a 6:00 p.m.
                                                 </p>
                                             </dd>
-                                            <dd>
-                                                <p>
-                                                    Sábado 08:00 a.m. a 12:00 m
-                                                </p>
-                                            </dd>
+
                                         </dl>
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-3">
+                            <div class="summary-collapse summary-collapse-3" id="panel-2-3" aria-labelledby="push_two_3">
                                 <h3 class="title title-type-3s title-id-3s3">
                                     Te regresamos la llamada
                                 </h3>
@@ -2859,21 +3048,17 @@
                                             </dt>
                                             <dd>
                                                 <p>
-                                                    Lunes a viernes 7:00 a.m a 6:00 p.m.
+                                                    Lunes a sábado de 7:00 a.m. a 6:00 p.m.
                                                 </p>
                                             </dd>
-                                            <dd>
-                                                <p>
-                                                    Sábado 08:00 a.m. a 12:00 m
-                                                </p>
-                                            </dd>
+
                                         </dl>
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary-collapse summary-collapse-4">
+                            <div class="summary-collapse summary-collapse-4" id="panel-2-4" aria-labelledby="push_two_4">
                                 <h3 class="title title-type-3s title-id-3s4">
-                                    Video Llamada de Lengua de Señas o Videollamada
+                                    Videollamada
                                 </h3>
                                 <div class="box-items">
                                     <div class="colspan-2">
@@ -2887,9 +3072,8 @@
                                             </div>
                                         </div>
                                         <p class="paragraph ph-type-1 ph-id-sc4">
-                                            Comunícate con un asesor de servicio a través de videollamada. Este servicio
-                                            también está disponible en lengua de señas. <a
-                                                href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vls">Clic
+                                            Comunícate con un asesor de servicio a través de videollamada. <a
+                                                href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Clic
                                                 aquí para hacer el agendamiento.</a>
                                         </p>
                                         <dl>
@@ -2900,133 +3084,49 @@
                                             </dt>
                                             <dd>
                                                 <p>
-                                                    Lunes a viernes 7:00 a.m a 6:00 p.m.
+                                                    Lunes a sábado de 7:00 a.m. a 6:00 p.m.
                                                 </p>
                                             </dd>
+
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="summary-collapse summary-collapse-5" id="panel-2-5" aria-labelledby="push_two_5">
+                                <h3 class="title title-type-3s title-id-3s5">
+                                    Videollamada en Lengua de Señas
+                                </h3>
+                                <div class="box-items">
+                                    <div class="colspan-2">
+                                        <div class="video video-5 video-16by9">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen="" frameborder="0"
+                                                    src="https://www.youtube.com/embed/yimG3ap9aE4"
+                                                    title="YouTube video player" width="100%"></iframe>
+                                            </div>
+                                        </div>
+                                        <p class="paragraph ph-type-1 ph-id-sc5">
+                                            Comunícate con un asesor de servicio a través de videollamada en lengua de
+                                            señas. <a href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vls">Clic
+                                                aquí para hacer el agendamiento.</a>
+                                        </p>
+                                        <dl>
+                                            <dt>
+                                                <p>
+                                                    Horario de Atención:
+                                                </p>
+                                            </dt>
                                             <dd>
                                                 <p>
-                                                    Sábado 08:00 a.m. a 12:00 m
+                                                    Lunes a sábado de 7:00 a.m. a 6:00 p.m.
                                                 </p>
                                             </dd>
                                         </dl>
                                     </div>
                                 </div>
                             </div>
-                            <!--
-
-
-
-
-                                    <div class="summary-collapse summary-collapse-5">
-
-
-
-
-                                        <h3 class="title title-type-3s title-id-3s5">
-                                                                                                                                    Chatea con Lucia
-
-
-
-                                        </h3>
-
-
-
-
-                                        <div class="box-items">
-
-
-
-
-                                            <div class="colspan-2">
-
-
-
-
-                                                <div class="logo logo-lucia">
-                                                                                                                                                                    <a href="https://www.movilidadbogota.gov.co/"><img alt="logo " class="img-responsive w-100" src="https://chat1-cls45-dal.i6.inconcertcc.com/inconcert/apps/webdesigner/designer/applications/9EB4BD8DB699F4781504C26A8F373990/BotSecMovilidad_V2/resources/BOTON_INICIO.png"> </a>
-
-
-
-                                                </div>
-
-
-
-
-                                                <p class="paragraph ph-type-1 ph-id-6">
-                                                                                                                                                                    Da clic en la imagen para conversar con Lucía, tu asesora de Servicios a la Ciudadanía.
-
-
-
-                                                </p>
-
-
-
-
-                                                <dl>
-
-
-
-
-                                                    <dt>
-                                                                                                                                                                                    Horario de Atención:
-
-
-
-                                                    </dt>
-
-
-
-
-                                                    <dd>
-                                                                                                                                                                                    Lunes a viernes 7:00 a.m a 6:00 p.m.
-
-
-
-                                                    </dd>
-
-
-
-
-                                                    <dd>
-                                                                                                                                                                                    Sábado 08:00 a.m. a 12:00 m
-
-
-
-                                                    </dd>
-
-
-
-
-                                                </dl>
-
-
-
-
-                                            </div>
-                                                                                                                                                                <style type="text/css">
-                                                                                                                                                                    .box-summary-2 .box-items .logo-lucia img {
-                                                                                                                                                                        padding: 2em 6em;
-                                                                                                                                                                        max-width: 450px;
-                                                                                                                                                                        margin: auto;
-                                                                                                                                                                    }
-                                                                                                                                                                </style>
-
-
-
-
-                                        </div>
-
-
-
-
-                                    </div>
-                                                                                                                        <style type="text/css">
-                                                                                                                            .box-summary-2 .summary-collapse-6 {
-                                                                                                                                padding: 0;
-                                                                                                                                margin: 0;
-                                                                                                                                border: 0;
-                                                                                                                            }
-                                                                                                                        </style> -->
                         </div>
                     </div>
                 </div>
@@ -3034,7 +3134,7 @@
                     <p>
                         <a class="box-trigger" href="#" data-target="3"><span class="tooltip-img"><img
                                     alt="acceder a telefónico"
-                                    src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/telefonico.gif"
+                                    src="/sites/default/files/2026-02-23/telefonico.gif"
                                     title="acceder a telefónico">&nbsp;</span></a>
                     </p>
                     <div class="icon icon3">
@@ -3047,61 +3147,61 @@
                 <div class="box-summary box-summary-3">
                     <div class="imagen img-call">
                         <img class="img-responsive w-100" alt=""
-                            src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/17-03-2024/atencion.jpg"
+                            src="/sites/default/files/2026-02-23/atencion.jpg"
                             title="">&nbsp;<style type="text/css">
                             .box-summary-3 .img-call img {
-                                padding: 2em 6em;
-                                max-width: 1100px;
-                                height: 350px;
+                                padding: 0;
+                                max-width: 940px;
+                                width: 100%;
+                                height: 260px;
                                 margin: auto;
                                 object-fit: cover;
+                                border-radius: 12px;
+                                display: block;
+                            }
+
+                            @media(min-width:768px) {
+                                .box-summary-3 .img-call img {
+                                    height: 320px;
+                                }
                             }
                         </style>
                     </div>
                     <div class="list-dl">
                         <dl>
                             <dt>
-                                <p>
-                                    Línea de atención:
-                                </p>
+                                <p>Línea de atención:</p>
                             </dt>
                             <dd>
                                 <p>
-                                    <a href="tel:+6013649400">364-9400 opción 2</a>
+                                    <a href="tel:+6013649400" aria-label="Llamar al 364 9400, opción 2">364-9400 opción
+                                        2</a>
                                 </p>
                             </dd>
                             <dd>
                                 <p>
-                                    <a href="tel:195">Linea 195</a>
+                                    <a href="tel:195" aria-label="Llamar a la línea 195">Línea 195</a>
                                 </p>
                             </dd>
                         </dl>
                         <dl>
                             <dt>
-                                <p>
-                                    Línea nacional:
-                                </p>
+                                <p>Línea nacional:</p>
                             </dt>
                             <dd>
                                 <p>
-                                    <a href="tel:+018000 127425">018000 127425</a>
+                                    <a href="tel:018000127425" aria-label="Llamar a la línea nacional 018000 127425">018000
+                                        127425</a>
                                 </p>
                             </dd>
                         </dl>
                         <dl>
                             <dt>
-                                <p>
-                                    Horario de Atención:
-                                </p>
+                                <p>Horario de atención:</p>
                             </dt>
                             <dd>
                                 <p>
-                                    Lunes a viernes 7:00 a.m a 6:00 p.m.
-                                </p>
-                            </dd>
-                            <dd>
-                                <p>
-                                    Sábado 08:00 a.m. a 12:00 m
+                                    Lunes a sábado de 7:00 a.m. a 6:00 p.m.
                                 </p>
                             </dd>
                         </dl>
@@ -3110,7 +3210,16 @@
                 <style type="text/css">
                     .box-summary-3 .list-dl {
                         max-width: 940px;
-                        margin: auto;
+                        margin: 16px auto 0;
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 12px;
+                    }
+
+                    @media(min-width:768px) {
+                        .box-summary-3 .list-dl {
+                            grid-template-columns: repeat(3, minmax(0, 1fr));
+                        }
                     }
 
                     .box-summary-3 .list-dl dl {
@@ -3119,15 +3228,58 @@
                         font-weight: 500;
                         text-align: left;
                         line-height: 1.5;
-                        color: #00000099;
+                        color: #2f334f;
+                        background: #f7f9ff;
+                        border: 1px solid #d9deea;
+                        border-radius: 12px;
+                        padding: 16px;
+                        margin: 0;
                     }
 
                     .box-summary-3 .list-dl dl dt {
                         font-weight: 700;
+                        margin-bottom: 8px;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+
+                    .box-summary-3 .list-dl dl dt::before {
+                        content: "";
+                        width: 18px;
+                        height: 18px;
+                        display: inline-block;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                        flex: 0 0 18px;
+                    }
+
+                    .box-summary-3 .list-dl dl:nth-of-type(1) dt::before {
+                        background-image: url('/sites/default/files/2026-02-23/telefono_v_0.png');
+                    }
+
+                    .box-summary-3 .list-dl dl:nth-of-type(2) dt::before {
+                        background-image: url('/sites/default/files/2026-02-23/llamada_v.png');
+                    }
+
+                    .box-summary-3 .list-dl dl:nth-of-type(3) dt::before {
+                        background-image: url('/sites/default/files/2026-02-23/checklist_v.png');
                     }
 
                     .box-summary-3 .list-dl dl dd {
                         margin: 0;
+                    }
+
+                    .box-summary-3 .list-dl a {
+                        color: #191C3A;
+                        text-decoration: underline;
+                        text-underline-offset: 3px;
+                    }
+
+                    .box-summary-3 .list-dl a:hover,
+                    .box-summary-3 .list-dl a:focus {
+                        color: #66E026;
                     }
                 </style>
             </div>
@@ -3302,6 +3454,129 @@
             background-repeat: no-repeat;
             background-position: center;
         }
+
+        /* Overrides definitivos para evitar estilos heredados del tema */
+        .set-wrapper.puntos .content-collapse .title-type-3s {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: #191C3A !important;
+            border-left: 6px solid #66E026 !important;
+            text-align: left !important;
+            padding: 16px 20px !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.2px !important;
+        }
+
+        .set-wrapper.puntos .content-collapse .title-type-3c {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: #191C3A !important;
+            border-left: 6px solid #66E026 !important;
+            text-align: left !important;
+            padding: 16px 20px !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.2px !important;
+        }
+
+        .set-wrapper.puntos .content-collapse .title-type-3s * {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
+        .set-wrapper.puntos .content-collapse .title-type-3c * {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
+        .set-wrapper.puntos .content-collapse .title-id-3s1 {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
+        .set-wrapper.puntos .box-summary .cmpnt-title-1 .title-cmpnt {
+            color: #191C3A !important;
+            font-weight: 800 !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+            border-bottom: 2px solid #d9deea !important;
+            margin-top: 24px !important;
+            margin-bottom: 24px !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-1 .push[aria-selected="true"],
+        .set-wrapper.puntos .tabs-collapse-2 .push[aria-selected="true"] {
+            background-color: #191C3A !important;
+            color: #66E026 !important;
+            font-weight: 700 !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-1 .push,
+        .set-wrapper.puntos .tabs-collapse-2 .push {
+            position: relative !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-1 .push::before,
+        .set-wrapper.puntos .tabs-collapse-2 .push::before {
+            width: 16px !important;
+            height: 16px !important;
+            padding: 0 !important;
+            left: 14px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            margin: 0 !important;
+        }
+
+        .set-wrapper.puntos #push_one_1[aria-selected="true"]::before {
+            background: url('/sites/default/files/2026-02-23/maps_v.png') center/contain no-repeat !important;
+        }
+
+        .set-wrapper.puntos #push_one_2[aria-selected="true"]::before {
+            background: url('/sites/default/files/2026-02-23/car_v.png') center/contain no-repeat !important;
+        }
+
+        .set-wrapper.puntos #push_one_3[aria-selected="true"]::before {
+            background: url('/sites/default/files/2026-02-23/building_v.png') center/contain no-repeat !important;
+        }
+
+        .set-wrapper.puntos #push_one_4[aria-selected="true"]::before {
+            background: url('/sites/default/files/2026-02-23/checklist_v.png') center/contain no-repeat !important;
+        }
+
+        .set-wrapper.puntos #push_one_5[aria-selected="true"]::before {
+            background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/vus_v.png') center/contain no-repeat !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-1 .push {
+            text-decoration: none !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-1 .push:hover,
+        .set-wrapper.puntos .tabs-collapse-1 .push:focus,
+        .set-wrapper.puntos .tabs-collapse-1 .push:active {
+            background-color: #191C3A !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-1 .push[aria-selected="true"]:hover,
+        .set-wrapper.puntos .tabs-collapse-1 .push[aria-selected="true"]:focus,
+        .set-wrapper.puntos .tabs-collapse-1 .push[aria-selected="true"]:active {
+            background-color: #191C3A !important;
+            color: #ffffff !important;
+        }
+
+        .set-wrapper.puntos .tabs-collapse-2 .push:hover,
+        .set-wrapper.puntos .tabs-collapse-2 .push:focus,
+        .set-wrapper.puntos .tabs-collapse-2 .push:active {
+            background-color: #191C3A !important;
+            color: #ffffff !important;
+        }
+
+        .set-wrapper.puntos .box-summary-3 .list-dl a {
+            color: #191C3A !important;
+            text-decoration: underline !important;
+            text-underline-offset: 3px !important;
+        }
     </style>
 
     <script>
@@ -3328,7 +3603,7 @@
             defaultTab
         }) {
             const select = document.getElementById(selectId);
-            const buttons = document.querySelectorAll(buttonsSelector);
+            const buttons = Array.from(document.querySelectorAll(buttonsSelector));
             const summaries = document.querySelectorAll(`${contentSelector} .summary-collapse`);
             if (!summaries.length) {
                 return;
@@ -3341,12 +3616,21 @@
 
             let currentSummary = null;
             const setButtonState = (tabId) => {
-                buttons.forEach((button) => {
+                buttons.forEach((button, index) => {
                     const isActive = parseTab(button.dataset.tab) === tabId;
                     button.setAttribute('aria-selected', isActive ? 'true' : 'false');
-                    button.setAttribute('tabindex', '0');
-                    button.setAttribute('role', 'tab');
+                    button.setAttribute('tabindex', isActive ? '0' : '-1');
+                    button.setAttribute('data-tab-index', String(index));
                 });
+            };
+
+            const focusByOffset = (button, offset) => {
+                const currentIndex = Number(button.dataset.tabIndex ?? -1);
+                if (currentIndex < 0 || !buttons.length) {
+                    return;
+                }
+                const nextIndex = (currentIndex + offset + buttons.length) % buttons.length;
+                buttons[nextIndex].focus();
             };
 
             const show = (target) => {
@@ -3387,6 +3671,22 @@
                     if (event.key === 'Enter' || event.key === ' ') {
                         event.preventDefault();
                         show(button.dataset.tab);
+                    }
+                    if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        focusByOffset(button, 1);
+                    }
+                    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        focusByOffset(button, -1);
+                    }
+                    if (event.key === 'Home') {
+                        event.preventDefault();
+                        buttons[0]?.focus();
+                    }
+                    if (event.key === 'End') {
+                        event.preventDefault();
+                        buttons[buttons.length - 1]?.focus();
                     }
                 });
             });
@@ -3434,3 +3734,4 @@
     </script>
 
 @endsection
+

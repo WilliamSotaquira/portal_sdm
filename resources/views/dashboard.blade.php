@@ -86,6 +86,7 @@
                         <h3 class="h6 mb-2">Sites</h3>
                         <div><code>/sites/conciliacion</code> -> <a href="{{ route('sites.conciliacion') }}">sites.conciliacion</a></div>
                         <div><code>/sites/dscsm</code> -> <a href="{{ route('sites.dscsm') }}">sites.dscsm</a></div>
+                        <div><code>/sites/sir</code> -> <a href="{{ route('sites.sir') }}">sites.sir</a></div>
                     </div>
 
                     <div class="col-md-6">

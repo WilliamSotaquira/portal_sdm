@@ -388,6 +388,7 @@
                                         <li><a class="dropdown-item {{ request()->is('transparencia') ? 'active' : '' }}" href="{{ route('transparencia.index') }}">Transparencia</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/conciliacion') ? 'active' : '' }}" href="{{ route('sites.conciliacion') }}">Conciliacion</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('sites/sir') ? 'active' : '' }}" href="{{ route('sites.sir') }}">SIR</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>
                                     </ul>
                                 </li>

@@ -49,7 +49,7 @@
             margin: 0 auto;
             height: 675px;
             background: rgba(200, 230, 201, 0);
-            background-image: url('/sir/sir1-b.jpg');
+            background-image: url('sir1-b.jpg');
             background-size: cover;
             background-position: center;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -115,7 +115,7 @@
         }
 
         .list .spn-1 {
-            background-image: url('/sir/sir-spn1.png');
+            background-image: url('sir-spn1.png');
             width: 30px;
             height: 30px;
             display: inline-block;
@@ -124,7 +124,7 @@
         }
 
         .list .spn-2 {
-            background-image: url('/sir/sir-spn2.png');
+            background-image: url('sir-spn2.png');
             width: 30px;
             height: 30px;
             display: inline-block;
@@ -133,7 +133,7 @@
         }
 
         .list .spn-3 {
-            background-image: url('/sir/sir-spn3.png');
+            background-image: url('sir-spn3.png');
             width: 30px;
             height: 30px;
             display: inline-block;
@@ -142,7 +142,7 @@
         }
 
         .list .spn-4 {
-            background-image: url('/sir/sir-spn4.png');
+            background-image: url('sir-spn4.png');
             width: 30px;
             height: 30px;
             display: inline-block;
@@ -151,7 +151,7 @@
         }
 
         .list .spn-5 {
-            background-image: url('/sir/sir-spn5.png');
+            background-image: url('sir-spn5.png');
             width: 30px;
             height: 30px;
             display: inline-block;
@@ -215,7 +215,7 @@
             left: -5%;
             width: 100%;
             height: 45px;
-            background-image: url('/sir/vr1.svg');
+            background-image: url('vr1.svg');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: left;
@@ -229,7 +229,7 @@
             left: -15px;
             width: 100%;
             height: 45px;
-            background-image: url('/sir/vr2.png');
+            background-image: url('vr2.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -355,7 +355,7 @@
             right: 0%;
             width: 100%;
             height: 45px;
-            background-image: url('/sir/vr3.png');
+            background-image: url('vr3.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -366,7 +366,7 @@
             left: 0%;
             width: 100%;
             height: 51px;
-            background-image: url('/sir/vr4.png');
+            background-image: url('vr4.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -596,7 +596,7 @@
             left: 0;
             width: 100%;
             height: 40px;
-            background-image: url('/sir/vr5.png');
+            background-image: url('vr5.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -858,7 +858,7 @@
             left: 0%;
             width: 100%;
             height: 40px;
-            background-image: url('/sir/vr6.png');
+            background-image: url('vr6.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -869,7 +869,7 @@
             left: -30%;
             width: 100%;
             height: 45px;
-            background-image: url('/sir/vr7.png');
+            background-image: url('vr7.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -1001,7 +1001,7 @@
             right: 3%;
             width: 150%;
             height: 45px;
-            background-image: url('/sir/vr8.png');
+            background-image: url('vr8.png');
             background-size: contain;
             background-position: right;
             background-repeat: no-repeat;
@@ -1022,7 +1022,7 @@
                 <p class="paragraph ph-1">Esta sección cuenta con las respuestas a las preguntas más comunes sobre el Sistema Interoperabilidad de Recaudo (SIR) y el proceso contractual. </p>
                 <p class="paragraph ph-2">Si la duda del usuario no aparece en el listado, puede formular una nueva consulta a través del siguiente formulario.</p>
                 <img class="img-responsive w-100" src="formulario_tp.png" alt="QR Sir" title="">
-                <a href="https://https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform">https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform">https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform</a>
             </div>
 
             <div class="questions">
@@ -1348,7 +1348,7 @@
                     <li><a href="sesion_2.pptx" target="_blank" rel="noopener noreferrer">Estandar interoperabilidad y unidades (.pptx)</a></li>
                     <li><a href="sesion_3.pptx" target="_blank" rel="noopener noreferrer">Sistema central y sus interfaces (.pptx)</a></li>
                     <li><a href="sesion_4.pptx" target="_blank" rel="noopener noreferrer">Camara de compensacion y sus interfaces (.pptx)</a></li>
-                    <li><a href="https://shorturl.at/pC5n1" target="_blank" rel="noopener noreferrer"><img src="/sites/default/files/Paginas/15-10-2025/Banner-solicitud-informacion-proveedores.jpg" class="img-fluid" alt=""></a></li>
+                    <li><a href="https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.10061883&isFromPublicArea=True&isModal=False" target="_blank" rel="noopener noreferrer"><img src="/sites/default/files/2026-02/solicitud%20pieza%20sir_340x300.jpg" class="img-fluid" alt="Implementación del Sistema Interoperable de Recaudo"></a></li>
                 </ul>
             </div>
 
@@ -1468,7 +1468,7 @@
             right: 50%;
             width: 108%;
             height: 41px;
-            background-image: url('/sir/vr10.png');
+            background-image: url('vr10.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -1491,7 +1491,7 @@
                 </div>
             </div>
             <div class="imagen img-1">
-                <img class="img-responsive w-100" src="/sir/sir_img_3.png" alt="" title="">
+                <img class="img-responsive w-100" src="sir_img_3.png" alt="" title="">
             </div>
         </div>
     </div>

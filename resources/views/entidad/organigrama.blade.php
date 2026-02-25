@@ -380,7 +380,7 @@
                                                         Ana María Cataño Blanco
                                                     </h2>
                                                     <h5 class="text-align-center">
-                                                        Jefe Oficina de Tecnología de la Información y las Comunicaciones
+                                                        Jefe de la Oficina Asesora de Comunicaciones y Cultura para la Movilidad
                                                     </h5>
                                                     <hr>
                                                     <div class="row">
@@ -426,7 +426,7 @@
                                                         Edgar Eduardo Romero Bohórquez
                                                     </h2>
                                                     <h5 class="text-align-center">
-                                                        Jefe de la Oficina Asesora de Comunicaciones y Cultura para la Movilidad
+                                                        Jefe de la Oficina de Tecnologías de la Información y las Comunicaciones
                                                     </h5>
                                                     <hr>
                                                     <div class="row">
@@ -760,7 +760,7 @@
                                         <div class="col-12 card mt-4 p-4">
                                             <div class="row">
                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/rafael_unda_venegas.png" alt="Foto: Ana María Cataño Blanco" width="900" height="900" title="Foto: Rafael Unda Venegas" usemap="#image-map">
+                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/rafael_unda_venegas.png" alt="Foto: Rafael Unda Venegas" width="900" height="900" title="Foto: Rafael Unda Venegas" usemap="#image-map">
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h2 class="text-align-center">
@@ -1606,7 +1606,7 @@
                                         <div class="col-12 card mt-4 p-4">
                                             <div class="row">
                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/giovanny-andres-garcia.jpg" alt="Foto: Giovanny Andrés García" width="900" height="875" title="Foto: Giovanny Andrés García" usemap="#image-map">
+                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/giovanny-andres-garcia.jpg" alt="Foto: Giovanny Andrés García Rodríguez" width="900" height="875" title="Foto: Giovanny Andrés García Rodríguez" usemap="#image-map">
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h2 class="text-align-center">
@@ -1656,7 +1656,7 @@
                                                         <div class="col-12 card mt-4 p-4">
                                                             <div class="row">
                                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/juan_manuel_garzon.png" alt="Foto: Giovanny Andrés García" width="900" height="900" title="Foto: Juan Manuel Garzón Monroy" usemap="#image-map">
+                                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/juan_manuel_garzon.png" alt="Foto: Juan Manuel Garzón Monroy" width="900" height="900" title="Foto: Juan Manuel Garzón Monroy" usemap="#image-map">
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                     <h2 class="text-align-center">

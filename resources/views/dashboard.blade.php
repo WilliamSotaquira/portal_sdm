@@ -93,6 +93,7 @@
                         <h3 class="h6 mb-2">Transparencia</h3>
                         <div><code>/transparencia</code> -> <a href="{{ route('transparencia.index') }}">transparencia.index</a></div>
                         <div><code>/transparencia/1/agremiaciones</code> -> <a href="{{ route('transparencia.1.agremiaciones') }}">transparencia.1.agremiaciones</a></div>
+                        <div><code>/transparencia/9/estados_financieros</code> -> <a href="{{ route('transparencia.9.estados_financieros') }}">transparencia.9.estados_financieros</a></div>
                     </div>
                 </div>
             </div>

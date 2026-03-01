@@ -88,10 +88,18 @@
                 <div id="accordionPanels-collapseOne" class="accordion-collapse collapse show"
                     aria-labelledby="accordionPanels-exampleOne" data-bs-parent="#accordionExampleOne">
                     <div class="body-accordion-govco">
-                        <span class="title-one-accordion-govco">Seccion</span>
-                        <span class="title-two-accordion-govco">Grupo 1 - Agremiaciones</span>
-                        <p class="text-one-accordion-govco">Consulta el contenido publicado para el grupo 1.</p>
-                        <a href="{{ route('transparencia.1.agremiaciones') }}">Ir a Agremiaciones</a>
+                        <span class="title-one-accordion-govco">Secciones</span>
+                        <span class="title-two-accordion-govco">Accesos disponibles</span>
+                        <ul class="mb-0">
+                            <li>
+                                Grupo 1 - Agremiaciones:
+                                <a href="{{ route('transparencia.1.agremiaciones') }}">Ir a Agremiaciones</a>
+                            </li>
+                            <li>
+                                Grupo 9 - Estados financieros:
+                                <a href="{{ route('transparencia.9.estados_financieros') }}">Ir a Estados financieros</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

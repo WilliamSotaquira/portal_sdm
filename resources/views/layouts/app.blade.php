@@ -390,6 +390,7 @@
                                         <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/sir') ? 'active' : '' }}" href="{{ route('sites.sir') }}">SIR</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('transparencia/9/estados_financieros') ? 'active' : '' }}" href="{{ route('transparencia.9.estados_financieros') }}">Estados financieros</a></li>
                                     </ul>
                                 </li>
                             </ul>

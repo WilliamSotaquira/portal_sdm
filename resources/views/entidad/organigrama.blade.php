@@ -306,7 +306,7 @@
         En este espacio se encuentra la estructura organizacional de la Secretaría de Movilidad, también podrá consultar quiénes son las personas que ejercen un rol directivo en nuestra Entidad, haciendo énfasis en sus perfiles profesionales, estudios y experiencia laboral previa.
     </p>
     <p class="text-align-center">
-        <a class="btn btn-primary" href="/sites/default/files/2026-02-05/organigrama_noviembre%2004feb_2026.pdf" target="_blank" rel="noopener noreferrer">Ver Organigrama Completo</a>
+        <a class="btn btn-primary" href="/sites/default/files/2026-02-27/organigrama_26feb_2026.pdf" target="_blank" rel="noopener noreferrer">Ver Organigrama Completo</a>
     </p>
     <p class="text-center">
         <img class="img-fluid" src="/sites/default/files/2024-07/organigrama_principal_0.png" alt="Organigrama General de la Entidad" width="900" height="298" title="Organigrama General de la Entidad">
@@ -945,11 +945,11 @@
                                                         <div class="col-12 card mt-4 p-4">
                                                             <div class="row">
                                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/sandra_rodriguez_castaneda.png" alt="Foto: Sandra Esperanza Rodríguez Castañeda" width="900" height="900" title="Foto: Sandra Esperanza Rodríguez Castañeda" usemap="#image-map">
+                                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2026-02-27/wgu_sdm.oac_0656.jpg" alt="Foto: Nubia Quintero Hernández" width="900" height="900" title="Foto: Nubia Quintero Hernández" usemap="#image-map">
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                     <h2 class="text-align-center">
-                                                                        Sandra Esperanza Rodríguez Castañeda
+                                                                        Nubia Quintero Hernández
                                                                     </h2>
                                                                     <h5 class="text-align-center">
                                                                         Subdirectora de Transporte Privado
@@ -959,13 +959,13 @@
                                                                         <div class="col-12">
                                                                             <div class="overflow-auto h-50 card-gray">
                                                                                 <p class="text-align-justify">
-                                                                                    Ingeniera civil y magíster en ingeniería civil con énfasis en transporte de la Universidad de los Andes, becada y con intercambio en la Universidad de Melbourne (Australia). Además, obtuvo la Beca Colfuturo para realizar la maestría en Planeación y Desarrollo Urbano en University College London, Reino Unido. A lo largo de su trayectoria profesional ha trabajado desde la academia, sector público y privado. Se desempeñó como consultora senior en IDOM Consulting Engineering Architecture, en proyectos en Arabia Saudita, Colombia, Perú, República Dominicana y Venezuela, desarrollando diferentes soluciones en materia de análisis de información geográfica, planeación urbana y transporte.
+                                                                                    Ingeniera Civil de la Universidad Nacional de Colombia, con Especialización en Diseño de Vías, Tránsito y Transporte de la Universidad Distrital y Maestría en Ingeniería Civil de la Universidad de los Andes.
                                                                                 </p>
                                                                                 <p class="text-align-justify">
-                                                                                    En el sector público, fue asesora en la Secretaría de Movilidad de la Gobernación de Cundinamarca donde trabajó en la estructuración de proyectos de transporte como la línea 3 del metro, Transmilenio Fase IV a Soacha, Cables de la Calera y Soacha. En la Unidad Administrativa de Catastro Distrital contribuyó en la definición de lineamientos técnicos para el análisis de la información de la entidad mediante técnicas de estadística geográfica. Desde la Secretaría de Movilidad de Bogotá, entre 2018-2020, trabajó en la evaluación técnica de proyectos relacionados con el Plan de Ordenamiento Territorial y Plan Maestro de Movilidad, la regulación del aprovechamiento económico del espacio público para el alquiler de patinetas eléctricas, y el censo de bicitaxis de Bogotá.
+                                                                                    Se ha desempeñado en el sector público y privado. En el sector público ha liderado proyectos de planeación e implementación de sistemas de transporte y de diseño y construcción de infraestructura, en entidades como la Secretaría de Tránsito y Transporte de Bogotá, TransMilenio S.A., el Ministerio de Transporte y la Aerocivil.
                                                                                 </p>
                                                                                 <p class="text-align-justify">
-                                                                                    Ahora regresa a la SDM como subdirectora de Transporte Privado, donde impulsará estrategias, y proyectos en el ámbito del transporte privado en todas sus modalidades, para la gestión de la demanda, fortalecer la movilidad sostenible en empresas, universidades y entidades públicas y aportar a mejorar la eficiencia en la que se mueve la carga dentro de la ciudad.
+                                                                                    Su interés profesional es participar en la evaluación, desarrollo y seguimiento de proyectos que impacten positivamente en la calidad de vida de una comunidad y que aporten desde el ámbito de la ingeniería en la sostenibilidad del medio ambiente.
                                                                                 </p>
                                                                             </div>
                                                                         </div>

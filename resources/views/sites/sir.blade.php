@@ -1522,9 +1522,9 @@
                             interfaces (.pptx)</a></li>
                     <li><a href="sesion_4.pptx" target="_blank" rel="noopener noreferrer">Camara de compensacion y sus
                             interfaces (.pptx)</a></li>
-                    <li><a href="https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.10061883&isFromPublicArea=True&isModal=False"
+                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSewEQ21RLXynk6qmyn6_R_jjOD5lL-yChHRkkANZ2tddmU1Hg/viewform?usp=dialog"
                             target="_blank" rel="noopener noreferrer"><img
-                                src="/sites/default/files/2026-02/solicitud%20pieza%20sir_340x300.jpg" class="img-fluid"
+                                src="/sites/default/files/2026-03/img_7384.png" class="img-fluid"
                                 alt="Implementación del Sistema Interoperable de Recaudo"></a></li>
                 </ul>
             </div>

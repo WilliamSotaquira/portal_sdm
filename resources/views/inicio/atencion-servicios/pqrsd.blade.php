@@ -186,7 +186,7 @@
 
                 <div class="image">
                     <div class="imagen img-1"><img alt="Imagen de encabezado" class="img-responsive w-100"
-                            src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/imagen-inicio.png"
+                            src="/sites/default/files/servicios/29-11-2024/imagen-inicio.png"
                             title="Imagen de encabezado"></div>
                 </div>
             </div>
@@ -631,7 +631,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/logo-sdm2.png"
+                                                                src="/sites/default/files/servicios/29-11-2024/logo-sdm2.png"
                                                                 title=""></div>
 
                                                         <div class="card-description">
@@ -652,7 +652,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/bogota-te-escucha.png"
+                                                                src="/sites/default/files/servicios/29-11-2024/bogota-te-escucha.png"
                                                                 title=""></div>
 
                                                         <div class="card-description">
@@ -690,7 +690,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/img_20230831_114714-300x225.jpg"
+                                                                src="/sites/default/files/servicios/29-11-2024/img_20230831_114714-300x225.jpg"
                                                                 title=""></div>
 
                                                         <div class="card-description"><a href="tel:+6013649400">Desde fijo
@@ -738,7 +738,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/orfeo-150x150.png"
+                                                                src="/sites/default/files/servicios/29-11-2024/orfeo-150x150.png"
                                                                 title=""></div>
 
                                                         <div class="card-description">
@@ -775,7 +775,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/bogota-te-escucha.png"
+                                                                src="/sites/default/files/servicios/29-11-2024/bogota-te-escucha.png"
                                                                 title=""></div>
 
                                                         <div class="card-description">
@@ -811,7 +811,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/logo-sdm2.png"
+                                                                src="/sites/default/files/servicios/29-11-2024/logo-sdm2.png"
                                                                 title=""></div>
 
                                                         <div class="card-description">
@@ -847,7 +847,7 @@
 
                                                         <div class="card-image"><img alt="Logo"
                                                                 class="img-responsive w-100"
-                                                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/logo-sdm2.png"
+                                                                src="/sites/default/files/servicios/29-11-2024/logo-sdm2.png"
                                                                 title=""></div>
 
                                                         <div class="card-description">
@@ -978,7 +978,7 @@
                                             <div class="body-collapse-n5">
                                                 <ul>
                                                     <li><a
-                                                            href="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/25-03-2025/pm04-rg01_reglamento_interno_para_la_gestiond_de_pqrsd_version_5.0_1.pdf">Reglamento
+                                                            href="/sites/default/files/servicios/25-03-2025/pm04-rg01_reglamento_interno_para_la_gestiond_de_pqrsd_version_5.0_1.pdf">Reglamento
                                                             Interno de Gestión PQRSD</a><br>
                                                         <i>REGLAMENTO INTERNO PARA LA GESTIÓN DE PETICIONES, QUEJAS,
                                                             RECLAMOS, SUGERENCIAS Y DENUNCIAS</i>
@@ -1076,7 +1076,7 @@
             </style>
             <div class="cpnt cpnt-3">
                 <div class="imagen img-1"><img alt="" class="img-responsive w-100"
-                        src="https://www.movilidadbogota.gov.co/web/sites/default/files/servicios/29-11-2024/imagen-final.png"
+                        src="/sites/default/files/servicios/29-11-2024/imagen-final.png"
                         title=""></div>
 
                 <div class="lista">

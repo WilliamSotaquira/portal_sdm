@@ -135,7 +135,7 @@
             }
         }
 	</style>
-	<div class="cpnt cpnt-1"><picture> <source media="(min-width: 465px)" srcset="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/11-10-2024/portada_ms.png"> <img alt="Mujer sostiene en sus manos un un portaretrato" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/11-10-2024/portada_xs_ms.png" title="Movilidad Segura" loading="lazy"> </picture> <span class="span-title"> </span>
+	<div class="cpnt cpnt-1"><picture> <source media="(min-width: 465px)" srcset="/sites/default/files/2026-03-02/portada_ms.png"> <img alt="Mujer sostiene en sus manos un un portaretrato" class="img-responsive w-100" src="/sites/default/files/2026-03-02/portada_xs_ms.png" title="Movilidad Segura" loading="lazy"> </picture> <span class="span-title"> </span>
 		<h1 class="title title-1" style="position:absolute; left:30px; bottom:30px; font-size:42px; text-align:left; color:#ffffff; text-shadow:0 2px 8px rgba(0,0,0,0.7);"><span class="span-title">Movilidad Segura</span></h1>
 		<span class="span-title"> </span>
 
@@ -184,7 +184,7 @@
 			<p class="paragraph ph-1">Para salvar vidas, necesitamos cambiar los comportamientos riesgosos en las vías. ¡Te invitamos a compartir nuestro contenido!</p>
 		</div>
 
-		<div class="imagen img-1"><img alt="Señal horizontal límite de velocidad 50 km/h" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/11-10-2024/50_ms.png" title="Señal horizontal límite de velocidad 50 km/h" loading="lazy"></div>
+		<div class="imagen img-1"><img alt="Señal horizontal límite de velocidad 50 km/h" class="img-responsive w-100" src="/sites/default/files/Paginas/11-10-2024/50_ms.png" title="Señal horizontal límite de velocidad 50 km/h" loading="lazy"></div>
 	</div>
 	<style type="text/css">.cpnt-3 {
             margin-top: 32px;
@@ -415,7 +415,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -449,7 +449,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -480,7 +480,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -510,7 +510,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_b.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_b.png"></div>
 						</div>
 					</div>
 
@@ -566,7 +566,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -596,7 +596,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -627,7 +627,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -657,7 +657,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -687,7 +687,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -717,7 +717,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -747,7 +747,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -777,7 +777,7 @@
 						</div>
 
 						<div class="line-summary">
-							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
+							<div class="logo logo-1"><img alt="logo line" class="img-responsive w-100" src="/sites/default/files/Paginas/10-10-2024/line_a.png"></div>
 						</div>
 					</div>
 
@@ -900,9 +900,9 @@
 		</div>
 
 		<div class="logos-aliados">
-			<div class="logo logo-1"><img alt="Logo Bloomberg" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/09-10-2024/bloomberg_logo_ms.png" loading="lazy"></div>
+			<div class="logo logo-1"><img alt="Logo Bloomberg" class="img-responsive w-100" src="/sites/default/files/Paginas/09-10-2024/bloomberg_logo_ms.png" loading="lazy"></div>
 
-			<div class="logo logo-2"><img alt="Logo Vital Strategies" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/09-10-2024/vital_logo_ms.png" loading="lazy"></div>
+			<div class="logo logo-2"><img alt="Logo Vital Strategies" class="img-responsive w-100" src="/sites/default/files/Paginas/09-10-2024/vital_logo_ms.png" loading="lazy"></div>
 		</div>
 	</div>
 	<style type="text/css">.seguridad .cpnt-5 {
@@ -964,21 +964,17 @@
 			<div class="boton">
 				<div class="imagen img-1">
 					<a href="/sites/default/files/2026-02-11/9789275320921_eng_opt.pdf" target="_blank" rel="noopener noreferrer" aria-label="Descargar guía de campañas de Seguridad Vial">
-						<img alt="Botón descarga" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/09-10-2024/boton_ms.png" title="Botón descarga" loading="lazy">
+						<img alt="Botón descarga" class="img-responsive w-100" src="/sites/default/files/Paginas/09-10-2024/boton_ms.png" title="Botón descarga" loading="lazy">
 					</a>
 				</div>
 			</div>
 		</div>
 
 		<div class="caratula-herramientas">
-			<div class="imagen img-1"><img alt="Carátula de herramientas" class="img-responsive w-100" src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/09-10-2024/caratula_ms.png" title="Carátula de herramientas" loading="lazy"></div>
+			<div class="imagen img-1"><img alt="Carátula de herramientas" class="img-responsive w-100" src="/sites/default/files/Paginas/09-10-2024/caratula_ms.png" title="Carátula de herramientas" loading="lazy"></div>
 		</div>
 	</div>
 </div>
 <!-- Fin Set -->
 
 @endsection
-
-
-
-

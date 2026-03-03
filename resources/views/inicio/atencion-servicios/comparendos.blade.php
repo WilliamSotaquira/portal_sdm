@@ -71,7 +71,7 @@
                         <div class="card-body">
                             <h3 class="h5">Tabla de autoliquidación 2025</h3>
                             <p class="text-muted">Consulta los valores vigentes por infracción antes de generar tu pago.</p>
-                            <a class="link-success fw-semibold" href="https://www.movilidadbogota.gov.co/sites/default/files/2025-11-25/tabla_autoliquidacion_2025.pdf">Descargar PDF</a>
+                            <a class="link-success fw-semibold" href="/sites/default/files/2025-11-25/tabla_autoliquidacion_2025.pdf">Descargar PDF</a>
                         </div>
                     </div>
                 </div>

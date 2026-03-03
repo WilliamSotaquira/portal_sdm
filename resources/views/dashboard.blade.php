@@ -61,7 +61,6 @@
                         <div><code>/inicio/menu-principal</code> -> <a href="{{ route('inicio.menu-principal') }}">inicio.menu-principal</a></div>
                         <div><code>/inicio/comparendos</code> -> <a href="{{ route('inicio.comparendos') }}">inicio.comparendos</a></div>
                         <div><code>/inicio/desembargos</code> -> <a href="{{ route('inicio.desembargos') }}">inicio.desembargos</a></div>
-                        <div><code>/inicio/ms</code> -> <a href="{{ route('inicio.ms') }}">inicio.ms</a></div>
                         <div><code>/inicio/banners</code> -> <a href="{{ route('inicio.banners') }}">inicio.banners</a></div>
                     </div>
 
@@ -86,6 +85,7 @@
                         <h3 class="h6 mb-2">Sites</h3>
                         <div><code>/sites/conciliacion</code> -> <a href="{{ route('sites.conciliacion') }}">sites.conciliacion</a></div>
                         <div><code>/sites/dscsm</code> -> <a href="{{ route('sites.dscsm') }}">sites.dscsm</a></div>
+                        <div><code>/sites/ms</code> -> <a href="{{ route('sites.ms') }}">sites.ms</a></div>
                         <div><code>/sites/sir</code> -> <a href="{{ route('sites.sir') }}">sites.sir</a></div>
                     </div>
 

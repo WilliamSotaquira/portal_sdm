@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="col-12 col-md-6 text-center">
-                        <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/objetivo-general.jpg"
+                        <img src="/sites/default/files/Paginas/20-06-2023/objetivo-general.jpg"
                             alt="Ilustración del objetivo general del SGCN" class="img-fluid img-border sgcn-img-side">
                     </div>
                 </section>
@@ -83,7 +83,7 @@
                         <h2 id="sgcn-tenemos-futuro" class="parallax-content">
                             Tenemos el futuro de la SDM<br>
                             en nuestras manos
-                            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/icon-tenemos.png"
+                            <img src="/sites/default/files/Paginas/20-06-2023/icon-tenemos.png"
                                 alt="" role="presentation">
                         </h2>
                     </div>
@@ -127,7 +127,7 @@
 
                     <div class="row beneficio sgcn-beneficio-item">
                         <div class="col-12 col-md-2 text-center">
-                            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/icon-beneficios-1.png"
+                            <img src="/sites/default/files/Paginas/20-06-2023/icon-beneficios-1.png"
                                 alt="" role="presentation" class="img-fluid sgcn-icon">
                         </div>
                         <div class="col-12 col-md-10">
@@ -143,7 +143,7 @@
 
                     <div class="row beneficio sgcn-beneficio-item">
                         <div class="col-12 col-md-2 text-center">
-                            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/icon-beneficios-2.png"
+                            <img src="/sites/default/files/Paginas/20-06-2023/icon-beneficios-2.png"
                                 alt="" role="presentation" class="img-fluid sgcn-icon">
                         </div>
                         <div class="col-12 col-md-10">
@@ -157,7 +157,7 @@
 
                     <div class="row beneficio sgcn-beneficio-item">
                         <div class="col-12 col-md-2 text-center">
-                            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/icon-beneficios-3.png"
+                            <img src="/sites/default/files/Paginas/20-06-2023/icon-beneficios-3.png"
                                 alt="" role="presentation" class="img-fluid sgcn-icon">
                         </div>
                         <div class="col-12 col-md-10">
@@ -171,7 +171,7 @@
 
                     <div class="row beneficio sgcn-beneficio-item">
                         <div class="col-12 col-md-2 text-center">
-                            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/icon-beneficios-4.png"
+                            <img src="/sites/default/files/Paginas/20-06-2023/icon-beneficios-4.png"
                                 alt="" role="presentation" class="img-fluid sgcn-icon">
                         </div>
                         <div class="col-12 col-md-10">
@@ -273,7 +273,7 @@
             margin-top: 60px;
             padding: 60px 20px 45px;
             background-color: #191c3a;
-            background-image: url("https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/20-06-2023/bg-tenemos-futuro.jpg");
+            background-image: url("/sites/default/files/Paginas/20-06-2023/bg-tenemos-futuro.jpg");
             background-size: cover;
             background-position: center top;
             color: #fff;

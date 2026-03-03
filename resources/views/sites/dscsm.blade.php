@@ -730,7 +730,7 @@
                 min-height: 520px;
                 background-size: contain;
                 background-image:
-                    url("https://www.movilidadbogota.gov.co/sites/default/files/2026-01-30/banner_xs_2.jpeg");
+                    url("/sites/default/files/2026-01-30/banner_xs_2.jpeg");
                 background-position: center top;
             }
 

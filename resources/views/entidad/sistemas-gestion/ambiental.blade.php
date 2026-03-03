@@ -20,7 +20,7 @@
                     <div class="box-encabezado">
                         <div class="logo">
                             <img class="img-fluid w-100"
-                                src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/logo_sga_a.png"
+                                src="/sites/default/files/Paginas/10-03-2022/logo_sga_a.png"
                                 alt="Logo Sistema de Gestión Ambiental" title="Logo Sistema de Gestión Ambiental"
                                 width="373" height="456">
                         </div>
@@ -110,7 +110,7 @@
             <div class="hoja">
                 <div class="img-hoja">
                     <img class="img-fluid w-100"
-                        src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/hoja1_0.webp"
+                        src="/sites/default/files/Paginas/10-03-2022/hoja1_0.webp"
                         alt="Imagen de hoja de arbol" title="Imagen de hoja de arbol" width="400" height="400">
                 </div>
             </div>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="col-6 offset-3">
                     <img class="img-fluid w-100"
-                        src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/21-04-2025/Actualizaci%C3%B3n-imagen-de-p%C3%A1gina-web-SGA.jpg"
+                        src="/sites/default/files/Paginas/21-04-2025/Actualizaci%C3%B3n-imagen-de-p%C3%A1gina-web-SGA.jpg"
                         alt="Esquema Programas Ambientales" title="Esquema Programas Ambientales" width="1200"
                         height="1200">
                 </div>
@@ -206,7 +206,7 @@
             <div class="arbol2">
                 <div class="img-arbol2">
                     <img class="img-fluid"
-                        src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/arbol2.webp"
+                        src="/sites/default/files/Paginas/10-03-2022/arbol2.webp"
                         alt="recorte de una hoja" title="recorte de una hoja" width="3264" height="4928">
                 </div>
             </div>
@@ -279,7 +279,7 @@
         <!-- Equipo Ambiental -->
         <div class="box-equipoAmbiental">
             <h4 class="text-center">
-                <a href="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/13-10-2022/equipo_sga.pdf"
+                <a href="/sites/default/files/Paginas/13-10-2022/equipo_sga.pdf"
                     rel="noopener noreferrer" target="_blank">Haz clic aquí y conoce al equipo del Sistema de Gestión
                     Ambiental&nbsp;</a>
             </h4>
@@ -310,7 +310,7 @@
                     <div class="box-btn">
                         <div class="btn">
                             <p>
-                                <a href="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/16-02-2022/resolucion_107311_de_2021.pdf"
+                                <a href="/sites/default/files/Paginas/16-02-2022/resolucion_107311_de_2021.pdf"
                                     rel="noopener noreferrer" target="_blank">Descargar Versión PDF&nbsp;</a>
                             </p>
                         </div>
@@ -322,7 +322,7 @@
         <div class="hoja2">
             <div class="img-hoja2">
                 <img class="img-fluid"
-                    src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/hoja2.webp"
+                    src="/sites/default/files/Paginas/10-03-2022/hoja2.webp"
                     alt="Imagen de hoja de arbol" title="Imagen de hoja de arbol" width="400" height="400">
             </div>
         </div>
@@ -367,7 +367,7 @@
         .encabezado {
             position: relative;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%),
-                url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/guadalupe_sga_0.webp');
+                url('/sites/default/files/Paginas/10-03-2022/guadalupe_sga_0.webp');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -466,7 +466,7 @@
         /* COMPROMISOS */
         .s1 .box-compromisos {
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.8) 100%),
-                url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/texturas-naturales.webp');
+                url('/sites/default/files/Paginas/10-03-2022/texturas-naturales.webp');
             background-size: cover;
             margin: 0px;
             padding: 10px;
@@ -537,7 +537,7 @@
 
         .s2 .box-parrafos .img2 {
             background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-                url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/16-02-2022/bogota-4463698_1280.webp');
+                url('/sites/default/files/Paginas/16-02-2022/bogota-4463698_1280.webp');
             height: 350px;
             background-size: cover;
             background-position: center;
@@ -553,7 +553,7 @@
         }
 
         .s3 .box-parrafos .img3 {
-            background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/16-02-2022/ciclo_phva.webp');
+            background: url('/sites/default/files/Paginas/16-02-2022/ciclo_phva.webp');
             background-size: contain;
             background-repeat: no-repeat;
             height: 300px;
@@ -567,7 +567,7 @@
         }
 
         .s4 .img4 {
-            background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/10-03-2022/mejora-ambiental.webp');
+            background: url('/sites/default/files/Paginas/10-03-2022/mejora-ambiental.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;

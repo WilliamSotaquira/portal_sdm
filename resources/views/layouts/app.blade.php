@@ -342,7 +342,6 @@
                                         <li><a class="dropdown-item {{ request()->is('inicio/menu-principal') ? 'active' : '' }}" href="{{ route('inicio.menu-principal') }}">Menu principal</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/comparendos') ? 'active' : '' }}" href="{{ route('inicio.comparendos') }}">Comparendos</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/desembargos') ? 'active' : '' }}" href="{{ route('inicio.desembargos') }}">Desembargos</a></li>
-                                        <li><a class="dropdown-item {{ request()->is('inicio/ms') ? 'active' : '' }}" href="{{ route('inicio.ms') }}">MS</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/banners') ? 'active' : '' }}" href="{{ route('inicio.banners') }}">Banners</a></li>
                                     </ul>
                                 </li>
@@ -388,6 +387,7 @@
                                         <li><a class="dropdown-item {{ request()->is('transparencia') ? 'active' : '' }}" href="{{ route('transparencia.index') }}">Transparencia</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/conciliacion') ? 'active' : '' }}" href="{{ route('sites.conciliacion') }}">Conciliacion</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('sites/ms') ? 'active' : '' }}" href="{{ route('sites.ms') }}">MS</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/sir') ? 'active' : '' }}" href="{{ route('sites.sir') }}">SIR</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/9/estados_financieros') ? 'active' : '' }}" href="{{ route('transparencia.9.estados_financieros') }}">Estados financieros</a></li>
@@ -542,21 +542,6 @@
     {{-- Comportamiento tipo Drupal: tablas responsivas, skip link, etc. --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const useDrupalFilesHost = @json(app()->environment(['local', 'development']));
-            const drupalFilesHost = 'https://www.movilidadbogota.gov.co';
-
-            if (useDrupalFilesHost) {
-                document.querySelectorAll('[src],[href]').forEach(function(element) {
-                    ['src', 'href'].forEach(function(attribute) {
-                        const value = element.getAttribute(attribute);
-
-                        if (value && value.startsWith('/sites/default/files/')) {
-                            element.setAttribute(attribute, drupalFilesHost + value);
-                        }
-                    });
-                });
-            }
-
             // Skip link accesible
             const skipLink = document.querySelector('.skip-link');
             if (skipLink) {

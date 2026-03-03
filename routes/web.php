@@ -15,6 +15,19 @@ Route::get('/dashboard', function () {
 // Convocatorias de cultura
 Route::view('/culturas', 'culturas')->name('culturas');
 
+// Fallback para archivos Drupal en entornos donde no existe /sites/default/files local.
+Route::get('/sites/default/files/{path}', function (\Illuminate\Http\Request $request, string $path) {
+    $filesHost = rtrim(env('DRUPAL_FILES_HOST', 'https://ovprdnwportwebapp01.movilidadbogota.gov.co'), '/');
+    $target = $filesHost . '/sites/default/files/' . ltrim($path, '/');
+    $query = $request->getQueryString();
+
+    if (!empty($query)) {
+        $target .= '?' . $query;
+    }
+
+    return redirect()->away($target);
+})->where('path', '.*');
+
 // Cargar todas las rutas del sistema
 require __DIR__ . '/inicio.php';
 require __DIR__ . '/transparencia.php';

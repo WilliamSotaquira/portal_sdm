@@ -591,14 +591,14 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/vus_a.png');
+                                background: url('/sites/default/files/Paginas/27-02-2024/vus_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_5:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/vus_v.png');
+                                background: url('/sites/default/files/Paginas/27-02-2024/vus_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -610,21 +610,21 @@
                                 padding: 8px;
                                 margin-right: 5px;
                                 margin-left: -22px;
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/birrete_a.png');
+                                background: url('/sites/default/files/Paginas/27-02-2024/birrete_a.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_6:hover::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/birrete_v.png');
+                                background: url('/sites/default/files/Paginas/27-02-2024/birrete_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
                             }
 
                             #push_one_6[aria-selected="true"]::before {
-                                background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/birrete_v.png');
+                                background: url('/sites/default/files/Paginas/27-02-2024/birrete_v.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 background-position: center;
@@ -1237,7 +1237,7 @@
                                 <div class="summary-clm">
                                     <div class="logo logo-clm">
                                         <img class="img-responsive w-100" alt="logo "
-                                            src="https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/logo_clm.png">
+                                            src="/sites/default/files/Paginas/27-02-2024/logo_clm.png">
                                     </div>
                                     <div class="text">
                                         <p>
@@ -3442,14 +3442,14 @@
             padding: 8px;
             margin-right: 5px;
             margin-left: -22px;
-            background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/maps_a.png');
+            background: url('/sites/default/files/Paginas/27-02-2024/maps_a.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
         }
 
         .puntos .url-map:hover::before {
-            background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/maps_v.png');
+            background: url('/sites/default/files/Paginas/27-02-2024/maps_v.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -3543,7 +3543,7 @@
         }
 
         .set-wrapper.puntos #push_one_5[aria-selected="true"]::before {
-            background: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/27-02-2024/vus_v.png') center/contain no-repeat !important;
+            background: url('/sites/default/files/Paginas/27-02-2024/vus_v.png') center/contain no-repeat !important;
         }
 
         .set-wrapper.puntos .tabs-collapse-1 .push {

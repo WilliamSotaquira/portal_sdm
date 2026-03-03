@@ -93,14 +93,14 @@ a, .link{
 .bg-ciempies{
 	  padding-top: 150px;
     padding-bottom: 20px;
-    background: url("https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/22-09-2020/bg-header.jpg");
+    background: url("/sites/default/files/Paginas/22-09-2020/bg-header.jpg");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .bg-bogota {
-    background: url("https://www.movilidadbogota.gov.co/web/sites/default/files/Paginas/22-09-2020/bg-bogota.jpg");
+    background: url("/sites/default/files/Paginas/22-09-2020/bg-bogota.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

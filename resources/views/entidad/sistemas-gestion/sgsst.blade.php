@@ -669,7 +669,7 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-8 offset-sm-2">
                                         <img alt="" class="img-fluid w-100"
-                                            src="https://www.movilidadbogota.gov.co/sites/default/files/2025-11-25/_wg_secretaria%20de%20movilidad__0106.jpg">
+                                            src="/sites/default/files/2025-11-25/_wg_secretaria%20de%20movilidad__0106.jpg">
                                     </div>
                                 </div>
                                 <div class="box-tab-i"><i>Foto: Secretaría Distrital de Movilidad</i></div>

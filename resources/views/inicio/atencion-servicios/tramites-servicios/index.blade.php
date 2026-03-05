@@ -1,10 +1,16 @@
 @extends('layouts.app')
 @section('title', 'Tramites y servicios')
-
 @section('content')
 
-    <div class="set-wrapper tramitesServicios">
+    <div class="set-wrapper tramitesServicios" id="tramites-servicios-wrapper">
         <template></template>
+        <div class="govco-search-basic" aria-hidden="true" style="display:none !important;">
+            <div class="container-govco"></div>
+            <input class="input-search-basic-govco" type="text" tabindex="-1" autocomplete="off">
+            <span class="line-basic-govco" style="display:none;"></span>
+            <button class="btn-search-basic-govco" type="button" style="display:none;"></button>
+            <button class="btn-clean-basic-govco" type="button" style="display:none;"></button>
+        </div>
         <style type="text/css">
             .set-wrapper {
                 /* font-family: 'Montserrat', sans-serif; */
@@ -226,6 +232,13 @@
                 outline-offset: 2px;
             }
 
+            .tramitesServicios #buttonsFilter .btn:focus-visible,
+            .tramitesServicios .filter-clear .btn:focus-visible {
+                outline: 3px solid #4d541f;
+                outline-offset: 2px;
+                border-radius: 4px;
+            }
+
             .sr-only {
                 position: absolute;
                 width: 1px;
@@ -238,12 +251,21 @@
                 border: 0;
             }
 
+            @media (prefers-reduced-motion: reduce) {
+                .tramitesServicios * {
+                    animation: none !important;
+                    transition: none !important;
+                    scroll-behavior: auto !important;
+                }
+            }
+
             .breadcrumb-item a {
                 color: #1f2a44 !important;
             }
 
         </style><!-- Sección box header-ts -->
         <div class="box box-header-ts">
+            <h1 class="sr-only">Trámites y servicios</h1>
             <div class="paragraph-ppal">
                 <p>
                     Para conocer los tramites, servicios, PQRSD y otros procedimientos administrativos (OPA) de la
@@ -254,37 +276,42 @@
             </div>
             <div class="icons">
                 <div class="icon zoom ico-1">
-                    <a href="/portafolio_tramites_y_servicios" onmouseover="mouseoversound.playclip()"
+                    <a href="/portafolio_tramites_y_servicios"
+                        aria-label="Ir a portafolio de trámites y servicios"
                         title="Ir a portafolio de tramites y servicios"><img class="img-responsive w-100"
                             src="/sites/default/files/Paginas/29-10-2023/portafolio.png"
                             alt="Logo portafolio de tramites y servicios"></a>
                 </div>
                 <div class="icon zoom ico-2">
-                    <a href="https://www.ventanillamovilidad.com.co/" onmouseover="mouseoversound.playclip()"
+                    <a href="https://www.ventanillamovilidad.com.co/"
+                        aria-label="Ir a ventanilla única de servicios"
                         title="Ir a ventanilla unica de servicios"><img class="img-responsive w-100"
                             src="/sites/default/files/Paginas/29-10-2023/vus.png"
                             alt="logo ventanilla unica de servicios"></a>
                 </div>
                 <div class="icon zoom ico-3">
                     <a href="https://bogota.gov.co/servicios/entidad/secretaria-distrital-de-movilidad-sdm"
-                        onmouseover="mouseoversound.playclip()" title="Ir a guía de tramites"><img
+                        aria-label="Ir a guía de trámites de la Secretaría Distrital de Movilidad"
+                        title="Ir a guía de tramites"><img
                             class="img-responsive w-100"
                             src="/sites/default/files/Paginas/29-10-2023/guia-tramites.png"
                             alt="Logo guía de tramites SDM"></a>
                 </div>
                 <div class="icon zoom ico-4">
-                    <a href="https://www.gov.co/" onmouseover="mouseoversound.playclip()" title="Ir a gov.co"><img
+                    <a href="https://www.gov.co/" aria-label="Ir a GOV.CO" title="Ir a gov.co"><img
                             class="img-responsive w-100"
                             src="/sites/default/files/Paginas/29-10-2023/gov-co.png" alt="Logo GOV CO"></a>
                 </div>
                 <div class="icon zoom ico-5">
-                    <a href="https://www.funcionpublica.gov.co/web/suit" onmouseover="mouseoversound.playclip()"
+                    <a href="https://www.funcionpublica.gov.co/web/suit"
+                        aria-label="Ir a SUIT función pública"
                         title="Ir a SUIT"><img class="img-responsive w-100"
                             src="/sites/default/files/Paginas/29-10-2023/suit.png" alt="Logo SUIT"></a>
                 </div>
                 <div class="icon zoom ico-5">
                     <a href="https://portalmimovilidad.movilidadbogota.gov.co/#/pages/landing-page"
-                        onmouseover="mouseoversound.playclip()" title="Ir a Mi movilidad"><img class="img-responsive w-100"
+                        aria-label="Ir a Mi Movilidad"
+                        title="Ir a Mi movilidad"><img class="img-responsive w-100"
                             src="/sites/default/files/Paginas/29-10-2023/mimovilidad.png"
                             alt="Logo Mi Movilidad"></a>
                 </div>
@@ -361,9 +388,31 @@
                 margin: auto;
                 -webkit-box-shadow: 5px 5px 10px 0px #00000029;
                 box-shadow: 5px 5px 10px 0px #00000029;
+                transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
             }
 
             .box-header-ts .icons .icon img {
+                border-radius: 6px;
+                display: inline-block;
+                transition: transform .2s ease;
+            }
+
+            .box-header-ts .icons .icon:hover,
+            .box-header-ts .icons .icon:focus-within {
+                transform: translateY(-2px);
+                border-color: #4d541f66;
+                -webkit-box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.20);
+                box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.20);
+            }
+
+            .box-header-ts .icons .icon:hover img,
+            .box-header-ts .icons .icon:focus-within img {
+                transform: scale(1.02);
+            }
+
+            .box-header-ts .icons .icon a:focus-visible {
+                outline: 3px solid #4d541f;
+                outline-offset: 3px;
                 border-radius: 6px;
                 display: inline-block;
             }
@@ -383,27 +432,27 @@
         <div class="box box-bloque-2">
             <div class="filter">
                 <div id="buttonsFilter">
-                    <button class="btn" type="button" data-filter="all" aria-controls="ts-cards" aria-pressed="false"
-                        onclick="filterSelection(event, &apos;all&apos;)"> Mostrar todo</button> <button class="btn"
+                    <button class="btn active" type="button" data-filter="all" aria-controls="ts-cards" aria-pressed="true"
+                        onclick="return tsFilterSelection(event, &apos;all&apos;)"> Mostrar todo</button> <button class="btn"
                         type="button" data-filter="tramites" aria-controls="ts-cards" aria-pressed="false"
-                        onclick="filterSelection(event, &apos;tramites&apos;)"> Trámites</button> <button class="btn"
+                        onclick="return tsFilterSelection(event, &apos;tramites&apos;)"> Trámites</button> <button class="btn"
                         type="button" data-filter="servicios" aria-controls="ts-cards" aria-pressed="false"
-                        onclick="filterSelection(event, &apos;servicios&apos;)"> Servicios</button> <button
-                        class="btn active" type="button" data-filter="pqrsds" aria-controls="ts-cards" aria-pressed="true"
-                        onclick="filterSelection(event, &apos;pqrsds&apos;)"> PQRSD</button>
+                        onclick="return tsFilterSelection(event, &apos;servicios&apos;)"> Servicios</button> <button
+                        class="btn" type="button" data-filter="pqrsds" aria-controls="ts-cards" aria-pressed="false"
+                        onclick="return tsFilterSelection(event, &apos;pqrsds&apos;)"> PQRSD</button>
                 </div>
                 <form role="search" aria-label="Filtro de trámites y servicios">
                     <div class="filter-text">
                         <label for="sentence">Buscar</label> <input class="form-control" id="sentence" placeholder="Buscar"
-                            type="text" aria-controls="ts-cards" aria-label="Buscar trámites y servicios">
+                            type="text" aria-controls="ts-cards">
                     </div>
                     <div class="filter-clear">
-                        <button class="btn btn-filtro" type="button" onclick="limpiarFiltro(event)">Limpiar Filtro</button>
+                    <button class="btn btn-filtro" type="button" onclick="return tsLimpiarFiltro(event)">Limpiar Filtro</button>
                     </div>
                 </form>
             </div>
             <p id="results-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
-            <div id="ts-cards" class="ts-cards" role="region" aria-label="Resultados de trámites y servicios">
+            <div id="ts-cards" class="ts-cards" role="region" aria-label="Resultados de trámites y servicios" aria-busy="false">
                 <div class="card-ts tramites">
                     <div class="details-ts">
                         <div class="tags-ts">
@@ -426,33 +475,33 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e9c4f8c4ec36b2f400e1df063a23272ea">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/calendar_20.png"
-                                        alt="icono"></span><a href="https://vus.circulemosdigital.com.co/#/login">Agenda
+                                        alt="" aria-hidden="true"></span><a href="https://vus.circulemosdigital.com.co/#/login">Agenda
                                     la cita</a>
                             </li>
                             <li data-list-item-id="e34bd41642cb86327e4bc3a9c72109cff">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Puntos de atención (previo
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Puntos de atención (previo
                                     agendamiento)</a>
                             </li>
                             <li data-list-item-id="e6f7164229c635a46e7c926de22f93192">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e8a1814aaff1f5297464551a54cf39e5a">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e17d37a15a5677ef79d70e66e3bc8bdde">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e55c84db82baef3a622b605b7df37a40f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -481,17 +530,53 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e721c288319adf139eab0e834bd474a2e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="/ORVI">Ve a la página web</a>
+                                        alt="" aria-hidden="true"></span><a href="/ORVI">Ve a la página web</a>
                             </li>
                             <li data-list-item-id="e3246e64ce48b59be2e9d140f029ad324">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e9ae153d17c714da0511a28ee89c0f64e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://api.whatsapp.com/send?phone=573058703458&amp;text=Hola%20somos%20ORVI%2C%20el%20Centro%20de%20Orientaci%C3%B3n%20para%20V%C3%ADctimas%20por%20Siniestros%20Viales%C2%A0de%C2%A0Bogot%C3%A1%20D.C%2C%20%C2%BFEn%20qu%C3%A9%20te%20podemos%20ayudar%3F">Escríbe
                                     por Whatsapp</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-ts servicios">
+                    <div class="details-ts">
+                        <div class="tags-ts">
+                            <div class="tags">
+                                <span class="label label-default">Servicio</span>
+                            </div>
+                        </div>
+                        <h3>
+                            <a class="link-ppal"
+                                href="https://www.movilidadbogota.gov.co/centro-de-conciliacion-para-victimas-de-siniestros-viales">Centro
+                                de conciliación para personas involucradas de siniestros viales</a>
+                        </h3>
+                        <p class="p1">
+                            Ofrece a todas las personas de los estratos 1, 2 y 3, involucradas en un siniestro de tránsito en Bogotá,
+                            un espacio de diálogo orientado a la construcción de acuerdos mutuos para solucionar conflictos
+                            relacionados con daños materiales o lesiones personales, siempre que el valor reclamado no supere los
+                            150 (SMLMV).
+                        </p>
+                    </div>
+                    <div class="canals-ts">
+                        <ul class="list-canals">
+                            <li data-list-item-id="ed6f1ca45f964c0b9f30a10c6f287ea6">
+                                <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
+                                        alt="" aria-hidden="true"></span><a
+                                    href="https://www.movilidadbogota.gov.co/centro-de-conciliacion-para-victimas-de-siniestros-viales">Ve
+                                    a la página web</a>
+                            </li>
+                            <li data-list-item-id="e0418b730bc64c72a2f0abf588fa5810">
+                                <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
+                                        alt="" aria-hidden="true"></span><a
+                                    href="https://www.google.com/maps/place/Secretar%C3%ADa+Distrital+de+Movilidad/@4.6193466,-74.1005508,17z/data=!4m6!3m5!1s0x8e3f9967b06db885:0xac53921c78ccb036!8m2!3d4.6193413!4d-74.0979759!16s%2Fg%2F1trxlb1k?entry=tts&shorturl=1">Visítanos
+                                    en Sede Calle 13</a>
                             </li>
                         </ul>
                     </div>
@@ -517,31 +602,31 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e8dffb22282b23773c1aacfa0caa1dbd8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
                             </li>
                             <li data-list-item-id="ecb604fd9dd63cd583ae2570cef5245a4">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e5c68e351f60514ff323bc87599430382">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="ed202244f8e88b07eac424efd716a258f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e8deff6fd0a744404b037da547ef6acdb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="eb1202b7e25c25c1c7f9d7535af154b2d">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -569,31 +654,31 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e1690bd0456af502d5514d7046085454d">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e8f525aba2bc23273548fb72072fcb586">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="ed9ba8ba6598acc3d750df1bb0bb861ce">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e3870d3d8dc3f6405a4ab67f1d8fcb4fb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="ea5748f6a82989663606cb6aa680c1f17">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ef08aed8d7256fd6438876b8950fac629">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -623,27 +708,27 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e2ea1625700d5df59aed19488e5fc5153">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="/content/plan_marshall">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="/content/plan_marshall">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e2c9901153f0bc0a4b59e79baf957895e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e3c5fb5e9e2018d59997cad4b4d904426">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e4743b805429462b7a3fb033a90585565">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ed630317914b444446f9968ec6ab11d32">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -672,36 +757,36 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e078f5ad23424b62267230056ef10d6a0">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://www.movilidadbogota.gov.co/radicacionwebsdm/">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://www.movilidadbogota.gov.co/radicacionwebsdm/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e5822a5d277fd4cc11c320fc49bba43a8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="edd889a3e4249d6b3639bcd8d336a02a3">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Presencial: Puntos de
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Presencial: Puntos de
                                     radicación de correspondencia</a>
                             </li>
                             <li data-list-item-id="e5efe28b029992ca52478de91d4f3d038">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e1a7571f85771f8390ad5ac922f537790">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e128e8c8b092ac21342fa862766641874">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ec1df802ed973510a2adc3ac5b04a62ab">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -729,38 +814,38 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e883480742ce6eae5e8118d34376f3288">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://vucapp.habitatbogota.gov.co/vuc/login.seam">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e35cf029bbfc93ac92d9d5826acbde3d9">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
                                     Sede Paloquemao</a>
                             </li>
                             <li data-list-item-id="ef111d008210775783ab215543af520e1">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
                                     Sede Calle 13</a>
                             </li>
                             <li data-list-item-id="ed91a789ef39857fa2e4884d4654f1944">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e1e277c12ba4d3348dfe58de037add431">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="eb347c5a33189df15e618d829b31289dc">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e04c1be491d426601a93a16ce6209ef0e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -790,28 +875,28 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e6649d8420e01332e2b90be93ff1a27b7">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/calendar_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="/entrega_de_licencia_retenida_y_realizacion_del_curso">Solicítalo</a>
                             </li>
                             <li data-list-item-id="ef1e8872cec0c552ed11fa2c123277fca">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e40d9362d393bfd66fc0bb228ed26c62f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e2ebea57163a533c3ec7a9dd7d7e4db43">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ec11d546b78d0b02bae180d6e95ffe37c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -839,31 +924,31 @@
                         <ul class="list-canals">
                             <li data-list-item-id="ea0645b8ca5faba59b3e4fc15fe9a23e5">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://www.movilidadbogota.gov.co/web/SIMUR/sigatjs/consultaPlaca/">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://www.movilidadbogota.gov.co/web/SIMUR/sigatjs/consultaPlaca/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="ee24196b31a4d6dc934cecc685883a4da">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e992007f6bf0af5fc276332f7964a194c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e6b9847da5928a302679bda4993f49470">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e89a1d2857e04743881c380b1c9b7f327">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e10e3ae27964ce5a41f9273d382d9df1b">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -891,28 +976,28 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e9bbd9cd2c90a5db967608424dbd49c21">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmAcuerdosPago/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e580f160a2e83b5503917d1b7c7708e37">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="ece75564585113cd19c006981085fe6cf">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e710a2b01873ebf875913331c05490723">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e9fdafee48fa444a57edb65364de42402">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -940,38 +1025,38 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e97cf14f037d715056f42cb1562ff9f16">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="http://www.movilidadbogota.gov.co/web/SIMUR/excepciones/login/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e4407fe4f6be4d43cd366410ddffc973f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
                                     Sede Calle 13 (Personas con discapacidad)</a>
                             </li>
                             <li data-list-item-id="e70a858b9f5d7275d0e41b975e7d1332d">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
                                     Sede Paloquemao (Personas con discapacidad)</a>
                             </li>
                             <li data-list-item-id="ee3ae3c616d5ba1b1ee257adba4a2cc6c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="eda2713f177947396a09fc7a59dd55042">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e8a5b8172670f5cebe5d95371ed045049">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="eabc44ecda06244c437575179665d721e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -998,33 +1083,33 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e36281ea2c3d16c13956957a7ea78a854">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/calendar_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://vus.circulemosdigital.com.co/#/login">Agenda la cita</a>
                             </li>
                             <li data-list-item-id="e363ed23cd46a4774d66e3c32690c7f90">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
                                     (Previo agendamiento) Sede Calle 13</a>
                             </li>
                             <li data-list-item-id="e6caba4e00b5552940c981fd830e99729">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="ed61fa81f00893a9bb9432d1cbcb10a3a">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e8e4f837a13dfd4da3aeef92243f89a8c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ea8b53f81de1a11ee0aadd0d982e82ad2">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1052,38 +1137,38 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e20f00253d4d3dde82865f5214ccd7165">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/calendar_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://vus.circulemosdigital.com.co/#/login">Agenda la cita</a>
                             </li>
                             <li data-list-item-id="e1d443c431e800bc3acf79d8f8c1c8e64">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/HZtRnz1zADb64a1y6">Presencial
                                     Sede Calle 13 (Previo agendamiento)</a>
                             </li>
                             <li data-list-item-id="e7f0ea2f1d069c80f643e53575e313802">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
                                     Sede Paloquemao (Previo agendamiento)</a>
                             </li>
                             <li data-list-item-id="eb4043a30c79679142317e8846172794a">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e803c7f81b53994802f255715fcff1fb8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e0a2bc8ce2208ff9010e7f9a42ba1813a">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e57f503a83912a332f15044b98abc9439">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1112,33 +1197,33 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e3571aaed733edcc2a81753cfb24fb7a3">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://vucapp.habitatbogota.gov.co/vuc/login.seam">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e28883706f1730f0510444023f93d2cdc">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
                                     Sede Paloquemao</a>
                             </li>
                             <li data-list-item-id="e5eff00562f591364138400227fffe98a">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="ec4b88a9a357cf5bdb19f1d1fabf139d7">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="edcf28e41e7b09772d768068057cc19eb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e33ab7d1d4a4991699e775f54d2fdf974">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1166,32 +1251,32 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e53561fe9a62dc4fb2dc0c59ee4c2f906">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://bogota.gov.co/sdqs/crear-peticion">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e8226a4f8bac363d5fff12b76256353d1">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="ed340fbd5555cfb9b4f64f2bdfc8cbb58">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e23715f7048e0387020c11cfee915030e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e0145f65e5755bb79950303e620ed20e8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ed4f90feaef1955b06d66dbc861cad890">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1219,28 +1304,28 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e97d6984c240a9f1e8e03aaefcbd0d1aa">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://picoyplacasolidario.movilidadbogota.gov.co/PortalCiudadano/#/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e73f118faff1df0d6b49134f1ecbd757b">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="eff17bbf76921d7f8e314d5730be4236c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e0d5a7343e2b53476c3c366646c0d8ea8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="eb6233a03cc468f1165365a8110409571">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1269,36 +1354,36 @@
                         <ul class="list-canals">
                             <li data-list-item-id="ef0ccb078d366aedfcc68ca76467ee34e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e685332d58c0209b04cc081021b6e62b4">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e7faf45e6ab77436e6a96e7c7180fa2d3">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Presencial: Puntos de
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Presencial: Puntos de
                                     radicación de correspondencia</a>
                             </li>
                             <li data-list-item-id="e9560e10e43cad0b0abcfcfee09f30748">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e695f88e04ab798a3dd3a352d1b093671">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e590d38275080bfe45048dcc1616ced05">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ee4bf993a25558c0e0f3d5decd2a3f181">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1327,33 +1412,33 @@
                         <ul class="list-canals">
                             <li data-list-item-id="ed6421e835accd4d9bcfe88f1637de22f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://vucapp.habitatbogota.gov.co/vuc/login.seam">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e7fd36dfc53342b568a8363ba2d8c5a7e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
+                                        alt="" aria-hidden="true"></span><a href="https://goo.gl/maps/G3w4osY6PFcf39Y67">Presencial
                                     Sede Paloquemao</a>
                             </li>
                             <li data-list-item-id="e51ab52bbd40df1f951461eb84cee46a0">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="ef4be4a5d8dfaac50f6cc2dec37633205">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e93c2808a4abf2c812dc0d08a18548dbb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e5fc1ca13401ad147a32c76e97cf1ed6e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1383,36 +1468,36 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e123954c1354f67cc982ae78325d7b3a8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs/">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="efa24e73a424e4eb64f5f47995702f2d3">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e27f0d450c021f3403f0f3fe69aa70b42">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Presencial: Puntos de
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Presencial: Puntos de
                                     radicación de correspondencia</a>
                             </li>
                             <li data-list-item-id="ec0fbcba3c69234746236555f9e12badb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e220b445c1f05f4f2ec09252b1000d75d">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e898149457a840d8cc8f03285c43548ce">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e5a8eeb823f5a2ff969daea9156456612">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1439,33 +1524,33 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e1b2493c3d46c51f62f618c42c471c5ae">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://registrobicibogota.movilidadbogota.gov.co/#!/">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e90f8d1b99a387b1c0d1d166e6cce57eb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/centros-locales-de-movilidad">Presencial: Centros
+                                        alt="" aria-hidden="true"></span><a href="/centros-locales-de-movilidad">Presencial: Centros
                                     locales de movilidad</a>
                             </li>
                             <li data-list-item-id="eaf0256eb08f2f48fd071a3f150ca2581">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e0cfa3a896db9a63315146d404eedcbdf">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="ee282d5a6ef3b97339de5c6d23ad48787">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e7164d3c6c675044369de0888a2007f7f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1492,31 +1577,31 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e2466d21bfea3c585c8ef7fc16652adf6">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs/">Repórtalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs/">Repórtalo</a>
                             </li>
                             <li data-list-item-id="ee36d1bd02f5eff3bc8ffd1018407e759">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="ed75918134f00f8aa9dda43ef1cfa0fe6">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="eec4e1ab6c6c2c56ad598610da9e61d12">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e50f791bae3cd7cf117cf51c6a04aaaa5">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e8e2592ad6977f98ea29f28d44096093e">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1544,36 +1629,36 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e0b0f715e31644f5d3b79aefc3b572c1d">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
                             </li>
                             <li data-list-item-id="ee1093ebd4ca614dc178be295a0eeee96">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e70a0f71b7fc08a837118e7ac7318c9ca">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Presencial: Puntos de
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Presencial: Puntos de
                                     radicación de correspondencia</a>
                             </li>
                             <li data-list-item-id="e55458baaa2de3f3e4c5b0e2dbf5fba3b">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e9e804b3b324850d4b5e2fa90833b0a68">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="ea67af8e9d2dd0ac9255de41fbdcde4d4">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="ed0433309492f26f26a123cedafb56eea">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1601,27 +1686,27 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e62a3c99eab145656b721b7213b613611">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="/cicloparqueaderos">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="/cicloparqueaderos">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e5fe689f0669ae3d0792ab2084fde64e8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e334056a938e19ad00a142379c0f50c26">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e5247114260ec307242bf83bf426308fe">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e304ac2bc4de55fce1d540e326a2aecd6">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1652,31 +1737,31 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e48922c5838e623bfcf7c4a7e8f43cd73">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
                             </li>
                             <li data-list-item-id="efc06c895ec39a33bcbd779dd4ccc00bd">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e2ce5e45b3579afd5cd11d2ef3a4e10a9">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="eb70f89fbc01ec94816843e82d44539b8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e10ea4e6c0d3b031850a2f1eb204b8e1c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e05ff0fec8db4510f5fc51af77f2fadf4">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1704,36 +1789,36 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e6b0c7d9f779a55966da776db6ac3a2e7">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://bogota.gov.co/sdqs">Solicítalo</a>
                             </li>
                             <li data-list-item-id="eb77a73f5d93e2493874b029aaa27755b">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e5252a3b266659ff5a05b02c809dcc8eb">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Presencial: Puntos de
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Presencial: Puntos de
                                     radicación de correspondencia</a>
                             </li>
                             <li data-list-item-id="edd7a45b450259027cf113e40fa0e21ac">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e584750263426d9adfd7491dbd449645f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="ee9c01481cd4bc3d414517c65900b768c">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e9503f8df456f381fdacd5c249c696cb4">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1761,36 +1846,36 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e1c3393a7ce3115da8e69370add7c7120">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://www.movilidadbogota.gov.co/form/autorizacion-de-traslado-en-grua">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://www.movilidadbogota.gov.co/form/autorizacion-de-traslado-en-grua">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e4f27b4bd320fdb502847de674f1e75ea">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="ed49e17370ba568be7727dd44fe334182">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/posicion_20.png"
-                                        alt="icono"></span><a href="/puntos-de-atencion">Presencial: Puntos de
+                                        alt="" aria-hidden="true"></span><a href="/puntos-de-atencion">Presencial: Puntos de
                                     radicación de correspondencia</a>
                             </li>
                             <li data-list-item-id="e1d54139d2962e8acc811b3b3f4bbd08a">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e59936ae51337c87917b7cc4a4e15117f">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="e30f5c99ed52d8c340ef70aaf023ac7e8">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e89b1b4449be4d9b1e79a81172f19d249">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1817,31 +1902,31 @@
                         <ul class="list-canals">
                             <li data-list-item-id="e9a32f36f34f4f168f2adf364f905a901">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="icono"></span><a href="https://www.movilidadbogota.gov.co/certificacion_de_procesos_de_investigaciones_administrativas">Solicítalo</a>
+                                        alt="" aria-hidden="true"></span><a href="https://www.movilidadbogota.gov.co/certificacion_de_procesos_de_investigaciones_administrativas">Solicítalo</a>
                             </li>
                             <li data-list-item-id="e67c8fae95e04413b9a8d09d5c6db6ee2">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/email_20.png"
-                                        alt="icono"></span><a href="/radicacionwebsdm">Radicar correo</a>
+                                        alt="" aria-hidden="true"></span><a href="/radicacionwebsdm">Radicar correo</a>
                             </li>
                             <li data-list-item-id="e85dd6e74af548f7a1e84c2ba866535f3">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="icono"></span><a href="tel:6013649400">Llámanos</a>
+                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
                             </li>
                             <li data-list-item-id="e4d33c0f2de548eb921bfcb29357e9654">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
                                     llamada</a>
                             </li>
                             <li data-list-item-id="ea5380fca34f4ed0bce393ac5163e9c35">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
                                     en línea</a>
                             </li>
                             <li data-list-item-id="e7f693018d7642c9aa77f396bf3c67ef6">
                                 <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="icono"></span><a
+                                        alt="" aria-hidden="true"></span><a
                                     href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
                                     de señas colombiana</a>
                             </li>
@@ -1918,9 +2003,17 @@
                     padding: 16px;
                 }
             }
+
         </style>
         <script>
+            (function() {
             // Script para filtrar las tarjetas de trámites y servicios
+            var ROOT_ID = "tramites-servicios-wrapper";
+
+            function getRoot() {
+                return document.getElementById(ROOT_ID);
+            }
+
             function actualizarVisibilidadTarjeta(card, visible) {
                 if (visible) {
                     card.classList.add("uncover");
@@ -1933,21 +2026,64 @@
                 }
             }
 
-            function actualizarConteoResultados() {
-                var status = document.getElementById("results-status");
+            function actualizarConteoResultados(totalFiltrados) {
+                var root = getRoot();
+                if (!root) return;
+                var status = root.querySelector("#results-status");
                 if (!status) return;
-                var visibles = document.querySelectorAll(".card-ts.uncover").length;
-                if (visibles === 0) {
+                if (totalFiltrados === 0) {
                     status.textContent = "No hay resultados disponibles para los filtros aplicados.";
                     return;
                 }
-                status.textContent = visibles + (visibles === 1 ? " resultado disponible." : " resultados disponibles.");
+                status.textContent = totalFiltrados + (totalFiltrados === 1 ? " resultado disponible." :
+                    " resultados disponibles.");
             }
 
             function obtenerCategoriaActiva() {
-                var activeButton = document.querySelector("#buttonsFilter .btn.active");
+                var root = getRoot();
+                if (!root) return "all";
+                var activeButton = root.querySelector("#buttonsFilter .btn.active");
                 if (!activeButton) return "all";
                 return activeButton.getAttribute("data-filter") || "all";
+            }
+
+            function obtenerConteosPorGrupo() {
+                var root = getRoot();
+                if (!root) return { all: 0, tramites: 0, servicios: 0, pqrsds: 0 };
+                var cards = root.querySelectorAll(".card-ts");
+                var conteos = {
+                    all: cards.length,
+                    tramites: 0,
+                    servicios: 0,
+                    pqrsds: 0
+                };
+
+                for (var i = 0; i < cards.length; i++) {
+                    if (cards[i].classList.contains("tramites")) conteos.tramites++;
+                    if (cards[i].classList.contains("servicios")) conteos.servicios++;
+                    if (cards[i].classList.contains("pqrsds")) conteos.pqrsds++;
+                }
+
+                return conteos;
+            }
+
+            function actualizarEtiquetasBotones() {
+                var root = getRoot();
+                if (!root) return;
+                var conteos = obtenerConteosPorGrupo();
+                var etiquetas = {
+                    all: "Mostrar todo",
+                    tramites: "Trámites",
+                    servicios: "Servicios",
+                    pqrsds: "PQRSD"
+                };
+
+                var buttons = root.querySelectorAll("#buttonsFilter .btn");
+                buttons.forEach(function(button) {
+                    var filtro = button.getAttribute("data-filter");
+                    if (!filtro || !etiquetas[filtro]) return;
+                    button.textContent = etiquetas[filtro] + " (" + conteos[filtro] + ")";
+                });
             }
 
             function coincideTexto(card, filter) {
@@ -1959,24 +2095,56 @@
                 return titleText.toUpperCase().indexOf(filter) > -1 || descText.toUpperCase().indexOf(filter) > -1;
             }
 
-            function aplicarFiltros() {
-                var cards = document.getElementsByClassName("card-ts");
+            function obtenerTarjetasFiltradas() {
+                var root = getRoot();
+                if (!root) return [];
+                var cards = root.querySelectorAll(".card-ts");
                 var selectedCategory = obtenerCategoriaActiva();
-                var input = document.getElementById("sentence");
+                var input = root.querySelector("#sentence");
                 var filter = input ? input.value.toUpperCase() : "";
+                var filtradas = [];
 
                 for (var i = 0; i < cards.length; i++) {
                     var matchCategory = selectedCategory === "all" || cards[i].classList.contains(selectedCategory);
                     var matchText = filter === "" || coincideTexto(cards[i], filter);
-                    actualizarVisibilidadTarjeta(cards[i], matchCategory && matchText);
+                    if (matchCategory && matchText) {
+                        filtradas.push(cards[i]);
+                    }
                 }
 
-                actualizarConteoResultados();
+                return filtradas;
+            }
+
+            function aplicarFiltros(reiniciarPagina) {
+                var filtradas = obtenerTarjetasFiltradas();
+                var totalFiltrados = filtradas.length;
+                var root = getRoot();
+                if (!root) return;
+                var resultsRegion = root.querySelector("#ts-cards");
+                if (resultsRegion) {
+                    resultsRegion.setAttribute("aria-busy", "true");
+                }
+                var todas = root.querySelectorAll(".card-ts");
+
+                for (var i = 0; i < todas.length; i++) {
+                    actualizarVisibilidadTarjeta(todas[i], false);
+                }
+
+                for (var j = 0; j < totalFiltrados; j++) {
+                    actualizarVisibilidadTarjeta(filtradas[j], true);
+                }
+
+                actualizarConteoResultados(totalFiltrados);
+                if (resultsRegion) {
+                    resultsRegion.setAttribute("aria-busy", "false");
+                }
             }
 
             function filterSelection(evt, c) {
+                var root = getRoot();
+                if (!root) return;
                 // Remover la clase active de todos los botones
-                var buttons = document.getElementById("buttonsFilter").getElementsByClassName("btn");
+                var buttons = root.querySelectorAll("#buttonsFilter .btn");
                 for (var i = 0; i < buttons.length; i++) {
                     buttons[i].classList.remove("active");
                     buttons[i].setAttribute("aria-pressed", "false");
@@ -1995,14 +2163,19 @@
                         }
                     }
                 }
-                aplicarFiltros();
+                aplicarFiltros(true);
             }
             // Función para limpiar el filtro de búsqueda
             function limpiarFiltro(evt) {
+                var root = getRoot();
+                if (!root) return;
                 if (evt) evt.preventDefault();
-                document.getElementById("sentence").value = "";
+                var sentenceInput = root.querySelector("#sentence");
+                if (sentenceInput) {
+                    sentenceInput.value = "";
+                }
                 // Restablecer el botón activo a "Mostrar todo"
-                var buttons = document.getElementById("buttonsFilter").getElementsByClassName("btn");
+                var buttons = root.querySelectorAll("#buttonsFilter .btn");
                 for (var i = 0; i < buttons.length; i++) {
                     buttons[i].classList.remove("active");
                     buttons[i].setAttribute("aria-pressed", "false");
@@ -2011,18 +2184,24 @@
                         buttons[i].setAttribute("aria-pressed", "true");
                     }
                 }
-                aplicarFiltros();
+                aplicarFiltros(true);
             }
             // Función para filtrar por texto (búsqueda)
             function filtrarPorTexto() {
-                aplicarFiltros();
+                aplicarFiltros(true);
             }
-            // Agregar evento de entrada al campo de búsqueda
-            document.addEventListener("DOMContentLoaded", function() {
-                var searchInput = document.getElementById("sentence");
+            function inicializarVistaTramitesServicios() {
+                if (window.__tramitesServiciosInitDone) return;
+                window.__tramitesServiciosInitDone = true;
+                var root = getRoot();
+                if (!root) return;
+
+                var searchInput = root.querySelector("#sentence");
                 if (searchInput) {
                     searchInput.addEventListener("input", filtrarPorTexto);
                 }
+
+                actualizarEtiquetasBotones();
 
                 var searchForm = searchInput ? searchInput.closest("form") : null;
                 if (searchForm) {
@@ -2032,7 +2211,7 @@
                     });
                 }
 
-                var tramiteCards = document.querySelectorAll(".card-ts");
+                var tramiteCards = root.querySelectorAll(".card-ts");
                 tramiteCards.forEach(function(card, index) {
                     var channels = card.querySelector(".canals-ts");
                     var title = card.querySelector("h3");
@@ -2066,11 +2245,31 @@
                     });
                 });
 
-                aplicarFiltros();
-            });
+                aplicarFiltros(true);
+            }
+
+            if (!window.mouseoversound || typeof window.mouseoversound.playclip !== "function") {
+                window.mouseoversound = {
+                    playclip: function() {}
+                };
+            }
+            window.tsFilterSelection = function(evt, c) {
+                filterSelection(evt, c);
+                return false;
+            };
+            window.tsLimpiarFiltro = function(evt) {
+                limpiarFiltro(evt);
+                return false;
+            };
+
+            // Agregar evento de entrada al campo de búsqueda
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", inicializarVistaTramitesServicios);
+            } else {
+                inicializarVistaTramitesServicios();
+            }
+            })();
         </script>
     </div>
 
-@endsection
-
-
+@stop

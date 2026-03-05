@@ -92,6 +92,10 @@
                         <span class="title-two-accordion-govco">Accesos disponibles</span>
                         <ul class="mb-0">
                             <li>
+                                Grupo 1 - Calandario:
+                                <a href="{{ route('transparencia.1.calandario') }}">Ir al Calandario</a>
+                            </li>
+                            <li>
                                 Grupo 1 - Agremiaciones:
                                 <a href="{{ route('transparencia.1.agremiaciones') }}">Ir a Agremiaciones</a>
                             </li>

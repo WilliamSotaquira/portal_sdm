@@ -53,6 +53,7 @@
                         <div><code>/</code> -> <a href="{{ route('home') }}">home</a></div>
                         <div><code>/dashboard</code> -> <a href="{{ route('dashboard') }}">dashboard</a></div>
                         <div><code>/culturas</code> -> <a href="{{ route('culturas') }}">culturas</a></div>
+                        <div><code>/menu</code> -> <a href="{{ route('menu') }}">menu</a></div>
                     </div>
 
                     <div class="col-md-6">
@@ -92,6 +93,7 @@
                     <div class="col-md-6">
                         <h3 class="h6 mb-2">Transparencia</h3>
                         <div><code>/transparencia</code> -> <a href="{{ route('transparencia.index') }}">transparencia.index</a></div>
+                        <div><code>/transparencia/1</code> -> <a href="{{ route('transparencia.1.calandario') }}">transparencia.1.calandario</a></div>
                         <div><code>/transparencia/1/agremiaciones</code> -> <a href="{{ route('transparencia.1.agremiaciones') }}">transparencia.1.agremiaciones</a></div>
                         <div><code>/transparencia/9/estados_financieros</code> -> <a href="{{ route('transparencia.9.estados_financieros') }}">transparencia.9.estados_financieros</a></div>
                     </div>

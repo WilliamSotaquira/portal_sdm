@@ -107,6 +107,15 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('transparencia.1.calandario') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Transparencia - Calandario grupo 1</h2>
+                        <p class="mb-0 text-muted">Acceso al calandario y actividades del grupo 1.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('transparencia.9.estados_financieros') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Transparencia - Estados financieros</h2>

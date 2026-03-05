@@ -14,6 +14,7 @@ Route::get('/dashboard', function () {
 
 // Convocatorias de cultura
 Route::view('/culturas', 'culturas')->name('culturas');
+Route::view('/menu', 'menu')->name('menu');
 
 // Fallback para archivos Drupal en entornos donde no existe /sites/default/files local.
 Route::get('/sites/default/files/{path}', function (\Illuminate\Http\Request $request, string $path) {

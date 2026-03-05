@@ -7,6 +7,9 @@ Route::prefix('transparencia')->name('transparencia.')->group(function () {
 
     // grupo 1
     Route::prefix('1')->name('1.')->group(function () {
+        // calendario
+        Route::view('/', 'transparencia.1.calandario')->name('calandario');
+
         // agremiaciones
         Route::view('agremiaciones', 'transparencia.1.agremiaciones')->name('agremiaciones');
     });

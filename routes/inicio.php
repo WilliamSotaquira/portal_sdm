@@ -10,6 +10,8 @@ Route::prefix('inicio')->name('inicio.')->group(function () {
     Route::view('/desembargos', 'inicio.desembargos')->name('desembargos');
     // comparendos
     Route::view('/comparendos', 'inicio.comparendos')->name('comparendos');
+    // pico y placa
+    Route::view('/pico_placa', 'inicio.pico_placa')->name('pico_placa');
     // ms (compatibilidad hacia sites)
     Route::redirect('/ms', '/sites/ms')->name('ms');
     // banners

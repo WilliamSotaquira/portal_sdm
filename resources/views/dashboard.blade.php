@@ -61,6 +61,7 @@
                         <div><code>/inicio/home</code> -> <a href="{{ route('inicio.home') }}">inicio.home</a></div>
                         <div><code>/inicio/menu-principal</code> -> <a href="{{ route('inicio.menu-principal') }}">inicio.menu-principal</a></div>
                         <div><code>/inicio/comparendos</code> -> <a href="{{ route('inicio.comparendos') }}">inicio.comparendos</a></div>
+                        <div><code>/inicio/pico_placa</code> -> <a href="{{ route('inicio.pico_placa') }}">inicio.pico_placa</a></div>
                         <div><code>/inicio/desembargos</code> -> <a href="{{ route('inicio.desembargos') }}">inicio.desembargos</a></div>
                         <div><code>/inicio/banners</code> -> <a href="{{ route('inicio.banners') }}">inicio.banners</a></div>
                     </div>

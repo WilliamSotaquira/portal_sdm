@@ -341,6 +341,7 @@
                                         <li><a class="dropdown-item {{ request()->is('inicio/home') ? 'active' : '' }}" href="{{ route('inicio.home') }}">Home</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/menu-principal') ? 'active' : '' }}" href="{{ route('inicio.menu-principal') }}">Menu principal</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/comparendos') ? 'active' : '' }}" href="{{ route('inicio.comparendos') }}">Comparendos</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('inicio/pico_placa') ? 'active' : '' }}" href="{{ route('inicio.pico_placa') }}">Pico y placa</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/desembargos') ? 'active' : '' }}" href="{{ route('inicio.desembargos') }}">Desembargos</a></li>
                                         <li><a class="dropdown-item {{ request()->is('inicio/banners') ? 'active' : '' }}" href="{{ route('inicio.banners') }}">Banners</a></li>
                                     </ul>

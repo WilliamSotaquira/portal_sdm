@@ -15,6 +15,7 @@ Route::get('/dashboard', function () {
 // Convocatorias de cultura
 Route::view('/culturas', 'culturas')->name('culturas');
 Route::view('/menu', 'menu')->name('menu');
+Route::redirect('/pico-y-placa', '/inicio/pico_placa');
 
 // Fallback para archivos Drupal en entornos donde no existe /sites/default/files local.
 Route::get('/sites/default/files/{path}', function (\Illuminate\Http\Request $request, string $path) {

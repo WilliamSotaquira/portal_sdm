@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="card" role="listitem">
-                    <a href="/pico-y-placa" aria-label="Consultar pico y placa">
+                    <a href="{{ route('inicio.pico_placa') }}" aria-label="Consultar pico y placa">
                         <span class="card-icon">
                             <img src="/sites/default/files/2025-12/icono_8_frecuentes.png" alt="" aria-hidden="true"
                                 height="64" width="64" loading="lazy">

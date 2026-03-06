@@ -31,6 +31,16 @@ Este archivo define tareas recurrentes que debo ejecutar o validar cuando trabaj
 - Documentación desactualizada.
 - Entregar una lista corta de mejoras priorizadas (alta, media, baja).
 
+## Tareas por identificador
+
+- `pico y placa`:
+- Identificadores para reconocer la tarea: `pp`, `pico`, `placa`, `pyp`.
+- Cuando se use alguno, asumir que la tarea objetivo es la vista/ruta de Pico y Placa.
+- Primer paso obligatorio: solicitar el enlace nuevo del calendario antes de editar archivos o mover elementos.
+- Segundo paso obligatorio: mover el enlace/calendario actual al bloque de `Histórico` del año correspondiente.
+- Tercer paso obligatorio: en el botón principal `<a class="btn btn-primary btn-lg btn-block">` de `resources/views/inicio/pico_placa.blade.php`, agregar el enlace nuevo y actualizar el nombre visible (mes y año).
+- Regla de contenido: los calendarios mensuales (ej. febrero 2026) deben quedar en el bloque de `Histórico` del año correspondiente en `resources/views/inicio/pico_placa.blade.php`, no como botón principal destacado.
+
 ## Formato de cierre en cada entrega
 
 - Resumen corto del cambio.

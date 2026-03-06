@@ -6,6 +6,7 @@ Este archivo define tareas recurrentes que debo ejecutar o validar cuando trabaj
 
 - Antes de empezar cambios grandes, revisar este archivo y confirmar qué tareas aplican en la sesión.
 - Si una tarea no aplica, dejar constancia breve en el reporte final.
+- Las rutas deben ser relativas.
 
 ## Tareas diarias (por sesión de trabajo)
 
@@ -36,6 +37,7 @@ Este archivo define tareas recurrentes que debo ejecutar o validar cuando trabaj
 - `pico y placa`:
 - Identificadores para reconocer la tarea: `pp`, `pico`, `placa`, `pyp`.
 - Cuando se use alguno, asumir que la tarea objetivo es la vista/ruta de Pico y Placa.
+- En esta tarea, todas las rutas y referencias de archivos deben manejarse en formato relativo.
 - Primer paso obligatorio: solicitar el enlace nuevo del calendario antes de editar archivos o mover elementos.
 - Segundo paso obligatorio: mover el enlace/calendario actual al bloque de `Histórico` del año correspondiente.
 - Tercer paso obligatorio: en el botón principal `<a class="btn btn-primary btn-lg btn-block">` de `resources/views/inicio/pico_placa.blade.php`, agregar el enlace nuevo y actualizar el nombre visible (mes y año).

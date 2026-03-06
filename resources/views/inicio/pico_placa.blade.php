@@ -4,7 +4,7 @@
         <div class="row">
             <p class="paragraph ph-1">
                 Consulte el <a
-                    href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-12-24/decreto_463_de_2024_1.pdf"
+                    href="/sites/default/files/Temas/2024-12-24/decreto_463_de_2024_1.pdf"
                     rel="noopener noreferrer" target="_blank">Decreto 463 de 2024</a> “Por medio del cual se sustituye el
                 parágrafo transitorio del artículo 1 deI Decreto Distrital 003 de 2023, que suspende temporalmente la
                 medida de restricción del parágrafo 2 en la circulación de los vehículos automotores de servicio
@@ -23,7 +23,7 @@
             <div class="col-xs-12">
                 <p class="text-align-center">
                     <a class="btn btn-primary btn-lg btn-block"
-                        href="https://ovprdnwportwebapp01.movilidadbogota.gov.co/sites/default/files/2026-03-06/calendario%20pico%20y%20placa%202026_marzo.pdf"
+                        href="/sites/default/files/2026-03-06/calendario%20pico%20y%20placa%202026_marzo.pdf"
                         role="button" target="_blank">Pico y placa marzo de 2026</a>
                 </p>
             </div>
@@ -173,52 +173,52 @@
                                 </li>
                                 <li data-list-item-id="e5aeb3825c4fbbb3c93fa3d8c995e67ac">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-09-30/CALENDARIO_PICO_Y_PLACA_2025_OCTUBRE.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-09-30/CALENDARIO_PICO_Y_PLACA_2025_OCTUBRE.pdf">Pico
                                         y placa octubre de 2025</a>
                                 </li>
                                 <li data-list-item-id="e59a065cc2c0d22145cba782677679315">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-09-05/CALENDARIO_PICO_Y_PLACA_2025_SEPTIEMBRE.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-09-05/CALENDARIO_PICO_Y_PLACA_2025_SEPTIEMBRE.pdf">Pico
                                         y placa septiembre de 2025</a>
                                 </li>
                                 <li data-list-item-id="e78907c99fe9c2476c424b610c0498be8">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-08-05/CALENDARIO_PICO_Y_PLACA_2025_AGOSTO_2_1.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-08-05/CALENDARIO_PICO_Y_PLACA_2025_AGOSTO_2_1.pdf">Pico
                                         y placa agosto de 2025</a>
                                 </li>
                                 <li data-list-item-id="e9212d58d6d64676f7c6840f64c9f86d4">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-07-01/CALENDARIO_PICO_Y_PLACA_2025_JULIO_1.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-07-01/CALENDARIO_PICO_Y_PLACA_2025_JULIO_1.pdf">Pico
                                         y placa julio de 2025</a>
                                 </li>
                                 <li data-list-item-id="ec0bce412a555a940df558a1b5afaadf2">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-05-27/CALENDARIO_PICO_Y_PLACA_2025_JUNIO.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-05-27/CALENDARIO_PICO_Y_PLACA_2025_JUNIO.pdf">Pico
                                         y placa junio de 2025</a>
                                 </li>
                                 <li data-list-item-id="e4b32567a6f8b136ab539437bad1229a8">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-05-02/CALENDARIO_PICO_Y_PLACA_2025_MAYO_2.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-05-02/CALENDARIO_PICO_Y_PLACA_2025_MAYO_2.pdf">Pico
                                         y placa mayo de 2025</a>
                                 </li>
                                 <li data-list-item-id="e849c7a5d674bd00bcf40dcfec36b84fe">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-04-03/calendario_pico_y_placa_2025_abril_1.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-04-03/calendario_pico_y_placa_2025_abril_1.pdf">Pico
                                         y placa abril de 2025</a>
                                 </li>
                                 <li data-list-item-id="eb9b032337ecc805f6ed9f651f67fb8c8">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2025-02-28/calendario_pico_y_placa_2025_marzo_1.pdf">Pico
+                                        href="/sites/default/files/Temas/2025-02-28/calendario_pico_y_placa_2025_marzo_1.pdf">Pico
                                         y placa marzo de 2025</a>
                                 </li>
                                 <li data-list-item-id="e790c506ca046ca5c05a709b44b62adbc">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Noticias/04-02-2025/calendario_pico_y_placa_febrero_2025.pdf">Pico
+                                        href="/sites/default/files/Noticias/04-02-2025/calendario_pico_y_placa_febrero_2025.pdf">Pico
                                         y placa febrero de 2025</a>
                                 </li>
                                 <li data-list-item-id="ed5ca39926d53fee7bd815be8bcac5925">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-12-31/calendario_pico_y_placa_2025-enero.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-12-31/calendario_pico_y_placa_2025-enero.pdf">Pico
                                         y placa enero de 2025</a>
                                 </li>
                             </ul>
@@ -234,62 +234,62 @@
                             <ul>
                                 <li data-list-item-id="ea03311eed69d86193fa45b8d144f9fad">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-12-09/calendario_pico_y_placa_2024-dic-1.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-12-09/calendario_pico_y_placa_2024-dic-1.pdf">Pico
                                         y placa diciembre de 2024</a>
                                 </li>
                                 <li data-list-item-id="e2c713d23533e3e0717d0aa0d5df9f7d4">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-10-30/calendario_pico_y_placa_2024-_nov.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-10-30/calendario_pico_y_placa_2024-_nov.pdf">Pico
                                         y placa noviembre de 2024</a>
                                 </li>
                                 <li data-list-item-id="e230d183609de1f8882c8650f24228503">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-10-02/calendario_pico_y_placa_2024-_octubre.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-10-02/calendario_pico_y_placa_2024-_octubre.pdf">Pico
                                         y placa octubre de 2024</a>
                                 </li>
                                 <li data-list-item-id="ef37585e084e97f9e08b0bc7d20f0836c">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-09-02/calendario_pico_y_placa_2024-_septiembre.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-09-02/calendario_pico_y_placa_2024-_septiembre.pdf">Pico
                                         y placa septiembre de 2024</a>
                                 </li>
                                 <li data-list-item-id="efe033f3450683675c7edd8c873de4558">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-08-02/calendario_pico_y_placa_2024-agosto_2.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-08-02/calendario_pico_y_placa_2024-agosto_2.pdf">Pico
                                         y placa agosto de 2024</a>
                                 </li>
                                 <li data-list-item-id="e54c180cc3ac9334ae04a76561a5d068b">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-07-02/calendario_pico_y_placa_2024-julio_1.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-07-02/calendario_pico_y_placa_2024-julio_1.pdf">Pico
                                         y placa julio de 2024</a>
                                 </li>
                                 <li data-list-item-id="e03d95b022523a54ff7b7f948ef6661fa">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-06-03/calendario_pico_y_placa_2024-junio.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-06-03/calendario_pico_y_placa_2024-junio.pdf">Pico
                                         y placa junio de 2024</a>
                                 </li>
                                 <li data-list-item-id="e683776cb671dd3518b6ae374832d0911">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-05-02/calendario_pico_y_placa_2024-mayo-1.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-05-02/calendario_pico_y_placa_2024-mayo-1.pdf">Pico
                                         y placa mayo de 2024</a>
                                 </li>
                                 <li data-list-item-id="e23fe99aabb95d3cb0a1c37502cd18cbd">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-03-21/calendario_pico_y_placa_2024-abril.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-03-21/calendario_pico_y_placa_2024-abril.pdf">Pico
                                         y placa abril de 2024</a>
                                 </li>
                                 <li data-list-item-id="e23f546da3a0ae2bb04e5d5a35d481a9e">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-02-22/calendario_pico_y_placa_2024-marzo.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-02-22/calendario_pico_y_placa_2024-marzo.pdf">Pico
                                         y placa marzo de 2024</a>
                                 </li>
                                 <li data-list-item-id="ebfd16409edc2d0b9e5b9c50ae48e8009">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-01-25/calendario_pico_y_placa_2024-_febrero_diseno.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-01-25/calendario_pico_y_placa_2024-_febrero_diseno.pdf">Pico
                                         y placa febrero de 2024</a>
                                 </li>
                                 <li data-list-item-id="ec9cea960a64db14d3b9361990f5308c9">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2024-01-02/calendario_pico_y_placa_2024_enero.pdf">Pico
+                                        href="/sites/default/files/Temas/2024-01-02/calendario_pico_y_placa_2024_enero.pdf">Pico
                                         y placa enero de 2024</a>
                                 </li>
                             </ul>
@@ -305,17 +305,17 @@
                             <ul>
                                 <li data-list-item-id="e5baeb24a4f3b6aaf8a528c17a038f43f">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2023-09-15/calendario_pico_y_placa_2023-q3_1.pdf">Pico
+                                        href="/sites/default/files/Temas/2023-09-15/calendario_pico_y_placa_2023-q3_1.pdf">Pico
                                         y placa de septiembre a diciembre 2023</a>
                                 </li>
                                 <li data-list-item-id="ea9d31af6c10ac8b533f7e9f53d275d37">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2023-05-02/calendario_pico_y_placa_2023-q2.pdf">Pico
+                                        href="/sites/default/files/Temas/2023-05-02/calendario_pico_y_placa_2023-q2.pdf">Pico
                                         y placa de mayo a agosto 2023</a>
                                 </li>
                                 <li data-list-item-id="e419cc16f10f07330c8e97c9ae5dddcec">
                                     <a
-                                        href="https://www.movilidadbogota.gov.co/web/sites/default/files/Temas/2022-12-30/calendario_pico_y_placa_2023-q1.pdf">Pico
+                                        href="/sites/default/files/Temas/2022-12-30/calendario_pico_y_placa_2023-q1.pdf">Pico
                                         y placa de enero a abril 2023</a>
                                 </li>
                             </ul>
@@ -341,3 +341,4 @@
         </div>
     </div>
 </div>
+

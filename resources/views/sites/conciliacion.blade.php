@@ -657,7 +657,7 @@
                         <strong>Correo:</strong> conciliacionsdm@movilidadbogota.gov.co
                     </p>
                     <p>
-                        <strong>Horario:</strong> Lunes a Viernes de 8 A.M. - 4 P.M.
+                        <strong>Horario:</strong> lunes a viernes, de 8:00 a. m. a 4:00 p. m.
                     </p>
                     <p>
                         <br>

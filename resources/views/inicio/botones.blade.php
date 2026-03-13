@@ -111,7 +111,9 @@
             background: #ffffff !important;
             overflow: hidden !important;
             box-shadow: 0 2px 8px rgb(15 23 42 / 8%) !important;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+            transition: border-color 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.68s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
 
         .sdmfs__card:hover,
@@ -143,7 +145,9 @@
             height: 100% !important;
             padding: 1rem !important;
             backface-visibility: hidden !important;
-            transition: opacity 0.22s ease, transform 0.22s ease !important;
+            transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0.72s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
 
         .sdmfs__face--front {
@@ -191,18 +195,17 @@
             align-items: center !important;
             justify-content: center !important;
             width: 100% !important;
-            min-height: 104px !important;
-            max-height: 104px !important;
+            min-height: 82px !important;
+            max-height: 82px !important;
             overflow: hidden !important;
             line-height: 0 !important;
-            padding-top: 0.25rem !important;
-            padding-bottom: 0.25rem !important;
+            padding: 0.5rem 0.9rem 0.35rem !important;
         }
 
         .sdmfs__media img {
             display: block !important;
             max-width: 100% !important;
-            max-height: 96px !important;
+            max-height: 66px !important;
             width: auto !important;
             height: auto !important;
             object-fit: contain !important;
@@ -260,12 +263,30 @@
             text-align: center !important;
         }
 
-        .sdmfs__extra[hidden] {
-            display: none !important;
-        }
-
         .sdmfs__extra {
             margin-bottom: 1.25rem !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-18px) !important;
+            pointer-events: none !important;
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0.9s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        .sdmfs__extra[hidden] {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-18px) !important;
+            pointer-events: none !important;
+        }
+
+        .sdmfs__extra.is-open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            pointer-events: auto !important;
         }
 
         .sdmfs__toggle {
@@ -285,7 +306,9 @@
             line-height: 1.2 !important;
             cursor: pointer !important;
             box-shadow: none !important;
-            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+            transition: background-color 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.58s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
 
         .sdmfs__toggle:hover {
@@ -331,7 +354,7 @@
             height: 14px !important;
             fill: currentColor !important;
             transform: rotate(90deg) !important;
-            transition: transform 0.2s ease !important;
+            transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
 
         .sdmfs__toggle[aria-expanded="true"] .sdmfs__toggle-icon svg {
@@ -532,7 +555,7 @@
                 </div>
 
                 <div class="sdmfs__toggle-wrap">
-                    <div class="sdmfs__grid sdmfs__extra" id="sdmfs-extra-grid" hidden>
+                    <div class="sdmfs__grid sdmfs__extra" id="sdmfs-extra-grid">
                         <article class="sdmfs__card">
                             <a class="sdmfs__link" href="/pico-y-placa" aria-describedby="sdmfs-extra-desc-1">
                                 <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
@@ -598,10 +621,18 @@
                 toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
 
                 if (expanded) {
-                    extraGrid.removeAttribute('hidden');
-                } else {
-                    extraGrid.setAttribute('hidden', '');
+                    extraGrid.hidden = false;
+                    extraGrid.classList.remove('is-open');
+
+                    window.requestAnimationFrame(function() {
+                        extraGrid.classList.add('is-open');
+                    });
+
+                    return;
                 }
+
+                extraGrid.classList.remove('is-open');
+                extraGrid.hidden = true;
             }
 
             toggle.addEventListener('click', function() {
@@ -618,7 +649,9 @@
                 }
             });
 
-            setExpanded(false);
+            extraGrid.hidden = true;
+            extraGrid.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
         })();
     </script>
 

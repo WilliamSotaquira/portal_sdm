@@ -64,6 +64,7 @@
                         <div><code>/inicio/pico_placa</code> -> <a href="{{ route('inicio.pico_placa') }}">inicio.pico_placa</a></div>
                         <div><code>/inicio/desembargos</code> -> <a href="{{ route('inicio.desembargos') }}">inicio.desembargos</a></div>
                         <div><code>/inicio/banners</code> -> <a href="{{ route('inicio.banners') }}">inicio.banners</a></div>
+                        <div><code>/inicio/botones</code> -> <a href="{{ route('inicio.botones') }}">inicio.botones</a></div>
                     </div>
 
                     <div class="col-md-6">

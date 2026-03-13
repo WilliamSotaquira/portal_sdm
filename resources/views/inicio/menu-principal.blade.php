@@ -71,6 +71,15 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.botones') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Botones</h2>
+                        <p class="mb-0 text-muted">Vista de botones y accesos rapidos del modulo inicio.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('inicio.atencion-servicios.tramites-servicios.comparendos') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Tramites y servicios - Comparendos</h2>

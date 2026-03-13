@@ -16,6 +16,8 @@ Route::prefix('inicio')->name('inicio.')->group(function () {
     Route::redirect('/ms', '/sites/ms')->name('ms');
     // banners
     Route::view('/banners', 'inicio.banners')->name('banners');
+    // botones
+    Route::view('/botones', 'inicio.botones')->name('botones');
 
     // rutas inicio/atencion-servicios
     Route::prefix('atencion-servicios')->name('atencion-servicios.')->group(function () {

@@ -16,7 +16,28 @@
         </div>
         <div class="container-avisos-tramites-servicios">
             <div class="container-avisos">
-                {{-- {{ drupal_view('home', 'block_1') }} --}}
+                <section class="avisos-panel" aria-label="Avisos destacados">
+                    <article class="avisos-panel__section">
+                        <h3 class="avisos-panel__title">Avisos</h3>
+                        <p class="avisos-panel__text">
+                            Hoy pueden circular los vehículos de placa terminada en:
+                        </p>
+                        <p class="avisos-panel__highlight">Día par: 6-7-8-9-0</p>
+                        <a class="avisos-panel__button" href="{{ route('inicio.pico_placa') }}">
+                            Calendario pico y placa
+                        </a>
+                    </article>
+
+                    <article class="avisos-panel__section avisos-panel__section--divider">
+                        <h3 class="avisos-panel__title">Cierres</h3>
+                        <p class="avisos-panel__text">
+                            Infórmese sobre los cierres programados y aprobados por la Secretaría Distrital de Movilidad
+                        </p>
+                        <a class="avisos-panel__button" href="/plan-de-manejo-de-transito">
+                            Plan de manejo de tránsito
+                        </a>
+                    </article>
+                </section>
             </div>
             <ul class="container-tramites-servicios" role="list">
                 <li class="card" role="listitem">
@@ -171,6 +192,85 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 12px;
+        }
+
+        .container-avisos {
+            display: flex;
+            justify-content: center;
+        }
+
+        .avisos-panel {
+            width: 100%;
+            max-width: 276px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #bed000;
+            box-shadow: 0 10px 24px rgb(0 0 0 / 8%);
+        }
+
+        .avisos-panel__section {
+            padding: 18px 20px 26px;
+            text-align: center;
+            color: #2f3340;
+        }
+
+        .avisos-panel__section--divider {
+            border-top: 2px solid #454545;
+        }
+
+        .avisos-panel__title {
+            margin: 0 0 10px;
+            font-size: 2.6rem;
+            line-height: 1;
+            font-weight: 700;
+            color: #2f3340;
+        }
+
+        .avisos-panel__text {
+            margin: 0 0 10px;
+            font-size: 1rem;
+            line-height: 1.08;
+            font-weight: 600;
+            color: #2f3340;
+        }
+
+        .avisos-panel__highlight {
+            margin: 0 0 16px;
+            font-size: 0.98rem;
+            line-height: 1.1;
+            font-weight: 700;
+            color: #2f3340;
+        }
+
+        .avisos-panel__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 2px solid #5b5b5b;
+            border-radius: 20px;
+            background: #f3f3f3;
+            color: #5a5d31;
+            font-size: 1rem;
+            line-height: 1.1;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color .2s ease, transform .2s ease;
+        }
+
+        .avisos-panel__button:hover,
+        .avisos-panel__button:focus-visible {
+            background: #ffffff;
+            color: #4c531e;
+            transform: translateY(-1px);
+        }
+
+        .avisos-panel__button:focus-visible {
+            outline: 3px solid #2f3340;
+            outline-offset: 3px;
         }
 
         .container-tramites-servicios .card {

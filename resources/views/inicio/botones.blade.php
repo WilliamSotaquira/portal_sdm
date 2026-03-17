@@ -26,6 +26,20 @@
         .sdmfs a:not(.toolbar-icon):hover,
         .sdmfs a:not(.toolbar-icon):focus {
             color: inherit !important;
+            font-family: inherit !important;
+        }
+
+        .sdmfs .sdmfs__link,
+        .sdmfs .sdmfs__link:visited,
+        .sdmfs .sdmfs__link:active,
+        .sdmfs .sdmfs__link:hover,
+        .sdmfs .sdmfs__link:focus {
+            color: inherit !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            word-break: normal !important;
+            overflow-wrap: anywhere !important;
+            text-decoration: none !important;
         }
 
         .sdmfs .sdmfs__face--back a:not(.toolbar-icon),
@@ -33,7 +47,9 @@
         .sdmfs .sdmfs__face--back a:not(.toolbar-icon):active,
         .sdmfs .sdmfs__face--back a:not(.toolbar-icon):hover,
         .sdmfs .sdmfs__face--back a:not(.toolbar-icon):focus {
-            color: #ffffff !important;
+            color: inherit !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
         }
 
         .sdmfs {
@@ -75,7 +91,7 @@
             min-width: 0 !important;
         }
 
-        .sdmfs__notices > * {
+        .sdmfs__notices>* {
             max-width: 100% !important;
         }
 
@@ -88,6 +104,13 @@
             display: block !important;
             width: 100% !important;
             margin: 0 !important;
+        }
+
+        .sdmfs__notices .container-avisos {
+            all: unset !important;
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
         }
 
         .sdmfs__panel {
@@ -123,10 +146,15 @@
             transform: translateY(-1px) !important;
         }
 
+        .sdmfs__card:focus-within {
+            box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #111111, 0 10px 24px rgb(9 67 181 / 16%) !important;
+        }
+
         .sdmfs__link {
             position: relative !important;
             display: block !important;
             width: 100% !important;
+            height: 100% !important;
             color: inherit !important;
             text-decoration: none !important;
             outline: none !important;
@@ -134,8 +162,7 @@
         }
 
         .sdmfs__link:focus-visible {
-            outline: 3px solid #0b5fff !important;
-            outline-offset: 3px !important;
+            outline: none !important;
         }
 
         .sdmfs__face {
@@ -159,6 +186,7 @@
             opacity: 1 !important;
             visibility: visible !important;
             background: #ffffff !important;
+            z-index: 1 !important;
         }
 
         .sdmfs__face--back {
@@ -174,6 +202,7 @@
             visibility: hidden !important;
             transform: translateY(10px) !important;
             pointer-events: none !important;
+            z-index: 2 !important;
         }
 
         .sdmfs__card:hover .sdmfs__face--front,
@@ -188,6 +217,7 @@
             opacity: 1 !important;
             visibility: visible !important;
             transform: translateY(0) !important;
+            pointer-events: auto !important;
         }
 
         .sdmfs__media {
@@ -235,16 +265,40 @@
             align-self: end !important;
         }
 
+        .sdmfs .sdmfs__badge,
         .sdmfs__badge {
-            display: inline-block !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             margin: 0 !important;
-            color: #ffffff !important;
-            font-size: 0.88rem !important;
+            margin-bottom: 0.45rem !important;
+            padding: 0.38rem 0.8rem !important;
+            border-radius: 999px !important;
+            background: #e8f0ff !important;
+            color: #16315f !important;
+            font-size: 0.8rem !important;
             line-height: 1.2 !important;
             font-weight: 800 !important;
             text-align: center !important;
+            font-family: inherit !important;
+            letter-spacing: 0 !important;
         }
 
+        .sdmfs .sdmfs__back-title,
+        .sdmfs__back-title {
+            display: block !important;
+            margin: 0 !important;
+            color: #ffffff !important;
+            font-size: 0.96rem !important;
+            line-height: 1.25 !important;
+            font-weight: 800 !important;
+            text-align: center !important;
+            text-wrap: balance !important;
+            font-family: inherit !important;
+            letter-spacing: 0 !important;
+        }
+
+        .sdmfs .sdmfs__desc,
         .sdmfs__desc {
             display: block !important;
             margin: 0 !important;
@@ -255,6 +309,20 @@
             text-align: center !important;
             max-width: 100% !important;
             overflow-wrap: anywhere !important;
+            font-family: inherit !important;
+            letter-spacing: 0 !important;
+        }
+
+        .sdmfs .sdmfs__face--back .sdmfs__badge,
+        .sdmfs .sdmfs__face--back .sdmfs__back-title,
+        .sdmfs .sdmfs__face--back .sdmfs__desc {
+            text-transform: none !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .sdmfs .sdmfs__face--back .sdmfs__badge {
+            color: #16315f !important;
         }
 
         .sdmfs__toggle-wrap {
@@ -295,7 +363,7 @@
             justify-content: space-between !important;
             gap: 0.75rem !important;
             width: 165px !important;
-            min-height: 42px !important;
+            min-height: 44px !important;
             padding: 0.5rem 0.75rem 0.5rem 1.25rem !important;
             border: 1px solid #0943b5 !important;
             border-radius: 999px !important;
@@ -361,13 +429,13 @@
             transform: rotate(-90deg) !important;
         }
 
-        @media (hover: none), (pointer: coarse) {
+        @media (hover: none),
+        (pointer: coarse) {
             .sdmfs__card {
                 min-height: 178px !important;
             }
 
-            .sdmfs__link {
-            }
+            .sdmfs__link {}
 
             .sdmfs__face--front {
                 opacity: 1 !important;
@@ -390,8 +458,33 @@
             }
 
             .sdmfs__badge,
+            .sdmfs__back-title,
             .sdmfs__desc {
                 color: #1f2937 !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sdmfs__card,
+            .sdmfs__face,
+            .sdmfs__extra,
+            .sdmfs__toggle,
+            .sdmfs__toggle-icon svg {
+                transition: none !important;
+            }
+
+            .sdmfs__card:hover,
+            .sdmfs__card:focus-within {
+                transform: none !important;
+            }
+
+            .sdmfs__card:hover .sdmfs__face--front,
+            .sdmfs__card:focus-within .sdmfs__face--front,
+            .sdmfs__card:hover .sdmfs__face--back,
+            .sdmfs__card:focus-within .sdmfs__face--back,
+            .sdmfs__extra,
+            .sdmfs__extra.is-open {
+                transform: none !important;
             }
         }
 
@@ -436,16 +529,39 @@
         </div>
 
         <div class="sdmfs__layout">
-            <aside class="sdmfs__notices" aria-label="Avisos destacados">
+
+            <div class="container-avisos" aria-label="Avisos destacados">
                 {{ drupal_view('home', 'block_1') }}
-            </aside>
+            </div>
 
             <div class="sdmfs__panel">
                 <div class="sdmfs__grid">
                     <article class="sdmfs__card">
-                        <a class="sdmfs__link" href="https://portalmimovilidad.movilidadbogota.gov.co/"
-                            target="_blank" rel="noopener noreferrer"
+                        <a class="sdmfs__link" href="/consulta-de-comparendos" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Consulta Comparendos. Canal para consultar y gestionar el pago de comparendos. Se abre en una nueva pestaña."
                             aria-describedby="sdmfs-desc-1 sdmfs-tab-1">
+                            <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
+                                <div class="sdmfs__media">
+                                    <img src="/sites/default/files/2026-02/comparendos_0.png" alt="">
+                                </div>
+                                <div class="sdmfs__title">Consulta Comparendos</div>
+                                <div class="sdmfs__accent"></div>
+                            </div>
+                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-1">
+                                <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                <p class="sdmfs__back-title">Consulta Comparendos</p>
+                                <p class="sdmfs__desc">Canal para consultar y gestionar el pago de comparendos.</p>
+                            </div>
+                            <span class="sdmfs__sr-only" id="sdmfs-tab-1">Se abre en una nueva pestaña.</span>
+                        </a>
+                    </article>
+
+                    <article class="sdmfs__card">
+                        <a class="sdmfs__link" href="https://portalmimovilidad.movilidadbogota.gov.co/" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Mi Movilidad a un Clic. Portal oficial para realizar trámites y servicios en línea de movilidad. Se abre en una nueva pestaña."
+                            aria-describedby="sdmfs-desc-2 sdmfs-tab-2">
                             <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
                                 <div class="sdmfs__media">
                                     <img src="/sites/default/files/2025-12/icono_1_frecuentes.png" alt="">
@@ -453,35 +569,41 @@
                                 <div class="sdmfs__title">Mi Movilidad a un Clic</div>
                                 <div class="sdmfs__accent"></div>
                             </div>
-                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-1">
-                                <div class="sdmfs__badge">Portal externo</div>
-                                <p class="sdmfs__desc">Portal oficial para realizar trámites y servicios en línea de movilidad.</p>
-                            </div>
-                            <span class="sdmfs__sr-only" id="sdmfs-tab-1">Se abre en una nueva pestaña.</span>
-                        </a>
-                    </article>
-
-                    <article class="sdmfs__card">
-                        <a class="sdmfs__link" href="https://www.ventanillamovilidad.com.co/"
-                            target="_blank" rel="noopener noreferrer"
-                            aria-describedby="sdmfs-desc-2 sdmfs-tab-2">
-                            <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
-                                <div class="sdmfs__media">
-                                    <img src="/sites/default/files/2025-12/icono_2_frecuentes.png" alt="">
-                                </div>
-                                <div class="sdmfs__title">Ventanilla única de servicios</div>
-                                <div class="sdmfs__accent"></div>
-                            </div>
                             <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-2">
-                                <div class="sdmfs__badge">Portal externo</div>
-                                <p class="sdmfs__desc">Sistema oficial para gestión de citas y trámites presenciales.</p>
+                                <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                <p class="sdmfs__back-title">Mi Movilidad a un Clic</p>
+                                <p class="sdmfs__desc">Portal oficial para realizar trámites y servicios en línea de
+                                    movilidad.</p>
                             </div>
                             <span class="sdmfs__sr-only" id="sdmfs-tab-2">Se abre en una nueva pestaña.</span>
                         </a>
                     </article>
 
                     <article class="sdmfs__card">
-                        <a class="sdmfs__link" href="/orvi" aria-describedby="sdmfs-desc-3">
+                        <a class="sdmfs__link" href="https://www.ventanillamovilidad.com.co/paso-a-pasos/aprende-agendar-cita" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Agendamiento cita VUS. Sistema oficial para gestión de citas y trámites presenciales. Se abre en una nueva pestaña."
+                            aria-describedby="sdmfs-desc-3 sdmfs-tab-3">
+                            <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
+                                <div class="sdmfs__media">
+                                    <img src="/sites/default/files/2025-12/icono_2_frecuentes.png" alt="">
+                                </div>
+                                <div class="sdmfs__title">Agendamiento cita VUS</div>
+                                <div class="sdmfs__accent"></div>
+                            </div>
+                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-3">
+                                <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                <p class="sdmfs__back-title">Agendamiento cita VUS</p>
+                                <p class="sdmfs__desc">Sistema oficial para gestión de citas y trámites presenciales.</p>
+                            </div>
+                            <span class="sdmfs__sr-only" id="sdmfs-tab-3">Se abre en una nueva pestaña.</span>
+                        </a>
+                    </article>
+
+                    <article class="sdmfs__card">
+                        <a class="sdmfs__link" href="/orvi"
+                            aria-label="ORVI. Orientación para víctimas de siniestros viales y rutas de atención."
+                            aria-describedby="sdmfs-desc-4">
                             <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
                                 <div class="sdmfs__media">
                                     <img src="/sites/default/files/2025-12/icono_3_frecuentes.png" alt="">
@@ -489,16 +611,19 @@
                                 <div class="sdmfs__title">ORVI</div>
                                 <div class="sdmfs__accent"></div>
                             </div>
-                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-3">
-                                <p class="sdmfs__desc">Orientación para víctimas de siniestros viales y rutas de atención.</p>
+                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-4">
+                                <p class="sdmfs__back-title">ORVI</p>
+                                <p class="sdmfs__desc">Orientación para víctimas de siniestros viales y rutas de atención.
+                                </p>
                             </div>
                         </a>
                     </article>
 
                     <article class="sdmfs__card">
-                        <a class="sdmfs__link" href="https://registrobicibogota.movilidadbogota.gov.co/#!/"
-                            target="_blank" rel="noopener noreferrer"
-                            aria-describedby="sdmfs-desc-4 sdmfs-tab-4">
+                        <a class="sdmfs__link" href="https://registrobicibogota.movilidadbogota.gov.co/#!/" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Registro Bici Bogotá. Registro oficial de bicicletas para identificación y recuperación. Se abre en una nueva pestaña."
+                            aria-describedby="sdmfs-desc-5 sdmfs-tab-5">
                             <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
                                 <div class="sdmfs__media">
                                     <img src="/sites/default/files/2025-12/icono_4_frecuentes.png" alt="">
@@ -506,18 +631,21 @@
                                 <div class="sdmfs__title">Registro Bici Bogotá</div>
                                 <div class="sdmfs__accent"></div>
                             </div>
-                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-4">
-                                <div class="sdmfs__badge">Portal externo</div>
-                                <p class="sdmfs__desc">Registro oficial de bicicletas para identificación y recuperación.</p>
+                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-5">
+                                <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                <p class="sdmfs__back-title">Registro Bici Bogotá</p>
+                                <p class="sdmfs__desc">Registro oficial de bicicletas para identificación y recuperación.
+                                </p>
                             </div>
-                            <span class="sdmfs__sr-only" id="sdmfs-tab-4">Se abre en una nueva pestaña.</span>
+                            <span class="sdmfs__sr-only" id="sdmfs-tab-5">Se abre en una nueva pestaña.</span>
                         </a>
                     </article>
 
                     <article class="sdmfs__card">
                         <a class="sdmfs__link" href="https://picoyplacasolidario.movilidadbogota.gov.co/Inicio"
                             target="_blank" rel="noopener noreferrer"
-                            aria-describedby="sdmfs-desc-5 sdmfs-tab-5">
+                            aria-label="Pico y placa Solidario. Portal para gestionar permisos y pagos de Pico y Placa Solidario. Se abre en una nueva pestaña."
+                            aria-describedby="sdmfs-desc-6 sdmfs-tab-6">
                             <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
                                 <div class="sdmfs__media">
                                     <img src="/sites/default/files/2025-12/icono_5_frecuentes.png" alt="">
@@ -525,29 +653,11 @@
                                 <div class="sdmfs__title">Pico y placa Solidario</div>
                                 <div class="sdmfs__accent"></div>
                             </div>
-                            <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-5">
-                                <div class="sdmfs__badge">Portal externo</div>
-                                <p class="sdmfs__desc">Portal para gestionar permisos y pagos de Pico y Placa Solidario.</p>
-                            </div>
-                            <span class="sdmfs__sr-only" id="sdmfs-tab-5">Se abre en una nueva pestaña.</span>
-                        </a>
-                    </article>
-
-                    <article class="sdmfs__card">
-                        <a class="sdmfs__link"
-                            href="https://www.movilidadbogota.gov.co/web/SIMUR/excepciones/consultarPlaca/"
-                            target="_blank" rel="noopener noreferrer"
-                            aria-describedby="sdmfs-desc-6 sdmfs-tab-6">
-                            <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
-                                <div class="sdmfs__media">
-                                    <img src="/sites/default/files/2025-12/icono_6_frecuentes.png" alt="">
-                                </div>
-                                <div class="sdmfs__title">Vehículos exceptuados</div>
-                                <div class="sdmfs__accent"></div>
-                            </div>
                             <div class="sdmfs__face sdmfs__face--back" id="sdmfs-desc-6">
-                                <div class="sdmfs__badge">Portal externo</div>
-                                <p class="sdmfs__desc">Consulta de vehículos exceptuados en la restricción de circulación.</p>
+                                <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                <p class="sdmfs__back-title">Pico y placa Solidario</p>
+                                <p class="sdmfs__desc">Portal para gestionar permisos y pagos de Pico y Placa Solidario.
+                                </p>
                             </div>
                             <span class="sdmfs__sr-only" id="sdmfs-tab-6">Se abre en una nueva pestaña.</span>
                         </a>
@@ -557,36 +667,68 @@
                 <div class="sdmfs__toggle-wrap">
                     <div class="sdmfs__grid sdmfs__extra" id="sdmfs-extra-grid">
                         <article class="sdmfs__card">
-                            <a class="sdmfs__link" href="/pico-y-placa" aria-describedby="sdmfs-extra-desc-1">
+                            <a class="sdmfs__link"
+                                href="https://www.movilidadbogota.gov.co/web/SIMUR/excepciones/consultarPlaca/"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Vehículos exceptuados. Consulta de vehículos exceptuados en la restricción de circulación. Se abre en una nueva pestaña."
+                                aria-describedby="sdmfs-extra-desc-1 sdmfs-extra-tab-1">
                                 <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
                                     <div class="sdmfs__media">
-                                        <img src="/sites/default/files/2025-12/icono_8_frecuentes.png" alt="">
+                                        <img src="/sites/default/files/2025-12/icono_6_frecuentes.png" alt="">
                                     </div>
-                                    <div class="sdmfs__title">Consulta Pico y placa</div>
+                                    <div class="sdmfs__title">Vehículos exceptuados</div>
                                     <div class="sdmfs__accent"></div>
                                 </div>
                                 <div class="sdmfs__face sdmfs__face--back" id="sdmfs-extra-desc-1">
-                                    <p class="sdmfs__desc">Consulta diaria de Pico y Placa, excepciones y normatividad.</p>
+                                    <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                    <p class="sdmfs__back-title">Vehículos exceptuados</p>
+                                    <p class="sdmfs__desc">Consulta de vehículos exceptuados en la restricción de circulación.</p>
                                 </div>
+                                <span class="sdmfs__sr-only" id="sdmfs-extra-tab-1">Se abre en una nueva pestaña.</span>
                             </a>
                         </article>
 
                         <article class="sdmfs__card">
-                            <a class="sdmfs__link" href="/consulta-de-comparendos"
-                                target="_blank" rel="noopener noreferrer"
+                            <a class="sdmfs__link" href="https://www.agenciaregionaldemovilidad.gov.co"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Agencia Regional de Movilidad. Información oficial de la Agencia Regional de Movilidad. Se abre en una nueva pestaña."
                                 aria-describedby="sdmfs-extra-desc-2 sdmfs-extra-tab-2">
                                 <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
                                     <div class="sdmfs__media">
-                                        <img src="/sites/default/files/2026-02/comparendos_0.png" alt="">
+                                        <img src="https://ovprdnwportwebapp01.movilidadbogota.gov.co/sites/default/files/2026-03/icono_agencia.png" alt="">
                                     </div>
-                                    <div class="sdmfs__title">Consulta Comparendos</div>
+                                    <div class="sdmfs__title">Agencia Regional de Movilidad</div>
                                     <div class="sdmfs__accent"></div>
                                 </div>
                                 <div class="sdmfs__face sdmfs__face--back" id="sdmfs-extra-desc-2">
-                                    <div class="sdmfs__badge">Portal externo</div>
-                                    <p class="sdmfs__desc">Canal para consultar y gestionar el pago de comparendos.</p>
+                                    <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                    <p class="sdmfs__back-title">Agencia Regional de Movilidad</p>
+                                    <p class="sdmfs__desc">Información oficial sobre gestión y proyectos de movilidad regional.</p>
                                 </div>
                                 <span class="sdmfs__sr-only" id="sdmfs-extra-tab-2">Se abre en una nueva pestaña.</span>
+                            </a>
+                        </article>
+
+                        <article class="sdmfs__card">
+                            <a class="sdmfs__link" href="https://observatorio.movilidadbogota.gov.co/" target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Observatorio de Movilidad. Información, indicadores y análisis oficiales sobre la movilidad en Bogotá. Se abre en una nueva pestaña."
+                                aria-describedby="sdmfs-extra-desc-3 sdmfs-extra-tab-3">
+                                <div class="sdmfs__face sdmfs__face--front" aria-hidden="true">
+                                    <div class="sdmfs__media">
+                                        <img src="https://ovprdnwportwebapp01.movilidadbogota.gov.co/sites/default/files/2026-03/icono_observatorio.png" alt="">
+                                    </div>
+                                    <div class="sdmfs__title">Observatorio de Movilidad</div>
+                                    <div class="sdmfs__accent"></div>
+                                </div>
+                                <div class="sdmfs__face sdmfs__face--back" id="sdmfs-extra-desc-3">
+                                    <div class="sdmfs__badge">Ingresa al portal externo oficial</div>
+                                    <p class="sdmfs__back-title">Observatorio de Movilidad</p>
+                                    <p class="sdmfs__desc">Indicadores, reportes y análisis oficiales sobre la movilidad
+                                        en Bogotá.</p>
+                                </div>
+                                <span class="sdmfs__sr-only" id="sdmfs-extra-tab-3">Se abre en una nueva pestaña.</span>
                             </a>
                         </article>
                     </div>

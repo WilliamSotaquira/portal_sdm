@@ -33,6 +33,42 @@
 
 <body>
     <style>
+        .skip-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(-120%);
+            background: #123a63;
+            color: #ffffff;
+            padding: 12px 16px;
+            z-index: 1000;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        video:focus-visible {
+            outline: 3px solid #123a63;
+            outline-offset: 3px;
+        }
+
         body {
             background-color: #f8f9fa;
             font-family: "Work Sans", sans-serif;
@@ -234,37 +270,39 @@
             background-repeat: no-repeat;
         }
     </style>
-    <div class="cpnt-1">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+    <header class="cpnt-1">
         <div class="wrapper">
 
             <div class="title">
                 <h1>Sistema Interoperable de Recaudo de Bogotá (SIR)</h1>
             </div>
-            <div class="list">
+            <nav class="list" aria-label="Navegación principal de la página SIR">
                 <span class="vector vector-1"></span>
                 <ul>
                     <li>
-                        <a href="#presentacion"><span class="spn-1"></span>Presentación del SIR</a>
+                        <a href="#presentacion"><span class="spn-1" aria-hidden="true"></span>Presentación del SIR</a>
                     </li>
                     <li>
-                        <a href="#noticias"><span class="spn-4"></span>Noticias</a>
+                        <a href="#noticias"><span class="spn-4" aria-hidden="true"></span>Noticias</a>
                     </li>
                     <li>
-                        <a href="#preguntas"><span class="spn-3"></span>Preguntas frecuentes</a>
+                        <a href="#preguntas"><span class="spn-3" aria-hidden="true"></span>Preguntas frecuentes</a>
                     </li>
                     <li>
-                        <a href="#documentos"><span class="spn-2"></span>Documentos</a>
+                        <a href="#documentos"><span class="spn-2" aria-hidden="true"></span>Documentos</a>
                     </li>
                     <li>
-                        <a href="#contacto"><span class="spn-5"></span>Contacto</a>
+                        <a href="#contacto"><span class="spn-5" aria-hidden="true"></span>Contacto</a>
                     </li>
                 </ul>
                 <span class="vector vector-2"></span>
-            </div>
+            </nav>
 
 
         </div>
-    </div>
+    </header>
+    <main id="main-content" tabindex="-1">
 
     <style>
         .cpnt-3 {
@@ -388,7 +426,8 @@
                 </ul>
             </div>
             <div class="imagen img-1">
-                <img class="img-responsive w-100" src="sir_img_2.png" alt="" title="">
+                <img class="img-responsive w-100" src="sir_img_2.png"
+                    alt="Ilustración del Sistema Interoperable de Recaudo de Bogotá.">
             </div>
 
             <div class="texto">
@@ -449,37 +488,330 @@
             position: relative;
             max-width: 1200px;
             width: 100%;
-            padding: 20px;
-            text-align: center;
+            padding: 32px;
             margin: 0 auto;
+            color: #102a43;
+            background: linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
+            border: 1px solid #cbd6e2;
+            border-radius: 10px;
+            box-shadow: 0 10px 26px rgba(15, 35, 60, 0.06);
         }
 
         .cpnt-4 .galeria_fotos h2 {
-            font-size: 2.5em;
-            color: #ffffff;
-            margin-bottom: 20px;
+            font-size: clamp(2rem, 1.5rem + 1.5vw, 2.5rem);
+            color: #123a63;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
         }
 
         .cpnt-4 .galeria_fotos p {
-            font-size: 1.1em;
+            max-width: 72ch;
+            font-size: 1.05rem;
+            color: #35516e;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            line-height: 1.65;
+        }
+
+        .cpnt-4 .sir-gallery__header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid #cfd9e4;
+        }
+
+        .cpnt-4 .sir-gallery__count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            background: #e8eef5;
+            color: #123a63;
+            font-size: 0.84rem;
+            font-weight: 700;
+            border: 1px solid #c2cfdd;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .cpnt-4 .sir-gallery__list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .cpnt-4 .sir-gallery__item {
+            min-width: 0;
+        }
+
+        .cpnt-4 .sir-gallery__card {
+            margin: 0;
+            height: 100%;
+            border-radius: 8px;
+            background: #ffffff;
+            overflow: hidden;
+            border: 1px solid #cfd9e4;
+            box-shadow: 0 8px 18px rgba(16, 42, 67, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .cpnt-4 .sir-gallery__card:hover,
+        .cpnt-4 .sir-gallery__card:focus-within {
+            transform: translateY(-1px);
+            border-color: #aebfd1;
+            box-shadow: 0 12px 22px rgba(16, 42, 67, 0.08);
+        }
+
+        .cpnt-4 .sir-gallery__trigger {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .cpnt-4 .sir-gallery__trigger:focus-visible {
+            outline: 3px solid #5b86b0;
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        .cpnt-4 .sir-gallery__media {
+            aspect-ratio: 16 / 11;
+            overflow: hidden;
+            background: #dfe7f3;
+            border-bottom: 1px solid #d3dde8;
+        }
+
+        .cpnt-4 .sir-gallery__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.35s ease;
+        }
+
+        .cpnt-4 .sir-gallery__trigger:hover .sir-gallery__media img,
+        .cpnt-4 .sir-gallery__trigger:focus-visible .sir-gallery__media img {
+            transform: scale(1.04);
+        }
+
+        .cpnt-4 .sir-gallery__body {
+            display: none;
+        }
+
+        .cpnt-4 .sir-gallery__title {
+            margin: 0 0 0.35rem;
+            font-size: 1.05rem;
+            line-height: 1.35;
+            color: #123a63;
+            font-weight: 700;
+            display: block;
+        }
+
+        .cpnt-4 .sir-gallery__caption {
+            margin: 0;
+            font-size: 0.94rem;
+            line-height: 1.55;
+            color: #486581;
+            text-align: left;
+            display: block;
+        }
+
+        .cpnt-4 .sir-gallery__more {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.75rem;
+        }
+
+        .cpnt-4 .sir-gallery__toggle {
+            min-width: 220px;
+            min-height: 46px;
+            padding: 0.8rem 1.25rem;
+            border: 1px solid #b58600;
+            border-radius: 8px;
+            background: #FFC107;
+            color: #1f2328;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            box-shadow: 0 6px 14px rgba(31, 35, 40, 0.14);
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .cpnt-4 .sir-gallery__toggle:hover,
+        .cpnt-4 .sir-gallery__toggle:focus-visible {
+            background: #e0a800;
+            border-color: #9a7200;
+            color: #1f2328;
+        }
+
+        .cpnt-4 .sir-gallery__toggle:hover {
+            box-shadow: 0 8px 18px rgba(31, 35, 40, 0.18);
+            transform: translateY(-1px);
+        }
+
+        .cpnt-4 .sir-gallery__toggle:active {
+            background: #c99200;
+            border-color: #856100;
+            color: #1f2328;
+            box-shadow: 0 3px 8px rgba(31, 35, 40, 0.16);
+            transform: translateY(0);
+        }
+
+        .cpnt-4 .sir-gallery__toggle:focus-visible {
+            outline: 3px solid #123a63;
+            outline-offset: 3px;
+        }
+
+        .cpnt-4 .sir-gallery__toggle[disabled] {
+            background: #f3d77a;
+            border-color: #d0b35d;
+            color: #3f4348;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .cpnt-4 .sir-gallery__dialog {
+            width: min(96vw, 1080px);
+            max-width: none;
+            border: 0;
+            border-radius: 10px;
+            padding: 0;
+            background: #f8fbff;
             color: #ffffff;
-            text-align: justify;
-            margin-bottom: 20px;
+            box-shadow: 0 18px 40px rgba(15, 35, 60, 0.18);
         }
 
-        .cpnt-4 .galeria_fotos .row_fotos .col-sm-4 {
-            padding-bottom: 20px;
+        .cpnt-4 .sir-gallery__dialog::backdrop {
+            background: rgba(11, 30, 50, 0.58);
         }
 
-        .cpnt-4 .galeria_fotos .row_fotos .col-sm-4 img {
-            border-radius: 15px;
-            border: solid 5px transparent;
+        .cpnt-4 .sir-gallery__dialog-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
         }
 
-        .cpnt-4 .galeria_fotos .row_fotos .col-sm-4 img:hover {
-            border-radius: 15px;
-            /*border: solid 5px #fcce00;*/
-            transition: ease all .5s;
+        .cpnt-4 .sir-gallery__dialog-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1rem 0;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-button {
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border: 1px solid #c5d2df;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #123a63;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(16, 42, 67, 0.04);
+        }
+
+        .cpnt-4 .sir-gallery__dialog-button:hover,
+        .cpnt-4 .sir-gallery__dialog-button:focus-visible {
+            background: #123a63;
+            color: #ffffff;
+            border-color: #123a63;
+            outline: none;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-button[disabled] {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-figure {
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-figure img {
+            width: 100%;
+            max-height: 72vh;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #dde7f0;
+            display: block;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-caption {
+            padding: 0 1rem 1.25rem;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-caption h3 {
+            margin: 0 0 0.4rem;
+            font-size: 1.2rem;
+            color: #123a63;
+        }
+
+        .cpnt-4 .sir-gallery__dialog-caption p {
+            margin: 0;
+            color: #486581;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .cpnt-4 .sir-gallery__sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (max-width: 767px) {
+            .cpnt-4 .galeria_fotos {
+                padding: 22px 16px;
+            }
+
+            .cpnt-4 .sir-gallery__dialog {
+                width: min(100vw - 16px, 1080px);
+            }
+
+            .cpnt-4 .sir-gallery__dialog-topbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cpnt-4 .sir-gallery__dialog-actions {
+                justify-content: space-between;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cpnt-4 .sir-gallery__media img {
+                transition: none;
+            }
         }
 
         .cpnt-4 .infografia {
@@ -617,55 +949,294 @@
     <div class="cpnt-4">
         <div class="wrapper">
             <div class="video video-1">
-                <video controls style="width: 100%;">
+                <video controls style="width: 100%;"
+                    aria-label="Video informativo sobre el Sistema Interoperable de Recaudo de Bogotá">
                     <source src="/sites/default/files/2026-02/video_sir.mp4" type="video/mp4" poster="" preload>
+                    Tu navegador no soporta la reproducción del video del Sistema Interoperable de Recaudo de Bogotá.
+                </video>
             </div>
-
-            <div class="galeria_fotos">
-                <h2 class="title title-1">Galería de fotos</h2>
-                <p class="paragraph ph-1">La Secretaría de Movilidad participó en Move-Pay ProBogotá, un espacio de
-                    innovación y diálogo sobre el futuro de los sistemas de pago y recaudo en la movilidad de la ciudad.
-                </p>
-                <div class="row row_fotos">
-                    <div class="col-sm-4">
-                        <img src="/sites/default/files/2026-02/move-pay-1.jpg" class="img-responsive img-fluid"
-                            alt="Move-Pay ProBogotá">
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/sites/default/files/2026-02/move-pay-2.jpg" class="img-responsive img-fluid"
-                            alt="Move-Pay ProBogotá">
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/sites/default/files/2026-02/move-pay-3.jpg" class="img-responsive img-fluid"
-                            alt="Move-Pay ProBogotá">
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/sites/default/files/2026-02/move-pay-4.jpg" class="img-responsive img-fluid"
-                            alt="Move-Pay ProBogotá">
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/sites/default/files/2026-02/move-pay-5.jpg" class="img-responsive img-fluid"
-                            alt="Move-Pay ProBogotá">
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/sites/default/files/2026-02/move-pay-6.jpg" class="img-responsive img-fluid"
-                            alt="Move-Pay ProBogotá">
-                    </div>
+            <section class="galeria_fotos sir-gallery" aria-labelledby="sir-gallery-title">
+                <div class="sir-gallery__header">
+                    <span class="sir-gallery__count" aria-hidden="true" id="sir-gallery-count">0 imágenes</span>
+                    <h2 class="title title-1" id="sir-gallery-title">Galería de fotos</h2>
+                    <p class="paragraph ph-1">Registro fotográfico del SIR y de la participación de la Secretaría de
+                        Movilidad en espacios de innovación sobre recaudo y medios de pago.</p>
                 </div>
-            </div>
+
+                <ul class="sir-gallery__list" role="list" id="sir-gallery-list"></ul>
+
+                <div class="sir-gallery__more" id="sir-gallery-more" hidden>
+                    <button type="button" class="sir-gallery__toggle" id="sir-gallery-toggle"
+                        aria-expanded="false" aria-controls="sir-gallery-list">
+                        Ver más imágenes
+                    </button>
+                </div>
+
+                <dialog class="sir-gallery__dialog" id="sir-gallery-dialog" aria-labelledby="sir-gallery-dialog-title">
+                    <div class="sir-gallery__dialog-shell">
+                        <div class="sir-gallery__dialog-topbar">
+                            <p id="sir-gallery-status" class="sir-gallery__count">Imagen 1 de 0</p>
+                            <div class="sir-gallery__dialog-actions">
+                                <button type="button" class="sir-gallery__dialog-button" id="sir-gallery-prev"
+                                    aria-label="Ver imagen anterior">Anterior</button>
+                                <button type="button" class="sir-gallery__dialog-button" id="sir-gallery-next"
+                                    aria-label="Ver imagen siguiente">Siguiente</button>
+                                <button type="button" class="sir-gallery__dialog-button" id="sir-gallery-close"
+                                    aria-label="Cerrar galería">Cerrar</button>
+                            </div>
+                        </div>
+                        <figure class="sir-gallery__dialog-figure">
+                            <img id="sir-gallery-dialog-image" src="" alt="">
+                        </figure>
+                        <figcaption class="sir-gallery__dialog-caption">
+                            <h3 id="sir-gallery-dialog-title"></h3>
+                            <p id="sir-gallery-dialog-caption"></p>
+                        </figcaption>
+                    </div>
+                </dialog>
+
+                <script>
+                    (function() {
+                        const galleryRoot = document.querySelector('.sir-gallery');
+                        if (!galleryRoot) return;
+
+                        const items = [{
+                                src: '/sites/default/files/2026-03/sir_1_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_2_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_3_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_4_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_5_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_6_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_7_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_8_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-03/sir_9_lc.webp',
+                                title: 'Sistema Interoperable de Recaudo de Bogotá',
+                                caption: 'Registro fotográfico del Sistema Interoperable de Recaudo de Bogotá.',
+                                alt: 'Fotografía del Sistema Interoperable de Recaudo de Bogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-02/move-pay-1.jpg',
+                                title: 'Conversación sobre innovación en recaudo',
+                                caption: 'Panel de discusión durante Move-Pay ProBogotá sobre pagos y movilidad.',
+                                alt: 'Panel de conversación en Move-Pay ProBogotá sobre innovación en recaudo para la movilidad.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-02/move-pay-2.jpg',
+                                title: 'Participación institucional de la Secretaría',
+                                caption: 'Intervención de la Secretaría de Movilidad en el espacio de diálogo del evento.',
+                                alt: 'Representantes de la Secretaría de Movilidad participando en Move-Pay ProBogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-02/move-pay-3.jpg',
+                                title: 'Escenario de intercambio técnico',
+                                caption: 'Encuentro con actores del ecosistema de recaudo y sistemas de pago.',
+                                alt: 'Asistentes al evento Move-Pay ProBogotá en un espacio de intercambio técnico.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-02/move-pay-4.jpg',
+                                title: 'Diálogo sobre interoperabilidad',
+                                caption: 'Sesión enfocada en el futuro de la interoperabilidad y los medios de pago.',
+                                alt: 'Sesión de diálogo sobre interoperabilidad y medios de pago en Move-Pay ProBogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-02/move-pay-5.jpg',
+                                title: 'Articulación con actores del sector',
+                                caption: 'Espacio de innovación con expertos y entidades del sector movilidad.',
+                                alt: 'Participantes del sector movilidad compartiendo experiencias en Move-Pay ProBogotá.'
+                            },
+                            {
+                                src: '/sites/default/files/2026-02/move-pay-6.jpg',
+                                title: 'Visión de futuro para la ciudad',
+                                caption: 'Reflexión conjunta sobre evolución de pagos y recaudo en Bogotá.',
+                                alt: 'Actividad final de Move-Pay ProBogotá sobre el futuro de pagos y recaudo en Bogotá.'
+                            }
+                        ];
+                        const list = document.getElementById('sir-gallery-list');
+                        const countEl = document.getElementById('sir-gallery-count');
+                        const moreEl = document.getElementById('sir-gallery-more');
+                        const toggle = document.getElementById('sir-gallery-toggle');
+                        const dialog = document.getElementById('sir-gallery-dialog');
+                        const imageEl = document.getElementById('sir-gallery-dialog-image');
+                        const titleEl = document.getElementById('sir-gallery-dialog-title');
+                        const captionEl = document.getElementById('sir-gallery-dialog-caption');
+                        const statusEl = document.getElementById('sir-gallery-status');
+                        const prevBtn = document.getElementById('sir-gallery-prev');
+                        const nextBtn = document.getElementById('sir-gallery-next');
+                        const closeBtn = document.getElementById('sir-gallery-close');
+                        const initialVisibleCount = 4;
+
+                        if (!list || !countEl || !moreEl || !toggle || !dialog || !imageEl || !titleEl || !captionEl || !statusEl || !prevBtn || !nextBtn || !closeBtn) {
+                            return;
+                        }
+
+                        countEl.textContent = `${items.length} imágenes`;
+                        moreEl.hidden = items.length <= initialVisibleCount;
+
+                        items.forEach((item, index) => {
+                            const li = document.createElement('li');
+                            li.className = 'sir-gallery__item';
+                            li.hidden = index < Math.max(items.length - initialVisibleCount, 0);
+                            li.innerHTML = `
+                                <div class="sir-gallery__card">
+                                    <button type="button" class="sir-gallery__trigger" data-gallery-index="${index}" aria-haspopup="dialog" aria-label="Abrir imagen ${index + 1} de ${items.length}: ${item.title}">
+                                        <span class="sir-gallery__media">
+                                            <img src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async">
+                                        </span>
+                                    </button>
+                                </div>`;
+                            list.appendChild(li);
+                        });
+
+                        const triggers = Array.from(galleryRoot.querySelectorAll('.sir-gallery__trigger'));
+                        let currentIndex = 0;
+                        let lastTrigger = null;
+
+                        function render(index) {
+                            currentIndex = index;
+                            const item = items[index];
+                            imageEl.src = item.src;
+                            imageEl.alt = item.alt;
+                            titleEl.textContent = item.title;
+                            captionEl.textContent = item.caption;
+                            statusEl.textContent = `Imagen ${index + 1} de ${items.length}`;
+                            prevBtn.disabled = items.length <= 1;
+                            nextBtn.disabled = items.length <= 1;
+                        }
+
+                        function openDialog(index, trigger) {
+                            lastTrigger = trigger || null;
+                            render(index);
+                            dialog.showModal();
+                            closeBtn.focus();
+                        }
+
+                        function closeDialog() {
+                            dialog.close();
+                            if (lastTrigger) {
+                                lastTrigger.focus();
+                            }
+                        }
+
+                        function go(step) {
+                            const nextIndex = (currentIndex + step + items.length) % items.length;
+                            render(nextIndex);
+                        }
+
+                        if (toggle && list) {
+                            toggle.addEventListener('click', () => {
+                                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                                const cards = Array.from(list.querySelectorAll('.sir-gallery__item'));
+
+                                if (expanded) {
+                                    cards.forEach((item, index) => {
+                                        item.hidden = index < Math.max(cards.length - initialVisibleCount, 0);
+                                    });
+
+                                    toggle.setAttribute('aria-expanded', 'false');
+                                    toggle.textContent = 'Ver más imágenes';
+                                    list.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                    return;
+                                }
+
+                                cards.forEach((item) => {
+                                    item.hidden = false;
+                                });
+
+                                toggle.setAttribute('aria-expanded', 'true');
+                                toggle.textContent = 'Ver menos imágenes';
+                            });
+                        }
+
+                        triggers.forEach((trigger) => {
+                            trigger.addEventListener('click', () => {
+                                const index = Number(trigger.dataset.galleryIndex || 0);
+                                openDialog(index, trigger);
+                            });
+                        });
+
+                        prevBtn.addEventListener('click', () => go(-1));
+                        nextBtn.addEventListener('click', () => go(1));
+                        closeBtn.addEventListener('click', closeDialog);
+
+                        dialog.addEventListener('click', (event) => {
+                            const rect = dialog.getBoundingClientRect();
+                            const clickedBackdrop = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+                            if (clickedBackdrop) {
+                                closeDialog();
+                            }
+                        });
+
+                        dialog.addEventListener('keydown', (event) => {
+                            if (event.key === 'Escape') {
+                                event.preventDefault();
+                                closeDialog();
+                            } else if (event.key === 'ArrowLeft') {
+                                event.preventDefault();
+                                go(-1);
+                            } else if (event.key === 'ArrowRight') {
+                                event.preventDefault();
+                                go(1);
+                            }
+                        });
+                    })();
+                </script>
+            </section>
 
             <div class="infografia">
                 <h2 class="title title-1">Visión del SIR</h2>
                 <picture>
                     <source media="(min-width: 465px)" srcset="infografia_lg.png">
                     <source media="(max-width: 464px)" srcset="infografia_xs.png">
-                    <img src="infografia_xs.png" class="img-responsive w-100" alt="Infografia"
-                        title="Image: Infografia">
-                    </p>
+                    <img src="infografia_xs.png" class="img-responsive w-100"
+                        alt="Infografía sobre la visión del Sistema Interoperable de Recaudo de Bogotá.">
                 </picture>
                 <p class="paragraph ph-1">Consolidar una plataforma abierta, segura y flexible que integre los medios de
                     pago y sistemas de recaudo del transporte público de Bogotá y la región, habilitando una movilidad
                     inteligente, interoperable y centrada en el usuario.
+                </p>
 
             </div>
             <div class="texto">
@@ -828,11 +1399,11 @@
         .cpnt-2 .card-credit {
             margin-bottom: 12px;
             font-size: 0.78em;
-            color: #7a7a7a;
+            color: #5f6368;
         }
 
         .cpnt-2 .btn {
-            background-color: #F80020;
+            background-color: #b00020;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
@@ -841,7 +1412,7 @@
         }
 
         .cpnt-2 .btn:hover {
-            background-color: #C70000;
+            background-color: #8f0019;
         }
 
         @media (max-width: 768px) {
@@ -1122,9 +1693,11 @@
                     Sistema Interoperabilidad de Recaudo (SIR) y el proceso contractual. </p>
                 <p class="paragraph ph-2">Si la duda del usuario no aparece en el listado, puede formular una nueva
                     consulta a través del siguiente formulario.</p>
-                <img class="img-responsive w-100" src="formulario_tp.png" alt="QR Sir" title="">
-                <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform">https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform</a>
+                <img class="img-responsive w-100" src="formulario_tp.png"
+                    alt="Código QR para acceder al formulario de preguntas del SIR.">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScjkf6gTmB2e44glHlF0y72493CU6K1SAzAuyDfNtQIMpqBtQ/viewform"
+                    target="_blank" rel="noopener noreferrer">Abrir formulario de preguntas del SIR<span
+                        class="sr-only">, abre en una nueva pestaña</span></a>
             </div>
 
             <div class="questions">
@@ -1273,7 +1846,7 @@
                                     actual con la tarjeta tullave?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse1" class="accordion-collapse collapse show"
+                        <div id="accordionPanels-collapse1" class="accordion-collapse collapse show" role="region"
                             aria-labelledby="accordionPanels-1" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1294,7 +1867,7 @@
                                     (SIR) y por qué es importante para la ciudad?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse2" class="accordion-collapse collapse"
+                        <div id="accordionPanels-collapse2" class="accordion-collapse collapse" role="region"
                             aria-labelledby="accordionPanels-2" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1314,7 +1887,7 @@
                                     Interoperable de Recaudo (SIR) para la ciudad?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse3" class="accordion-collapse collapse"
+                        <div id="accordionPanels-collapse3" class="accordion-collapse collapse" role="region"
                             aria-labelledby="accordionPanels-3" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1335,7 +1908,7 @@
                                     usuarios del transporte público y de movilidad?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse4" class="accordion-collapse collapse"
+                        <div id="accordionPanels-collapse4" class="accordion-collapse collapse" role="region"
                             aria-labelledby="accordionPanels-4" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1356,7 +1929,7 @@
                                     operación de la primera línea del Metro de Bogotá?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse5" class="accordion-collapse collapse"
+                        <div id="accordionPanels-collapse5" class="accordion-collapse collapse" role="region"
                             aria-labelledby="accordionPanels-5" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1378,7 +1951,7 @@
                                     los usuarios?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse6" class="accordion-collapse collapse"
+                        <div id="accordionPanels-collapse6" class="accordion-collapse collapse" role="region"
                             aria-labelledby="accordionPanels-6" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1399,7 +1972,7 @@
                                     SIR?</span>
                             </button>
                         </h2>
-                        <div id="accordionPanels-collapse7" class="accordion-collapse collapse"
+                        <div id="accordionPanels-collapse7" class="accordion-collapse collapse" role="region"
                             aria-labelledby="accordionPanels-7" data-bs-parent="#accordionQuestion">
                             <div class="body-accordion-govco">
                                 <span class="title-two-accordion-govco">Respuesta:</span>
@@ -1503,29 +2076,31 @@
                 <ul>
                     <li><a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=140681" target="_blank"
                             rel="noopener noreferrer">DECRETO 168 DE 2023 - "Por medio del cual se crea el Sistema
-                            Interoperable de Recaudo para el Distrito Capital y se dictan otras disposiciones"</a></li>
+                            Interoperable de Recaudo para el Distrito Capital y se dictan otras disposiciones"<span
+                                class="sr-only">, abre en una nueva pestaña</span></a></li>
                     <li><a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?dt=S&i=187213"
                             target="_blank" rel="noopener noreferrer">DECRETO 338 DE 2025 - "Por medio del cual se
                             modifica el artículo 10 del Decreto Distrital 168 de 2023 (Por medio del cual se crea el
                             Sistema Interoperable de Recaudo para el Distrito Capital y se dictan otras
-                            disposiciones)"</a></li>
+                            disposiciones)"<span class="sr-only">, abre en una nueva pestaña</span></a></li>
                     <li><a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=119658" target="_blank"
                             rel="noopener noreferrer">Resolución 20213040060975 de 2021 Ministerio de Transporte - "Por
                             la cual se reglamentan las especificaciones de las condiciones técnicas, operativas, de
                             seguridad y de interoperabilidad de los Sistemas de Recaudo Centralizado de los Sistemas de
-                            Transporte Público que sean cofinanciados con recursos de la Nación."</a></li>
+                            Transporte Público que sean cofinanciados con recursos de la Nación."<span
+                                class="sr-only">, abre en una nueva pestaña</span></a></li>
                     <li><a href="sesion_1.pptx" target="_blank" rel="noopener noreferrer">Visión y Gobernanza
-                            (.pptx)</a></li>
+                            (.pptx)<span class="sr-only">, abre en una nueva pestaña</span></a></li>
                     <li><a href="sesion_2.pptx" target="_blank" rel="noopener noreferrer">Estandar interoperabilidad y
-                            unidades (.pptx)</a></li>
+                            unidades (.pptx)<span class="sr-only">, abre en una nueva pestaña</span></a></li>
                     <li><a href="sesion_3.pptx" target="_blank" rel="noopener noreferrer">Sistema central y sus
-                            interfaces (.pptx)</a></li>
+                            interfaces (.pptx)<span class="sr-only">, abre en una nueva pestaña</span></a></li>
                     <li><a href="sesion_4.pptx" target="_blank" rel="noopener noreferrer">Camara de compensacion y sus
-                            interfaces (.pptx)</a></li>
-                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSewEQ21RLXynk6qmyn6_R_jjOD5lL-yChHRkkANZ2tddmU1Hg/viewform?usp=dialog"
+                            interfaces (.pptx)<span class="sr-only">, abre en una nueva pestaña</span></a></li>
+                    <li><a href="https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.10061883&isFromPublicArea=True&isModal=False"
                             target="_blank" rel="noopener noreferrer"><img
-                                src="/sites/default/files/2026-03/img_7384.png" class="img-fluid"
-                                alt="Implementación del Sistema Interoperable de Recaudo"></a></li>
+                                src="https://www.movilidadbogota.gov.co/sites/default/files/2026-02/solicitud%20pieza%20sir_340x300.jpg" class="img-fluid"
+                                alt="Implementación del Sistema Interoperable de Recaudo"><span class="sr-only">, abre en una nueva pestaña</span></a></li>
                 </ul>
             </div>
 
@@ -1658,12 +2233,16 @@
                 <p class="paragraph ph-1">Si tienes preguntas o necesitas más información sobre el SIR, puedes
                     contactarnos a través de los siguientes canales:</p>
                 <ul>
-                    <li><span class="govco-landmark"></span><b> Secretaría Distrital de Movilidad</b> <br>Subdirección
+                    <li><span class="govco-landmark" aria-hidden="true"></span><b> Secretaría Distrital de
+                            Movilidad</b> <br>Subdirección
                         de Transporte Público <br>Interoperabilidad</li>
-                    <li><a href="mailto:interoperabilidad@movilidadbogota.gov.co"><span class="govco-envelope"></span>
+                    <li><a href="mailto:interoperabilidad@movilidadbogota.gov.co"><span class="govco-envelope"
+                                aria-hidden="true"></span>
                             interoperabilidad@movilidadbogota.gov.co</a></li>
-                    <li><a href=""><span class="govco-map-marker-alt"></span> Calle 13 # 37 - 35 Piso 2, Bogotá D.C.,
-                            Colombia</a></li>
+                    <li><a href="https://maps.google.com/?q=Calle+13+%23+37-35+Piso+2,+Bogot%C3%A1,+Colombia"
+                            target="_blank" rel="noopener noreferrer"><span class="govco-map-marker-alt"
+                                aria-hidden="true"></span> Calle 13 # 37 - 35 Piso 2, Bogotá D.C.,
+                            Colombia<span class="sr-only">, abre en una nueva pestaña</span></a></li>
                 </ul>
                 <div class="logo-movilidad">
                     <div class="imagen img-2">
@@ -1672,10 +2251,12 @@
                 </div>
             </div>
             <div class="imagen img-1">
-                <img class="img-responsive w-100" src="sir_img_3.png" alt="" title="">
+                <img class="img-responsive w-100" src="sir_img_3.png"
+                    alt="Imagen de apoyo de la estrategia del Sistema Interoperable de Recaudo de Bogotá.">
             </div>
         </div>
     </div>
+    </main>
 
     <!-- utils.js BDC -->
     <script src="https://cdn.www.gov.co/layout/v4/script.js"></script>

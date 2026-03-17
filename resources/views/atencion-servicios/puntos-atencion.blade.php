@@ -156,6 +156,19 @@
                     box-shadow: 0 14px 28px rgba(25, 28, 58, 0.2);
                 }
 
+                .puntos .box-boxes .box-bottom:focus-visible {
+                    outline: 4px solid #66E026;
+                    outline-offset: 4px;
+                    box-shadow: 0 0 0 4px #ffffff, 0 0 0 8px #191C3A;
+                }
+
+                .puntos .box-boxes .box-bottom:focus-visible,
+                .puntos .box-boxes .box-bottom:focus-within {
+                    background: #66E026;
+                    transform: translateY(-2px);
+                    box-shadow: 0 14px 28px rgba(25, 28, 58, 0.2);
+                }
+
                 .puntos .box-boxes .box-bottom .tooltip-img {
                     position: absolute;
                     visibility: hidden;
@@ -175,6 +188,11 @@
 
                 @media(min-width:768px) {
                     .puntos .box-boxes .box-bottom:hover .tooltip-img {
+                        visibility: visible;
+                    }
+
+                    .puntos .box-boxes .box-bottom:focus-visible .tooltip-img,
+                    .puntos .box-boxes .box-bottom:focus-within .tooltip-img {
                         visibility: visible;
                     }
                 }
@@ -228,12 +246,27 @@
                     background-image: url('/sites/default/files/2026-02-23/mapas_a.png');
                 }
 
+                .box-bottom:focus-visible .icon1,
+                .box-bottom:focus-within .icon1 {
+                    background-image: url('/sites/default/files/2026-02-23/mapas_a.png');
+                }
+
                 .box-bottom:hover .icon2 {
-                    background-image: url('/sites/default/files/2026-02-23/cursor_a.png');
+                    background-image: url('/sites/default/files/2026-03-17/cursor_a.png');
+                }
+
+                .box-bottom:focus-visible .icon2,
+                .box-bottom:focus-within .icon2 {
+                    background-image: url('/sites/default/files/2026-03-17/cursor_a.png');
                 }
 
                 .box-bottom:hover .icon3 {
-                    background-image: url('/sites/default/files/2026-02-23/telefono_a_0.png');
+                    background-image: url('/sites/default/files/2026-03-17/telefono_a_0.png');
+                }
+
+                .box-bottom:focus-visible .icon3,
+                .box-bottom:focus-within .icon3 {
+                    background-image: url('/sites/default/files/2026-03-17/telefono_a_0.png');
                 }
 
                 .box-bottom[aria-expanded="true"] .icon1 {
@@ -241,11 +274,11 @@
                 }
 
                 .box-bottom[aria-expanded="true"] .icon2 {
-                    background-image: url('/sites/default/files/2026-02-23/cursor_a.png');
+                    background-image: url('/sites/default/files/2026-03-17/cursor_a.png');
                 }
 
                 .box-bottom[aria-expanded="true"] .icon3 {
-                    background-image: url('/sites/default/files/2026-02-23/telefono_a_0.png');
+                    background-image: url('/sites/default/files/2026-03-17/telefono_a_0.png');
                 }
 
                 .puntos .box-boxes .box-bottom .icon {
@@ -262,27 +295,25 @@
                 }
 
                 .puntos .box-boxes .box-bottom:hover p,
+                .puntos .box-boxes .box-bottom:focus-visible p,
+                .puntos .box-boxes .box-bottom:focus-within p,
                 .puntos .box-boxes .box-bottom[aria-expanded="true"] p {
                     color: #252525;
                 }
 
                 .puntos .box-boxes .box-bottom .box-trigger {
-                    /* Limpia reglas heredadas/externas antes de aplicar las locales */
-                    all: unset;
-                    color: #66E026 !important;
-                    font-size: 18px !important;
-                    font-weight: 500 !important;
-                    line-height: 1.1 !important;
-                    text-decoration: none !important;
                     display: inline-block;
-                    transition: color 0.15s ease;
-                    cursor: pointer;
+                    color: inherit !important;
+                    font: inherit !important;
+                    line-height: inherit !important;
+                    text-decoration: none !important;
+                    pointer-events: none;
                 }
 
                 .puntos .box-boxes .box-bottom .box-trigger:visited,
                 .puntos .box-boxes .box-bottom .box-trigger:focus,
                 .puntos .box-boxes .box-bottom .box-trigger:active {
-                    color: #66E026 !important;
+                    color: inherit !important;
                     text-decoration: none !important;
                 }
 
@@ -309,14 +340,22 @@
                 }
 
                 .puntos .box-boxes .box-bottom:hover a.box-trigger,
+                .puntos .box-boxes .box-bottom:focus-visible a.box-trigger,
+                .puntos .box-boxes .box-bottom:focus-within a.box-trigger,
                 .puntos .box-boxes .box-bottom:hover a.box-trigger strong {
                     color: #191C3A !important;
                 }
+
+                .puntos .box-boxes .box-bottom:focus-visible a.box-trigger strong,
+                .puntos .box-boxes .box-bottom:focus-within a.box-trigger strong {
+                    color: #191C3A !important;
+                }
             </style>
-            <div class="box box-boxes">
-                <div class="box-bottom bb1" data-target="1">
+            <div class="box box-boxes" role="tablist" aria-label="Canales principales de atención">
+                <div class="box-bottom bb1" data-target="1" id="box-tab-1" aria-controls="box-panel-1"
+                    aria-label="Mostrar atención presencial">
                     <p>
-                        <a class="box-trigger" href="#" data-target="1"><span class="tooltip-img"><img
+                        <a class="box-trigger" href="#" data-target="1" tabindex="-1" aria-hidden="true"><span class="tooltip-img"><img
                                     alt="acceder a presencial"
                                     src="/sites/default/files/2026-02-23/presencial.gif"
                                     title="acceder a presencial">&nbsp;</span></a>
@@ -325,7 +364,7 @@
                         &nbsp;
                     </div>
                     <p>
-                        <a class="box-trigger" href="#" data-target="1"><strong>Presencial</strong></a>
+                        <a class="box-trigger" href="#" data-target="1" tabindex="-1" aria-hidden="true"><strong>Presencial</strong></a>
                     </p>
                 </div>
                 <style type="text/css">
@@ -411,7 +450,7 @@
                         transition: ease-out 0.5s all !important;
                     }
                 </style>
-                <div class="box-summary box-summary-1">
+                <div class="box-summary box-summary-1" id="box-panel-1" aria-labelledby="box-tab-1">
                     <div class="cmpnt-title cmpnt-title-1">
                         <h3 class="title title-type-3 title-cmpnt">
                             Conoce nuestros puntos de atención presencial
@@ -2563,9 +2602,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-bottom bb2" data-target="2">
+                <div class="box-bottom bb2" data-target="2" id="box-tab-2" aria-controls="box-panel-2"
+                    aria-label="Mostrar atención virtual">
                     <p>
-                        <a class="box-trigger" href="#" data-target="2"><span class="tooltip-img"><img
+                        <a class="box-trigger" href="#" data-target="2" tabindex="-1" aria-hidden="true"><span class="tooltip-img"><img
                                     alt="acceder a virtual"
                                     src="/sites/default/files/2026-02-23/virtual.gif"
                                     title="acceder a virtual">&nbsp;</span></a>
@@ -2574,10 +2614,10 @@
                         &nbsp;
                     </div>
                     <p>
-                        <a class="box-trigger" href="#" data-target="2"><strong>Virtual</strong></a>
+                        <a class="box-trigger" href="#" data-target="2" tabindex="-1" aria-hidden="true"><strong>Virtual</strong></a>
                     </p>
                 </div>
-                <div class="box-summary box-summary-2">
+                <div class="box-summary box-summary-2" id="box-panel-2" aria-labelledby="box-tab-2">
                     <div class="cmpnt-title cmpnt-title-1">
                         <h3 class="title title-type-3 title-cmpnt">
                             Conoce nuestras formas de atención virtual
@@ -2975,8 +3015,7 @@
                                         </div>
                                         <p class="paragraph ph-type-1 ph-id-sc1">
                                             El chat de atención al ciudadano de la Secretaría Distrital de Movilidad está
-                                            habilitado de lunes a viernes de 7:00 a.m. a 6:00 p.m. jornada continua y
-                                            sábados de 8:00 a.m. a 12:00 m. <a
+                                            habilitado de lunes a sábado de 7:00 a.m. a 6:00 p.m. jornada continua. <a
                                                 href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Clic
                                                 aquí para iniciar el chat.</a>
                                         </p>
@@ -3130,9 +3169,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-bottom bb3" data-target="3">
+                <div class="box-bottom bb3" data-target="3" id="box-tab-3" aria-controls="box-panel-3"
+                    aria-label="Mostrar atención telefónica">
                     <p>
-                        <a class="box-trigger" href="#" data-target="3"><span class="tooltip-img"><img
+                        <a class="box-trigger" href="#" data-target="3" tabindex="-1" aria-hidden="true"><span class="tooltip-img"><img
                                     alt="acceder a telefónico"
                                     src="/sites/default/files/2026-02-23/telefonico.gif"
                                     title="acceder a telefónico">&nbsp;</span></a>
@@ -3141,10 +3181,10 @@
                         &nbsp;
                     </div>
                     <p>
-                        <a class="box-trigger" href="#" data-target="3"><strong>Telefónico</strong></a>
+                        <a class="box-trigger" href="#" data-target="3" tabindex="-1" aria-hidden="true"><strong>Telefónico</strong></a>
                     </p>
                 </div>
-                <div class="box-summary box-summary-3">
+                <div class="box-summary box-summary-3" id="box-panel-3" aria-labelledby="box-tab-3">
                     <div class="imagen img-call">
                         <img class="img-responsive w-100" alt=""
                             src="/sites/default/files/2026-02-23/atencion.jpg"
@@ -3699,14 +3739,30 @@
                 return;
             }
 
+            const focusByOffset = (box, offset) => {
+                const items = Array.from(boxes);
+                const currentIndex = items.indexOf(box);
+                if (currentIndex < 0) {
+                    return;
+                }
+                const nextIndex = (currentIndex + offset + items.length) % items.length;
+                items[nextIndex]?.focus();
+            };
+
             const show = (target) => {
                 const selected = document.querySelector(`.box-summary-${target}`) || summaries[0];
                 summaries.forEach((summary) => summary.classList.remove('visible'));
                 summaries.forEach((summary) => summary.setAttribute('hidden', 'true'));
+                summaries.forEach((summary) => summary.setAttribute('tabindex', '-1'));
                 selected.classList.add('visible');
                 selected.removeAttribute('hidden');
-                boxes.forEach((box) => box.setAttribute('aria-expanded', box.dataset.target === target ? 'true' :
-                    'false'));
+                selected.setAttribute('tabindex', '0');
+                boxes.forEach((box) => {
+                    const isActive = box.dataset.target === target;
+                    box.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                    box.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    box.setAttribute('tabindex', isActive ? '0' : '-1');
+                });
             };
 
             boxes.forEach((box) => {
@@ -3724,9 +3780,28 @@
                         event.preventDefault();
                         trigger(event);
                     }
+                    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                        event.preventDefault();
+                        focusByOffset(box, 1);
+                    }
+                    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                        event.preventDefault();
+                        focusByOffset(box, -1);
+                    }
+                    if (event.key === 'Home') {
+                        event.preventDefault();
+                        boxes[0]?.focus();
+                    }
+                    if (event.key === 'End') {
+                        event.preventDefault();
+                        boxes[boxes.length - 1]?.focus();
+                    }
                 });
-                box.setAttribute('role', 'button');
-                box.setAttribute('tabindex', '0');
+                box.setAttribute('role', 'tab');
+            });
+
+            summaries.forEach((summary) => {
+                summary.setAttribute('role', 'tabpanel');
             });
 
             show(boxes[0].dataset.target || 1);
@@ -3734,4 +3809,3 @@
     </script>
 
 @endsection
-

@@ -89,6 +89,7 @@
                         <div><code>/sites/barrios_vitales</code> -> <a href="{{ route('sites.barrios_vitales') }}">sites.barrios_vitales</a></div>
                         <div><code>/sites/conciliacion</code> -> <a href="{{ route('sites.conciliacion') }}">sites.conciliacion</a></div>
                         <div><code>/sites/dscsm</code> -> <a href="{{ route('sites.dscsm') }}">sites.dscsm</a></div>
+                        <div><code>/sites/gerencia-en-via</code> -> <a href="{{ route('sites.gerencia-en-via') }}">sites.gerencia-en-via</a></div>
                         <div><code>/sites/ms</code> -> <a href="{{ route('sites.ms') }}">sites.ms</a></div>
                         <div><code>/sites/sir</code> -> <a href="{{ route('sites.sir') }}">sites.sir</a></div>
                     </div>

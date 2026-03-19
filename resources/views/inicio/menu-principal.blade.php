@@ -53,6 +53,15 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('sites.gerencia-en-via') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Gerencia en Via</h2>
+                        <p class="mb-0 text-muted">Vista base del micrositio de Gerencia en Via.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('sites.barrios_vitales') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Barrios Vitales</h2>

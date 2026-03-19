@@ -13,6 +13,8 @@ Route::prefix('sites')->name('sites.')->group(function () {
     Route::view('/ms', 'sites.ms')->name('ms');
     //sir ruta
     Route::view('/sir', 'sites.sir')->name('sir');
+    // gerencia en via ruta
+    Route::view('/gerencia-en-via', 'sites.gerencia-en-via')->name('gerencia-en-via');
 
 
 

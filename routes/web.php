@@ -14,6 +14,7 @@ Route::get('/dashboard', function () {
 
 // Convocatorias de cultura
 Route::view('/culturas', 'culturas')->name('culturas');
+Route::view('/prueba', 'prueba')->name('prueba');
 Route::view('/menu', 'menu')->name('menu');
 Route::redirect('/pico-y-placa', '/inicio/pico_placa');
 

@@ -42,6 +42,14 @@
                     </div>
                 </a>
             </div>
+            <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('prueba') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Prueba</h2>
+                        <p class="mb-0 text-muted">Vista auxiliar para pruebas y validaciones rápidas.</p>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="card border-0 shadow-sm">
@@ -53,6 +61,7 @@
                         <div><code>/</code> -> <a href="{{ route('home') }}">home</a></div>
                         <div><code>/dashboard</code> -> <a href="{{ route('dashboard') }}">dashboard</a></div>
                         <div><code>/culturas</code> -> <a href="{{ route('culturas') }}">culturas</a></div>
+                        <div><code>/prueba</code> -> <a href="{{ route('prueba') }}">prueba</a></div>
                         <div><code>/menu</code> -> <a href="{{ route('menu') }}">menu</a></div>
                     </div>
 

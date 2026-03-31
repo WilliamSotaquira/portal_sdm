@@ -319,7 +319,7 @@
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle {{ request()->is('/') || request()->is('dashboard') || request()->is('culturas') ? 'active' : '' }}"
+                                    <a class="nav-link dropdown-toggle {{ request()->is('/') || request()->is('dashboard') || request()->is('culturas') || request()->is('prueba') ? 'active' : '' }}"
                                         href="#" role="button" data-bs-toggle="dropdown">
                                         General
                                     </a>
@@ -328,6 +328,7 @@
                                         <li><a class="dropdown-item {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Inicio</a></li>
                                         <li><a class="dropdown-item {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a></li>
                                         <li><a class="dropdown-item {{ request()->is('culturas') ? 'active' : '' }}" href="{{ route('culturas') }}">Culturas</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('prueba') ? 'active' : '' }}" href="{{ route('prueba') }}">Prueba</a></li>
                                     </ul>
                                 </li>
 

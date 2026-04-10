@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('sites')->name('sites.')->group(function () {
 
+    // cem ruta
+    Route::view('/cem', 'sites.cem')->name('cem');
     Route::view('/dscsm', 'sites.dscsm')->name('dscsm');
     //conciliacion ruta
     Route::view('/conciliacion', 'sites.conciliacion')->name('conciliacion');

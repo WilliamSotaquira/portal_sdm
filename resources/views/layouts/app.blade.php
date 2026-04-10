@@ -387,6 +387,7 @@
                                     <ul class="dropdown-menu">
                                         <li><h6 class="dropdown-header">Portales y contenidos</h6></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia') ? 'active' : '' }}" href="{{ route('transparencia.index') }}">Transparencia</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('sites/cem') ? 'active' : '' }}" href="{{ route('sites.cem') }}">CEM</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/conciliacion') ? 'active' : '' }}" href="{{ route('sites.conciliacion') }}">Conciliacion</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/gerencia-en-via') ? 'active' : '' }}" href="{{ route('sites.gerencia-en-via') }}">Gerencia en Via</a></li>

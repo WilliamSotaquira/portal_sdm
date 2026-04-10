@@ -44,6 +44,15 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('sites.cem') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">CEM</h2>
+                        <p class="mb-0 text-muted">Vista base del nuevo micrositio CEM.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('sites.ms') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">MS</h2>

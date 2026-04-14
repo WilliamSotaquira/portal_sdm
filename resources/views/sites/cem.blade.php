@@ -187,7 +187,7 @@
                     id="cem-iframe"
                     class="cem-iframe"
                     title="Recorrido Virtual del Centro de Gestion de Transito"
-                    data-src="https://camilonemo.com/nemo/EjecutableRecorrido/index.html"
+                    data-src="https://suanet-test.movilidadbogota.gov.co/cem/"
                     allowfullscreen
                     allow="xr-spatial-tracking; fullscreen"></iframe>
             </section>

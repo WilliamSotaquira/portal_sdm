@@ -3,9 +3,10 @@
 @section('title', 'CEM')
 
 @section('content')
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <div id="cem">
+
     <a class="cem-skip" href="#cem-content">Saltar al contenido</a>
 
     <style>
@@ -17,8 +18,9 @@
             isolation:isolate;
             --c1:#0a2458; --c2:#dff6ff; --c3:#133b8c; --c4:#4bcfff; --c5:#9cecff;
             --bg:#eef7fd; --tx:#0a1733; --tx2:#071c42; --wh:#fff; --bd:#b8d8ea;
-            --timeline-card-h-mobile:clamp(540px,74vh,620px);
-            --timeline-card-h-desktop:clamp(410px,56vh,470px);
+            --timeline-edge-offset:24px;
+            --timeline-card-min-h-mobile:clamp(540px,74vh,620px);
+            --timeline-card-min-h-desktop:clamp(410px,56vh,470px);
             background:
                 radial-gradient(circle at top, rgba(156,236,255,.18), transparent 38%),
                 linear-gradient(180deg, #f7fcff 0%, var(--bg) 32%, #e8f4fb 100%);
@@ -29,7 +31,17 @@
         #cem :where(button) { appearance:none; -webkit-appearance:none; border:0; background:none; }
         #cem :where(img) { max-width:100%; }
         #cem [hidden] { display:none !important; }
-        #cem .cem-stack { display:grid; gap:1rem; align-content:start; }
+        #cem .cem-sr-only {
+            position:absolute !important;
+            width:1px !important;
+            height:1px !important;
+            padding:0 !important;
+            margin:-1px !important;
+            overflow:hidden !important;
+            clip:rect(0, 0, 0, 0) !important;
+            white-space:nowrap !important;
+            border:0 !important;
+        }
         #cem .cem-app,
         #cem .cem-header,
         #cem .cem-tabs,
@@ -47,8 +59,15 @@
         #cem a:focus-visible, #cem button:focus-visible, #cem iframe:focus-visible {
             outline:3px solid var(--c5); outline-offset:3px;
         }
+        #cem .cem-tab:focus-visible,
+        #cem .timeline-btn:focus-visible,
+        #cem .timeline-node:focus-visible {
+            outline:3px solid var(--c5);
+            outline-offset:3px;
+            box-shadow:0 0 0 6px rgba(76,207,255,.22);
+        }
         #cem .cem-app {
-            position:relative; background:var(--bg); border:1px solid rgba(19,59,140,.18); overflow:hidden;
+            position:relative; width:100%; background:var(--bg); border:1px solid rgba(19,59,140,.18); overflow:hidden;
             box-shadow:0 24px 48px rgba(7,28,66,.08);
         }
         #cem .cem-app::before {
@@ -60,7 +79,7 @@
             opacity:.65;
         }
         #cem .cem-header {
-            position:relative; overflow:hidden; padding:18px 20px 20px; text-align:center; background:var(--c1); color:var(--wh);
+            position:relative; overflow:hidden; padding:clamp(16px, 3vw, 18px) clamp(16px, 4vw, 20px) 20px; text-align:center; background:var(--c1); color:var(--wh);
             box-shadow:0 6px 16px rgba(0,0,0,.22);
         }
         #cem .cem-header::before {
@@ -71,9 +90,16 @@
             opacity:.75;
         }
         #cem .cem-title {
-            position:relative; z-index:1; margin:0; font:800 1.55rem/1 "Montserrat",sans-serif; letter-spacing:.12em; text-transform:uppercase;
+            position:relative; z-index:1; margin:0; color:var(--wh) !important; font:800 clamp(1.3rem, 1.05rem + 1vw, 1.55rem)/1.05 "Montserrat",sans-serif; letter-spacing:.08em; text-transform:uppercase; text-wrap:balance;
         }
-        #cem .cem-tagline { position:relative; z-index:1; max-width:920px; margin:.45rem auto 0; color:rgba(255,255,255,.82); line-height:1.45; font-size:.82rem; }
+        #cem .cem-brand {
+            position:relative; z-index:1; width:min(100%, 340px); margin:0 auto .9rem;
+        }
+        #cem .cem-brand img {
+            display:block; width:100%; height:auto;
+            filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
+        }
+        #cem .cem-tagline { position:relative; z-index:1; max-width:920px; margin:.45rem auto 0; color:rgba(255,255,255,.82); line-height:1.55; font-size:clamp(.92rem, .84rem + .35vw, 1rem); text-wrap:pretty; }
         #cem .cem-tabs {
             position:relative; display:flex; flex-wrap:wrap; background:linear-gradient(180deg,#17469e 0%, var(--c3) 100%);
             box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -1px 0 rgba(5,15,38,.22);
@@ -86,6 +112,7 @@
         #cem .cem-tab {
             flex:1 1 220px; min-height:58px; border:0; background:var(--c3); color:var(--wh); cursor:pointer;
             font:700 .95rem/1.2 "Montserrat",sans-serif; padding:15px 14px; transition:.2s;
+            text-wrap:balance;
             border-right:1px solid rgba(255,255,255,.08); position:relative; z-index:1;
         }
         #cem .cem-tab:hover { background:var(--c2); color:var(--tx); }
@@ -122,66 +149,20 @@
             font:800 clamp(1.8rem,1.4rem + 1vw,2.5rem)/1.05 "Montserrat",sans-serif; text-transform:uppercase;
         }
         #cem .cem-hero {
-            position:relative; min-height:340px; padding:1.5rem; border-radius:1rem; overflow:hidden;
-            display:flex; flex-direction:column; justify-content:space-between; gap:1rem; background:#07163f; isolation:isolate;
-        }
-        #cem .cem-hero::before {
-            content:""; position:absolute; inset:0;
-            background:
-                linear-gradient(180deg,rgba(2,9,27,.18) 0%,rgba(2,9,27,.58) 52%,rgba(2,9,27,.9) 100%),
-                url('https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/fondo-hero.jpg') center/cover no-repeat;
-            z-index:-3;
+            position:relative; min-height:340px; border-radius:1rem; overflow:hidden;
+            background:#07163f; isolation:isolate; border:1px solid rgba(143,215,255,.16);
+            box-shadow:0 18px 34px rgba(7,28,66,.12);
         }
         #cem .cem-hero::after {
-            content:""; position:absolute; left:0; right:0; bottom:0; height:88px;
-            background:url('https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/franja.png') center bottom/cover no-repeat;
-            opacity:.92; z-index:-1; pointer-events:none;
-        }
-        #cem .cem-badge {
-            display:inline-flex; width:max-content; padding:.45rem .8rem; border-radius:999px; font-size:.74rem; font-weight:700;
-            letter-spacing:.08em; text-transform:uppercase; color:#eff8ff; background:rgba(3,17,51,.88); border:1px solid rgba(143,215,255,.28);
-        }
-        #cem .cem-hero-mark { display:grid; justify-items:center; gap:.85rem; text-align:center; }
-        #cem .cem-hero-icon { width:min(100%,180px); height:auto; display:block; filter:drop-shadow(0 10px 30px rgba(4,198,255,.18)); }
-        #cem .cem-hero-org {
-            margin:0; max-width:13ch; color:var(--wh); text-wrap:balance;
-            font:800 clamp(1.45rem,1.1rem + 1.2vw,2.3rem)/1.05 "Montserrat",sans-serif;
-            text-shadow:0 4px 18px rgba(0,0,0,.35);
-        }
-        #cem .cem-hero h3 {
-            margin:0; line-height:.9; letter-spacing:.08em; text-transform:uppercase;
-            font:800 clamp(4.5rem,3.2rem + 5vw,7.5rem)/.9 "Montserrat",sans-serif;
-            color:#6fdcff; background:linear-gradient(180deg,#9fe8ff 0%,#63d7ff 100%);
-            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-            text-shadow:none;
-        }
-        #cem .cem-hero-copy {
-            margin:0; max-width:34ch; padding:.9rem 1rem 1.1rem; color:#eff8ff; line-height:1.6; font-weight:500;
-            background:rgba(3,17,51,.76); border:1px solid rgba(143,215,255,.24); border-radius:.9rem;
-            box-shadow:0 12px 28px rgba(0,0,0,.2);
-        }
-        #cem .cem-card {
-            position:relative; overflow:hidden; padding:1.35rem; border-radius:1rem; line-height:1.7;
-            box-shadow:0 18px 28px rgba(7,28,66,.08);
-        }
-        #cem .cem-card::before {
             content:""; position:absolute; inset:0; pointer-events:none;
-            background:
-                radial-gradient(circle at top right, rgba(156,236,255,.3), transparent 24%),
-                linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,0) 38%);
-            opacity:.7;
+            background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0) 24%);
         }
-        #cem .cem-card::after {
-            content:""; position:absolute; inset:0; pointer-events:none;
-            background:repeating-linear-gradient(90deg, rgba(19,59,140,.035) 0 1px, transparent 1px 26px);
-            opacity:.35;
+        #cem .cem-hero-visual {
+            display:block;
+            width:100%;
+            height:auto;
         }
-        #cem .cem-card h3, #cem .cem-card p { position:relative; z-index:1; }
-        #cem .cem-card h3 { margin:0 0 .65rem; font:700 1.12rem/1.25 "Montserrat",sans-serif; }
-        #cem .cem-card p { margin:0; }
-        #cem .cem-card--lime { background:linear-gradient(180deg,#edfaff 0%,#dff6ff 100%); color:var(--tx); border:1px solid rgba(19,59,140,.12); }
-        #cem .cem-card--dark { background:linear-gradient(180deg,#12357d 0%,#0a2458 100%); color:var(--wh); }
-        #cem .timeline-wrap { position:relative; z-index:1; max-width:1100px; margin:0 auto; }
+        #cem .timeline-wrap { position:relative; z-index:1; width:100%; max-width:1100px; margin:0 auto; }
         #cem .timeline-wrap::before {
             content:""; position:absolute; inset:-30px -10px auto; height:180px; pointer-events:none;
             background:radial-gradient(circle at top center, rgba(76,207,255,.18), transparent 58%);
@@ -189,14 +170,16 @@
         }
         #cem .timeline-card {
             display:grid; grid-template-columns:1fr; grid-template-rows:230px minmax(0,1fr);
-            height:var(--timeline-card-h-mobile); overflow:hidden; border-radius:1rem;
+            min-height:var(--timeline-card-min-h-mobile); overflow:hidden; border-radius:1rem;
             border:1px solid rgba(156,236,255,.14); background:rgba(7,28,66,.42); box-shadow:0 18px 36px rgba(0,0,0,.22);
             transform:translateY(0); transition:transform .45s ease, box-shadow .45s ease, border-color .45s ease;
         }
         #cem .timeline-card.is-animating {
             transform:translateY(4px); box-shadow:0 10px 24px rgba(0,0,0,.18); border-color:rgba(156,236,255,.24);
         }
-        #cem .timeline-media { position:relative; min-height:0; height:100%; background:#08152f; }
+        #cem .timeline-media {
+            position:relative; min-height:0; height:100%; max-height:230px; overflow:hidden; background:#08152f;
+        }
         #cem .timeline-media::after {
             content:""; position:absolute; inset:0; pointer-events:none;
             background:
@@ -237,10 +220,16 @@
             position:relative; width:min(100%,1020px); height:94px; margin:2rem auto 0;
             background:radial-gradient(circle at center, rgba(76,207,255,.08), transparent 62%);
         }
-        #cem .timeline-rail, #cem .timeline-fill { position:absolute; left:0; right:0; top:22px; height:2px; }
+        #cem .timeline-track:focus-visible {
+            outline:3px solid var(--c5);
+            outline-offset:6px;
+            border-radius:12px;
+        }
+        #cem .timeline-rail, #cem .timeline-fill { position:absolute; top:22px; height:2px; }
+        #cem .timeline-rail { left:var(--timeline-edge-offset); right:var(--timeline-edge-offset); }
         #cem .timeline-rail { background:rgba(255,255,255,.16); }
         #cem .timeline-fill {
-            width:0; right:auto; background:linear-gradient(90deg,var(--c4),var(--c5));
+            left:var(--timeline-edge-offset); width:0; right:auto; background:linear-gradient(90deg,var(--c4),var(--c5));
             box-shadow:0 0 14px rgba(76,207,255,.45); transition:width .55s cubic-bezier(.22,1,.36,1);
         }
         #cem .timeline-node {
@@ -319,24 +308,37 @@
             border-radius:1rem; background:#000; box-shadow:0 20px 40px rgba(0,0,0,.28);
         }
         @media (min-width:992px) {
-            #cem .cem-grid { grid-template-columns:1fr 1fr; align-items:stretch; }
-            #cem .timeline-card { grid-template-columns:42% 58%; grid-template-rows:none; height:var(--timeline-card-h-desktop); }
+            #cem .cem-grid { grid-template-columns:1fr; align-items:stretch; }
+            #cem .timeline-card { grid-template-columns:42% 58%; grid-template-rows:none; min-height:var(--timeline-card-min-h-desktop); }
+            #cem .timeline-media { max-height:var(--timeline-card-min-h-desktop); }
         }
         @media (max-width:900px) {
+            #cem { --timeline-edge-offset:28px; }
             #cem .timeline-track { overflow-x:auto; overflow-y:hidden; padding-bottom:8px; }
-            #cem .timeline-rail, #cem .timeline-fill { width:960px; max-width:none; }
+            #cem .timeline-rail, #cem .timeline-fill { width:calc(960px - (var(--timeline-edge-offset) * 2)); max-width:none; }
+            #cem .timeline-year { opacity:0; }
+            #cem .timeline-node.is-active .timeline-year { opacity:1; }
+        }
+        @media (max-width:768px) {
+            #cem .cem-tabs { display:grid; grid-template-columns:1fr; }
+            #cem .cem-tab { min-height:54px; padding:14px 16px; border-right:0; border-bottom:1px solid rgba(255,255,255,.08); }
         }
         @media (max-width:576px) {
-            #cem .cem-title { font-size:1.25rem; }
-            #cem .cem-tagline { font-size:.75rem; }
+            #cem { --timeline-edge-offset:30px; }
+            #cem .cem-brand { width:min(100%, 250px); margin-bottom:.75rem; }
+            #cem .cem-title { font-size:1.15rem; letter-spacing:.05em; }
+            #cem .cem-tagline { font-size:.9rem; line-height:1.5; }
             #cem .cem-panel--default, #cem .cem-panel--historia { padding:1.25rem 1rem; }
-            #cem .cem-hero { min-height:420px; padding:1rem; }
-            #cem .cem-hero::after { height:72px; }
-            #cem .cem-hero-copy { padding:.85rem .9rem 1rem; font-size:.9rem; }
+            #cem .cem-hero { min-height:0; }
             #cem .timeline-card { grid-template-rows:210px minmax(0,1fr); }
+            #cem .timeline-media { max-height:210px; }
             #cem .timeline-body { padding:1.1rem 1rem 1.2rem; }
             #cem .timeline-title { font-size:clamp(1.35rem,1.15rem + .7vw,1.8rem); }
             #cem .timeline-desc { font-size:.95rem; line-height:1.7; }
+            #cem .timeline-track { height:88px; }
+            #cem .timeline-node { width:40px; height:40px; }
+            #cem .timeline-node.is-active { transform:translateY(-3px) scale(1.08); }
+            #cem .timeline-year { top:50px; font-size:.72rem; }
             #cem #cem-panel-recorrido { padding:1rem; }
             #cem .timeline-controls { flex-direction:column; }
             #cem .timeline-btn { width:100%; }
@@ -345,52 +347,45 @@
 
     <div class="cem-app">
         <header class="cem-header">
-            <h1 class="cem-title" aria-describedby="cem-tagline">CEM</h1>
+            <div class="cem-brand" aria-hidden="true">
+                <img src="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/logo%20suanet%20nuevo-02.png" alt="" loading="lazy" decoding="async">
+            </div>
+            <h1 class="cem-title" aria-describedby="cem-tagline">CENTRO ESTRATÉGICO DE MOVILIDAD</h1>
             <p class="cem-tagline" id="cem-tagline">
-                El Centro Estrategico de Movilidad es la entidad encargada de la planificacion, gestion y coordinacion
-                de estrategias orientadas a optimizar el transito y la movilidad urbana.
+                El Centro Estratégico de Movilidad es la entidad encargada de la planificación, gestión y coordinación
+                de estrategias orientadas a optimizar el tránsito y la movilidad urbana.
             </p>
         </header>
 
         <div class="cem-tabs" role="tablist" aria-label="Secciones del CEM">
-            <button class="cem-tab is-active" id="cem-tab-pm" type="button" role="tab" aria-selected="true" aria-controls="cem-panel-pm" data-tab="pm">PM SIT</button>
-            <button class="cem-tab" id="cem-tab-historia" type="button" role="tab" aria-selected="false" aria-controls="cem-panel-historia" data-tab="historia" tabindex="-1">HISTORIA CGT</button>
-            <button class="cem-tab" id="cem-tab-recorrido" type="button" role="tab" aria-selected="false" aria-controls="cem-panel-recorrido" data-tab="recorrido" tabindex="-1">RECORRIDO VIRTUAL CGT</button>
+            <button class="cem-tab is-active" id="cem-tab-pm" type="button" role="tab" aria-selected="true" aria-controls="cem-panel-pm" data-tab="pm">PLAN MAESTRO SIT</button>
+            <button class="cem-tab" id="cem-tab-historia" type="button" role="tab" aria-selected="false" aria-controls="cem-panel-historia" data-tab="historia" tabindex="-1">HISTORIA CEM</button>
+            <button class="cem-tab" id="cem-tab-recorrido" type="button" role="tab" aria-selected="false" aria-controls="cem-panel-recorrido" data-tab="recorrido" tabindex="-1">RECORRIDO VIRTUAL CEM</button>
         </div>
 
         <main id="cem-content">
             <section class="cem-panel cem-panel--default is-active" id="cem-panel-pm" role="tabpanel" aria-labelledby="cem-tab-pm" data-panel="pm">
                 <div class="cem-grid">
                     <div>
-                        <h2 class="cem-heading">ABC</h2>
-                        <div class="cem-hero" aria-labelledby="cem-hero-title" aria-describedby="cem-hero-copy">
-                            <span class="cem-badge">Plan Maestro</span>
-                            <div class="cem-hero-mark">
-                                <img class="cem-hero-icon" src="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/logo-suanet-hero.png" alt="" aria-hidden="true">
-                                <p class="cem-hero-org">Centro Estrategico de Movilidad</p>
-                                <h3 id="cem-hero-title">CEM</h3>
+                        <div class="cem-hero" role="img" aria-labelledby="cem-hero-title" aria-describedby="cem-hero-copy">
+                            <img
+                                class="cem-hero-visual"
+                                src="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/infografia%20para%20micrositio%20web%20cem_mesa%20de%20trabajo%201.png"
+                                alt=""
+                                aria-hidden="true">
+                            <div class="cem-sr-only">
+                                <p id="cem-hero-title">Centro Estratégico de Movilidad, CEM.</p>
+                                <p id="cem-hero-copy">Infografía principal del Plan Maestro del Sistema Inteligente de Transporte para el micrositio del CEM.</p>
                             </div>
-                            <p class="cem-hero-copy" id="cem-hero-copy">Portada de referencia del Plan Maestro del Sistema Inteligente de Transporte, construida con texto real y elementos decorativos para mantener legibilidad y accesibilidad.</p>
                         </div>
                     </div>
 
-                    <div class="cem-stack">
-                        <article class="cem-card cem-card--lime">
-                            <h3>Documento Tecnico de Soporte</h3>
-                            <p>Documento que recopila los estudios tecnicos, diagnosticos y analisis que fundamentan la formulacion del plan de manejo del Sitio de Interes Tecnico.</p>
-                        </article>
-
-                        <article class="cem-card cem-card--dark">
-                            <h3>Resolucion</h3>
-                            <p>Acto administrativo mediante el cual se adopta oficialmente el plan de manejo y se establecen las directrices para la conservacion y uso sostenible del area protegida.</p>
-                        </article>
-                    </div>
                 </div>
             </section>
 
             <section class="cem-panel cem-panel--historia" id="cem-panel-historia" role="tabpanel" aria-labelledby="cem-tab-historia" data-panel="historia" hidden>
                 <div class="timeline-wrap">
-                    <div class="timeline-card" id="cem-timeline-card" aria-live="polite" role="status">
+                    <div class="timeline-card" id="cem-timeline-card" aria-live="off">
                         <div class="timeline-media">
                             <img id="cem-timeline-image" src="" alt="">
                         </div>
@@ -401,17 +396,17 @@
                         </div>
                     </div>
 
-                    <div class="timeline-track" id="cem-timeline-track" tabindex="0" aria-label="Linea de tiempo de la historia del CGT">
+                    <div class="timeline-track" id="cem-timeline-track" tabindex="0" aria-label="Línea de tiempo de la historia del CEM">
                         <div class="timeline-rail"></div>
                         <div class="timeline-fill" id="cem-timeline-fill"></div>
                     </div>
 
                     <div class="timeline-controls">
-                        <button class="timeline-btn" id="cem-prev" type="button">&#9664; Anterior</button>
-                        <button class="timeline-btn is-active" id="cem-play" type="button">Pausa</button>
-                        <button class="timeline-btn" id="cem-next" type="button">Siguiente &#9654;</button>
+                        <button class="timeline-btn" id="cem-prev" type="button" aria-label="Ir al hito anterior">&#9664; Anterior</button>
+                        <button class="timeline-btn" id="cem-play" type="button" aria-label="Reproducir línea de tiempo" aria-pressed="false">Reproducir</button>
+                        <button class="timeline-btn" id="cem-next" type="button" aria-label="Ir al siguiente hito">Siguiente &#9654;</button>
                     </div>
-                    <div class="timeline-counter" id="cem-counter"></div>
+                    <div class="timeline-counter" id="cem-counter" role="status" aria-live="polite" aria-atomic="true"></div>
                 </div>
             </section>
 
@@ -419,7 +414,7 @@
                 <iframe
                     id="cem-iframe"
                     class="cem-iframe"
-                    title="Recorrido Virtual del Centro de Gestion de Transito"
+                    title="Recorrido Virtual del Centro de Gestión de Tránsito"
                     data-src="https://suanet-test.movilidadbogota.gov.co/cem/"
                     allowfullscreen
                     allow="xr-spatial-tracking; fullscreen"></iframe>
@@ -431,6 +426,24 @@
         (function () {
             var root = document.getElementById("cem");
             if (!root) return;
+            var externalTitleText = "Centro Estratégico de Movilidad";
+
+            function normalizeTitle(text) {
+                return (text || "")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .replace(/\s+/g, " ")
+                    .trim()
+                    .toLowerCase();
+            }
+
+            Array.prototype.slice.call(document.querySelectorAll("h1.title")).forEach(function (titleNode) {
+                var titleText = normalizeTitle(titleNode.textContent || "");
+                if (titleText === normalizeTitle(externalTitleText)) {
+                    titleNode.hidden = true;
+                    titleNode.setAttribute("aria-hidden", "true");
+                }
+            });
 
             var tabs = Array.prototype.slice.call(root.querySelectorAll("[data-tab]"));
             var panels = Array.prototype.slice.call(root.querySelectorAll("[data-panel]"));
@@ -477,23 +490,23 @@
             });
 
             var milestones = [
-                { year: "1935", title: "El primer semaforo", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/1935.jpg", alt: "Primer semaforo instalado en Bogota en 1935", desc: "Se instalo en la Avenida Jimenez con Carrera 7 y dio inicio al control moderno del trafico." },
-                { year: "Anos 50", title: "Semaforos colgantes", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/1950s.jpg", alt: "Semaforos colgantes en Bogota durante los anos 50", desc: "Se instalaron nuevos semaforos suspendidos en el centro de las intersecciones, mejorando la visibilidad y la circulacion." },
-                { year: "Anos 60", title: "La Red Blanca", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/1960s.png", alt: "Red interconectada de semaforos en los anos 60", desc: "Se implemento la primera red interconectada de semaforos con postes blancos y franjas negras." },
-                { year: "Anos 70", title: "La era electronica", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/1970s.png", alt: "Coordinacion centralizada de la red semaforica en los anos 70", desc: "Inicio la coordinacion centralizada de la red semaforica desde la central de Paloquemao y llegaron las primeras olas verdes." },
-                { year: "Anos 80", title: "Limitaciones del cobre", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/1980s.jpg", alt: "Ampliacion de la red de semaforos en los anos 80", desc: "Se amplio la red de semaforos con nuevas centrales en Muzu y Chico y aparecieron los primeros semaforos peatonales." },
-                { year: "Anos 90", title: "Controladores programables", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/1990s.jpg", alt: "Controladores semidigitales en los anos 90", desc: "Inicio la transicion de controladores analogos a semidigitales y se adopto la carcasa negra para mejorar el contraste." },
-                { year: "Anos 2000", title: "Eficiencia e inclusion", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2000s.png", alt: "Tecnologia LED y botones peatonales sonoros en los anos 2000", desc: "Se empezo a usar tecnologia LED y se instalaron botones peatonales sonoros para mejorar la accesibilidad." },
-                { year: "2015", title: "Centro de Gestion de Transito", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2015.jpg", alt: "Inicio de operacion del CGT en 2015", desc: "El CGT inicio operacion con 120 camaras y 376 sensores para monitorear las vias y gestionar incidentes en tiempo real." },
-                { year: "2018", title: "Transformacion de la comunicacion semaforica", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2018.jpg", alt: "Conexion de semaforos mediante fibra optica en 2018", desc: "Bogota conecto todos los semaforos a una unica central mediante fibra optica y completo la transicion a tecnologia LED." },
-                { year: "2019", title: "Semaforos inteligentes", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2019.jpg", alt: "Videodetectores y Prudencia en 2019", desc: "Llegaron los primeros videodetectores para optimizar tiempos semaforicos y aparecio Prudencia en los semaforos peatonales." },
-                { year: "2020", title: "Tecnologia para la seguridad vial", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2020.jpg", alt: "Camaras de fotodeteccion en 2020", desc: "Se instalaron 70 camaras de fotodeteccion para reducir la siniestralidad y mejorar el cumplimiento de las normas." },
-                { year: "2025", title: "Rumbo al Centro Estrategico de Movilidad", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2025.jpg", alt: "Radares pedagogicos y videodetectores en 2025", desc: "Se adiciono el streaming de 1300 videodetectores y se implementaron 15 radares pedagogicos conectados al CGT." },
-                { year: "2026", title: "Centro Estrategico de Movilidad", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-14/2026.jpg", alt: "Interconexion de camaras en el CEM durante 2026", desc: "Se interconectaron 10000 camaras en un ecosistema de monitoreo y gestion de trafico que anticipa afectaciones en las vias." }
+                { year: "1935", title: "El primer semáforo", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/1935.webp", alt: "Primer semáforo instalado en Bogotá en 1935", desc: "Se instaló en la avenida Jiménez con carrera 7 y dio inicio al control moderno del tráfico." },
+                { year: "Años 50", title: "Semáforos colgantes", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/50.webp", alt: "Semáforos colgantes en Bogotá durante los años 50", desc: "Se instalaron nuevos semáforos suspendidos en el centro de las intersecciones, lo que mejoró la visibilidad y la circulación." },
+                { year: "Años 60", title: "La Red Blanca", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/60.webp", alt: "Red interconectada de semáforos en los años 60", desc: "Se implementó la primera red interconectada de semáforos con postes blancos y franjas negras." },
+                { year: "Años 70", title: "La era electrónica", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/70.webp", alt: "Coordinación centralizada de la red semafórica en los años 70", desc: "Inició la coordinación centralizada de la red semafórica desde la central de Paloquemao. Se implementaron las primeras “olas verdes”." },
+                { year: "Años 80", title: "Limitaciones del cobre", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/80.webp", alt: "Ampliación de la red de semáforos en los años 80", desc: "Se amplió la red de semáforos con nuevas centrales en Muzu y Chicó. Se implementaron los primeros semáforos peatonales." },
+                { year: "Años 90", title: "Controladores programables", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/90.webp", alt: "Controladores semidigitales en los años 90", desc: "Inició la transición de controladores análogos a semidigitales. Se adoptó el uso de una carcasa negra para mejorar el contraste de las luces en los semáforos." },
+                { year: "Años 2000", title: "Eficiencia e inclusión", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2000.webp", alt: "Tecnología LED y botones peatonales sonoros en los años 2000", desc: "Se empezó a usar la tecnología LED. Se instalaron botones peatonales sonoros para mejorar la accesibilidad." },
+                { year: "2015", title: "Centro de Gestión de Tránsito (CGT)", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2015.webp", alt: "Inicio de operación del CGT en 2015", desc: "El CGT inició operación con 120 cámaras y 376 sensores para monitorear las vías y gestionar incidentes en tiempo real." },
+                { year: "2018", title: "Transformación de la comunicación semafórica", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2018.webp", alt: "Conexión de semáforos mediante fibra óptica en 2018", desc: "Por primera vez, Bogotá logró conectar todos los semáforos a una única central en el CGT mediante el uso de fibra óptica. Se completó la transición a tecnología LED." },
+                { year: "2019", title: "Semáforos inteligentes", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2019.webp", alt: "Videodetectores y Prudencia en 2019", desc: "Se instalaron los primeros videodetectores para optimizar tiempos semafóricos en tiempo real. Nació “Prudencia” en los semáforos peatonales, ícono para humanizar la movilidad y reforzar la cultura del cuidado." },
+                { year: "2020", title: "Tecnología para la seguridad vial", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2020.webp", alt: "Cámaras de fotodetección en 2020", desc: "Se instalaron 70 cámaras de fotodetección para reducir la siniestralidad y mejorar el cumplimiento de las normas." },
+                { year: "2025", title: "Rumbo al Centro Estratégico de Movilidad", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2025.webp", alt: "Radares pedagógicos y videodetectores en 2025", desc: "Se adicionó el streaming de 1.300 videodetectores al monitoreo del CGT. Se implementaron 15 radares pedagógicos conectados al CGT para promover el cumplimiento del límite de velocidad." },
+                { year: "2026", title: "Centro Estratégico de Movilidad (CEM)", image: "https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/2026.webp", alt: "Interconexión de cámaras en el CEM durante 2026", desc: "Se interconectaron 10.000 cámaras en un solo ecosistema de monitoreo y gestión de tráfico, SUANET, que prioriza la movilidad de las personas y anticipa afectaciones en las vías. Interopera con los focos de los centros de control de la Policía Metropolitana, TransMilenio, IDIGER y con plataformas de movilidad." }
             ];
 
             var current = 0;
-            var playing = true;
+            var playing = false;
             var dwellMs = 5000;
             var timer = null;
             var initialized = false;
@@ -511,6 +524,13 @@
             var prevBtn = root.querySelector("#cem-prev");
             var nextBtn = root.querySelector("#cem-next");
             var playBtn = root.querySelector("#cem-play");
+            var edgeOffsetPx = 24;
+
+            function getEdgeOffsetPx() {
+                var value = window.getComputedStyle(root).getPropertyValue("--timeline-edge-offset").trim();
+                var parsed = parseFloat(value);
+                return Number.isFinite(parsed) ? parsed : edgeOffsetPx;
+            }
 
             function applyTimelineItem(item, index, pct) {
                 image.src = item.image;
@@ -518,7 +538,8 @@
                 date.textContent = item.year;
                 title.textContent = item.title;
                 desc.textContent = item.desc;
-                fill.style.width = pct + "%";
+                edgeOffsetPx = getEdgeOffsetPx();
+                fill.style.width = "calc((100% - " + (edgeOffsetPx * 2) + "px) * " + (pct / 100) + ")";
                 counter.textContent = (index + 1) + " / " + milestones.length;
                 nodes.forEach(function (node, nodeIndex) {
                     node.classList.toggle("is-active", nodeIndex === index);
@@ -567,20 +588,23 @@
             function togglePlay() {
                 playing = !playing;
                 playBtn.textContent = playing ? "Pausa" : "Reproducir";
+                playBtn.setAttribute("aria-label", playing ? "Pausar línea de tiempo" : "Reproducir línea de tiempo");
+                playBtn.setAttribute("aria-pressed", playing ? "true" : "false");
                 playBtn.classList.toggle("is-active", playing);
                 schedule();
             }
 
             function buildNodes() {
                 var gap = milestones.length > 1 ? 100 / (milestones.length - 1) : 0;
+                edgeOffsetPx = getEdgeOffsetPx();
                 milestones.forEach(function (item, index) {
                     var node = document.createElement("button");
                     var img = document.createElement("img");
                     var year = document.createElement("span");
                     node.type = "button";
                     node.className = "timeline-node";
-                    node.style.left = "calc(" + (gap * index) + "% - 23px)";
-                    node.setAttribute("aria-label", "Ir al hito " + item.year + " " + item.title);
+                    node.style.left = "calc(" + edgeOffsetPx + "px + ((100% - " + (edgeOffsetPx * 2) + "px) * " + (gap * index / 100) + ") - 23px)";
+                    node.setAttribute("aria-label", "Ir al hito " + item.year + ": " + item.title);
                     img.src = item.image;
                     img.alt = "";
                     img.setAttribute("aria-hidden", "true");
@@ -615,20 +639,37 @@
                 playBtn.addEventListener("click", togglePlay);
             }
 
+            window.addEventListener("resize", function () {
+                if (!initialized) return;
+                edgeOffsetPx = getEdgeOffsetPx();
+                nodes.forEach(function (node, index) {
+                    var ratio = milestones.length > 1 ? index / (milestones.length - 1) : 0;
+                    var nodeHalf = node.offsetWidth ? (node.offsetWidth / 2) : 23;
+                    node.style.left = "calc(" + edgeOffsetPx + "px + ((100% - " + (edgeOffsetPx * 2) + "px) * " + ratio + ") - " + nodeHalf + "px)";
+                });
+
+                var pct = milestones.length > 1 ? (current / (milestones.length - 1)) * 100 : 0;
+                fill.style.width = "calc((100% - " + (edgeOffsetPx * 2) + "px) * " + (pct / 100) + ")";
+            });
+
             function initTimeline() {
                 if (!initialized) {
                     initialized = true;
                     buildNodes();
                 }
                 clearTimeout(timer);
-                playing = true;
-                playBtn.textContent = "Pausa";
-                playBtn.classList.add("is-active");
+                playing = false;
+                playBtn.textContent = "Reproducir";
+                playBtn.setAttribute("aria-label", "Reproducir línea de tiempo");
+                playBtn.setAttribute("aria-pressed", "false");
+                playBtn.classList.remove("is-active");
                 goTo(0);
             }
 
             activateTab("pm", false);
         })();
     </script>
+
 </div>
+
 @endsection

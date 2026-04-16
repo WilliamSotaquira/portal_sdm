@@ -352,7 +352,7 @@
             </div>
             <h1 class="cem-title" aria-describedby="cem-tagline">CENTRO ESTRATÉGICO DE MOVILIDAD</h1>
             <p class="cem-tagline" id="cem-tagline">
-                El Centro Estratégico de Movilidad es la entidad encargada de la planificación, gestión y coordinación
+                El Centro Estratégico de Movilidad es el ecosistema encargado de la planificación, gestión y coordinación
                 de estrategias orientadas a optimizar el tránsito y la movilidad urbana.
             </p>
         </header>
@@ -370,7 +370,7 @@
                         <div class="cem-hero" role="img" aria-labelledby="cem-hero-title" aria-describedby="cem-hero-copy">
                             <img
                                 class="cem-hero-visual"
-                                src="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-15/infografia%20para%20micrositio%20web%20cem_mesa%20de%20trabajo%201.png"
+                                src="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-16/info-cem-160426.jpeg"
                                 alt=""
                                 aria-hidden="true">
                             <div class="cem-sr-only">

@@ -380,7 +380,7 @@
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle {{ request()->is('sites/*') || request()->is('transparencia/*') ? 'active' : '' }}"
+                                    <a class="nav-link dropdown-toggle {{ request()->is('transparencia') || request()->is('sites/*') || request()->is('transparencia/*') ? 'active' : '' }}"
                                         href="#" role="button" data-bs-toggle="dropdown">
                                         Sites y transparencia
                                     </a>
@@ -395,6 +395,7 @@
                                         <li><a class="dropdown-item {{ request()->is('sites/sir') ? 'active' : '' }}" href="{{ route('sites.sir') }}">SIR</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1') ? 'active' : '' }}" href="{{ route('transparencia.1.calandario') }}">Calandario grupo 1</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('transparencia/4/informes_gestion_evaluacion') ? 'active' : '' }}" href="{{ route('transparencia.4.informes_gestion_evaluacion') }}">Informes de gestion y evaluacion</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/9/estados_financieros') ? 'active' : '' }}" href="{{ route('transparencia.9.estados_financieros') }}">Estados financieros</a></li>
                                     </ul>
                                 </li>

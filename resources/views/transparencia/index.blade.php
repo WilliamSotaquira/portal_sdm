@@ -100,6 +100,10 @@
                                 <a href="{{ route('transparencia.1.agremiaciones') }}">Ir a Agremiaciones</a>
                             </li>
                             <li>
+                                Grupo 4 - Informes de gestion y evaluacion:
+                                <a href="{{ route('transparencia.4.informes_gestion_evaluacion') }}">Ir a Informes de gestion y evaluacion</a>
+                            </li>
+                            <li>
                                 Grupo 9 - Estados financieros:
                                 <a href="{{ route('transparencia.9.estados_financieros') }}">Ir a Estados financieros</a>
                             </li>

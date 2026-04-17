@@ -14,6 +14,13 @@ Route::prefix('transparencia')->name('transparencia.')->group(function () {
         Route::view('agremiaciones', 'transparencia.1.agremiaciones')->name('agremiaciones');
     });
 
+    // grupo 4
+    Route::prefix('4')->name('4.')->group(function () {
+        // informes de gestion y evaluacion
+        Route::view('informes_gestion_evaluacion', 'transparencia.4.informes_gestion_evaluacion')
+            ->name('informes_gestion_evaluacion');
+    });
+
     // grupo 9
     Route::prefix('9')->name('9.')->group(function () {
         // estados financieros

@@ -306,7 +306,7 @@
         En este espacio se encuentra la estructura organizacional de la Secretaría de Movilidad, también podrá consultar quiénes son las personas que ejercen un rol directivo en nuestra Entidad, haciendo énfasis en sus perfiles profesionales, estudios y experiencia laboral previa.
     </p>
     <p class="text-align-center">
-        <a class="btn btn-primary" href="/sites/default/files/2026-02-27/organigrama_26feb_2026.pdf" target="_blank" rel="noopener noreferrer">Ver Organigrama Completo</a>
+        <a class="btn btn-primary" href="/sites/default/files/2026-04-17/organigrama_15abril_2026.pdf" target="_blank" rel="noopener noreferrer">Ver Organigrama Completo</a>
     </p>
     <p class="text-center">
         <img class="img-fluid" src="/sites/default/files/2024-07/organigrama_principal_0.png" alt="Organigrama General de la Entidad" width="900" height="298" title="Organigrama General de la Entidad">
@@ -1557,11 +1557,11 @@
                                         <div class="col-12 card mt-4 p-4">
                                             <div class="row">
                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2026-02-12/ernesto%20gordillo.jpeg" alt="Foto: Ernesto Gordillo Triana" width="900" height="900" title="Foto: Ernesto Gordillo Triana" usemap="#image-map">
+                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2026-04-17/giovanny-andres-garcia.jpg" alt="Foto: Giovanny Andrés García Rodríguez" width="900" height="900" title="Foto: Giovanny Andrés García Rodríguez" usemap="#image-map">
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h2 class="text-align-center">
-                                                        Ernesto Gordillo Triana
+                                                        Giovanny Andrés García Rodríguez (E)
                                                     </h2>
                                                     <h5 class="text-align-center">
                                                         Director de Atención al Ciudadano
@@ -1571,13 +1571,13 @@
                                                         <div class="col-12">
                                                             <div class="overflow-auto h-50 card-gray">
                                                                 <p class="text-align-justify">
-                                                                    Ernesto Gordillo Triana, es politólogo con formación en gestión pública y más de 15 años de experiencia en el fortalecimiento institucional. Ha trabajado en entidades nacionales e internacionales como el Ministerio de Justicia, Transparencia Internacional, la OEA, la Presidencia de la República y la Alcaldía Mayor de Bogotá.
+                                                                    Abogado especializado en Derecho Procesal Penal, con sólida experiencia en el sector público, particularmente en áreas de representación judicial y gestión de cobro. Actualmente curso una Maestría en Gobierno y Políticas Públicas, lo que refuerza mi compromiso con el fortalecimiento institucional y el diseño de políticas eficaces.
                                                                 </p>
                                                                 <p class="text-align-justify">
-                                                                    Su trayectoria se ha enfocado en mejorar la relación entre el Estado y la ciudadanía, liderando iniciativas de transparencia, lucha contra la corrupción, modernización de servicios públicos y fortalecimiento de la atención a las personas. También ha participado en investigaciones sobre corrupción, seguridad, acceso a la justicia, medio ambiente y democracia, aportando análisis basados en evidencia.
+                                                                    Se ha desempeñado como Director de Representación Judicial y Cobro en la Secretaría de Movilidad de Bogotá, Jefe de la Oficina de Gestión de Cobro No Tributario en la Secretaría de Hacienda, y Asesor en entidades nacionales como la DIAN y el Departamento Nacional de Planeación. Estas experiencias me han permitido desarrollar una visión estratégica de la administración pública, con énfasis en la gestión jurídica, la política fiscal y la implementación de procesos eficientes.
                                                                 </p>
                                                                 <p class="text-align-justify">
-                                                                    Comprometido con una gestión pública cercana, clara y eficaz, su propósito es poner a la ciudadanía en el centro de las decisiones, promoviendo instituciones más accesibles, confiables y respetuosas.
+                                                                    Una persona comprometida, orientada a resultados, y convencida del poder del servicio público para transformar realidades.
                                                                 </p>
                                                             </div>
                                                         </div>

@@ -98,6 +98,15 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.footer') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Footer</h2>
+                        <p class="mb-0 text-muted">Vista base del footer del modulo inicio.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('inicio.atencion-servicios.tramites-servicios.comparendos') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Tramites y servicios - Comparendos</h2>

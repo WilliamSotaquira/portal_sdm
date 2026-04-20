@@ -43,6 +43,14 @@
                 </a>
             </div>
             <div class="col-md-6 col-lg-4">
+                <a class="card h-100 text-decoration-none" href="{{ route('inicio.footer') }}">
+                    <div class="card-body">
+                        <h2 class="h5 mb-1">Inicio Footer</h2>
+                        <p class="mb-0 text-muted">Vista base del footer del modulo inicio.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
                 <a class="card h-100 text-decoration-none" href="{{ route('prueba') }}">
                     <div class="card-body">
                         <h2 class="h5 mb-1">Prueba</h2>
@@ -74,6 +82,7 @@
                         <div><code>/inicio/desembargos</code> -> <a href="{{ route('inicio.desembargos') }}">inicio.desembargos</a></div>
                         <div><code>/inicio/banners</code> -> <a href="{{ route('inicio.banners') }}">inicio.banners</a></div>
                         <div><code>/inicio/botones</code> -> <a href="{{ route('inicio.botones') }}">inicio.botones</a></div>
+                        <div><code>/inicio/footer</code> -> <a href="{{ route('inicio.footer') }}">inicio.footer</a></div>
                     </div>
 
                     <div class="col-md-6">

@@ -197,7 +197,7 @@
                     El centro ofrece a todas las <strong>personas de los estratos 1, 2 y 3,</strong> involucradas en un siniestro de tránsito en Bogotá, un espacio de diálogo orientado a la construcción de acuerdos mutuos para solucionar conflictos relacionados con daños materiales o lesiones personales, siempre que el valor reclamado no supere los 150 SMLMV.
                 </p>
                 <div class="conciliacion-actions">
-                    <a class="conciliacion-pill conciliacion-pill--primary" href="https://forms.gle/CrX9Cpoty4AU6dqa8" target="_blank" rel="noopener noreferrer" aria-describedby="conciliacion-external-note">Diligenciar formulario de consentimiento<span class="conciliacion-sr-only">, se abre en una pestaña nueva</span></a>
+                    <a class="conciliacion-pill conciliacion-pill--primary" href="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-20/formato%20de%20solicitud%20conciliacion%20final.docx.pdf" target="_blank" rel="noopener noreferrer" aria-describedby="conciliacion-external-note">Descargar formulario de conciliación<span class="conciliacion-sr-only">, se abre en una pestaña nueva</span></a>
                     <a class="conciliacion-pill conciliacion-pill--secondary" href="#ruta-atencion">Ruta de atención</a>
                 </div>
             </div>
@@ -497,10 +497,10 @@
                             <li class="conciliacion-contact-item"><span class="conciliacion-contact-bullet" aria-hidden="true">•</span><div><strong>Dirección</strong><span>Calle 13 # 37-35, Bogotá D.C.</span></div></li>
                             <li class="conciliacion-contact-item"><span class="conciliacion-contact-bullet" aria-hidden="true">@</span><div><strong>Correo electrónico</strong><a href="mailto:conciliacionsdm@movilidadbogota.gov.co">conciliacionsdm@movilidadbogota.gov.co</a></div></li>
                             <li class="conciliacion-contact-item"><span class="conciliacion-contact-bullet" aria-hidden="true">☎</span><div><strong>Teléfono</strong><span>(601) 3649400 opción 2</span></div></li>
-                            <li class="conciliacion-contact-item"><span class="conciliacion-contact-bullet" aria-hidden="true">◷</span><div><strong>Horario de atención</strong><span>Lunes a viernes: 8:00 a.m. a 5:00 p.m.</span></div></li>
+                            <li class="conciliacion-contact-item"><span class="conciliacion-contact-bullet" aria-hidden="true">◷</span><div><strong>Horario de atención</strong><span>Lunes a viernes: 8:00 a.m. a 4:00 p.m.</span></div></li>
                         </ul>
                         <div class="conciliacion-contact-action">
-                            <a class="conciliacion-pill conciliacion-pill--primary" href="https://docs.google.com/forms/d/1AGliBULkPugMrha6Y_bR24wZP1_xH2Z1Px9zckKVEiI/edit?ts=695fc1ce&pli=1" target="_blank" rel="noopener noreferrer" aria-describedby="conciliacion-external-note">Solicite su cita de conciliación<span class="conciliacion-sr-only">, se abre en una pestaña nueva</span></a>
+                            <a class="conciliacion-pill conciliacion-pill--primary" href="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-20/formato%20de%20solicitud%20conciliacion%20final.docx.pdf" target="_blank" rel="noopener noreferrer" aria-describedby="conciliacion-external-note">Descargar formulario de conciliación<span class="conciliacion-sr-only">, se abre en una pestaña nueva</span></a>
                         </div>
                     </div>
                     <div class="conciliacion-brand-panel" aria-hidden="true">

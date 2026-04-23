@@ -394,6 +394,7 @@
                                         <li><a class="dropdown-item {{ request()->is('sites/dscsm') ? 'active' : '' }}" href="{{ route('sites.dscsm') }}">DSCSM</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/gerencia-en-via') ? 'active' : '' }}" href="{{ route('sites.gerencia-en-via') }}">Gerencia en Via</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/ms') ? 'active' : '' }}" href="{{ route('sites.ms') }}">MS</a></li>
+                                        <li><a class="dropdown-item {{ request()->is('sites/reto') ? 'active' : '' }}" href="{{ route('sites.reto') }}">Reto</a></li>
                                         <li><a class="dropdown-item {{ request()->is('sites/sir') ? 'active' : '' }}" href="{{ route('sites.sir') }}">SIR</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1') ? 'active' : '' }}" href="{{ route('transparencia.1.calandario') }}">Calandario grupo 1</a></li>
                                         <li><a class="dropdown-item {{ request()->is('transparencia/1/agremiaciones') ? 'active' : '' }}" href="{{ route('transparencia.1.agremiaciones') }}">Agremiaciones</a></li>

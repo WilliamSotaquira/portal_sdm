@@ -9,6 +9,8 @@ Route::prefix('sites')->name('sites.')->group(function () {
     Route::view('/dscsm', 'sites.dscsm')->name('dscsm');
     //conciliacion ruta
     Route::view('/conciliacion', 'sites.conciliacion')->name('conciliacion');
+    // reto ruta
+    Route::view('/reto', 'sites.reto')->name('reto');
     // barrios vitales ruta
     Route::view('/barrios_vitales', 'sites.barrios_vitales')->name('barrios_vitales');
     // ms ruta

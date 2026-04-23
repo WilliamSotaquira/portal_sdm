@@ -110,6 +110,7 @@
                         <div><code>/sites/dscsm</code> -> <a href="{{ route('sites.dscsm') }}">sites.dscsm</a></div>
                         <div><code>/sites/gerencia-en-via</code> -> <a href="{{ route('sites.gerencia-en-via') }}">sites.gerencia-en-via</a></div>
                         <div><code>/sites/ms</code> -> <a href="{{ route('sites.ms') }}">sites.ms</a></div>
+                        <div><code>/sites/reto</code> -> <a href="{{ route('sites.reto') }}">sites.reto</a></div>
                         <div><code>/sites/sir</code> -> <a href="{{ route('sites.sir') }}">sites.sir</a></div>
                     </div>
 

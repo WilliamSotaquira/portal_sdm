@@ -43,7 +43,6 @@
             color: var(--reto-text);
             font-size: 18px;
             line-height: 1.7;
-            border-top: 6px solid var(--reto-brand-lime-mid);
         }
 
         #sdm-reto-landing img {
@@ -55,7 +54,7 @@
         #sdm-reto-landing .reto-banner,
         #sdm-reto-landing .reto-bullet {
             overflow: hidden;
-            border-radius: 24px;
+            border-radius: 12px;
             background: #fff;
         }
 
@@ -88,33 +87,17 @@
         }
 
         #sdm-reto-landing .reto-intro {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
-            gap: 40px;
-            align-items: stretch;
+            max-width: 760px;
             margin-top: 32px;
         }
 
-        #sdm-reto-landing .reto-kicker {
-            display: inline-block;
-            margin-bottom: 16px;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: var(--reto-brand-lime);
-            color: var(--reto-brand-olive);
-            font-size: 0.88rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            box-shadow: inset 0 0 0 1px rgba(77, 84, 31, 0.08);
-        }
-
         #sdm-reto-landing h1 {
-            margin: 0 0 18px;
-            max-width: 16ch;
-            font-size: clamp(2.15rem, 1.85rem + 1vw, 3.1rem) !important;
-            line-height: 1.06;
+            margin: 0 0 16px;
+            max-width: 60ch;
+            font-size: 1.08rem !important;
+            line-height: 1.7;
             font-weight: 700;
-            letter-spacing: -0.03em;
+            letter-spacing: 0;
             color: var(--reto-brand-olive);
             text-wrap: balance;
             text-align: left !important;
@@ -297,6 +280,54 @@
 
         #sdm-reto-landing .reto-section> :first-child {
             margin-top: 0;
+        }
+
+        #sdm-reto-landing .reto-key-stats {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        #sdm-reto-landing .reto-key-stat {
+            display: grid;
+            justify-items: center;
+            align-content: start;
+            gap: 12px;
+            min-height: 190px;
+            padding: 22px 18px;
+            border-radius: 16px;
+            background: #BED000;
+            text-align: center;
+        }
+
+        #sdm-reto-landing .reto-key-stat-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            border-radius: 999px;
+            background: #BED000;
+            color: var(--reto-brand-olive);
+            font-size: 1.45rem;
+            line-height: 1;
+        }
+
+        #sdm-reto-landing .reto-key-stat-value {
+            display: block;
+            color: var(--reto-brand-olive);
+            font-size: clamp(1.35rem, 1.15rem + 0.7vw, 1.9rem);
+            font-weight: 700;
+            line-height: 1.12;
+        }
+
+        #sdm-reto-landing .reto-key-stat-description {
+            display: block;
+            max-width: 19ch;
+            color: var(--reto-muted);
+            font-size: 0.97rem;
+            line-height: 1.45;
         }
 
         #sdm-reto-landing .reto-two-col {
@@ -681,7 +712,11 @@
             }
 
             #sdm-reto-landing h1 {
-                max-width: 12ch;
+                max-width: 60ch;
+            }
+
+            #sdm-reto-landing .reto-key-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
@@ -694,7 +729,7 @@
 
             #sdm-reto-landing .reto-banner {
                 aspect-ratio: auto;
-                border-radius: 18px;
+                border-radius: 10px;
             }
 
             #sdm-reto-landing .reto-banner img {
@@ -704,6 +739,14 @@
 
             #sdm-reto-landing .reto-side {
                 padding: 18px;
+            }
+
+            #sdm-reto-landing .reto-key-stats {
+                grid-template-columns: 1fr;
+            }
+
+            #sdm-reto-landing .reto-key-stat {
+                min-height: auto;
             }
 
             #sdm-reto-landing .reto-actions {
@@ -719,13 +762,12 @@
     <div id="sdm-reto-landing">
         <section>
             <div class="reto-banner">
-                <img src="https://www.movilidadbogota.gov.co/sites/default/files/2026-04-22/banner-reto-mas-pro.jpg"
+                <img src="{{ asset('reto-assets/banner-reto-mas-pro.jpg') }}"
                     alt="Banner del reto Más lento, más pro con motociclistas en pista">
             </div>
 
             <div class="reto-intro">
                 <div class="reto-intro-copy">
-                    <span class="reto-kicker">Reto para motociclistas</span>
                     <h1>Ser más rápido no te hace mejor conductor</h1>
                     <p>
                         En este reto demostrarás que el verdadero dominio está en el control y en la protección de la vida
@@ -745,16 +787,36 @@
                         <a href="#explora-reto">Explorar información</a>
                     </nav>
                 </div>
+            </div>
+        </section>
 
-                <aside class="reto-side">
-                    <h3>La velocidad es el riesgo. El control protege la vida.</h3>
-                    <ul>
-                        <li><strong>4 de cada 10</strong> personas que mueren en las vías son motociclistas.</li>
-                        <li><strong>10 etapas</strong> eliminatorias durante todo el año.</li>
-                        <li><strong>30 mujeres y 30 hombres</strong> finalistas en la etapa final.</li>
-                        <li><strong>Octubre de 2026:</strong> gran final en el Día del Motociclista.</li>
-                    </ul>
-                </aside>
+        <section class="reto-section" aria-labelledby="reto-datos-clave">
+            <h2 id="reto-datos-clave">La velocidad es el riesgo. El control protege la vida.</h2>
+
+            <div class="reto-key-stats">
+                <article class="reto-key-stat">
+                    <span class="reto-key-stat-icon" aria-hidden="true"><i class="bi bi-shield-exclamation"></i></span>
+                    <strong class="reto-key-stat-value">4 de cada 10</strong>
+                    <span class="reto-key-stat-description">personas que mueren en las vías son motociclistas.</span>
+                </article>
+
+                <article class="reto-key-stat">
+                    <span class="reto-key-stat-icon" aria-hidden="true"><i class="bi bi-signpost-split"></i></span>
+                    <strong class="reto-key-stat-value">10 etapas</strong>
+                    <span class="reto-key-stat-description">eliminatorias durante todo el año.</span>
+                </article>
+
+                <article class="reto-key-stat">
+                    <span class="reto-key-stat-icon" aria-hidden="true"><i class="bi bi-people"></i></span>
+                    <strong class="reto-key-stat-value">30 mujeres y 30 hombres</strong>
+                    <span class="reto-key-stat-description">finalistas en la etapa final.</span>
+                </article>
+
+                <article class="reto-key-stat">
+                    <span class="reto-key-stat-icon" aria-hidden="true"><i class="bi bi-calendar-event"></i></span>
+                    <strong class="reto-key-stat-value">Octubre de 2026</strong>
+                    <span class="reto-key-stat-description">gran final en el Día del Motociclista.</span>
+                </article>
             </div>
         </section>
 

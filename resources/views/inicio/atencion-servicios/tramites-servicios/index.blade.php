@@ -685,56 +685,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-ts servicios">
-                    <div class="details-ts">
-                        <div class="tags-ts">
-                            <div class="tags">
-                                <span class="label label-default">Servicio</span>
-                            </div>
-                        </div>
-                        <h3>
-                            <a class="link-ppal"
-                                href="https://bogota.gov.co/servicios/guia-de-tramites-y-servicios/descuento-tributario-por-la-habilitacion-y-mantenimiento-de-ciclo-parqueaderos">Descuento
-                                tributario por la habilitación y mantenimiento de cicloparqueaderos - Plan Marshall</a>
-                        </h3>
-                        <p class="p1">
-                            Orientar y dar una guía sobre los requisitos que los contribuyentes deben tener presente, al
-                            momento de presentar su proyecto de inversión para habilitar y/o mantener cicloparqueaderos,
-                            cuya actividad económica no sea plazas de estacionamiento para automóviles, garajes
-                            (parqueaderos).
-                        </p>
-                    </div>
-                    <div class="canals-ts">
-                        <ul class="list-canals">
-                            <li data-list-item-id="e2ea1625700d5df59aed19488e5fc5153">
-                                <span><img src="/sites/default/files/Paginas/29-10-2023/link_20.png"
-                                        alt="" aria-hidden="true"></span><a href="/content/plan_marshall">Solicítalo</a>
-                            </li>
-                            <li data-list-item-id="e2c9901153f0bc0a4b59e79baf957895e">
-                                <span><img src="/sites/default/files/Paginas/29-10-2023/phone_20.png"
-                                        alt="" aria-hidden="true"></span><a href="tel:6013649400">Llámanos</a>
-                            </li>
-                            <li data-list-item-id="e3c5fb5e9e2018d59997cad4b4d904426">
-                                <span><img src="/sites/default/files/Paginas/29-10-2023/call_20.png"
-                                        alt="" aria-hidden="true"></span><a
-                                    href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wcb">Te regresamos la
-                                    llamada</a>
-                            </li>
-                            <li data-list-item-id="e4743b805429462b7a3fb033a90585565">
-                                <span><img src="/sites/default/files/Paginas/29-10-2023/chat_20.png"
-                                        alt="" aria-hidden="true"></span><a
-                                    href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=wc">Chat
-                                    en línea</a>
-                            </li>
-                            <li data-list-item-id="ed630317914b444446f9968ec6ab11d32">
-                                <span><img src="/sites/default/files/Paginas/29-10-2023/lengua_20.png"
-                                        alt="" aria-hidden="true"></span><a
-                                    href="https://movilidad.ucontactcloud.com/WebChat/SdmForms/?form=vll">Videollamada en lengua
-                                    de señas colombiana</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="card-ts pqrsds uncover">
                     <div class="details-ts">
                         <div class="tags-ts">
@@ -1283,11 +1233,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-ts servicios">
+                <div class="card-ts tramites">
                     <div class="details-ts">
                         <div class="tags-ts">
                             <div class="tags">
-                                <span class="label label-default">Servicio</span>
+                                <span class="label label-default">Trámite</span>
                             </div>
                         </div>
                         <h3>

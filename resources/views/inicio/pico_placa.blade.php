@@ -23,8 +23,8 @@
             <div class="col-xs-12">
                 <p class="text-align-center">
                     <a class="btn btn-primary btn-lg btn-block"
-                        href="/sites/default/files/2026-04-15/calendario%20pico%20y%20placa%202025%20abril.pdf"
-                        role="button" target="_blank">Pico y placa abril de 2026</a>
+                        href="/sites/default/files/2026-05-02/calendario%20pico%20y%20placa%202026%20mayo.pdf"
+                        role="button" target="_blank">Pico y placa mayo de 2026</a>
                 </p>
             </div>
         </div>
@@ -140,6 +140,11 @@
                     <div class="accordion-collapse collapse show">
                         <div class="accordion-body">
                             <ul>
+                                <li data-list-item-id="e_calendario_2026_mayo">
+                                    <a
+                                        href="/sites/default/files/2026-05-02/calendario%20pico%20y%20placa%202026%20mayo.pdf">Pico
+                                        y placa mayo de 2026</a>
+                                </li>
                                 <li data-list-item-id="e_calendario_2026_abril">
                                     <a
                                         href="/sites/default/files/2026-04-15/calendario%20pico%20y%20placa%202025%20abril.pdf">Pico

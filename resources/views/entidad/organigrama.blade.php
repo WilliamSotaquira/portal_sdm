@@ -841,9 +841,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p>
-                                        &nbsp;
-                                    </p>
+
                                     <div class="accordion" data-accordion-id="e86bcfbb61da53b048fde7900240b37c1">
                                         <div class="accordion-item">
                                             <div class="accordion-header">
@@ -858,73 +856,40 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <!--
 
                                                     <div class="row" style="margin:20px;">
-
                                                         <div class="col-12 card mt-4 p-4">
-
                                                             <div class="row">
-
                                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                                                                                                        <img class="img-fluid rounded-circle" src="/sites/default/files/2025-07/marcela-neira-medina.jpg" alt="Foto: Marcela Neira Medina" width="900" title="Foto: Marcela Neira Medina" usemap="#image-map" height="808">
-
+                                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2026-02-27/wgu_sdm.oac_0656.jpg" alt="Foto: Nubia Quintero Hernández" width="900" height="900" title="Foto: Nubia Quintero Hernández" usemap="#image-map">
                                                                 </div>
-
                                                                 <div class="col-md-9">
-
                                                                     <h2 class="text-align-center">
-                                                                                                                                                Marcela Neira Medina
-
+                                                                        Nubia Quintero Hernández
                                                                     </h2>
-
                                                                     <h5 class="text-align-center">
-                                                                                                                                                Subdirectora de Transporte Público
-
+                                                                        Subdirectora de Transporte Público
                                                                     </h5>
-
                                                                     <hr>
-
                                                                     <div class="row">
-
                                                                         <div class="col-12">
-
                                                                             <div class="overflow-auto h-50 card-gray">
-
                                                                                 <p class="text-align-justify">
-                                                                                                                                                                        Marcela Neira Medina es Ingeniera Civil y Magíster con énfasis en Transporte de la Universidad de los Andes, con Maestría en Administración de la Internationale Hochschule de Berlín.
-
+                                                                                    Ingeniera Civil de la Universidad Nacional de Colombia, con Especialización en Diseño de Vías, Tránsito y Transporte de la Universidad Distrital y Maestría en Ingeniería Civil de la Universidad de los Andes.
                                                                                 </p>
-
                                                                                 <p class="text-align-justify">
-                                                                                                                                                                        Tiene 12 años de experiencia profesional en áreas de movilidad, gerencia, planeación y desarrollo urbano sostenible, desarrollando proyectos relacionados con seguridad vial, movilidad activa, tránsito, transporte, infraestructura y accesibilidad.
-
+                                                                                    Se ha desempeñado en el sector público y privado. En el sector público ha liderado proyectos de planeación e implementación de sistemas de transporte y de diseño y construcción de infraestructura, en entidades como la Secretaría de Tránsito y Transporte de Bogotá, TransMilenio S.A., el Ministerio de Transporte y la Aerocivil.
                                                                                 </p>
-
                                                                                 <p class="text-align-justify">
-                                                                                                                                                                        Ha trabajado en la academia en Colombia y Chile, en el sector privado como consultora, en cooperación internacional en la Cooperación Alemana para el Desarrollo – GIZ y anteriormente hizo parte de la Secretaría Distrital de Movilidad como asesora y directora de Ingeniería de Tránsito.
-
+                                                                                    Su interés profesional es participar en la evaluación, desarrollo y seguimiento de proyectos que impacten positivamente en la calidad de vida de una comunidad y que aporten desde el ámbito de la ingeniería en la sostenibilidad del medio ambiente.
                                                                                 </p>
-
-                                                                                <p class="text-align-justify">
-                                                                                                                                                                        Regresa a la Secretaría de Movilidad con el fin de seguir aportando al desarrollo de la ciudad, ahora liderando los proyectos de transporte público en Bogotá, en sus diferentes modalidades y temáticas asociadas.
-
-                                                                                </p>
-
                                                                             </div>
-
                                                                         </div>
-
                                                                     </div>
-
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
-
                                                     </div>
-                                                                                                        -->
                                                 </div>
                                             </div>
                                         </div>
@@ -945,11 +910,11 @@
                                                         <div class="col-12 card mt-4 p-4">
                                                             <div class="row">
                                                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                                                    <img class="img-fluid rounded-circle" src="/sites/default/files/2026-02-27/wgu_sdm.oac_0656.jpg" alt="Foto: Nubia Quintero Hernández" width="900" height="900" title="Foto: Nubia Quintero Hernández" usemap="#image-map">
+                                                                    <img class="img-fluid rounded-circle" src="https://www.movilidadbogota.gov.co/sites/default/files/2026-05-08/_mg_1207.jpg" alt="Foto: Sandra Esperanza Rodriguez Castañeda" width="900" height="900" title="Foto: Sandra Esperanza Rodriguez Castañeda" usemap="#image-map">
                                                                 </div>
                                                                 <div class="col-md-9">
                                                                     <h2 class="text-align-center">
-                                                                        Nubia Quintero Hernández
+                                                                        Sandra Esperanza Rodriguez Castañeda
                                                                     </h2>
                                                                     <h5 class="text-align-center">
                                                                         Subdirectora de Transporte Privado
@@ -959,17 +924,18 @@
                                                                         <div class="col-12">
                                                                             <div class="overflow-auto h-50 card-gray">
                                                                                 <p class="text-align-justify">
-                                                                                    Ingeniera Civil de la Universidad Nacional de Colombia, con Especialización en Diseño de Vías, Tránsito y Transporte de la Universidad Distrital y Maestría en Ingeniería Civil de la Universidad de los Andes.
+                                                                                    Ingeniera civil y magíster en ingeniería civil con énfasis en transporte de la Universidad de los Andes, becada y con intercambio en la Universidad de Melbourne (Australia). Además, obtuvo la Beca Colfuturo para realizar la maestría en Planeación y Desarrollo Urbano en University College London, Reino Unido. A lo largo de su trayectoria profesional ha trabajado desde la academia, sector público y privado. Se desempeñó como consultora senior en IDOM Consulting Engineering Architecture, en proyectos en Arabia Saudita, Colombia, Perú, República Dominicana y Venezuela, desarrollando diferentes soluciones en materia de análisis de información geográfica, planeación urbana y transporte.
                                                                                 </p>
                                                                                 <p class="text-align-justify">
-                                                                                    Se ha desempeñado en el sector público y privado. En el sector público ha liderado proyectos de planeación e implementación de sistemas de transporte y de diseño y construcción de infraestructura, en entidades como la Secretaría de Tránsito y Transporte de Bogotá, TransMilenio S.A., el Ministerio de Transporte y la Aerocivil.
+                                                                                    En el sector público, fue asesora en la Secretaría de Movilidad de la Gobernación de Cundinamarca donde trabajó en la estructuración de proyectos de transporte como la línea 3 del metro, Transmilenio Fase IV a Soacha, Cables de la Calera y Soacha. En la Unidad Administrativa de Catastro Distrital contribuyó en la definición de lineamientos técnicos para el análisis de la información de la entidad mediante técnicas de estadística geográfica. Desde la Secretaría de Movilidad de Bogotá, entre 2018-2020, trabajó en la evaluación técnica de proyectos relacionados con el Plan de Ordenamiento Territorial y Plan Maestro de Movilidad, la regulación del aprovechamiento económico del espacio público para el alquiler de patinetas eléctricas, y el censo de bicitaxis de Bogotá.
                                                                                 </p>
                                                                                 <p class="text-align-justify">
-                                                                                    Su interés profesional es participar en la evaluación, desarrollo y seguimiento de proyectos que impacten positivamente en la calidad de vida de una comunidad y que aporten desde el ámbito de la ingeniería en la sostenibilidad del medio ambiente.
+                                                                                    Ahora regresa a la SDM como subdirectora de Transporte Privado, donde impulsará estrategias, y proyectos en el ámbito del transporte privado en todas sus modalidades, para la gestión de la demanda, fortalecer la movilidad sostenible en empresas, universidades y entidades públicas  y aportar a mejorar la eficiencia en la que se mueve la carga dentro de la ciudad.
                                                                                 </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="https://www.movilidadbogota.gov.co/sites/default/files/logo_bogota_favicon.png"
+        type="image/png">
+    <title></title>
+
+    <title>Más lento, más pro | Secretaría Distrital de Movilidad</title>
+    <meta name="description"
+        content="Reto mas lento mas pro, una iniciativa de la Secretaría Distrital de Movilidad para promover la seguridad vial y reducir los accidentes de tránsito en Bogotá. Únete al reto y contribuye a hacer de nuestra ciudad un lugar más seguro para todos.">
+
+    <link href="https://cdn.www.gov.co/layout-govco-v5/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #bed000;
+            --secondary-color: #4d541f;
+            --tertiary-color: #828f26;
+            --background-color: #fefefe;
+            --alternative-background-color: #f8f8f8;
+            --accent-color: #f6f7f1;
+            --text-color: #212529;
+            --text-contrast-color: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .reto-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--background-color);
+        }
+
+        .brand-mark img {
+            height: 70px;
+        }
+
+        .reto-menu {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link-small {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link-small:hover {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color)
+        }
+
+        .reto-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .reto-menu-toggle-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .reto-menu-toggle-lines span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .nav-inscription {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-inscription:hover {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        .nav-inscription svg {
+            color: var(--secondary-color);
+            fill: #fff;
+        }
+
+        @media (max-width: 1024px) {
+            .reto-navbar {
+                padding: 1rem;
+            }
+
+            .brand-mark img {
+                height: 60px;
+            }
+        }
+
+
+
+        @media (max-width: 768px) {
+            .reto-menu {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                position: absolute;
+                top: 80px;
+                right: 16px;
+                background-color: var(--alternative-background-color);
+                width: 360px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .reto-menu-toggle {
+                display: block;
+            }
+
+            .reto-menu-toggle[aria-expanded="true"]+.reto-menu {
+                display: flex;
+            }
+
+            .nav-link-small {
+                background-color: var(--alternative-background-color);
+                padding: 1rem;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .nav-link-small:hover {
+                background-color: var(--secondary-color);
+                color: var(--text-contrast-color);
+                border-bottom: 1px solid transparent;
+            }
+
+            .nav-inscription {
+                background-color: var(--secondary-color);
+                display: none;
+                margin: 0.5rem auto;
+
+            }
+
+            .reto-menu-toggle[aria-expanded="true"]~.nav-inscription {
+                display: flex;
+            }
+
+            .nav-inscription svg {
+                color: var(--primary-color);
+            }
+        }
+
+        .hero {
+            background-image: url('{{ asset('assets/reto/hero-a.jpg') }}');
+
+            background-size: auto 100%;
+            background-position: right center;
+            color: var(--text-contrast-color);
+            height: 60vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container reto-navbar" aria-label="Navegación principal">
+            <a class="brand-mark" href="{{ route('home') }}">
+                <img src="{{ asset('assets/reto/logo.png') }}" alt="Ministerio de las Culturas y OEI">
+            </a>
+
+            <a class="reto-menu-toggle" href="#reto-menu" role="button" aria-controls="reto-menu" aria-expanded="false"
+                aria-label="Abrir menú">
+                <span class="reto-menu-toggle-lines" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+
+            <div class="reto-menu" id="reto-menu">
+                <a class="nav-link-small" href="#inicio">Inicio</a>
+                <a class="nav-link-small" href="#el-reto">El reto</a>
+                <a class="nav-link-small" href="#noticias">Noticias</a>
+                <a class="nav-link-small" href="#preguntas">Preguntas frecuentes</a>
+            </div>
+            <a class="nav-inscription" href="#inscripcion">
+                Inscripción
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"
+                    aria-hidden="true" focusable="false">
+                    <circle cx="8" cy="8" r="7" fill="#fff"></circle>
+                    <path d="M5.5 8h4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                    </path>
+                    <path d="M8.3 6.1 10.2 8 8.3 9.9" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <main id="contenido">
+
+        {{-- seccion de contenido hero con imagen de fondo y texto sobre el reto, con un botón de inscripción que redirija a la sección de inscripción --}}
+        <section class="hero" aria-label="Sección de introducción al reto">
+            <div class="container text-center py-5">
+                <h1 class="display-4">Más lento, más pro</h1>
+                <p class="lead">Únete al reto para promover la seguridad vial en Bogotá y reducir los accidentes de
+                    tránsito.</p>
+                <a href="#inscripcion" class="btn btn-primary btn-lg mt-3">Inscríbete ahora</a>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+
+
+
+    <script>
+        const menuToggle = document.querySelector('.reto-menu-toggle');
+        const menu = document.querySelector('.reto-menu');
+        const inscription = document.querySelector('.nav-inscription');
+
+        menuToggle.addEventListener('click', () => {
+            const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            menuToggle.setAttribute('aria-expanded', !expanded);
+            menu.style.display = !expanded ? 'flex' : 'none';
+            inscription.style.display = !expanded ? 'flex' : 'none';
+        });
+
+        // ubicar correctamente el menú desplegable en dispositivos móviles
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                menu.style.display = 'flex';
+                inscription.style.display = 'flex';
+                menuToggle.setAttribute('aria-expanded', 'false');
+            } else {
+                menu.style.display = 'none';
+                inscription.style.display = 'none';
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // reubicar correctamente el boton de inscripción dentro del menu (nav-link-small) abrir el menú en dispositivos móviles
+        menuToggle.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                const navLinks = document.querySelectorAll('.nav-link-small');
+                const lastNavLink = navLinks[navLinks.length - 1];
+                lastNavLink.insertAdjacentElement('afterend', inscription);
+            }
+        });
+    </script>
+</body>
+
+</html>

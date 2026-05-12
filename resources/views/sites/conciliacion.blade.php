@@ -459,6 +459,7 @@
                                     <li><strong>01</strong><span>Copia de la cédula de ciudadanía.</span></li>
                                     <li><strong>02</strong><span>Formato de solicitud de conciliación.</span></li>
                                     <li><strong>03</strong><span>Recibo de servicio público del domicilio del solicitante, para verificar estrato.</span></li>
+                                    <li><strong>04</strong><span>Licencia de tránsito.</span></li>
                                 </ol>
                             </div>
                         </details>
@@ -472,7 +473,6 @@
                                     <li><strong>04</strong><span>Facturas de gastos relacionados.</span></li>
                                     <li><strong>05</strong><span>Otros documentos que soporten reclamaciones económicas.</span></li>
                                     <li><strong>06</strong><span>Historia clínica, si aplica.</span></li>
-                                    <li><strong>07</strong><span>Licencia de tránsito.</span></li>
                                 </ol>
                             </div>
                         </details>

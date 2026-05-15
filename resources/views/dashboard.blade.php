@@ -100,6 +100,7 @@
                         <div><code>/entidad/organigrama</code> -> <a href="{{ route('entidad.organigrama') }}">entidad.organigrama</a></div>
                         <div><code>/entidad/sg</code> -> <a href="{{ route('entidad.sg') }}">entidad.sg</a></div>
                         <div><code>/entidad/sistemas-gestion/ambiental</code> -> <a href="{{ route('entidad.sistemas-gestion.ambiental') }}">entidad.sistemas-gestion.ambiental</a></div>
+                        <div><code>/entidad/sistemas-gestion/efr</code> -> <a href="{{ route('entidad.sistemas-gestion.efr') }}">entidad.sistemas-gestion.efr</a></div>
                     </div>
 
                     <div class="col-md-6">

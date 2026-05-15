@@ -14,5 +14,6 @@ Route::prefix('entidad')->name('entidad.')->group(function () {
         Route::view('/ambiental', 'entidad.sistemas-gestion.ambiental')->name('ambiental');
         Route::view('/continuidad', 'entidad.sistemas-gestion.continuidad')->name('continuidad');
         Route::view('/sgsst', 'entidad.sistemas-gestion.sgsst')->name('sgsst');
+        Route::view('/efr', 'entidad.sistemas-gestion.efr')->name('efr');
     });
 });

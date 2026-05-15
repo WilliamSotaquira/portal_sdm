@@ -1,252 +1,3 @@
-@php
-    $inscripcionUrl = 'https://forms.gle/HQyMfK7k38y9z2xp8';
-
-    $heroFallback = asset('reto-assets/banner-reto.jpg');
-    $heroSlidePatterns = [
-        public_path('reto-assets/hero/*.jpg'),
-        public_path('reto-assets/hero/*.jpeg'),
-        public_path('reto-assets/hero/*.png'),
-        public_path('reto-assets/hero/*.webp'),
-        public_path('reto-assets/hero/*.JPG'),
-        public_path('reto-assets/hero/*.JPEG'),
-        public_path('reto-assets/hero/*.PNG'),
-        public_path('reto-assets/hero/*.WEBP'),
-    ];
-    $heroSlideFiles = [];
-
-    foreach ($heroSlidePatterns as $pattern) {
-        $heroSlideFiles = array_merge($heroSlideFiles, glob($pattern) ?: []);
-    }
-
-    $heroSlideFiles = array_values(array_unique($heroSlideFiles));
-    natcasesort($heroSlideFiles);
-    $heroSlides = array_values(
-        array_map(function ($path) {
-            return [
-                'src' => asset('reto-assets/hero/' . rawurlencode(basename($path))),
-            ];
-        }, $heroSlideFiles),
-    );
-
-    if ($heroSlides === []) {
-        $heroSlides[] = ['src' => $heroFallback];
-    }
-
-    $heroSlideTotal = count($heroSlides);
-    $galleryImageFiles = glob(public_path('reto-assets/galeria/reto_act1_*.*')) ?: [];
-    natcasesort($galleryImageFiles);
-    $galleryImages = [];
-
-    foreach (array_values($galleryImageFiles) as $index => $path) {
-        $galleryImages[] = [
-            'src' => asset('reto-assets/galeria/' . rawurlencode(basename($path))),
-            'alt' => 'Fotografía del Reto Más lento, más pro ' . ($index + 1),
-            'title' => 'Galería del reto',
-            'caption' => 'Registro fotográfico ' . ($index + 1) . ' de ' . count($galleryImageFiles),
-        ];
-    }
-
-    $galleryImageTotal = count($galleryImages);
-    $classifiedCategoryMeta = [
-        'hombres-expertos' => [
-            'title' => 'Hombres expertos',
-            'description' => 'Más de dos años manejando moto',
-            'icon' => 'bi-gender-male',
-        ],
-        'mujeres-expertas' => [
-            'title' => 'Mujeres expertas',
-            'description' => 'Más de dos años manejando moto',
-            'icon' => 'bi-gender-female',
-        ],
-        'hombres-novatos' => [
-            'title' => 'Hombres novatos',
-            'description' => 'Menos de dos años manejando moto',
-            'icon' => 'bi-gender-male',
-        ],
-        'mujeres-novatas' => [
-            'title' => 'Mujeres novatas',
-            'description' => 'Menos de dos años manejando moto',
-            'icon' => 'bi-gender-female',
-        ],
-    ];
-    $classifiedRows = [
-        ['rank' => 1, 'name' => 'Yesid Ardila', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g926.png'],
-        ['rank' => 2, 'name' => 'Andrés Márquez', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g927.png'],
-        ['rank' => 3, 'name' => 'Edwin Tellez', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g928.png'],
-        ['rank' => 4, 'name' => 'Wilmer Obando', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g999.png'],
-        ['rank' => 5, 'name' => 'Yoher Perez', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g1000.png'],
-        ['rank' => 6, 'name' => 'Carlos López', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g1001.png'],
-        ['rank' => 7, 'name' => 'Nancy Tache', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1002.png'],
-        ['rank' => 8, 'name' => 'Kelly Vergara', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1003.png'],
-        ['rank' => 9, 'name' => 'Diana González', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1004.png'],
-        ['rank' => 10, 'name' => 'Jenny Gonzalez', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1005.png'],
-        ['rank' => 11, 'name' => 'Leonardo Castellanos', 'category' => 'hombres-novatos', 'file' => 'cascos-motos_g1006.png'],
-        ['rank' => 12, 'name' => 'Breiner Martinez', 'category' => 'hombres-novatos', 'file' => 'cascos-motos_g1007.png'],
-        ['rank' => 13, 'name' => 'Alexander Mendez', 'category' => 'hombres-novatos', 'file' => 'cascos-motos_g1008.png'],
-        ['rank' => 14, 'name' => 'Yenni Panche', 'category' => 'mujeres-novatas', 'file' => 'cascos-motos_g1009.png'],
-        ['rank' => 15, 'name' => 'Dina Suárez', 'category' => 'mujeres-novatas', 'file' => 'cascos-motos_g1010.png'],
-        ['rank' => 16, 'name' => 'Angie Abello', 'category' => 'mujeres-novatas', 'file' => 'cascos-motos_g1011.png'],
-    ];
-    $classifiedRiders = [];
-
-    foreach ($classifiedRows as $row) {
-        $categoryKey = $row['category'] ?? 'por-confirmar';
-
-        if (!isset($classifiedCategoryMeta[$categoryKey])) {
-            $classifiedCategoryMeta[$categoryKey] = [
-                'title' => 'Clasificación por confirmar',
-                'description' => 'Pendiente de actualización',
-                'icon' => 'bi-patch-question',
-            ];
-        }
-
-        $classifiedRiders[] = [
-            'src' => asset('reto-assets/cascos/' . rawurlencode($row['file'])),
-            'name' => $row['name'] ?? 'Clasificado por confirmar',
-            'category_key' => $categoryKey,
-            'rank' => $row['rank'] ?? 999,
-        ];
-    }
-
-    usort($classifiedRiders, function ($left, $right) {
-        if ($left['rank'] === $right['rank']) {
-            return strcmp($left['name'], $right['name']);
-        }
-
-        return $left['rank'] <=> $right['rank'];
-    });
-
-    $classifiedByCategory = [];
-
-    foreach ($classifiedCategoryMeta as $categoryKey => $categoryMeta) {
-        $classifiedByCategory[$categoryKey] = $categoryMeta + [
-            'key' => $categoryKey,
-            'riders' => [],
-        ];
-    }
-
-    foreach ($classifiedRiders as $rider) {
-        $classifiedByCategory[$rider['category_key']]['riders'][] = $rider;
-    }
-
-    $classifiedByCategory = array_values(
-        array_filter($classifiedByCategory, function ($group) {
-            return $group['riders'] !== [];
-        }),
-    );
-    $classifiedTotal = count($classifiedRiders);
-    $brandLogo = asset('reto-assets/' . rawurlencode('logo.png'));
-    $ctaBg = asset('reto-assets/banner-reto.jpg');
-    $whyVideoBg = asset('reto-assets/' . rawurlencode('banner-reto-mas-pro-v2_Capa 3.png'));
-    $helmetIcon = asset('reto-assets/casco.png');
-    $guantletIcon = asset('reto-assets/guantes.png');
-    $cerebroIcon = asset('reto-assets/cerebro.png');
-    $starIcon = asset('reto-assets/copa.png');
-    $cancelIcon = asset('reto-assets/cancelar.png');
-
-    $whyCards = [
-        [
-            'icon' => 'bi-people',
-            'title' => '4 de cada 10',
-            'text' => 'personas que mueren en las vías son motociclistas',
-            'featured' => true,
-        ],
-        [
-            'icon' => 'bi-speedometer2',
-            'title' => 'El exceso de velocidad mata',
-            'text' => 'Es el principal factor de riesgo en las vías.',
-        ],
-        [
-            'icon' => 'bi-bicycle',
-            'title' => 'Los motociclistas exceden más la velocidad',
-            'text' => 'En comparación con otros usuarios de la vía.',
-        ],
-        [
-            'icon' => 'bi-cone-striped',
-            'title' => 'La falta de pericia también cobra vidas',
-            'text' => 'El control y la técnica pueden marcar la diferencia.',
-        ],
-    ];
-
-    $steps = [
-        [
-            'number' => '1',
-            'title' => 'Tres pistas lentas',
-            'text' => 'Primer acercamiento al reto.',
-            'thumb' => asset('reto-assets/reto_64.webp'),
-        ],
-        [
-            'number' => '2',
-            'title' => 'Niveles de complejidad',
-            'text' => 'La prueba exige mayor dominio.',
-            'thumb' => asset('reto-assets/reto_81.webp'),
-        ],
-        [
-            'number' => '3',
-            'title' => 'Válidas eliminatorias',
-            'text' => 'Clasificación durante todo el año.',
-            'thumb' => asset('reto-assets/reto_88.webp'),
-        ],
-        [
-            'number' => '4',
-            'title' => 'Final del reto',
-            'text' => 'Cierre en octubre de 2026.',
-            'thumb' => asset('reto-assets/reto_92.webp'),
-        ],
-    ];
-
-    $categories = [
-        [
-            'icon' => 'bi-gender-female',
-            'title' => 'Mujeres novatas',
-            'text' => 'menos de dos años manejando moto',
-        ],
-        [
-            'icon' => 'bi-gender-male',
-            'title' => 'Hombres novatos',
-            'text' => 'menos de dos años manejando moto',
-        ],
-        [
-            'icon' => 'bi-gender-female',
-            'title' => 'Mujeres experimentadas',
-            'text' => 'más de dos años manejando moto',
-        ],
-        [
-            'icon' => 'bi-gender-male',
-            'title' => 'Hombres experimentados',
-            'text' => 'más de dos años manejando moto',
-        ],
-    ];
-
-    $requirements = [
-        ['icon' => 'bi-card-text',      'text' => 'Licencia de conducción vigente A2'],
-        ['icon' => 'bi-shield-check',   'text' => 'SOAT y revisión técnico-mecánica al día'],
-        ['icon' => 'bi-shield-fill',   'text' => 'Casco y elementos de protección'],
-        ['icon' => 'bi-calendar-check', 'text' => 'Inscripción previa en la válida'],
-        ['icon' => 'bi-receipt-cutoff', 'text' => 'Estar al día con el pago de comparendo'],
-    ];
-
-    $rules = [
-        ['icon' => 'bi-slash-circle',  'text' => 'Cero alcohol antes y durante la prueba'],
-        ['icon' => 'bi-arrow-up-circle','text' => 'No apoyar los pies en el piso'],
-        ['icon' => 'bi-signpost',      'text' => 'Mantenerse dentro del recorrido establecido'],
-        ['icon' => 'bi-power',         'text' => 'No apagar la moto durante la prueba'],
-    ];
-
-    $footerLinks = [
-        ['label' => 'Políticas de privacidad', 'href' => url('/manual-y-politicas-de-seguridad-de-la-informacion')],
-        ['label' => 'Términos y condiciones', 'href' => '#'],
-        ['label' => 'Mapa del sitio', 'href' => url('/sitemap')],
-        ['label' => 'Atención a la ciudadanía', 'href' => url('/atencion-servicios/puntos-atencion')],
-    ];
-
-    $socialLinks = [
-        ['label' => 'Facebook', 'icon' => 'bi-facebook', 'href' => '#'],
-        ['label' => 'X', 'icon' => 'bi-twitter-x', 'href' => '#'],
-        ['label' => 'Instagram', 'icon' => 'bi-instagram', 'href' => '#'],
-        ['label' => 'YouTube', 'icon' => 'bi-youtube', 'href' => '#'],
-    ];
-@endphp
 <!DOCTYPE html>
 <html lang="es">
 
@@ -539,8 +290,8 @@
         .footer-links a:focus-visible,
         .social-links a:focus-visible,
         .tab-button:focus-visible {
-            outline: 3px solid #c8da00;
-            outline-offset: 2px;
+            outline: 3px solid rgba(200, 218, 0, 0.75);
+            outline-offset: 3px;
         }
 
         .header-cta {
@@ -946,35 +697,10 @@
             color: var(--muted);
         }
 
-        .page-section--explora {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-section--explora::after {
-            content: "";
-            position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: clamp(280px, 25vw, 450px);
-            height: clamp(280px, 25vw, 450px);
-            background: url('/reto-assets/banner-reto-mas-pro-v2_Capa%202.png') no-repeat center center;
-            background-size: contain;
-            opacity: 0.90;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .page-section--explora .page-section__inner {
-            position: relative;
-            z-index: 1;
-        }
-
         .why-layout {
             margin-top: 24px;
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 300px;
+            grid-template-columns: minmax(0, 1fr) 240px;
             gap: 20px;
             align-items: stretch;
         }
@@ -1066,8 +792,6 @@
         .why-video {
             padding-left: 18px;
             border-left: 1px solid rgba(78, 84, 31, 0.16);
-            display: flex;
-            flex-direction: column;
         }
 
         .video-card {
@@ -1077,38 +801,11 @@
             background: #fff;
             box-shadow: 0 12px 22px rgba(31, 33, 14, 0.05);
             transition: transform 0.18s ease, box-shadow 0.18s ease;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .video-card__trigger {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;
-            width: 100%;
-            padding: 0;
-            border: 0;
-            background: none;
-            color: inherit;
-            cursor: pointer;
-            text-align: left;
-            overflow: hidden;
-        }
-
-        .video-card__trigger:hover .video-card__play {
-            transform: scale(1.1);
-        }
-
-        .video-card__trigger:focus-visible {
-            outline: 3px solid #c8da00;
-            outline-offset: 2px;
         }
 
         .video-card__thumb {
             position: relative;
-            flex: 1 1 auto;
-            min-height: 160px;
+            aspect-ratio: 1 / 1;
             overflow: hidden;
             background: #1b1f0e;
         }
@@ -1167,156 +864,12 @@
             color: #595959;
         }
 
-        .video-card__body-label {
-            display: block;
-            padding: 14px 14px 16px;
-            text-align: center;
-        }
-
-        .video-card__body-label strong {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.04rem;
-            line-height: 1.18;
-            font-weight: 800;
-            color: #314000;
-        }
-
-        /* Embed inline (solo móvil) */
-        .video-card__inline {
-            display: none;
-        }
-
-        .video-card__yt-link {
-            display: block;
-            position: relative;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #1b1f0e;
-        }
-
-        .video-card__yt-link img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.7);
-            transition: filter 0.18s ease;
-        }
-
-        .video-card__yt-link:hover img {
-            filter: brightness(0.85);
-        }
-
-        .video-card__yt-link .video-card__play {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin: -31px 0 0 -31px;
-        }
-
-        .video-card__yt-link:focus-visible {
-            outline: 3px solid #c8da00;
-            outline-offset: 2px;
-        }
-
-        .video-card__embed {
-            position: relative;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background: #1b1f0e;
-            border-radius: 12px;
-        }
-
-        .video-card__embed iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* Video lightbox (modal desktop) */
-        .video-lightbox {
-            width: min(100vw - 24px, 900px);
-            padding: 0;
-            border: 0;
-            border-radius: 22px;
-            background: transparent;
-            color: #fff;
-        }
-
-        .video-lightbox::backdrop {
-            background: rgba(7, 9, 4, 0.88);
-            backdrop-filter: blur(8px);
-        }
-
-        .video-lightbox__shell {
-            overflow: hidden;
-            border-radius: 22px;
-            background: linear-gradient(180deg, rgba(27, 31, 11, 0.98) 0%, rgba(13, 16, 7, 0.98) 100%);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.34);
-        }
-
-        .video-lightbox__topbar {
-            display: flex;
-            justify-content: flex-end;
-            padding: 14px 14px 0;
-        }
-
-        .video-lightbox__close {
-            min-width: 44px;
-            min-height: 44px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            display: inline-grid;
-            place-items: center;
-            padding: 0;
-            cursor: pointer;
-            transition: transform 0.18s ease, background-color 0.18s ease;
-        }
-
-        .video-lightbox__close:hover {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.14);
-        }
-
-        .video-lightbox__close:focus-visible {
-            outline: 3px solid #c8da00;
-            outline-offset: 2px;
-        }
-
-        .video-lightbox__body {
-            padding: 8px 18px 18px;
-        }
-
-        .video-lightbox__embed {
-            position: relative;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 14px;
-            background: #000;
-        }
-
-        .video-lightbox__embed iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
         .what-layout {
             margin-top: 24px;
             display: grid;
             grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
             gap: 30px;
             align-items: center;
-        }
-
-        .what-list-wrapper {
-            display: block;
         }
 
         .what-list {
@@ -1655,15 +1208,7 @@
         }
 
         .requirement-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .requirement-card {
-            flex: 0 1 calc(50% - 7px);
-            min-width: 220px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .requirement-card,
@@ -1714,15 +1259,7 @@
         }
 
         .rule-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .rule-card {
-            flex: 0 1 calc(50% - 7px);
-            min-width: 220px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .rule-card {
@@ -1746,255 +1283,6 @@
 
         .tab-panel.is-hidden {
             display: none;
-        }
-
-        .classified-section {
-            position: relative;
-            border-top: 1px solid rgba(79, 84, 31, 0.08);
-            background:
-                radial-gradient(circle at top right, rgba(200, 218, 0, 0.08), transparent 22%),
-                linear-gradient(180deg, #fafaf4 0%, #ffffff 100%);
-        }
-
-        .classified-section__inner {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: clamp(28px, 3.5vw, 40px) 24px;
-        }
-
-        .classified-section__header {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 14px 18px;
-            align-items: center;
-        }
-
-        .classified-section__eyebrow {
-            margin: 0 0 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.82rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--olive);
-        }
-
-        .classified-section__eyebrow::before {
-            content: "";
-            width: 22px;
-            height: 2px;
-            border-radius: 999px;
-            background: var(--lime);
-        }
-
-        .classified-section__title {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(1.55rem, 2.2vw, 2.15rem);
-            line-height: 1.04;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            color: #252b12;
-        }
-
-        .classified-section__lead {
-            margin: 8px 0 0;
-            max-width: 58ch;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #4d513f;
-        }
-
-        .classified-summary {
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 4px 10px;
-            padding: 10px 14px;
-            border: 1px solid rgba(78, 84, 31, 0.14);
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 10px 18px rgba(31, 33, 14, 0.04);
-        }
-
-        .classified-summary__value {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(1.35rem, 2vw, 1.75rem);
-            line-height: 1;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: var(--olive);
-        }
-
-        .classified-summary__label {
-            display: inline-block;
-            margin-top: 0;
-            font-size: 0.9rem;
-            line-height: 1.25;
-            color: #3f4419;
-            font-weight: 700;
-        }
-
-        .classified-summary__meta {
-            display: block;
-            width: 100%;
-            margin-top: 0;
-            font-size: 0.8rem;
-            line-height: 1.3;
-            color: #545844;
-        }
-
-        .classified-grid {
-            margin-top: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            align-items: stretch;
-        }
-
-        .classified-group {
-            display: flex;
-            flex-direction: column;
-            padding: 16px;
-            border: 1px solid rgba(78, 84, 31, 0.12);
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.96);
-            box-shadow: 0 12px 20px rgba(31, 33, 14, 0.04);
-        }
-
-        .classified-group__header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .classified-group__heading {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 0;
-        }
-
-        .classified-group__icon {
-            display: inline-grid;
-            place-items: center;
-            width: 34px;
-            height: 34px;
-            flex: 0 0 auto;
-            border-radius: 12px;
-            background: rgba(200, 218, 0, 0.18);
-            color: var(--olive);
-            font-size: 1rem;
-        }
-
-        .classified-group__title {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            line-height: 1.1;
-            font-weight: 800;
-            color: #2f3514;
-        }
-
-        .classified-group__description {
-            display: block;
-            margin-top: 2px;
-            font-size: 0.82rem;
-            line-height: 1.34;
-            color: #565b49;
-        }
-
-        .classified-group__count {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 28px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(79, 85, 27, 0.08);
-            color: var(--olive);
-            font-size: 0.8rem;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        .classified-group__list {
-            margin: 14px 0 0;
-            padding: 0;
-            list-style: none;
-            display: grid;
-            flex: 1 1 auto;
-            grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-            justify-items: center;
-            align-content: flex-start;
-            gap: 12px;
-        }
-
-        .classified-card {
-            width: min(100%, 100px);
-            min-width: 0;
-        }
-
-        .classified-card__figure {
-            margin: 0;
-            display: grid;
-            gap: 8px;
-            justify-items: center;
-            text-align: center;
-        }
-
-        .classified-card__media {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 1px solid rgba(78, 84, 31, 0.12);
-            background: linear-gradient(180deg, #ffffff 0%, #f5f6eb 100%);
-            box-shadow: 0 10px 18px rgba(31, 33, 14, 0.04);
-        }
-
-        .classified-card__media img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center bottom;
-            padding: 14px;
-        }
-
-        .classified-card__caption {
-            display: grid;
-            gap: 3px;
-            justify-items: center;
-        }
-
-        .classified-card__rank {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: fit-content;
-            min-height: 24px;
-            padding: 4px 8px;
-            border-radius: 999px;
-            background: rgba(200, 218, 0, 0.2);
-            color: #3a4210;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.02em;
-        }
-
-        .classified-card__name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.88rem;
-            line-height: 1.16;
-            font-weight: 800;
-            color: #272d12;
-            text-wrap: balance;
         }
 
         .inscribe-anchor {
@@ -2381,6 +1669,15 @@
             line-height: 1.4;
         }
 
+        .gallery-lightbox__title {
+            margin: 0 0 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 1.7rem);
+            line-height: 1.14;
+            font-weight: 800;
+            color: #fff;
+        }
+
         .gallery-lightbox__controls {
             display: inline-flex;
             align-items: center;
@@ -2519,15 +1816,6 @@
                 align-items: flex-start;
             }
 
-            .classified-section__header {
-                grid-template-columns: 1fr;
-                align-items: stretch;
-            }
-
-            .classified-summary {
-                justify-self: start;
-            }
-
             .why-layout,
             .what-layout,
             .process-layout {
@@ -2539,25 +1827,6 @@
                 border-left: 0;
             }
 
-            .video-card__trigger {
-                display: none;
-            }
-
-            .video-card__inline {
-                display: block;
-            }
-
-            .page-section--explora::after {
-                right: auto;
-                left: 50%;
-                top: auto;
-                bottom: -60px;
-                transform: translateX(-50%);
-                width: 300px;
-                height: 300px;
-                opacity: 0.5;
-            }
-
             .process-side {
                 max-width: 420px;
             }
@@ -2566,34 +1835,26 @@
         @media (max-width: 991.98px) {
             .site-header__inner {
                 display: flex;
-                flex-wrap: nowrap;
+                flex-wrap: wrap;
                 align-items: center;
                 justify-content: space-between;
-                gap: 8px;
-                padding-top: 8px;
-                padding-bottom: 8px;
+                gap: 10px 12px;
             }
 
             .site-brand {
-                flex: 0 1 auto;
+                flex: 1 1 auto;
                 min-width: 0;
                 width: auto;
-                max-width: calc(100% - 160px);
+                max-width: calc(100% - 138px);
             }
 
             .site-brand img {
                 min-width: 0;
-                width: min(160px, 38vw);
+                width: min(190px, 44vw);
             }
 
             .site-header__actions {
-                flex: 0 0 auto;
-                margin-left: 0;
-                gap: 8px;
-            }
-
-            .header-cta {
-                display: none;
+                margin-left: auto;
             }
 
             .site-menu-toggle {
@@ -2655,12 +1916,10 @@
 
             .why-cards,
             .process-steps,
-            .category-grid {
+            .category-grid,
+            .requirement-grid,
+            .rule-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .classified-grid {
-                grid-template-columns: 1fr;
             }
 
             .cta-band__inner {
@@ -2698,7 +1957,6 @@
             .site-header__inner,
             .hero__inner,
             .page-section__inner,
-            .classified-section__inner,
             .cta-band__inner,
             .gallery-ribbon__inner,
             .site-footer__inner {
@@ -2725,10 +1983,8 @@
             }
 
             .hero__actions {
-                flex-direction: row;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: 10px;
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .hero__meta {
@@ -2738,66 +1994,23 @@
             }
 
             .hero-carousel__toolbar {
-                flex-direction: row;
-                align-items: center;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                gap: 6px;
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .hero-carousel__controls {
-                flex: 0 0 auto;
-                gap: 6px;
-                justify-content: flex-start;
-            }
-
+            .hero-carousel__controls,
             .hero-carousel__pagination {
-                flex: 1 1 auto;
+                width: 100%;
                 justify-content: center;
-                gap: 6px;
-            }
-
-            .hero-carousel__toggle {
-                flex: 0 0 auto;
-                width: auto;
-                padding: 0 10px;
-                gap: 6px;
-                justify-content: center;
-            }
-
-            .hero-carousel__toggle [data-hero-toggle-label] {
-                display: none;
             }
 
             .hero-carousel__status {
                 text-align: center;
-                width: 100%;
-                font-size: 0.78rem !important;
             }
 
-            .hero-carousel__dot {
-                width: 22px;
-                height: 22px;
-            }
-
-            .hero-carousel__dot::before {
-                width: 7px;
-                height: 7px;
-            }
-
-            .hero-carousel__dot.is-active::before {
-                width: 18px;
-            }
-
-            .btn-solid {
-                flex: 1 1 auto;
-                min-width: 0;
-                justify-content: center;
-            }
-
+            .btn-solid,
             .hero-secondary {
-                flex: 0 0 auto;
-                width: auto;
+                width: 100%;
                 justify-content: center;
             }
 
@@ -2821,26 +2034,10 @@
 
             .why-cards,
             .process-steps,
-            .category-grid {
+            .category-grid,
+            .requirement-grid,
+            .rule-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .requirement-card,
-            .rule-card {
-                flex: 1 1 100%;
-            }
-
-            .classified-group {
-                padding: 18px;
-            }
-
-            .classified-group__list {
-                gap: 10px;
-                grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
-            }
-
-            .classified-card {
-                width: min(100%, 100px);
             }
 
             .what-callout {
@@ -2855,6 +2052,15 @@
                 font-size: 1.05rem;
                 min-height: 68px;
                 padding-inline: 18px;
+            }
+
+            .gallery-ribbon__viewport {
+                mask-image: none;
+            }
+
+            .gallery-ribbon__viewport::before,
+            .gallery-ribbon__viewport::after {
+                display: none;
             }
 
             .gallery-ribbon__item {
@@ -2920,8 +2126,13 @@
                 justify-content: center;
             }
 
+            .hero-carousel__toggle {
+                width: 100%;
+                justify-content: center;
+            }
+
             .gallery-ribbon__controls {
-                flex-wrap: wrap;
+                width: 100%;
             }
 
             .gallery-ribbon__button {
@@ -2929,8 +2140,7 @@
             }
 
             .gallery-ribbon__toggle {
-                flex: 0 0 auto;
-                width: auto;
+                width: 100%;
                 justify-content: center;
             }
 
@@ -2938,28 +2148,13 @@
                 width: min(82vw, 260px);
             }
 
-            .classified-group__header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .classified-group__count {
-                width: fit-content;
-            }
-
-            .classified-card {
-                width: min(100%, 100px);
-            }
-
             .btn-solid {
-                flex: 1 1 auto;
-                min-width: 0;
+                width: 100%;
                 justify-content: center;
             }
 
             .hero-secondary {
-                flex: 0 0 auto;
-                width: auto;
+                width: 100%;
                 justify-content: center;
             }
 
@@ -2970,42 +2165,28 @@
                 min-height: 0;
             }
         }
-
-        @media (max-width: 359.98px) {
-            .classified-group__list {
-                grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
-            }
-
-            .classified-card {
-                width: min(100%, 100px);
-            }
-        }
     </style>
 </head>
 
 <body>
-    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+    <a class="skip-link" href="#inicio">Saltar al contenido principal</a>
 
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-brand" href="#inicio" aria-label="Ir al inicio">
-                <img src="{{ $brandLogo }}" alt="Alcaldía Mayor de Bogotá D.C. y Secretaría de Movilidad">
+                <img src="http://sdm.env/reto-assets/logo.png" alt="Alcaldía Mayor de Bogotá D.C. y Secretaría de Movilidad">
             </a>
 
             <nav class="site-nav" id="site-primary-menu" aria-label="Navegación principal">
                 <a href="#inicio">Inicio</a>
                 <a href="#por-que">El reto</a>
                 <a href="#explora">Información</a>
-                @if ($classifiedTotal > 0)
-                    <a href="#clasificados">Clasificados</a>
-                @endif
                 <a href="#noticias">Noticias</a>
                 <a href="#faq">Preguntas frecuentes</a>
             </nav>
 
             <div class="site-header__actions">
-                <a class="header-cta" href="{{ $inscripcionUrl }}" target="_blank" rel="noopener noreferrer"
-                    aria-label="Inscribete (abre en una nueva pestaña)">
+                <a class="header-cta" href="https://forms.gle/HQyMfK7k38y9z2xp8" target="_blank" rel="noopener noreferrer">
                     <span>Inscribete</span>
                     <span class="btn-icon-circle" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                 </a>
@@ -3019,20 +2200,42 @@
         </div>
     </header>
 
-    <main id="main-content">
+    <main>
         <section class="hero" id="inicio" aria-labelledby="hero-title" data-hero-carousel data-delay="6500"
-            @if ($heroSlideTotal > 1) aria-describedby="hero-carousel-instructions" @endif>
+             aria-describedby="hero-carousel-instructions" >
             <div class="hero-carousel" aria-roledescription="carrusel" aria-label="Galería destacada del reto">
                 <div class="hero-carousel__viewport" aria-hidden="true">
-                    @foreach ($heroSlides as $slide)
-                        <figure class="hero-carousel__slide {{ $loop->first ? 'is-active' : '' }}" data-hero-slide
-                            aria-hidden="{{ $loop->first ? 'false' : 'true' }}">
-                            <img src="{{ $slide['src'] }}" alt=""
-                                loading="{{ $loop->first ? 'eager' : 'lazy' }}" decoding="async"
-                                @if ($loop->first) fetchpriority="high" @endif>
+                                            <figure class="hero-carousel__slide is-active" data-hero-slide
+                            aria-hidden="false">
+                            <img src="http://sdm.env/reto-assets/hero/hero-1.jpg" alt=""
+                                loading="eager" decoding="async"
+                                 fetchpriority="high" >
                         </figure>
-                    @endforeach
-                </div>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="http://sdm.env/reto-assets/hero/hero-2.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="http://sdm.env/reto-assets/hero/hero-3.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="http://sdm.env/reto-assets/hero/hero-4.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="http://sdm.env/reto-assets/hero/hero-5.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                    </div>
             </div>
 
             <div class="hero__inner">
@@ -3050,9 +2253,8 @@
                     <p>Ser buen motociclista no es correr. Es tener el control y llegar seguro.</p>
 
                     <div class="hero__actions">
-                        <a class="btn-solid" href="{{ $inscripcionUrl }}" target="_blank" rel="noopener noreferrer"
-                            aria-label="Inscribete (abre en una nueva pestaña)">
-                            <span aria-hidden="true">Inscribete</span>
+                        <a class="btn-solid" href="https://forms.gle/HQyMfK7k38y9z2xp8" target="_blank" rel="noopener noreferrer">
+                            <span>Inscribete</span>
                             <span class="btn-icon-circle" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                         </a>
                         <a class="hero-secondary" href="#por-que">
@@ -3062,8 +2264,7 @@
                     </div>
                 </div>
 
-                @if ($heroSlideTotal > 1)
-                    <div class="hero__meta">
+                                    <div class="hero__meta">
                         <p class="sr-only" id="hero-carousel-instructions">
                             Usa los controles para avanzar, retroceder o pausar el carrusel. La rotación automática
                             se detiene al interactuar con el componente.
@@ -3087,23 +2288,44 @@
                             </div>
 
                             <div class="hero-carousel__pagination" aria-label="Seleccionar una imagen del carrusel">
-                                @foreach ($heroSlides as $slide)
-                                    <button class="hero-carousel__dot {{ $loop->first ? 'is-active' : '' }}"
-                                        type="button" data-hero-dot data-slide-index="{{ $loop->index }}"
-                                        aria-label="{{ $loop->first ? 'Imagen actual ' : 'Mostrar imagen ' }}{{ $loop->iteration }} de {{ $heroSlideTotal }}"
-                                        @if ($loop->first) aria-current="true" @endif>
-                                        <span class="sr-only">Imagen {{ $loop->iteration }}</span>
+                                                                    <button class="hero-carousel__dot is-active"
+                                        type="button" data-hero-dot data-slide-index="0"
+                                        aria-label="Imagen actual 1 de 5"
+                                         aria-current="true" >
+                                        <span class="sr-only">Imagen 1</span>
                                     </button>
-                                @endforeach
-                            </div>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="1"
+                                        aria-label="Mostrar imagen 2 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 2</span>
+                                    </button>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="2"
+                                        aria-label="Mostrar imagen 3 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 3</span>
+                                    </button>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="3"
+                                        aria-label="Mostrar imagen 4 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 4</span>
+                                    </button>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="4"
+                                        aria-label="Mostrar imagen 5 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 5</span>
+                                    </button>
+                                                            </div>
                         </div>
 
                         <p class="hero-carousel__status" data-hero-status aria-live="off" aria-atomic="true">
-                            Imagen 1 de {{ $heroSlideTotal }}
+                            Imagen 1 de 5
                         </p>
                     </div>
-                @endif
-            </div>
+                            </div>
         </section>
 
         <section class="page-section" id="por-que" aria-labelledby="por-que-title">
@@ -3113,20 +2335,51 @@
                 <div class="why-layout">
                     <div class="why-main">
                         <div class="why-cards">
-                            @foreach ($whyCards as $card)
-                                <article
-                                    class="stat-card {{ !empty($card['featured']) ? 'stat-card--featured' : '' }}">
+                                                            <article
+                                    class="stat-card stat-card--featured">
                                     <span class="stat-card__icon" aria-hidden="true">
-                                        <i class="bi {{ $card['icon'] }}"></i>
+                                        <i class="bi bi-people"></i>
                                     </span>
                                     <strong
-                                        class="stat-card__title {{ !empty($card['featured']) ? 'stat-card__title--featured' : '' }}">
-                                        {{ $card['title'] }}
+                                        class="stat-card__title stat-card__title--featured">
+                                        4 de cada 10
                                     </strong>
-                                    <p class="stat-card__text">{{ $card['text'] }}</p>
+                                    <p class="stat-card__text">personas que mueren en las vías son motociclistas</p>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article
+                                    class="stat-card ">
+                                    <span class="stat-card__icon" aria-hidden="true">
+                                        <i class="bi bi-speedometer2"></i>
+                                    </span>
+                                    <strong
+                                        class="stat-card__title ">
+                                        El exceso de velocidad mata
+                                    </strong>
+                                    <p class="stat-card__text">Es el principal factor de riesgo en las vías.</p>
+                                </article>
+                                                            <article
+                                    class="stat-card ">
+                                    <span class="stat-card__icon" aria-hidden="true">
+                                        <i class="bi bi-bicycle"></i>
+                                    </span>
+                                    <strong
+                                        class="stat-card__title ">
+                                        Los motociclistas exceden más la velocidad
+                                    </strong>
+                                    <p class="stat-card__text">En comparación con otros usuarios de la vía.</p>
+                                </article>
+                                                            <article
+                                    class="stat-card ">
+                                    <span class="stat-card__icon" aria-hidden="true">
+                                        <i class="bi bi-cone-striped"></i>
+                                    </span>
+                                    <strong
+                                        class="stat-card__title ">
+                                        La falta de pericia también cobra vidas
+                                    </strong>
+                                    <p class="stat-card__text">El control y la técnica pueden marcar la diferencia.</p>
+                                </article>
+                                                    </div>
 
                         <p class="section-note">
                             Este reto busca cambiar esa realidad. Promueve el control, la técnica y las decisiones
@@ -3136,28 +2389,13 @@
 
                     <aside class="why-video">
                         <article class="video-card" aria-label="Video generalidades del reto">
-                            {{-- Thumbnail + botón para desktop (abre modal) --}}
-                            <button class="video-card__trigger" type="button"
-                                data-video-open
-                                aria-label="Reproducir video del Reto Más lento, más pro (abre en ventana emergente)">
-                                <span class="video-card__thumb">
-                                    <img src="{{ $whyVideoBg }}" alt="" loading="lazy" decoding="async">
-                                    <span class="video-card__play" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
-                                </span>
-                                <span class="video-card__body-label">
-                                    <strong>Ver video</strong>
-                                </span>
-                            </button>
-
-                            {{-- Embed directo para móvil — usa thumbnail + link a YouTube --}}
-                            <div class="video-card__inline">
-                                <a class="video-card__yt-link" href="https://www.youtube.com/watch?v=uQD4NbRKwk4"
-                                    target="_blank" rel="noopener noreferrer"
-                                    aria-label="Ver video del Reto Más lento, más pro en YouTube (abre en nueva pestaña)">
-                                    <img src="https://img.youtube.com/vi/uQD4NbRKwk4/hqdefault.jpg"
-                                        alt="Miniatura del video del Reto" loading="lazy" decoding="async">
-                                    <span class="video-card__play" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
-                                </a>
+                            <div class="video-card__thumb">
+                                <img src="http://sdm.env/reto-assets/banner-reto-mas-pro-v2_Capa%203.png" alt="" loading="lazy" decoding="async">
+                                <span class="video-card__play" aria-hidden="true"><i
+                                        class="bi bi-play-fill"></i></span>
+                            </div>
+                            <div class="video-card__body">
+                                <strong>Ver video</strong>
                             </div>
                         </article>
                     </aside>
@@ -3171,42 +2409,43 @@
 
                 <div class="what-layout">
 
-                    <div class="what-list-wrapper">
+                    <ul class="what-list" aria-label="Objetivos del reto">
+
                         <p class="page-section__lead">El reto ‘Más lento, más pro’ busca tumbar el mito de que ir más
                             rápido es
                             ir mejor, recordando a los motociclistas que el exceso de velocidad es el riesgo, pero que
                             el
                             dominio, el control y las decisiones seguras en las vías, son acciones que protegen la vida.
                         </p>
-                        <ul class="what-list" aria-label="Objetivos del reto">
-                            <li>
-                            <span class="what-list__icon" aria-hidden="true"><img src="{{ $cancelIcon }}"
+                        <br>
+
+                        <li>
+                            <span class="what-list__icon" aria-hidden="true"><img src="http://sdm.env/reto-assets/cancelar.png"
                                     alt=""></span>
                             <span>Velocidad <b>&ne;</b> eficiencia</span>
                         </li>
                         <li>
-                            <span class="what-list__icon" aria-hidden="true"><img src="{{ $cancelIcon }}"
+                            <span class="what-list__icon" aria-hidden="true"><img src="http://sdm.env/reto-assets/cancelar.png"
                                     alt=""></span>
                             <span>Velocidad <b>&ne;</b> habilidad</span>
                         </li>
                         <li>
-                            <span class="what-list__icon" aria-hidden="true"><img src="{{ $cancelIcon }}"
+                            <span class="what-list__icon" aria-hidden="true"><img src="http://sdm.env/reto-assets/cancelar.png"
                                     alt=""></span>
                             <span>Lentitud <b>&ne;</b> estorbo</span>
                         </li>
-                        </ul>
-                    </div>
+                    </ul>
 
                     <article class="what-callout" aria-label="Mensaje principal del reto">
                         <div class="what-callout__icons" aria-hidden="true">
                             <span class="what-callout__icon">
-                                <img src="{{ $helmetIcon }}" alt="">
+                                <img src="http://sdm.env/reto-assets/casco.png" alt="">
                             </span>
                             <span class="what-callout__icon">
-                                <img src="{{ $guantletIcon }}" alt="">
+                                <img src="http://sdm.env/reto-assets/guantes.png" alt="">
                             </span>
                             <span class="what-callout__icon">
-                                <img src="{{ $cerebroIcon }}" alt="">
+                                <img src="http://sdm.env/reto-assets/cerebro.png" alt="">
                             </span>
                         </div>
 
@@ -3228,23 +2467,48 @@
                 <div class="process-layout">
                     <div class="process-track">
                         <div class="process-steps">
-                            @foreach ($steps as $step)
-                                <article class="process-card">
-                                    <span class="process-card__number">{{ $step['number'] }}</span>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">1</span>
                                     <span class="process-card__thumb" aria-hidden="true">
-                                        <img src="{{ $step['thumb'] }}" alt="" loading="lazy"
+                                        <img src="http://sdm.env/reto-assets/reto_64.webp" alt="" loading="lazy"
                                             decoding="async">
                                     </span>
-                                    <h3>{{ $step['title'] }}</h3>
-                                    <p>{{ $step['text'] }}</p>
+                                    <h3>Tres pistas lentas</h3>
+                                    <p>Primer acercamiento al reto.</p>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">2</span>
+                                    <span class="process-card__thumb" aria-hidden="true">
+                                        <img src="http://sdm.env/reto-assets/reto_81.webp" alt="" loading="lazy"
+                                            decoding="async">
+                                    </span>
+                                    <h3>Niveles de complejidad</h3>
+                                    <p>La prueba exige mayor dominio.</p>
+                                </article>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">3</span>
+                                    <span class="process-card__thumb" aria-hidden="true">
+                                        <img src="http://sdm.env/reto-assets/reto_88.webp" alt="" loading="lazy"
+                                            decoding="async">
+                                    </span>
+                                    <h3>Válidas eliminatorias</h3>
+                                    <p>Clasificación durante todo el año.</p>
+                                </article>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">4</span>
+                                    <span class="process-card__thumb" aria-hidden="true">
+                                        <img src="http://sdm.env/reto-assets/reto_92.webp" alt="" loading="lazy"
+                                            decoding="async">
+                                    </span>
+                                    <h3>Final del reto</h3>
+                                    <p>Cierre en octubre de 2026.</p>
+                                </article>
+                                                    </div>
                     </div>
 
                     <aside class="process-side" id="faq">
                         <span class="process-side__icon" aria-hidden="true">
-                            <img src="{{ $starIcon }}" alt="">
+                            <img src="http://sdm.env/reto-assets/copa.png" alt="">
                         </span>
                         <h3>¿Cómo se define a quienes avanzan?</h3>
                         <p>
@@ -3256,162 +2520,162 @@
             </div>
         </section>
 
-        <section class="page-section page-section--explora" id="explora" aria-labelledby="explora-title">
+        <section class="page-section" id="explora" aria-labelledby="explora-title">
             <div class="page-section__inner">
                 <h2 class="page-section__title" id="explora-title">Explora la información del reto</h2>
                 <p class="page-section__lead">Elige el tema que quieres revisar. Así la información se presenta por
                     bloques y no toda al tiempo.</p>
 
                 <div class="tabs-header" role="tablist" aria-label="Información del reto">
-                    <button class="tab-button is-active" type="button" role="tab" id="tab-categorias" aria-selected="true"
+                    <button class="tab-button is-active" type="button" role="tab" aria-selected="true"
                         aria-controls="panel-categorias" data-reto-tab="categorias">
                         Categorías
                     </button>
-                    <button class="tab-button" type="button" role="tab" id="tab-requisitos" aria-selected="false"
+                    <button class="tab-button" type="button" role="tab" aria-selected="false"
                         aria-controls="panel-requisitos" data-reto-tab="requisitos">
                         Requisitos
                     </button>
-                    <button class="tab-button" type="button" role="tab" id="tab-reglas" aria-selected="false"
+                    <button class="tab-button" type="button" role="tab" aria-selected="false"
                         aria-controls="panel-reglas" data-reto-tab="reglas">
                         Reglas
                     </button>
                 </div>
 
                 <div class="tab-panels">
-                    <section class="tab-panel" id="panel-categorias" data-reto-panel="categorias" role="tabpanel" tabindex="-1" aria-labelledby="tab-categorias">
+                    <section class="tab-panel" id="panel-categorias" data-reto-panel="categorias" role="tabpanel">
                         <h3 class="tab-panel__title">Categorías de participación</h3>
                         <p class="tab-panel__lead">La clasificación separa experiencia y género para que la competencia
                             sea más clara y comparable.</p>
 
                         <div class="category-grid">
-                            @foreach ($categories as $category)
-                                <article class="category-pill">
+                                                            <article class="category-pill">
                                     <span class="category-pill__icon" aria-hidden="true">
-                                        <i class="bi {{ $category['icon'] }}"></i>
+                                        <i class="bi bi-gender-female"></i>
                                     </span>
                                     <div class="category-pill__content">
-                                        <strong>{{ $category['title'] }}</strong>
-                                        <span>{{ $category['text'] }}</span>
+                                        <strong>Mujeres novatas</strong>
+                                        <span>menos de dos años manejando moto</span>
                                     </div>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="category-pill">
+                                    <span class="category-pill__icon" aria-hidden="true">
+                                        <i class="bi bi-gender-male"></i>
+                                    </span>
+                                    <div class="category-pill__content">
+                                        <strong>Hombres novatos</strong>
+                                        <span>menos de dos años manejando moto</span>
+                                    </div>
+                                </article>
+                                                            <article class="category-pill">
+                                    <span class="category-pill__icon" aria-hidden="true">
+                                        <i class="bi bi-gender-female"></i>
+                                    </span>
+                                    <div class="category-pill__content">
+                                        <strong>Mujeres experimentadas</strong>
+                                        <span>más de dos años manejando moto</span>
+                                    </div>
+                                </article>
+                                                            <article class="category-pill">
+                                    <span class="category-pill__icon" aria-hidden="true">
+                                        <i class="bi bi-gender-male"></i>
+                                    </span>
+                                    <div class="category-pill__content">
+                                        <strong>Hombres experimentados</strong>
+                                        <span>más de dos años manejando moto</span>
+                                    </div>
+                                </article>
+                                                    </div>
                     </section>
 
                     <section class="tab-panel is-hidden" id="panel-requisitos" data-reto-panel="requisitos"
-                        role="tabpanel" tabindex="-1" aria-labelledby="tab-requisitos" hidden>
+                        role="tabpanel" hidden>
                         <h3 class="tab-panel__title">Requisitos para participar</h3>
                         <p class="tab-panel__lead">Antes de inscribirte, verifica que cumples estas condiciones
                             básicas.</p>
 
                         <div class="tab-panel__grid requirement-grid">
-                            @foreach ($requirements as $requirement)
-                                <article class="requirement-card">
+                                                            <article class="requirement-card">
                                     <span class="requirement-card__icon" aria-hidden="true"><i
-                                            class="bi {{ $requirement['icon'] }}"></i></span>
-                                    <strong>{{ $requirement['text'] }}</strong>
+                                            class="bi bi-check2"></i></span>
+                                    <strong>Licencia de conducción vigente A2</strong>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <strong>SOAT y revisión técnico-mecánica al día</strong>
+                                </article>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <strong>Casco y elementos de protección</strong>
+                                </article>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <strong>Inscripción previa en la válida</strong>
+                                </article>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <strong>Estar al día con el pago de comparendo</strong>
+                                </article>
+                                                    </div>
                     </section>
 
-                    <section class="tab-panel is-hidden" id="panel-reglas" data-reto-panel="reglas" role="tabpanel" tabindex="-1"
-                        aria-labelledby="tab-reglas" hidden>
+                    <section class="tab-panel is-hidden" id="panel-reglas" data-reto-panel="reglas" role="tabpanel"
+                        hidden>
                         <h3 class="tab-panel__title">Reglas del reto</h3>
                         <p class="tab-panel__lead">Estas reglas buscan reforzar hábitos de conducción segura y
                             controlada durante la prueba.</p>
 
                         <div class="tab-panel__grid rule-grid">
-                            @foreach ($rules as $rule)
-                                <article class="rule-card">
+                                                            <article class="rule-card">
                                     <span class="rule-card__icon" aria-hidden="true"><i
-                                            class="bi {{ $rule['icon'] }}"></i></span>
+                                            class="bi bi-check2"></i></span>
                                     <div>
-                                        <strong>{{ $rule['text'] }}</strong>
+                                        <strong>Cero alcohol antes y durante la prueba</strong>
+                                        <p>La prueba se desarrolla con control, precisión y respeto por el recorrido
+                                            definido.</p>
                                     </div>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="rule-card">
+                                    <span class="rule-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <div>
+                                        <strong>No apoyar los pies en el piso</strong>
+                                        <p>La prueba se desarrolla con control, precisión y respeto por el recorrido
+                                            definido.</p>
+                                    </div>
+                                </article>
+                                                            <article class="rule-card">
+                                    <span class="rule-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <div>
+                                        <strong>Mantenerse dentro del recorrido establecido</strong>
+                                        <p>La prueba se desarrolla con control, precisión y respeto por el recorrido
+                                            definido.</p>
+                                    </div>
+                                </article>
+                                                            <article class="rule-card">
+                                    <span class="rule-card__icon" aria-hidden="true"><i
+                                            class="bi bi-check2"></i></span>
+                                    <div>
+                                        <strong>No apagar la moto durante la prueba</strong>
+                                        <p>La prueba se desarrolla con control, precisión y respeto por el recorrido
+                                            definido.</p>
+                                    </div>
+                                </article>
+                                                    </div>
                     </section>
                 </div>
             </div>
         </section>
 
-        @if ($classifiedTotal > 0)
-            <span class="page-anchor" id="clasificados" aria-hidden="true"></span>
-
-            <section class="classified-section" aria-labelledby="clasificados-title"
-                aria-describedby="clasificados-lead clasificados-note">
-                <div class="classified-section__inner">
-                    <div class="classified-section__header">
-                        <div>
-                            <span class="classified-section__eyebrow">Clasificados</span>
-                            <h2 class="classified-section__title" id="clasificados-title">Clasificados por categoría
-                            </h2>
-                            <p class="classified-section__lead" id="clasificados-lead">Revisa quiénes ya clasificaron y ubícalos por
-                                categoría.</p>
-                            <p class="sr-only" id="clasificados-note">Cada registro se presenta por categoría con su
-                                puesto y nombre. Las imágenes funcionan como apoyo visual.</p>
-                        </div>
-
-                        <aside class="classified-summary" aria-label="Resumen de clasificados">
-                            <span class="classified-summary__value">{{ $classifiedTotal }}</span>
-                            <span class="classified-summary__label">clasificados a la fecha</span>
-                            <span class="classified-summary__meta">{{ count($classifiedByCategory) }} categorías con
-                                registro activo</span>
-                        </aside>
-                    </div>
-
-                    <div class="classified-grid">
-                        @foreach ($classifiedByCategory as $group)
-                            <section class="classified-group"
-                                aria-labelledby="clasificados-{{ $group['key'] }}-title">
-                                <div class="classified-group__header">
-                                    <div class="classified-group__heading">
-                                        <span class="classified-group__icon" aria-hidden="true">
-                                            <i class="bi {{ $group['icon'] }}"></i>
-                                        </span>
-                                        <div>
-                                            <h3 class="classified-group__title"
-                                                id="clasificados-{{ $group['key'] }}-title">{{ $group['title'] }}</h3>
-                                            <span
-                                                class="classified-group__description">{{ $group['description'] }}</span>
-                                        </div>
-                                    </div>
-
-                                    <span class="classified-group__count"
-                                        aria-label="{{ count($group['riders']) }} clasificados en {{ $group['title'] }}">{{ count($group['riders']) }}
-                                        clasificados</span>
-                                </div>
-
-                                <ul class="classified-group__list" aria-label="Clasificados en {{ $group['title'] }}">
-                                    @foreach ($group['riders'] as $rider)
-                                        <li class="classified-card">
-                                            <figure class="classified-card__figure">
-                                                <div class="classified-card__media">
-                                                    <img src="{{ $rider['src'] }}" alt="" aria-hidden="true" loading="lazy"
-                                                        decoding="async">
-                                                </div>
-                                                <figcaption class="classified-card__caption">
-                                                    <span class="classified-card__rank">Lugar {{ $rider['rank'] }}</span>
-                                                    <strong class="classified-card__name">{{ $rider['name'] }}</strong>
-                                                </figcaption>
-                                            </figure>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </section>
-                        @endforeach
-                    </div>
-                </div>
-            </section>
-        @endif
-
         <span class="page-anchor" id="noticias" aria-hidden="true"></span>
 
         <section class="cta-band" id="inscribirse" aria-labelledby="inscribirse-title">
             <div class="cta-band__bg" aria-hidden="true">
-                <img src="{{ $ctaBg }}" alt="" loading="lazy" decoding="async">
+                <img src="http://sdm.env/reto-assets/banner-reto.jpg" alt="" loading="lazy" decoding="async">
             </div>
 
             <div class="cta-band__inner">
@@ -3423,29 +2687,26 @@
                         segura.</p>
                 </div>
 
-                <a class="cta-band__button" href="{{ $inscripcionUrl }}" target="_blank" rel="noopener noreferrer"
-                aria-label="Inscríbete en la siguiente válida (abre en una nueva pestaña)">
+                <a class="cta-band__button" href="https://forms.gle/HQyMfK7k38y9z2xp8" target="_blank" rel="noopener noreferrer">
                     <span>Inscríbete en la<br> siguiente válida</span>
                     <span class="btn-icon-circle" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                 </a>
             </div>
         </section>
 
-        @if ($galleryImageTotal > 0)
-            <section class="gallery-ribbon" id="galeria" aria-labelledby="galeria-title">
+                    <section class="gallery-ribbon" id="galeria" aria-labelledby="galeria-title">
                 <div class="gallery-ribbon__inner" data-gallery-strip data-speed="0.046">
                     <div class="gallery-ribbon__header">
                         <div class="gallery-ribbon__copy">
                             <p class="gallery-ribbon__eyebrow">Galería</p>
-                            <h2 class="gallery-ribbon__title" id="galeria-title">El reto avanza</h2>
+                            <h2 class="gallery-ribbon__title" id="galeria-title">El reto sigue creciendo</h2>
                             <p class="gallery-ribbon__lead">
-                                Cada reto deja nuevos momentos para recordar. Recorre la galeria, pausa el
-                                movimiento cuando quieras y abre cualquier fotografía para verla con más detalle.
+                                Cada válida suma nuevas imágenes. La tira avanza de manera continua, puedes pausarla
+                                cuando quieras y abrir cualquier fotografía para verla con más detalle.
                             </p>
                         </div>
 
-                        @if ($galleryImageTotal > 1)
-                            <div class="gallery-ribbon__controls" aria-label="Controles de la tirilla fotográfica">
+                                                    <div class="gallery-ribbon__controls" aria-label="Controles de la tirilla fotográfica">
                                 <button class="gallery-ribbon__button" type="button" data-gallery-action="previous"
                                     aria-label="Desplazar la tirilla hacia atrás">
                                     <i class="bi bi-arrow-left" aria-hidden="true"></i>
@@ -3460,8 +2721,7 @@
                                     <span data-gallery-toggle-label>Pausar</span>
                                 </button>
                             </div>
-                        @endif
-                    </div>
+                                            </div>
 
                     <p class="sr-only" id="gallery-ribbon-instructions">
                         La galería se desplaza automáticamente. Usa los controles para avanzar, retroceder o pausar la
@@ -3471,45 +2731,325 @@
                     <div class="gallery-ribbon__viewport" data-gallery-viewport tabindex="0" role="region"
                         aria-label="Tirilla de imágenes del reto" aria-describedby="gallery-ribbon-instructions">
                         <div class="gallery-ribbon__track" data-gallery-track>
-                            @foreach ($galleryImages as $image)
-                                <button class="gallery-ribbon__item" type="button"
-                                    data-gallery-open="{{ $loop->index }}" aria-label="Abrir imagen {{ $loop->iteration }} de {{ $galleryImageTotal }}">
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="0" aria-label="Abrir imagen 1 de 12">
                                     <span class="gallery-ribbon__card">
                                         <span class="gallery-ribbon__thumb">
-                                            <img src="{{ $image['src'] }}" alt="" loading="lazy" decoding="async">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_1.jpg" alt="" loading="lazy" decoding="async">
                                         </span>
                                         <span class="gallery-ribbon__caption">
-                                            <strong>{{ $image['title'] }}</strong>
-                                            <span>{{ $image['caption'] }}</span>
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 1 de 12</span>
                                         </span>
                                     </span>
                                 </button>
-                            @endforeach
-
-                            @if ($galleryImageTotal > 1)
-                                @foreach ($galleryImages as $image)
-                                    <button class="gallery-ribbon__item" type="button"
-                                        data-gallery-open="{{ $loop->index }}" data-gallery-clone="true"
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="1" aria-label="Abrir imagen 2 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_2.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 2 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="2" aria-label="Abrir imagen 3 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_3.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 3 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="3" aria-label="Abrir imagen 4 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_4.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 4 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="4" aria-label="Abrir imagen 5 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_5.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 5 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="5" aria-label="Abrir imagen 6 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_6.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 6 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="6" aria-label="Abrir imagen 7 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_7.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 7 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="7" aria-label="Abrir imagen 8 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_8.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 8 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="8" aria-label="Abrir imagen 9 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_9.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 9 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="9" aria-label="Abrir imagen 10 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_10.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 10 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="10" aria-label="Abrir imagen 11 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_11.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 11 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="11" aria-label="Abrir imagen 12 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="http://sdm.env/reto-assets/galeria/reto_act1_12.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 12 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                            
+                                                                                                <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="0" data-gallery-clone="true"
                                         aria-hidden="true" tabindex="-1">
                                         <span class="gallery-ribbon__card">
                                             <span class="gallery-ribbon__thumb">
-                                                <img src="{{ $image['src'] }}" alt="" loading="lazy"
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_1.jpg" alt="" loading="lazy"
                                                     decoding="async">
                                             </span>
                                             <span class="gallery-ribbon__caption">
-                                                <strong>{{ $image['title'] }}</strong>
-                                                <span>{{ $image['caption'] }}</span>
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 1 de 12</span>
                                             </span>
                                         </span>
                                     </button>
-                                @endforeach
-                            @endif
-                        </div>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="1" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_2.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 2 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="2" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_3.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 3 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="3" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_4.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 4 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="4" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_5.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 5 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="5" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_6.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 6 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="6" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_7.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 7 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="7" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_8.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 8 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="8" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_9.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 9 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="9" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_10.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 10 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="10" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_11.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 11 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="11" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="http://sdm.env/reto-assets/galeria/reto_act1_12.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 12 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                                    </div>
                     </div>
                 </div>
             </section>
 
-            <dialog class="gallery-lightbox" data-gallery-dialog aria-label="Visor de galería del reto" aria-modal="true" role="dialog">
+            <dialog class="gallery-lightbox" data-gallery-dialog aria-labelledby="gallery-lightbox-title">
                 <div class="gallery-lightbox__shell">
                     <div class="gallery-lightbox__topbar">
                         <button class="gallery-lightbox__close" type="button" data-gallery-close
@@ -3525,11 +3065,12 @@
 
                         <div class="gallery-lightbox__footer">
                             <div class="gallery-lightbox__meta">
+                                <h2 class="gallery-lightbox__title" id="gallery-lightbox-title"
+                                    data-gallery-dialog-title>Galería del reto</h2>
                                 <p data-gallery-dialog-caption>Registro fotográfico</p>
                             </div>
 
-                            @if ($galleryImageTotal > 1)
-                                <div class="gallery-lightbox__controls" aria-label="Navegación del visor">
+                                                            <div class="gallery-lightbox__controls" aria-label="Navegación del visor">
                                     <button class="gallery-lightbox__button" type="button" data-gallery-dialog-nav="previous"
                                         aria-label="Mostrar imagen anterior">
                                         <i class="bi bi-arrow-left" aria-hidden="true"></i>
@@ -3539,55 +3080,41 @@
                                         <i class="bi bi-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                            @endif
-                        </div>
+                                                    </div>
                     </div>
                 </div>
             </dialog>
-        @endif
-
-        {{-- Modal de video — abre YouTube directamente --}}
-        <dialog class="video-lightbox" data-video-dialog aria-label="Reproductor de video" aria-modal="true" role="dialog">
-            <div class="video-lightbox__shell">
-                <div class="video-lightbox__topbar">
-                    <button class="video-lightbox__close" type="button" data-video-close
-                        aria-label="Cerrar reproductor de video">
-                        <i class="bi bi-x-lg" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <div class="video-lightbox__body">
-                    <div class="video-lightbox__embed">
-                        <iframe data-video-dialog-iframe
-                            title="Video del Reto Más lento, más pro"
-                            frameborder="0"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </dialog>
-    </main>
+            </main>
 
     <footer class="site-footer">
         <div class="site-footer__inner">
             <div class="site-footer__top">
 
                 <nav class="footer-links" aria-label="Enlaces de pie de página">
-                    @foreach ($footerLinks as $link)
-                        <a href="{{ $link['href'] }}">{{ $link['label'] }}</a>
-                    @endforeach
-                </nav>
+                                            <a href="http://sdm.env/manual-y-politicas-de-seguridad-de-la-informacion">Políticas de privacidad</a>
+                                            <a href="#">Términos y condiciones</a>
+                                            <a href="http://sdm.env/sitemap">Mapa del sitio</a>
+                                            <a href="http://sdm.env/atencion-servicios/puntos-atencion">Atención a la ciudadanía</a>
+                                    </nav>
 
                 <div class="social-links" aria-label="Redes sociales">
-                    @foreach ($socialLinks as $social)
-                        <a href="{{ $social['href'] }}" aria-label="{{ $social['label'] }}"
-                            title="{{ $social['label'] }}">
-                            <i class="bi {{ $social['icon'] }}" aria-hidden="true"></i>
+                                            <a href="#" aria-label="Facebook"
+                            title="Facebook">
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
                         </a>
-                    @endforeach
-                </div>
+                                            <a href="#" aria-label="X"
+                            title="X">
+                            <i class="bi bi-twitter-x" aria-hidden="true"></i>
+                        </a>
+                                            <a href="#" aria-label="Instagram"
+                            title="Instagram">
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                                            <a href="#" aria-label="YouTube"
+                            title="YouTube">
+                            <i class="bi bi-youtube" aria-hidden="true"></i>
+                        </a>
+                                    </div>
             </div>
         </div>
     </footer>
@@ -3603,7 +3130,7 @@
             const heroCarousel = document.querySelector('[data-hero-carousel]');
             const galleryStrip = document.querySelector('[data-gallery-strip]');
             const galleryDialog = document.querySelector('[data-gallery-dialog]');
-            const galleryImages = @json($galleryImages);
+            const galleryImages = [{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_1.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 1","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 1 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_2.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 2","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 2 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_3.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 3","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 3 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_4.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 4","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 4 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_5.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 5","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 5 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_6.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 6","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 6 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_7.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 7","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 7 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_8.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 8","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 8 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_9.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 9","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 9 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_10.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 10","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 10 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_11.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 11","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 11 de 12"},{"src":"http:\/\/sdm.env\/reto-assets\/galeria\/reto_act1_12.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 12","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 12 de 12"}];
             const mobileQuery = window.matchMedia('(max-width: 991.98px)');
             const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const headerSolidThreshold = 18;
@@ -3693,7 +3220,6 @@
                 let isUserPaused = reducedMotionQuery.matches;
                 let isPointerInside = false;
                 let hasFocusInside = false;
-                let userResumed = false; // bandera: el usuario acaba de reanudar explícitamente
 
                 function clearAutoplay() {
                     if (autoplayTimer !== null) {
@@ -3707,7 +3233,7 @@
                         !reducedMotionQuery.matches &&
                         !isUserPaused &&
                         !isPointerInside &&
-                        (!hasFocusInside || userResumed) &&
+                        !hasFocusInside &&
                         !document.hidden;
                 }
 
@@ -3823,13 +3349,6 @@
                 if (toggleButton) {
                     toggleButton.addEventListener('click', function() {
                         isUserPaused = !isUserPaused;
-                        if (!isUserPaused) {
-                            // El usuario reanudó explícitamente — permitir autoplay
-                            // aunque el foco siga dentro del carrusel.
-                            userResumed = true;
-                        } else {
-                            userResumed = false;
-                        }
                         updateToggleButton();
                         scheduleAutoplay();
                     });
@@ -3847,16 +3366,12 @@
 
                 heroCarousel.addEventListener('focusin', function() {
                     hasFocusInside = true;
-                    // No cancelar si el usuario acaba de reanudar explícitamente.
-                    if (!userResumed) {
-                        clearAutoplay();
-                    }
+                    clearAutoplay();
                 });
 
                 heroCarousel.addEventListener('focusout', function() {
                     window.setTimeout(function() {
                         hasFocusInside = heroCarousel.contains(document.activeElement);
-                        userResumed = false;
                         scheduleAutoplay();
                     }, 0);
                 });
@@ -3923,6 +3438,7 @@
                 const toggleIcon = toggleButton ? toggleButton.querySelector('[data-gallery-toggle-icon]') : null;
                 const toggleLabel = toggleButton ? toggleButton.querySelector('[data-gallery-toggle-label]') : null;
                 const dialogImage = galleryDialog ? galleryDialog.querySelector('[data-gallery-dialog-image]') : null;
+                const dialogTitle = galleryDialog ? galleryDialog.querySelector('[data-gallery-dialog-title]') : null;
                 const dialogCaption = galleryDialog ? galleryDialog.querySelector('[data-gallery-dialog-caption]') : null;
                 const dialogClose = galleryDialog ? galleryDialog.querySelector('[data-gallery-close]') : null;
                 const dialogPrev = galleryDialog ? galleryDialog.querySelector('[data-gallery-dialog-nav="previous"]') : null;
@@ -3936,7 +3452,6 @@
                 let isUserPaused = reducedMotionQuery.matches || totalImages <= 1;
                 let lightboxIndex = 0;
                 let lastTrigger = null;
-                let userResumed = false; // bandera: el usuario acaba de reanudar explícitamente
 
                 function isDialogOpen() {
                     return !!(galleryDialog && (galleryDialog.open || galleryDialog.hasAttribute('open')));
@@ -3986,7 +3501,7 @@
                         !reducedMotionQuery.matches &&
                         !isUserPaused &&
                         !isPointerInside &&
-                        (!hasFocusInside || userResumed) &&
+                        !hasFocusInside &&
                         !document.hidden &&
                         !isDialogOpen();
                 }
@@ -4016,13 +3531,6 @@
                     const loopWidth = getLoopWidth();
                     const leftOffset = direction * getStepWidth();
 
-                    // Pausar el tick durante el scroll animado para que no
-                    // sobreescriba el desplazamiento manual antes de que termine.
-                    const wasAutoPlaying = canAutoplay();
-                    if (wasAutoPlaying) {
-                        isPointerInside = true;
-                    }
-
                     if (direction < 0 && viewport.scrollLeft <= getStepWidth()) {
                         viewport.scrollLeft += loopWidth;
                     }
@@ -4032,24 +3540,19 @@
                         behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
                     });
 
-                    window.setTimeout(function() {
-                        normalizeScrollPosition();
-                        if (wasAutoPlaying) {
-                            isPointerInside = false;
-                            lastFrame = null;
-                        }
-                    }, reducedMotionQuery.matches ? 0 : 340);
+                    window.setTimeout(normalizeScrollPosition, reducedMotionQuery.matches ? 0 : 320);
                 }
 
                 function renderLightbox() {
                     const image = galleryImages[lightboxIndex];
 
-                    if (!image || !dialogImage || !dialogCaption) {
+                    if (!image || !dialogImage || !dialogTitle || !dialogCaption) {
                         return;
                     }
 
                     dialogImage.src = image.src;
                     dialogImage.alt = image.alt;
+                    dialogTitle.textContent = image.title + ' ' + (lightboxIndex + 1);
                     dialogCaption.textContent = image.caption;
                 }
 
@@ -4118,16 +3621,12 @@
                     });
 
                     viewport.addEventListener('focusin', function() {
-                        // No bloquear si el usuario acaba de reanudar explícitamente.
-                        if (!userResumed) {
-                            hasFocusInside = true;
-                        }
+                        hasFocusInside = true;
                     });
 
                     viewport.addEventListener('focusout', function() {
                         window.setTimeout(function() {
                             hasFocusInside = galleryStrip.contains(document.activeElement);
-                            userResumed = false;
                         }, 0);
                     });
 
@@ -4165,14 +3664,6 @@
                 if (toggleButton) {
                     toggleButton.addEventListener('click', function() {
                         isUserPaused = !isUserPaused;
-                        if (!isUserPaused) {
-                            // El usuario reanudó explícitamente — permitir autoplay
-                            // aunque el foco siga dentro de la galería.
-                            userResumed = true;
-                            lastFrame = null;
-                        } else {
-                            userResumed = false;
-                        }
                         updateToggleButton();
                     });
                 }
@@ -4252,128 +3743,29 @@
                 }
             }
 
-            function activateTab(name, moveFocus) {
+            function activateTab(name) {
                 buttons.forEach(function(button) {
                     const active = button.getAttribute('data-reto-tab') === name;
                     button.classList.toggle('is-active', active);
                     button.setAttribute('aria-selected', active ? 'true' : 'false');
-                    // Solo el tab activo es alcanzable con Tab; los demás con flechas
-                    button.setAttribute('tabindex', active ? '0' : '-1');
                 });
 
                 panels.forEach(function(panel) {
                     const active = panel.getAttribute('data-reto-panel') === name;
                     panel.hidden = !active;
                     panel.classList.toggle('is-hidden', !active);
-                    // Mover foco al panel cuando se activa con teclado (2.1.1)
-                    if (active && moveFocus) {
-                        panel.focus();
-                    }
                 });
             }
 
             buttons.forEach(function(button) {
                 button.addEventListener('click', function() {
-                    activateTab(this.getAttribute('data-reto-tab'), false);
-                });
-
-                // Navegación con flechas entre tabs (ARIA Authoring Practices)
-                button.addEventListener('keydown', function(event) {
-                    const currentIndex = buttons.indexOf(this);
-                    let targetIndex = -1;
-
-                    if (event.key === 'ArrowRight') {
-                        event.preventDefault();
-                        targetIndex = (currentIndex + 1) % buttons.length;
-                    } else if (event.key === 'ArrowLeft') {
-                        event.preventDefault();
-                        targetIndex = (currentIndex - 1 + buttons.length) % buttons.length;
-                    } else if (event.key === 'Home') {
-                        event.preventDefault();
-                        targetIndex = 0;
-                    } else if (event.key === 'End') {
-                        event.preventDefault();
-                        targetIndex = buttons.length - 1;
-                    } else if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        activateTab(this.getAttribute('data-reto-tab'), true);
-                        return;
-                    }
-
-                    if (targetIndex >= 0) {
-                        const targetTab = buttons[targetIndex].getAttribute('data-reto-tab');
-                        activateTab(targetTab, false);
-                        buttons[targetIndex].focus();
-                    }
+                    activateTab(this.getAttribute('data-reto-tab'));
                 });
             });
 
             initHeroCarousel();
             initGalleryRibbon();
-
-            // Video lightbox
-            (function() {
-                var videoDialog = document.querySelector('[data-video-dialog]');
-                var videoIframe = videoDialog ? videoDialog.querySelector('[data-video-dialog-iframe]') : null;
-                var videoClose = videoDialog ? videoDialog.querySelector('[data-video-close]') : null;
-                var videoTrigger = document.querySelector('[data-video-open]');
-                var videoUrl = 'https://www.youtube.com/watch?v=uQD4NbRKwk4';
-                var embedSrc = 'https://www.youtube-nocookie.com/embed/uQD4NbRKwk4?autoplay=1';
-                var isFileProtocol = window.location.protocol === 'file:';
-
-                if (!videoTrigger) { return; }
-
-                // Si estamos en file:// o no hay dialog, abrir YouTube directamente
-                if (isFileProtocol || !videoDialog || !videoIframe) {
-                    videoTrigger.addEventListener('click', function() {
-                        window.open(videoUrl, '_blank', 'noopener,noreferrer');
-                    });
-                    return;
-                }
-
-                function openVideo() {
-                    videoIframe.src = embedSrc;
-                    if (typeof videoDialog.showModal === 'function') {
-                        if (!videoDialog.open) { videoDialog.showModal(); }
-                    } else {
-                        videoDialog.setAttribute('open', 'open');
-                    }
-                }
-
-                function closeVideo() {
-                    videoIframe.src = '';
-                    if (typeof videoDialog.close === 'function' && videoDialog.open) {
-                        videoDialog.close();
-                    } else {
-                        videoDialog.removeAttribute('open');
-                    }
-                    if (videoTrigger && typeof videoTrigger.focus === 'function') {
-                        videoTrigger.focus();
-                    }
-                }
-
-                videoTrigger.addEventListener('click', openVideo);
-
-                if (videoClose) {
-                    videoClose.addEventListener('click', closeVideo);
-                }
-
-                videoDialog.addEventListener('click', function(event) {
-                    if (event.target === videoDialog) { closeVideo(); }
-                });
-
-                videoDialog.addEventListener('keydown', function(event) {
-                    if (event.key === 'Escape') { closeVideo(); }
-                });
-
-                videoDialog.addEventListener('close', function() {
-                    videoIframe.src = '';
-                    if (videoTrigger && typeof videoTrigger.focus === 'function') {
-                        videoTrigger.focus();
-                    }
-                });
-            })();
-            activateTab('categorias', false);
+            activateTab('categorias');
         });
     </script>
 </body>

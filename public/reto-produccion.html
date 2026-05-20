@@ -1,252 +1,3 @@
-@php
-    $inscripcionUrl = 'https://forms.gle/HQyMfK7k38y9z2xp8';
-
-    $heroFallback = asset('reto-assets/banner-reto.jpg');
-    $heroSlidePatterns = [
-        public_path('reto-assets/hero/*.jpg'),
-        public_path('reto-assets/hero/*.jpeg'),
-        public_path('reto-assets/hero/*.png'),
-        public_path('reto-assets/hero/*.webp'),
-        public_path('reto-assets/hero/*.JPG'),
-        public_path('reto-assets/hero/*.JPEG'),
-        public_path('reto-assets/hero/*.PNG'),
-        public_path('reto-assets/hero/*.WEBP'),
-    ];
-    $heroSlideFiles = [];
-
-    foreach ($heroSlidePatterns as $pattern) {
-        $heroSlideFiles = array_merge($heroSlideFiles, glob($pattern) ?: []);
-    }
-
-    $heroSlideFiles = array_values(array_unique($heroSlideFiles));
-    natcasesort($heroSlideFiles);
-    $heroSlides = array_values(
-        array_map(function ($path) {
-            return [
-                'src' => asset('reto-assets/hero/' . rawurlencode(basename($path))),
-            ];
-        }, $heroSlideFiles),
-    );
-
-    if ($heroSlides === []) {
-        $heroSlides[] = ['src' => $heroFallback];
-    }
-
-    $heroSlideTotal = count($heroSlides);
-    $galleryImageFiles = glob(public_path('reto-assets/galeria/reto_act1_*.*')) ?: [];
-    natcasesort($galleryImageFiles);
-    $galleryImages = [];
-
-    foreach (array_values($galleryImageFiles) as $index => $path) {
-        $galleryImages[] = [
-            'src' => asset('reto-assets/galeria/' . rawurlencode(basename($path))),
-            'alt' => 'Fotografía del Reto Más lento, más pro ' . ($index + 1),
-            'title' => 'Galería del reto',
-            'caption' => 'Registro fotográfico ' . ($index + 1) . ' de ' . count($galleryImageFiles),
-        ];
-    }
-
-    $galleryImageTotal = count($galleryImages);
-    $classifiedCategoryMeta = [
-        'hombres-expertos' => [
-            'title' => 'Hombres expertos',
-            'description' => 'Más de dos años manejando moto',
-            'icon' => 'bi-gender-male',
-        ],
-        'mujeres-expertas' => [
-            'title' => 'Mujeres expertas',
-            'description' => 'Más de dos años manejando moto',
-            'icon' => 'bi-gender-female',
-        ],
-        'hombres-novatos' => [
-            'title' => 'Hombres novatos',
-            'description' => 'Menos de dos años manejando moto',
-            'icon' => 'bi-gender-male',
-        ],
-        'mujeres-novatas' => [
-            'title' => 'Mujeres novatas',
-            'description' => 'Menos de dos años manejando moto',
-            'icon' => 'bi-gender-female',
-        ],
-    ];
-    $classifiedRows = [
-        ['rank' => 1, 'name' => 'Yesid Ardila', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g926.png'],
-        ['rank' => 2, 'name' => 'Andrés Márquez', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g927.png'],
-        ['rank' => 3, 'name' => 'Edwin Téllez', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g928.png'],
-        ['rank' => 4, 'name' => 'Wilmer Obando', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g999.png'],
-        ['rank' => 5, 'name' => 'Yoher Pérez', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g1000.png'],
-        ['rank' => 6, 'name' => 'Carlos López', 'category' => 'hombres-expertos', 'file' => 'cascos-motos_g1001.png'],
-        ['rank' => 1, 'name' => 'Nancy Tache', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1002.png'],
-        ['rank' => 2, 'name' => 'Kelly Vergara', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1003.png'],
-        ['rank' => 3, 'name' => 'Diana González', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1004.png'],
-        ['rank' => 4, 'name' => 'Jenny González', 'category' => 'mujeres-expertas', 'file' => 'cascos-motos_g1005.png'],
-        ['rank' => 1, 'name' => 'Leonardo Castellanos', 'category' => 'hombres-novatos', 'file' => 'cascos-motos_g1006.png'],
-        ['rank' => 2, 'name' => 'Breiner Martínez', 'category' => 'hombres-novatos', 'file' => 'cascos-motos_g1007.png'],
-        ['rank' => 3, 'name' => 'Alexander Méndez', 'category' => 'hombres-novatos', 'file' => 'cascos-motos_g1008.png'],
-        ['rank' => 1, 'name' => 'Yenni Panche', 'category' => 'mujeres-novatas', 'file' => 'cascos-motos_g1009.png'],
-        ['rank' => 2, 'name' => 'Dina Suárez', 'category' => 'mujeres-novatas', 'file' => 'cascos-motos_g1010.png'],
-        ['rank' => 3, 'name' => 'Angie Abello', 'category' => 'mujeres-novatas', 'file' => 'cascos-motos_g1011.png'],
-    ];
-    $classifiedRiders = [];
-
-    foreach ($classifiedRows as $row) {
-        $categoryKey = $row['category'] ?? 'por-confirmar';
-
-        if (!isset($classifiedCategoryMeta[$categoryKey])) {
-            $classifiedCategoryMeta[$categoryKey] = [
-                'title' => 'Clasificación por confirmar',
-                'description' => 'Pendiente de actualización',
-                'icon' => 'bi-patch-question',
-            ];
-        }
-
-        $classifiedRiders[] = [
-            'src' => asset('reto-assets/cascos/' . rawurlencode($row['file'])),
-            'name' => $row['name'] ?? 'Clasificado por confirmar',
-            'category_key' => $categoryKey,
-            'rank' => $row['rank'] ?? 999,
-        ];
-    }
-
-    usort($classifiedRiders, function ($left, $right) {
-        if ($left['rank'] === $right['rank']) {
-            return strcmp($left['name'], $right['name']);
-        }
-
-        return $left['rank'] <=> $right['rank'];
-    });
-
-    $classifiedByCategory = [];
-
-    foreach ($classifiedCategoryMeta as $categoryKey => $categoryMeta) {
-        $classifiedByCategory[$categoryKey] = $categoryMeta + [
-            'key' => $categoryKey,
-            'riders' => [],
-        ];
-    }
-
-    foreach ($classifiedRiders as $rider) {
-        $classifiedByCategory[$rider['category_key']]['riders'][] = $rider;
-    }
-
-    $classifiedByCategory = array_values(
-        array_filter($classifiedByCategory, function ($group) {
-            return $group['riders'] !== [];
-        }),
-    );
-    $classifiedTotal = count($classifiedRiders);
-    $brandLogo = asset('reto-assets/' . rawurlencode('logo.png'));
-    $ctaBg = asset('reto-assets/banner-reto.jpg');
-    $whyVideoBg = asset('reto-assets/' . rawurlencode('banner-reto-mas-pro-v2_Capa 3.png'));
-    $helmetIcon = asset('reto-assets/casco.png');
-    $guantletIcon = asset('reto-assets/guantes.png');
-    $cerebroIcon = asset('reto-assets/cerebro.png');
-    $starIcon = asset('reto-assets/copa.png');
-    $cancelIcon = asset('reto-assets/cancelar.png');
-
-    $whyCards = [
-        [
-            'icon' => 'bi-people',
-            'title' => '4 de cada 10',
-            'text' => 'personas que mueren en las vías son motociclistas',
-            'featured' => true,
-        ],
-        [
-            'icon' => 'bi-speedometer2',
-            'title' => 'El exceso de velocidad mata',
-            'text' => 'Es el principal factor de riesgo en las vías.',
-        ],
-        [
-            'icon' => 'bi-bicycle',
-            'title' => 'Los motociclistas exceden más la velocidad',
-            'text' => 'En comparación con otros usuarios de la vía.',
-        ],
-        [
-            'icon' => 'bi-cone-striped',
-            'title' => 'La falta de pericia también cobra vidas',
-            'text' => 'El control y la técnica pueden marcar la diferencia.',
-        ],
-    ];
-
-    $steps = [
-        [
-            'number' => '1',
-            'title' => 'Tres pistas lentas',
-            'text' => 'Primer acercamiento al reto.',
-            'thumb' => asset('reto-assets/reto_64.webp'),
-        ],
-        [
-            'number' => '2',
-            'title' => 'Niveles de complejidad',
-            'text' => 'La prueba exige mayor dominio.',
-            'thumb' => asset('reto-assets/reto_81.webp'),
-        ],
-        [
-            'number' => '3',
-            'title' => 'Válidas eliminatorias',
-            'text' => 'Clasificación durante todo el año.',
-            'thumb' => asset('reto-assets/reto_88.webp'),
-        ],
-        [
-            'number' => '4',
-            'title' => 'Final del reto',
-            'text' => 'Cierre en octubre de 2026.',
-            'thumb' => asset('reto-assets/reto_92.webp'),
-        ],
-    ];
-
-    $categories = [
-        [
-            'icon' => 'bi-gender-female',
-            'title' => 'Mujeres novatas',
-            'text' => 'Menos de dos años manejando moto',
-        ],
-        [
-            'icon' => 'bi-gender-male',
-            'title' => 'Hombres novatos',
-            'text' => 'Menos de dos años manejando moto',
-        ],
-        [
-            'icon' => 'bi-gender-female',
-            'title' => 'Mujeres experimentadas',
-            'text' => 'Más de dos años manejando moto',
-        ],
-        [
-            'icon' => 'bi-gender-male',
-            'title' => 'Hombres experimentados',
-            'text' => 'Más de dos años manejando moto',
-        ],
-    ];
-
-    $requirements = [
-        ['icon' => 'bi-card-text',      'text' => 'Licencia de conducción vigente A2'],
-        ['icon' => 'bi-shield-check',   'text' => 'SOAT y revisión técnico-mecánica al día'],
-        ['icon' => 'bi-shield-fill',   'text' => 'Casco y elementos de protección'],
-        ['icon' => 'bi-calendar-check', 'text' => 'Inscripción previa en la válida'],
-        ['icon' => 'bi-receipt-cutoff', 'text' => 'Estar al día con el pago de comparendos'],
-    ];
-
-    $rules = [
-        ['icon' => 'bi-slash-circle',  'text' => 'Cero alcohol antes y durante la prueba'],
-        ['icon' => 'bi-arrow-up-circle','text' => 'No apoyar los pies en el piso'],
-        ['icon' => 'bi-signpost',      'text' => 'Mantenerse dentro del recorrido establecido'],
-        ['icon' => 'bi-power',         'text' => 'No apagar la moto durante la prueba'],
-    ];
-
-    $footerLinks = [
-        ['label' => 'Políticas de privacidad', 'href' => url('/manual-y-politicas-de-seguridad-de-la-informacion')],
-        ['label' => 'Términos y condiciones', 'href' => '#'],
-        ['label' => 'Mapa del sitio', 'href' => url('/sitemap')],
-        ['label' => 'Atención a la ciudadanía', 'href' => url('/atencion-servicios/puntos-atencion')],
-    ];
-
-    $socialLinks = [
-        ['label' => 'Facebook', 'icon' => 'bi-facebook', 'href' => '#'],
-        ['label' => 'X', 'icon' => 'bi-twitter-x', 'href' => '#'],
-        ['label' => 'Instagram', 'icon' => 'bi-instagram', 'href' => '#'],
-        ['label' => 'YouTube', 'icon' => 'bi-youtube', 'href' => '#'],
-    ];
-@endphp
 <!DOCTYPE html>
 <html lang="es">
 
@@ -254,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Reto | Secretaría Distrital de Movilidad</title>
+    <title>Más lento, más pro | Secretaría Distrital de Movilidad</title>
     <meta name="description"
         content="Reto Más lento, más pro: una landing sobre conducción segura, control y dominio de la moto en Bogotá.">
 
@@ -959,7 +710,7 @@
             transform: translateY(-50%);
             width: clamp(280px, 25vw, 450px);
             height: clamp(280px, 25vw, 450px);
-            background: url('/reto-assets/banner-reto-mas-pro-v2_Capa%202.png') no-repeat center center;
+            background: url('https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/banner-reto-mas-pro-v2_capa%202_0.png') no-repeat center center;
             background-size: contain;
             opacity: 0.90;
             pointer-events: none;
@@ -3005,24 +2756,20 @@
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-brand" href="#inicio" aria-label="Ir al inicio">
-                <img src="{{ $brandLogo }}" alt="Alcaldía Mayor de Bogotá D.C. y Secretaría de Movilidad">
+                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/logo.png" alt="Alcaldía Mayor de Bogotá D.C. y Secretaría de Movilidad">
             </a>
 
             <nav class="site-nav" id="site-primary-menu" aria-label="Navegación principal">
                 <a href="#inicio">Inicio</a>
                 <a href="#por-que">El reto</a>
                 <a href="#explora">Categorías</a>
-                @if ($classifiedTotal > 0)
-                    <a href="#clasificados">Clasificados</a>
-                @endif
-                <a href="#como-consiste">En qué consiste</a>
-                @if ($galleryImageTotal > 0)
-                    <a href="#galeria">Galería</a>
-                @endif
-            </nav>
+                                    <a href="#clasificados">Clasificados</a>
+                                <a href="#como-consiste">En qué consiste</a>
+                                    <a href="#galeria">Galería</a>
+                            </nav>
 
             <div class="site-header__actions">
-                <a class="header-cta" href="{{ $inscripcionUrl }}" target="_blank" rel="noopener noreferrer"
+                <a class="header-cta" href="https://forms.gle/HQyMfK7k38y9z2xp8" target="_blank" rel="noopener noreferrer"
                     aria-label="Inscríbete (abre en una nueva pestaña)">
                     <span>Inscríbete</span>
                     <span class="btn-icon-circle" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
@@ -3039,18 +2786,40 @@
 
     <main id="main-content">
         <section class="hero" id="inicio" aria-labelledby="hero-title" data-hero-carousel data-delay="6500"
-            @if ($heroSlideTotal > 1) aria-describedby="hero-carousel-instructions" @endif>
+             aria-describedby="hero-carousel-instructions" >
             <div class="hero-carousel" aria-roledescription="carrusel" aria-label="Galería destacada del reto">
                 <div class="hero-carousel__viewport" aria-hidden="true">
-                    @foreach ($heroSlides as $slide)
-                        <figure class="hero-carousel__slide {{ $loop->first ? 'is-active' : '' }}" data-hero-slide
-                            aria-hidden="{{ $loop->first ? 'false' : 'true' }}">
-                            <img src="{{ $slide['src'] }}" alt=""
-                                loading="{{ $loop->first ? 'eager' : 'lazy' }}" decoding="async"
-                                @if ($loop->first) fetchpriority="high" @endif>
+                                            <figure class="hero-carousel__slide is-active" data-hero-slide
+                            aria-hidden="false">
+                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/hero-1.jpg" alt=""
+                                loading="eager" decoding="async"
+                                 fetchpriority="high" >
                         </figure>
-                    @endforeach
-                </div>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/hero-2.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/hero-3.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/hero-4.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                            <figure class="hero-carousel__slide " data-hero-slide
+                            aria-hidden="true">
+                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/hero-5.jpg" alt=""
+                                loading="lazy" decoding="async"
+                                >
+                        </figure>
+                                    </div>
             </div>
 
             <div class="hero__inner">
@@ -3068,7 +2837,7 @@
                     <p>Ser buen motociclista no es correr. Es tener el control y llegar seguro.</p>
 
                     <div class="hero__actions">
-                        <a class="btn-solid" href="{{ $inscripcionUrl }}" target="_blank" rel="noopener noreferrer"
+                        <a class="btn-solid" href="https://forms.gle/HQyMfK7k38y9z2xp8" target="_blank" rel="noopener noreferrer"
                             aria-label="Inscríbete (abre en una nueva pestaña)">
                             <span aria-hidden="true">Inscríbete</span>
                             <span class="btn-icon-circle" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
@@ -3080,8 +2849,7 @@
                     </div>
                 </div>
 
-                @if ($heroSlideTotal > 1)
-                    <div class="hero__meta">
+                                    <div class="hero__meta">
                         <p class="sr-only" id="hero-carousel-instructions">
                             Usa los controles para avanzar, retroceder o pausar el carrusel. La rotación automática
                             se detiene al interactuar con el componente.
@@ -3105,23 +2873,44 @@
                             </div>
 
                             <div class="hero-carousel__pagination" aria-label="Seleccionar una imagen del carrusel">
-                                @foreach ($heroSlides as $slide)
-                                    <button class="hero-carousel__dot {{ $loop->first ? 'is-active' : '' }}"
-                                        type="button" data-hero-dot data-slide-index="{{ $loop->index }}"
-                                        aria-label="{{ $loop->first ? 'Imagen actual ' : 'Mostrar imagen ' }}{{ $loop->iteration }} de {{ $heroSlideTotal }}"
-                                        @if ($loop->first) aria-current="true" @endif>
-                                        <span class="sr-only">Imagen {{ $loop->iteration }}</span>
+                                                                    <button class="hero-carousel__dot is-active"
+                                        type="button" data-hero-dot data-slide-index="0"
+                                        aria-label="Imagen actual 1 de 5"
+                                         aria-current="true" >
+                                        <span class="sr-only">Imagen 1</span>
                                     </button>
-                                @endforeach
-                            </div>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="1"
+                                        aria-label="Mostrar imagen 2 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 2</span>
+                                    </button>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="2"
+                                        aria-label="Mostrar imagen 3 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 3</span>
+                                    </button>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="3"
+                                        aria-label="Mostrar imagen 4 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 4</span>
+                                    </button>
+                                                                    <button class="hero-carousel__dot "
+                                        type="button" data-hero-dot data-slide-index="4"
+                                        aria-label="Mostrar imagen 5 de 5"
+                                        >
+                                        <span class="sr-only">Imagen 5</span>
+                                    </button>
+                                                            </div>
                         </div>
 
                         <p class="hero-carousel__status" data-hero-status aria-live="off" aria-atomic="true">
-                            Imagen 1 de {{ $heroSlideTotal }}
+                            Imagen 1 de 5
                         </p>
                     </div>
-                @endif
-            </div>
+                            </div>
         </section>
 
         <section class="page-section" id="por-que" aria-labelledby="por-que-title">
@@ -3131,20 +2920,51 @@
                 <div class="why-layout">
                     <div class="why-main">
                         <div class="why-cards">
-                            @foreach ($whyCards as $card)
-                                <article
-                                    class="stat-card {{ !empty($card['featured']) ? 'stat-card--featured' : '' }}">
+                                                            <article
+                                    class="stat-card stat-card--featured">
                                     <span class="stat-card__icon" aria-hidden="true">
-                                        <i class="bi {{ $card['icon'] }}"></i>
+                                        <i class="bi bi-people"></i>
                                     </span>
                                     <strong
-                                        class="stat-card__title {{ !empty($card['featured']) ? 'stat-card__title--featured' : '' }}">
-                                        {{ $card['title'] }}
+                                        class="stat-card__title stat-card__title--featured">
+                                        4 de cada 10
                                     </strong>
-                                    <p class="stat-card__text">{{ $card['text'] }}</p>
+                                    <p class="stat-card__text">personas que mueren en las vías son motociclistas</p>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article
+                                    class="stat-card ">
+                                    <span class="stat-card__icon" aria-hidden="true">
+                                        <i class="bi bi-speedometer2"></i>
+                                    </span>
+                                    <strong
+                                        class="stat-card__title ">
+                                        El exceso de velocidad mata
+                                    </strong>
+                                    <p class="stat-card__text">Es el principal factor de riesgo en las vías.</p>
+                                </article>
+                                                            <article
+                                    class="stat-card ">
+                                    <span class="stat-card__icon" aria-hidden="true">
+                                        <i class="bi bi-bicycle"></i>
+                                    </span>
+                                    <strong
+                                        class="stat-card__title ">
+                                        Los motociclistas exceden más la velocidad
+                                    </strong>
+                                    <p class="stat-card__text">En comparación con otros usuarios de la vía.</p>
+                                </article>
+                                                            <article
+                                    class="stat-card ">
+                                    <span class="stat-card__icon" aria-hidden="true">
+                                        <i class="bi bi-cone-striped"></i>
+                                    </span>
+                                    <strong
+                                        class="stat-card__title ">
+                                        La falta de pericia también cobra vidas
+                                    </strong>
+                                    <p class="stat-card__text">El control y la técnica pueden marcar la diferencia.</p>
+                                </article>
+                                                    </div>
 
                         <p class="section-note">
                             Este reto busca cambiar esa realidad. Promueve el control, la técnica y las decisiones
@@ -3154,12 +2974,12 @@
 
                     <aside class="why-video">
                         <article class="video-card" aria-label="Video generalidades del reto">
-                            {{-- Thumbnail + botón para desktop (abre modal) --}}
+
                             <button class="video-card__trigger" type="button"
                                 data-video-open
                                 aria-label="Reproducir video del Reto Más lento, más pro (abre en ventana emergente)">
                                 <span class="video-card__thumb">
-                                    <img src="{{ $whyVideoBg }}" alt="" loading="lazy" decoding="async">
+                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/banner-reto-mas-pro-v2_Capa%203.png" alt="" loading="lazy" decoding="async">
                                     <span class="video-card__play" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
                                 </span>
                                 <span class="video-card__body-label">
@@ -3167,7 +2987,7 @@
                                 </span>
                             </button>
 
-                            {{-- Embed directo para móvil — usa thumbnail + link a YouTube --}}
+
                             <div class="video-card__inline">
                                 <a class="video-card__yt-link" href="https://www.youtube.com/watch?v=uQD4NbRKwk4"
                                     target="_blank" rel="noopener noreferrer"
@@ -3198,17 +3018,17 @@
                         </p>
                         <ul class="what-list" aria-label="Objetivos del reto">
                             <li>
-                            <span class="what-list__icon" aria-hidden="true"><img src="{{ $cancelIcon }}"
+                            <span class="what-list__icon" aria-hidden="true"><img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cancelar.png"
                                     alt=""></span>
                             <span>Velocidad <b>&ne;</b> eficiencia</span>
                         </li>
                         <li>
-                            <span class="what-list__icon" aria-hidden="true"><img src="{{ $cancelIcon }}"
+                            <span class="what-list__icon" aria-hidden="true"><img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cancelar.png"
                                     alt=""></span>
                             <span>Velocidad <b>&ne;</b> habilidad</span>
                         </li>
                         <li>
-                            <span class="what-list__icon" aria-hidden="true"><img src="{{ $cancelIcon }}"
+                            <span class="what-list__icon" aria-hidden="true"><img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cancelar.png"
                                     alt=""></span>
                             <span>Lentitud <b>&ne;</b> estorbo</span>
                         </li>
@@ -3218,13 +3038,13 @@
                     <article class="what-callout" aria-label="Mensaje principal del reto">
                         <div class="what-callout__icons" aria-hidden="true">
                             <span class="what-callout__icon">
-                                <img src="{{ $helmetIcon }}" alt="">
+                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/casco.png" alt="">
                             </span>
                             <span class="what-callout__icon">
-                                <img src="{{ $guantletIcon }}" alt="">
+                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/guantes.png" alt="">
                             </span>
                             <span class="what-callout__icon">
-                                <img src="{{ $cerebroIcon }}" alt="">
+                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cerebro.png" alt="">
                             </span>
                         </div>
 
@@ -3246,23 +3066,48 @@
                 <div class="process-layout">
                     <div class="process-track">
                         <div class="process-steps">
-                            @foreach ($steps as $step)
-                                <article class="process-card">
-                                    <span class="process-card__number">{{ $step['number'] }}</span>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">1</span>
                                     <span class="process-card__thumb" aria-hidden="true">
-                                        <img src="{{ $step['thumb'] }}" alt="" loading="lazy"
+                                        <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_64.jpg" alt="" loading="lazy"
                                             decoding="async">
                                     </span>
-                                    <h3>{{ $step['title'] }}</h3>
-                                    <p>{{ $step['text'] }}</p>
+                                    <h3>Tres pistas lentas</h3>
+                                    <p>Primer acercamiento al reto.</p>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">2</span>
+                                    <span class="process-card__thumb" aria-hidden="true">
+                                        <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_81.jpg" alt="" loading="lazy"
+                                            decoding="async">
+                                    </span>
+                                    <h3>Niveles de complejidad</h3>
+                                    <p>La prueba exige mayor dominio.</p>
+                                </article>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">3</span>
+                                    <span class="process-card__thumb" aria-hidden="true">
+                                        <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_88.jpg" alt="" loading="lazy"
+                                            decoding="async">
+                                    </span>
+                                    <h3>Válidas eliminatorias</h3>
+                                    <p>Clasificación durante todo el año.</p>
+                                </article>
+                                                            <article class="process-card">
+                                    <span class="process-card__number">4</span>
+                                    <span class="process-card__thumb" aria-hidden="true">
+                                        <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_92.jpg" alt="" loading="lazy"
+                                            decoding="async">
+                                    </span>
+                                    <h3>Final del reto</h3>
+                                    <p>Cierre en octubre de 2026.</p>
+                                </article>
+                                                    </div>
                     </div>
 
                     <aside class="process-side" id="faq">
                         <span class="process-side__icon" aria-hidden="true">
-                            <img src="{{ $starIcon }}" alt="">
+                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/copa.png" alt="">
                         </span>
                         <h3>¿Cómo se define quiénes avanzan?</h3>
                         <p>
@@ -3300,18 +3145,43 @@
                             sea más clara y comparable.</p>
 
                         <div class="category-grid">
-                            @foreach ($categories as $category)
-                                <article class="category-pill">
+                                                            <article class="category-pill">
                                     <span class="category-pill__icon" aria-hidden="true">
-                                        <i class="bi {{ $category['icon'] }}"></i>
+                                        <i class="bi bi-gender-female"></i>
                                     </span>
                                     <div class="category-pill__content">
-                                        <strong>{{ $category['title'] }}</strong>
-                                        <span>{{ $category['text'] }}</span>
+                                        <strong>Mujeres novatas</strong>
+                                        <span>Menos de dos años manejando moto</span>
                                     </div>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="category-pill">
+                                    <span class="category-pill__icon" aria-hidden="true">
+                                        <i class="bi bi-gender-male"></i>
+                                    </span>
+                                    <div class="category-pill__content">
+                                        <strong>Hombres novatos</strong>
+                                        <span>Menos de dos años manejando moto</span>
+                                    </div>
+                                </article>
+                                                            <article class="category-pill">
+                                    <span class="category-pill__icon" aria-hidden="true">
+                                        <i class="bi bi-gender-female"></i>
+                                    </span>
+                                    <div class="category-pill__content">
+                                        <strong>Mujeres experimentadas</strong>
+                                        <span>Más de dos años manejando moto</span>
+                                    </div>
+                                </article>
+                                                            <article class="category-pill">
+                                    <span class="category-pill__icon" aria-hidden="true">
+                                        <i class="bi bi-gender-male"></i>
+                                    </span>
+                                    <div class="category-pill__content">
+                                        <strong>Hombres experimentados</strong>
+                                        <span>Más de dos años manejando moto</span>
+                                    </div>
+                                </article>
+                                                    </div>
                     </section>
 
                     <section class="tab-panel is-hidden" id="panel-requisitos" data-reto-panel="requisitos"
@@ -3321,14 +3191,32 @@
                             básicas.</p>
 
                         <div class="tab-panel__grid requirement-grid">
-                            @foreach ($requirements as $requirement)
-                                <article class="requirement-card">
+                                                            <article class="requirement-card">
                                     <span class="requirement-card__icon" aria-hidden="true"><i
-                                            class="bi {{ $requirement['icon'] }}"></i></span>
-                                    <strong>{{ $requirement['text'] }}</strong>
+                                            class="bi bi-card-text"></i></span>
+                                    <strong>Licencia de conducción vigente A2</strong>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-shield-check"></i></span>
+                                    <strong>SOAT y revisión técnico-mecánica al día</strong>
+                                </article>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-shield-fill"></i></span>
+                                    <strong>Casco y elementos de protección</strong>
+                                </article>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-calendar-check"></i></span>
+                                    <strong>Inscripción previa en la válida</strong>
+                                </article>
+                                                            <article class="requirement-card">
+                                    <span class="requirement-card__icon" aria-hidden="true"><i
+                                            class="bi bi-receipt-cutoff"></i></span>
+                                    <strong>Estar al día con el pago de comparendos</strong>
+                                </article>
+                                                    </div>
                     </section>
 
                     <section class="tab-panel is-hidden" id="panel-reglas" data-reto-panel="reglas" role="tabpanel" tabindex="-1"
@@ -3338,23 +3226,41 @@
                             controlada durante la prueba.</p>
 
                         <div class="tab-panel__grid rule-grid">
-                            @foreach ($rules as $rule)
-                                <article class="rule-card">
+                                                            <article class="rule-card">
                                     <span class="rule-card__icon" aria-hidden="true"><i
-                                            class="bi {{ $rule['icon'] }}"></i></span>
+                                            class="bi bi-slash-circle"></i></span>
                                     <div>
-                                        <strong>{{ $rule['text'] }}</strong>
+                                        <strong>Cero alcohol antes y durante la prueba</strong>
                                     </div>
                                 </article>
-                            @endforeach
-                        </div>
+                                                            <article class="rule-card">
+                                    <span class="rule-card__icon" aria-hidden="true"><i
+                                            class="bi bi-arrow-up-circle"></i></span>
+                                    <div>
+                                        <strong>No apoyar los pies en el piso</strong>
+                                    </div>
+                                </article>
+                                                            <article class="rule-card">
+                                    <span class="rule-card__icon" aria-hidden="true"><i
+                                            class="bi bi-signpost"></i></span>
+                                    <div>
+                                        <strong>Mantenerse dentro del recorrido establecido</strong>
+                                    </div>
+                                </article>
+                                                            <article class="rule-card">
+                                    <span class="rule-card__icon" aria-hidden="true"><i
+                                            class="bi bi-power"></i></span>
+                                    <div>
+                                        <strong>No apagar la moto durante la prueba</strong>
+                                    </div>
+                                </article>
+                                                    </div>
                     </section>
                 </div>
             </div>
         </section>
 
-        @if ($classifiedTotal > 0)
-            <span class="page-anchor" id="clasificados" aria-hidden="true"></span>
+                    <span class="page-anchor" id="clasificados" aria-hidden="true"></span>
 
             <section class="classified-section" aria-labelledby="clasificados-title"
                 aria-describedby="clasificados-lead clasificados-note">
@@ -3371,63 +3277,307 @@
                         </div>
 
                         <aside class="classified-summary" aria-label="Resumen de clasificados">
-                            <span class="classified-summary__value">{{ $classifiedTotal }}</span>
+                            <span class="classified-summary__value">16</span>
                             <span class="classified-summary__label">clasificados a la fecha</span>
-                            <span class="classified-summary__meta">{{ count($classifiedByCategory) }} categorías con
+                            <span class="classified-summary__meta">4 categorías con
                                 registro activo</span>
                         </aside>
                     </div>
 
                     <div class="classified-grid">
-                        @foreach ($classifiedByCategory as $group)
-                            <section class="classified-group"
-                                aria-labelledby="clasificados-{{ $group['key'] }}-title">
+                                                    <section class="classified-group"
+                                aria-labelledby="clasificados-hombres-expertos-title">
                                 <div class="classified-group__header">
                                     <div class="classified-group__heading">
                                         <span class="classified-group__icon" aria-hidden="true">
-                                            <i class="bi {{ $group['icon'] }}"></i>
+                                            <i class="bi bi-gender-male"></i>
                                         </span>
                                         <div>
                                             <h3 class="classified-group__title"
-                                                id="clasificados-{{ $group['key'] }}-title">{{ $group['title'] }}</h3>
+                                                id="clasificados-hombres-expertos-title">Hombres expertos</h3>
                                             <span
-                                                class="classified-group__description">{{ $group['description'] }}</span>
+                                                class="classified-group__description">Más de dos años manejando moto</span>
                                         </div>
                                     </div>
 
                                     <span class="classified-group__count"
-                                        aria-label="{{ count($group['riders']) }} clasificados en {{ $group['title'] }}">{{ count($group['riders']) }}
+                                        aria-label="6 clasificados en Hombres expertos">6
                                         clasificados</span>
                                 </div>
 
-                                <ul class="classified-group__list" aria-label="Clasificados en {{ $group['title'] }}">
-                                    @foreach ($group['riders'] as $rider)
-                                        <li class="classified-card">
+                                <ul class="classified-group__list" aria-label="Clasificados en Hombres expertos">
+                                                                            <li class="classified-card">
                                             <figure class="classified-card__figure">
                                                 <div class="classified-card__media">
-                                                    <img src="{{ $rider['src'] }}" alt="" aria-hidden="true" loading="lazy"
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g926.png" alt="" aria-hidden="true" loading="lazy"
                                                         decoding="async">
                                                 </div>
                                                 <figcaption class="classified-card__caption">
-                                                    <span class="classified-card__rank">Nº {{ $rider['rank'] }}</span>
-                                                    <strong class="classified-card__name">{{ $rider['name'] }}</strong>
+                                                    <span class="classified-card__rank">Nº 1</span>
+                                                    <strong class="classified-card__name">Yesid Ardila</strong>
                                                 </figcaption>
                                             </figure>
                                         </li>
-                                    @endforeach
-                                </ul>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g927.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 2</span>
+                                                    <strong class="classified-card__name">Andrés Márquez</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g928.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 3</span>
+                                                    <strong class="classified-card__name">Edwin Téllez</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g999.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 4</span>
+                                                    <strong class="classified-card__name">Wilmer Obando</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1000.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 5</span>
+                                                    <strong class="classified-card__name">Yoher Pérez</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1001.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 6</span>
+                                                    <strong class="classified-card__name">Carlos López</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                    </ul>
                             </section>
-                        @endforeach
-                    </div>
+                                                    <section class="classified-group"
+                                aria-labelledby="clasificados-mujeres-expertas-title">
+                                <div class="classified-group__header">
+                                    <div class="classified-group__heading">
+                                        <span class="classified-group__icon" aria-hidden="true">
+                                            <i class="bi bi-gender-female"></i>
+                                        </span>
+                                        <div>
+                                            <h3 class="classified-group__title"
+                                                id="clasificados-mujeres-expertas-title">Mujeres expertas</h3>
+                                            <span
+                                                class="classified-group__description">Más de dos años manejando moto</span>
+                                        </div>
+                                    </div>
+
+                                    <span class="classified-group__count"
+                                        aria-label="4 clasificados en Mujeres expertas">4
+                                        clasificados</span>
+                                </div>
+
+                                <ul class="classified-group__list" aria-label="Clasificados en Mujeres expertas">
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1002.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 1</span>
+                                                    <strong class="classified-card__name">Nancy Tache</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1003.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 2</span>
+                                                    <strong class="classified-card__name">Kelly Vergara</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1004.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 3</span>
+                                                    <strong class="classified-card__name">Diana González</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1005.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 4</span>
+                                                    <strong class="classified-card__name">Jenny González</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                    </ul>
+                            </section>
+                                                    <section class="classified-group"
+                                aria-labelledby="clasificados-hombres-novatos-title">
+                                <div class="classified-group__header">
+                                    <div class="classified-group__heading">
+                                        <span class="classified-group__icon" aria-hidden="true">
+                                            <i class="bi bi-gender-male"></i>
+                                        </span>
+                                        <div>
+                                            <h3 class="classified-group__title"
+                                                id="clasificados-hombres-novatos-title">Hombres novatos</h3>
+                                            <span
+                                                class="classified-group__description">Menos de dos años manejando moto</span>
+                                        </div>
+                                    </div>
+
+                                    <span class="classified-group__count"
+                                        aria-label="3 clasificados en Hombres novatos">3
+                                        clasificados</span>
+                                </div>
+
+                                <ul class="classified-group__list" aria-label="Clasificados en Hombres novatos">
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1006.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 1</span>
+                                                    <strong class="classified-card__name">Leonardo Castellanos</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1007.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 2</span>
+                                                    <strong class="classified-card__name">Breiner Martínez</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1008.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 3</span>
+                                                    <strong class="classified-card__name">Alexander Méndez</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                    </ul>
+                            </section>
+                                                    <section class="classified-group"
+                                aria-labelledby="clasificados-mujeres-novatas-title">
+                                <div class="classified-group__header">
+                                    <div class="classified-group__heading">
+                                        <span class="classified-group__icon" aria-hidden="true">
+                                            <i class="bi bi-gender-female"></i>
+                                        </span>
+                                        <div>
+                                            <h3 class="classified-group__title"
+                                                id="clasificados-mujeres-novatas-title">Mujeres novatas</h3>
+                                            <span
+                                                class="classified-group__description">Menos de dos años manejando moto</span>
+                                        </div>
+                                    </div>
+
+                                    <span class="classified-group__count"
+                                        aria-label="3 clasificados en Mujeres novatas">3
+                                        clasificados</span>
+                                </div>
+
+                                <ul class="classified-group__list" aria-label="Clasificados en Mujeres novatas">
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1009.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 1</span>
+                                                    <strong class="classified-card__name">Yenni Panche</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1010.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 2</span>
+                                                    <strong class="classified-card__name">Dina Suárez</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                            <li class="classified-card">
+                                            <figure class="classified-card__figure">
+                                                <div class="classified-card__media">
+                                                    <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/cascos-motos_g1011.png" alt="" aria-hidden="true" loading="lazy"
+                                                        decoding="async">
+                                                </div>
+                                                <figcaption class="classified-card__caption">
+                                                    <span class="classified-card__rank">Nº 3</span>
+                                                    <strong class="classified-card__name">Angie Abello</strong>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                                                    </ul>
+                            </section>
+                                            </div>
                 </div>
             </section>
-        @endif
 
         <span class="page-anchor" id="noticias" aria-hidden="true"></span>
 
         <section class="cta-band" id="inscribirse" aria-labelledby="inscribirse-title">
             <div class="cta-band__bg" aria-hidden="true">
-                <img src="{{ $ctaBg }}" alt="" loading="lazy" decoding="async">
+                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/banner-reto.jpg" alt="" loading="lazy" decoding="async">
             </div>
 
             <div class="cta-band__inner">
@@ -3439,7 +3589,7 @@
                         segura.</p>
                 </div>
 
-                <a class="cta-band__button" href="{{ $inscripcionUrl }}" target="_blank" rel="noopener noreferrer"
+                <a class="cta-band__button" href="https://forms.gle/HQyMfK7k38y9z2xp8" target="_blank" rel="noopener noreferrer"
                 aria-label="Inscríbete en la siguiente válida (abre en una nueva pestaña)">
                     <span>Inscríbete en la<br> siguiente válida</span>
                     <span class="btn-icon-circle" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
@@ -3447,8 +3597,7 @@
             </div>
         </section>
 
-        @if ($galleryImageTotal > 0)
-            <section class="gallery-ribbon" id="galeria" aria-labelledby="galeria-title">
+                    <section class="gallery-ribbon" id="galeria" aria-labelledby="galeria-title">
                 <div class="gallery-ribbon__inner" data-gallery-strip data-speed="0.046">
                     <div class="gallery-ribbon__header">
                         <div class="gallery-ribbon__copy">
@@ -3460,8 +3609,7 @@
                             </p>
                         </div>
 
-                        @if ($galleryImageTotal > 1)
-                            <div class="gallery-ribbon__controls" aria-label="Controles de la tirilla fotográfica">
+                                                    <div class="gallery-ribbon__controls" aria-label="Controles de la tirilla fotográfica">
                                 <button class="gallery-ribbon__button" type="button" data-gallery-action="previous"
                                     aria-label="Desplazar la tirilla hacia atrás">
                                     <i class="bi bi-arrow-left" aria-hidden="true"></i>
@@ -3476,8 +3624,7 @@
                                     <span data-gallery-toggle-label>Pausar</span>
                                 </button>
                             </div>
-                        @endif
-                    </div>
+                                            </div>
 
                     <p class="sr-only" id="gallery-ribbon-instructions">
                         La galería se desplaza automáticamente. Usa los controles para avanzar, retroceder o pausar la
@@ -3487,40 +3634,320 @@
                     <div class="gallery-ribbon__viewport" data-gallery-viewport tabindex="0" role="region"
                         aria-label="Tirilla de imágenes del reto" aria-describedby="gallery-ribbon-instructions">
                         <div class="gallery-ribbon__track" data-gallery-track>
-                            @foreach ($galleryImages as $image)
-                                <button class="gallery-ribbon__item" type="button"
-                                    data-gallery-open="{{ $loop->index }}" aria-label="Abrir imagen {{ $loop->iteration }} de {{ $galleryImageTotal }}">
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="0" aria-label="Abrir imagen 1 de 12">
                                     <span class="gallery-ribbon__card">
                                         <span class="gallery-ribbon__thumb">
-                                            <img src="{{ $image['src'] }}" alt="" loading="lazy" decoding="async">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_1.jpg" alt="" loading="lazy" decoding="async">
                                         </span>
                                         <span class="gallery-ribbon__caption">
-                                            <strong>{{ $image['title'] }}</strong>
-                                            <span>{{ $image['caption'] }}</span>
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 1 de 12</span>
                                         </span>
                                     </span>
                                 </button>
-                            @endforeach
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="1" aria-label="Abrir imagen 2 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_2.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 2 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="2" aria-label="Abrir imagen 3 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_3.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 3 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="3" aria-label="Abrir imagen 4 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_4.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 4 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="4" aria-label="Abrir imagen 5 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_5.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 5 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="5" aria-label="Abrir imagen 6 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_6.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 6 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="6" aria-label="Abrir imagen 7 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_7.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 7 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="7" aria-label="Abrir imagen 8 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_8.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 8 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="8" aria-label="Abrir imagen 9 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_9.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 9 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="9" aria-label="Abrir imagen 10 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_10.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 10 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="10" aria-label="Abrir imagen 11 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_11.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 11 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                                            <button class="gallery-ribbon__item" type="button"
+                                    data-gallery-open="11" aria-label="Abrir imagen 12 de 12">
+                                    <span class="gallery-ribbon__card">
+                                        <span class="gallery-ribbon__thumb">
+                                            <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_12.jpg" alt="" loading="lazy" decoding="async">
+                                        </span>
+                                        <span class="gallery-ribbon__caption">
+                                            <strong>Galería del reto</strong>
+                                            <span>Registro fotográfico 12 de 12</span>
+                                        </span>
+                                    </span>
+                                </button>
 
-                            @if ($galleryImageTotal > 1)
-                                @foreach ($galleryImages as $image)
-                                    <button class="gallery-ribbon__item" type="button"
-                                        data-gallery-open="{{ $loop->index }}" data-gallery-clone="true"
+                                                                                                <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="0" data-gallery-clone="true"
                                         aria-hidden="true" tabindex="-1">
                                         <span class="gallery-ribbon__card">
                                             <span class="gallery-ribbon__thumb">
-                                                <img src="{{ $image['src'] }}" alt="" loading="lazy"
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_1.jpg" alt="" loading="lazy"
                                                     decoding="async">
                                             </span>
                                             <span class="gallery-ribbon__caption">
-                                                <strong>{{ $image['title'] }}</strong>
-                                                <span>{{ $image['caption'] }}</span>
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 1 de 12</span>
                                             </span>
                                         </span>
                                     </button>
-                                @endforeach
-                            @endif
-                        </div>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="1" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_2.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 2 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="2" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_3.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 3 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="3" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_4.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 4 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="4" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_5.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 5 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="5" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_6.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 6 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="6" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_7.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 7 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="7" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_8.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 8 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="8" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_9.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 9 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="9" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_10.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 10 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="10" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_11.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 11 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                    <button class="gallery-ribbon__item" type="button"
+                                        data-gallery-open="11" data-gallery-clone="true"
+                                        aria-hidden="true" tabindex="-1">
+                                        <span class="gallery-ribbon__card">
+                                            <span class="gallery-ribbon__thumb">
+                                                <img src="https://www.movilidadbogota.gov.co/sites/default/files/micrositios/assets/2026-05-20/reto_act1_12.jpg" alt="" loading="lazy"
+                                                    decoding="async">
+                                            </span>
+                                            <span class="gallery-ribbon__caption">
+                                                <strong>Galería del reto</strong>
+                                                <span>Registro fotográfico 12 de 12</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                                                                    </div>
                     </div>
                 </div>
             </section>
@@ -3544,8 +3971,7 @@
                                 <p data-gallery-dialog-caption>Registro fotográfico</p>
                             </div>
 
-                            @if ($galleryImageTotal > 1)
-                                <div class="gallery-lightbox__controls" aria-label="Navegación del visor">
+                                                            <div class="gallery-lightbox__controls" aria-label="Navegación del visor">
                                     <button class="gallery-lightbox__button" type="button" data-gallery-dialog-nav="previous"
                                         aria-label="Mostrar imagen anterior">
                                         <i class="bi bi-arrow-left" aria-hidden="true"></i>
@@ -3555,14 +3981,12 @@
                                         <i class="bi bi-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                            @endif
-                        </div>
+                                                    </div>
                     </div>
                 </div>
             </dialog>
-        @endif
 
-        {{-- Modal de video — abre YouTube directamente --}}
+
         <dialog class="video-lightbox" data-video-dialog aria-label="Reproductor de video" aria-modal="true" role="dialog">
             <div class="video-lightbox__shell">
                 <div class="video-lightbox__topbar">
@@ -3591,19 +4015,30 @@
             <div class="site-footer__top">
 
                 <nav class="footer-links" aria-label="Enlaces de pie de página">
-                    @foreach ($footerLinks as $link)
-                        <a href="{{ $link['href'] }}">{{ $link['label'] }}</a>
-                    @endforeach
-                </nav>
+                                            <a href="/manual-y-politicas-de-seguridad-de-la-informacion">Políticas de privacidad</a>
+                                            <a href="#">Términos y condiciones</a>
+                                            <a href="/sitemap">Mapa del sitio</a>
+                                            <a href="/atencion-servicios/puntos-atencion">Atención a la ciudadanía</a>
+                                    </nav>
 
                 <div class="social-links" aria-label="Redes sociales">
-                    @foreach ($socialLinks as $social)
-                        <a href="{{ $social['href'] }}" aria-label="{{ $social['label'] }}"
-                            title="{{ $social['label'] }}">
-                            <i class="bi {{ $social['icon'] }}" aria-hidden="true"></i>
+                                            <a href="#" aria-label="Facebook"
+                            title="Facebook">
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
                         </a>
-                    @endforeach
-                </div>
+                                            <a href="#" aria-label="X"
+                            title="X">
+                            <i class="bi bi-twitter-x" aria-hidden="true"></i>
+                        </a>
+                                            <a href="#" aria-label="Instagram"
+                            title="Instagram">
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                                            <a href="#" aria-label="YouTube"
+                            title="YouTube">
+                            <i class="bi bi-youtube" aria-hidden="true"></i>
+                        </a>
+                                    </div>
             </div>
         </div>
     </footer>
@@ -3619,7 +4054,7 @@
             const heroCarousel = document.querySelector('[data-hero-carousel]');
             const galleryStrip = document.querySelector('[data-gallery-strip]');
             const galleryDialog = document.querySelector('[data-gallery-dialog]');
-            const galleryImages = @json($galleryImages);
+            const galleryImages = [{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_1.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 1","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 1 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_2.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 2","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 2 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_3.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 3","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 3 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_4.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 4","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 4 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_5.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 5","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 5 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_6.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 6","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 6 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_7.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 7","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 7 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_8.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 8","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 8 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_9.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 9","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 9 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_10.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 10","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 10 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_11.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 11","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 11 de 12"},{"src":"\https:\\/\\/www.movilidadbogota.gov.co\\/sites\\/default\\/files\\/micrositios\\/assets\\/2026-05-20\\/reto_act1_12.jpg","alt":"Fotograf\u00eda del Reto M\u00e1s lento, m\u00e1s pro 12","title":"Galer\u00eda del reto","caption":"Registro fotogr\u00e1fico 12 de 12"}];
             const mobileQuery = window.matchMedia('(max-width: 991.98px)');
             const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const headerSolidThreshold = 18;
@@ -4395,3 +4830,8 @@
 </body>
 
 </html>
+
+
+
+
+

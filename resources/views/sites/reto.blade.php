@@ -275,7 +275,7 @@
             --muted: #5c5c56;
             --olive: #4f551b;
             --olive-2: #3a4210;
-            --lime: #c8da00;
+            --lime: #bed000;
             --lime-soft: #d9e600;
             --shadow: 0 18px 40px rgba(25, 27, 11, 0.08);
         }

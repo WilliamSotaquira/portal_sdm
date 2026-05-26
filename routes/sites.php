@@ -20,7 +20,14 @@ Route::prefix('sites')->name('sites.')->group(function () {
     // gerencia en via ruta
     Route::view('/gerencia-en-via', 'sites.gerencia-en-via')->name('gerencia-en-via');
 
-
-
+    // fotodeteccion rutas
+    Route::view('/fotodeteccion', 'sites.fotodeteccion.index')->name('fotodeteccion');
+    Route::view('/fotodeteccion/que-son', 'sites.fotodeteccion.que-son')->name('fotodeteccion.que-son');
+    Route::view('/fotodeteccion/proceso', 'sites.fotodeteccion.proceso')->name('fotodeteccion.proceso');
+    Route::view('/fotodeteccion/ubicacion', 'sites.fotodeteccion.ubicacion')->name('fotodeteccion.ubicacion');
+    Route::view('/fotodeteccion/infracciones', 'sites.fotodeteccion.infracciones')->name('fotodeteccion.infracciones');
+    Route::view('/fotodeteccion/transparencia', 'sites.fotodeteccion.transparencia')->name('fotodeteccion.transparencia');
+    Route::view('/fotodeteccion/comparendo', 'sites.fotodeteccion.comparendo')->name('fotodeteccion.comparendo');
+    Route::view('/fotodeteccion/preguntas', 'sites.fotodeteccion.preguntas')->name('fotodeteccion.preguntas');
 
 });

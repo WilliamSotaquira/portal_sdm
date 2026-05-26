@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="600" viewBox="0 0 1920 600">
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="600" fill="url(#heroGradient)" />
+  <text x="960" y="280" font-family="system-ui, sans-serif" font-size="48" fill="#ffffff" text-anchor="middle" opacity="0.3">
+    Hero - Cámaras de Fotodetección
+  </text>
+  <text x="960" y="340" font-family="system-ui, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" opacity="0.2">
+    1920 × 600 — Reemplazar con imagen real
+  </text>
+</svg>

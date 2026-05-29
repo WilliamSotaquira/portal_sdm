@@ -6,14 +6,14 @@ Implementación de un sitio informativo multi-nodo sobre el sistema de cámaras 
 
 ## Tasks
 
-- [ ] 1. Configurar estructura base del proyecto y rutas
+- [x] 1. Configurar estructura base del proyecto y rutas
   - [x] 1.1 Registrar rutas del sitio de fotodetección en `routes/sites.php`
     - Agregar rutas `Route::view()` para el Index y los 7 nodos dentro del grupo `sites`
     - Rutas: `/fotodeteccion`, `/fotodeteccion/que-son`, `/fotodeteccion/proceso`, `/fotodeteccion/ubicacion`, `/fotodeteccion/infracciones`, `/fotodeteccion/transparencia`, `/fotodeteccion/comparendo`, `/fotodeteccion/preguntas`
     - Asignar nombres de ruta con patrón `sites.fotodeteccion.*`
     - _Requirements: 1.1, 11.4_
 
-  - [ ] 1.2 Crear directorio de vistas y archivo base del Index
+  - [x] 1.2 Crear directorio de vistas y archivo base del Index
     - Crear `resources/views/sites/fotodeteccion/index.blade.php` con estructura base: `@extends('layouts.app')`, `@section('title')`, `@section('content')`, contenedor `#fotodeteccion` con `all: initial`, variables CSS del sistema de diseño, y etiquetas `<style>` y `<script>` vacías
     - _Requirements: 1.5, 11.1, 11.2, 11.5, 11.6_
 
@@ -38,7 +38,7 @@ Implementación de un sitio informativo multi-nodo sobre el sistema de cámaras 
     - Crear 4 elementos interactivos visualmente diferenciados (tarjetas/bloques clicables) con los accesos: "Entender las cámaras" → `/sites/fotodeteccion/que-son`, "Ver el proceso" → `/sites/fotodeteccion/proceso`, "Consultar ubicación" → `/sites/fotodeteccion/ubicacion`, "Resolver un comparendo" → `/sites/fotodeteccion/comparendo`
     - _Requirements: 1.3, 2.3, 1.6, 2.7_
 
-  - [ ] 2.4 Implementar vista resumida del proceso y preguntas frecuentes
+  - [x] 2.4 Implementar vista resumida del proceso y preguntas frecuentes
     - Crear bloque de 3 momentos: "La cámara registra → Un agente valida → Se notifica al propietario" con CTA "Ver proceso completo" enlazando a `/sites/fotodeteccion/proceso`
     - Implementar acordeón con 3 preguntas frecuentes colapsables y CTA "Ver todas las preguntas" enlazando a `/sites/fotodeteccion/preguntas`
     - Incluir atributos ARIA: `role="region"`, `aria-labelledby`, `aria-expanded` en cada panel
